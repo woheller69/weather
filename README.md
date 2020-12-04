@@ -1,9 +1,9 @@
 # RadarWeather
 
 This application is forked from Privacy Friendly Weather (https://github.com/SecUSo/privacy-friendly-weather) a privacy friendly weather app.
-The original function has been modified to support the new OpenWeather One Call API, which provides a lot more features, like rain forecast for the next 60 minutes,
-hourly forecasts for the next 2 days, 8 day week forecasts, etc. In addition a rain radar functionality powered by RainViewer API (https://www.rainviewer.com/api.html) has been added. More weather categories were added, most images and icons were replaced.
-The widgets have been removed. A chart showing forecasts for the next week has been added.
+The original function has been modified to support the new OpenWeather One Call API, which provides a lot more features, like precipitation forecast for the next 60 minutes,
+hourly forecasts for the next 2 days, 8 day week forecasts, etc. In addition a rain radar functionality powered by RainViewer API (https://www.rainviewer.com/api.html) has been added. More weather categories were added, most images and icons were replaced. RadiusSearch now also shows the results on a map with weather icons.
+The widgets have been removed. A chart showing forecasts with min/max temperature and precipitation for the next week has been added.
 
 As One Call API only allows 1000 calls per day an own OpenWeatherMap API key is mandatory.
 
@@ -46,6 +46,6 @@ Apache License Version 2.0 (http://www.apache.org/licenses/LICENSE-2.0).
 The app also uses:
 - Leaflet which is licensed under the very permissive 2-clause BSD License. (https://github.com/Leaflet/Leaflet/blob/master/FAQ.md)
 - RainViewer API which is free. (https://www.rainviewer.com/api.html)
-- William Chart (com.db.chart) (https://github.com/diogobernardino/williamchart) which is licensed under Apache License Version 2.0 (http://www.apache.org/licenses/LICENSE-2.0).
+- WilliamChart (com.db.chart) (https://github.com/diogobernardino/williamchart) which is licensed under Apache License Version 2.0 (http://www.apache.org/licenses/LICENSE-2.0).
 - Map data from OpenStreetMap, licensed under the Open Data Commons Open Database License (ODbL) by the OpenStreetMap Foundation (OSMF) (https://www.openstreetmap.org/copyright).
 
