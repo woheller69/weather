@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<!-- Thanks to luckyalvy for his rainviewer-api-example. https://github.com/rainviewer/rainviewer-api-example -->
+<html>
+<head>
+    <title>RainViewer</title>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="leaflet.css"/>
+    <script src="leaflet.js"></script>
+    <style type="text/css">
+        li {
+            list-style: none;
+            display: inline-block;
+        }
+
+        .btn {
+        border: 2px solid #a8a8a8;
+        outline: none;
+        background-color:white;
+        font-size:110%;
+        font-weight:bold;
+        height:30px;
+        border-radius: 6px;
+        }
+    </style>
+</head>
+
+<body style="background-color:#8aa5ce;">
+
+<ul style="text-align:center; position: absolute;top: 0; left: 0; right: 0; height: 50px;">
+    <li><button class="btn" onclick="stop(); showFrame(animationPosition - 1); return;"> &lt </button></li>
+    <li><button class="btn" onclick="playStop();"> Start / Stop </button></li>
+    <li><button class="btn" onclick="stop(); showFrame(animationPosition + 1); return;"> &gt </button></li>
+</ul>
+
+<div id="timestamp" style="text-align:center; position: absolute;top: 50px; left: 0; right: 0; height: 80px;">FRAME TIME</div>
+
+<div id="mapid" style="position: absolute; top: 100px; left: 0; bottom: 0; right: 0;"></div>
+
+<script>
+//call: rainviewer.html?lat={latitude}&lon={longitude} Takes latitude/longitude from request and shows rainviewer rain radar on openstreetmap for requested position and zoom
+
+
+var getUrlParameter = function getUrlParameter(sParam) {
+            var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+                sURLVariables = sPageURL.split('&'),
+                sParameterName,
+                i;
+
+            for (i = 0; i < sURLVariables.length; i++) {
+                sParameterName = sURLVariables[i].split('=');
+
+                if (sParameterName[0] === sParam) {
+                    return sParameterName[1] === undefined ? true : sParameterName[1];
+                }
+            }
+        };
+
+
+var map = L.map('mapid', {
+            zoomControl: true,
+            attributionControl: true
+        }).setView([getUrlParameter('lat'), getUrlParameter('lon')], 8);  //zoom factor 8
+
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: 'Map data ©<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors&<a href="https://www.rainviewer.com/api.html">RainViewer</a>'
+    }).addTo(map);
+
+var marker = L.marker([getUrlParameter('lat'), getUrlParameter('lon')]).addTo(map);
+
+    /**
+     * RainViewer radar animation part
+     * @type {number[]}
+     */
+    var timestamps = [];
+    var radarLayers = [];
+
+    var animationPosition = 0;
+    var animationTimer = false;
+
+    /**
+     * Load actual radar animation frames timestamps from RainViewer API
+     */
+    var apiRequest = new XMLHttpRequest();
+    apiRequest.open("GET", "https://api.rainviewer.com/public/maps.json", true);
+    apiRequest.onload = function(e) {
+
+        // save available timestamps and show the latest frame: "-1" means "timestamp.lenght - 1"
+        timestamps = JSON.parse(apiRequest.response);
+        showFrame(-1);
+    };
+    apiRequest.send();
+
+    /**
+     * Animation functions
+     * @param ts
+     */
+    function addLayer(ts) {
+        if (!radarLayers[ts]) {
+            radarLayers[ts] = new L.TileLayer('https://tilecache.rainviewer.com/v2/radar/' + ts + '/256/{z}/{x}/{y}/1/1_1.png', {
+                tileSize: 256,
+                opacity: 0.001,
+                zIndex: ts
+            });
+        }
+        if (!map.hasLayer(radarLayers[ts])) {
+            map.addLayer(radarLayers[ts]);
+        }
+    }
+
+    /**
+     * Display particular frame of animation for the @position
+     * If preloadOnly parameter is set to true, the frame layer only adds for the tiles preloading purpose
+     * @param position
+     * @param preloadOnly
+     */
+    function changeRadarPosition(position, preloadOnly) {
+        while (position >= timestamps.length) {
+            position -= timestamps.length;
+        }
+        while (position < 0) {
+            position += timestamps.length;
+        }
+
+        var currentTimestamp = timestamps[animationPosition];
+        var nextTimestamp = timestamps[position];
+
+        addLayer(nextTimestamp);
+
+        if (preloadOnly) {
+            return;
+        }
+
+        animationPosition = position;
+
+        if (radarLayers[currentTimestamp]) {
+            radarLayers[currentTimestamp].setOpacity(0);
+        }
+        radarLayers[nextTimestamp].setOpacity(0.6);
+
+       document.getElementById("timestamp").innerHTML = (new Date(nextTimestamp * 1000)).toString();
+
+    }
+
+    /**
+     * Check avialability and show particular frame position from the timestamps list
+     */
+    function showFrame(nextPosition) {
+        var preloadingDirection = nextPosition - animationPosition > 0 ? 1 : -1;
+
+        changeRadarPosition(nextPosition);
+
+        // preload next next frame (typically, +1 frame)
+        // if don't do that, the animation will be blinking at the first loop
+        changeRadarPosition(nextPosition + preloadingDirection, true);
+    }
+
+    /**
+     * Stop the animation
+     * Check if the animation timeout is set and clear it.
+     */
+    function stop() {
+        if (animationTimer) {
+            clearTimeout(animationTimer);
+            animationTimer = false;
+            return true;
+        }
+        return false;
+    }
+
+    function play() {
+        showFrame(animationPosition + 1);
+
+        // Main animation driver. Run this function every 500 ms, latest position shown for 1500ms
+        if (animationPosition == (timestamps.length-1)) {
+            animationTimer = setTimeout(play, 1500);
+            }
+        else{
+            animationTimer = setTimeout(play, 500);
+            }
+    }
+
+    function playStop() {
+        if (!stop()) {
+            play();
+        }
+    }
+    
+    
+
+</script>
+
+</body>
+</html>

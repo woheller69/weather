@@ -1,0 +1,49 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/settings_title_API">
+        <PreferenceScreen android:summary="@string/settings_description_API" />
+        <EditTextPreference
+            android:key="API_key_value"
+            android:title="@string/settings_title_API_key"
+            android:defaultValue="@string/settings__API_key_default" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/settings_title_units">
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/temperatureUnitsArray"
+            android:entryValues="@array/temperatureUnitsValues"
+            android:key="temperatureUnit"
+            android:summary="@string/settings_summary_temperature"
+            android:title="@string/settings_title_temperature" />
+
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/distanceUnitsArray"
+            android:entryValues="@array/distanceUnitsValues"
+            android:key="distanceUnit"
+            android:summary="@string/settings_summary_distance"
+            android:title="@string/settings_title_distance" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/settings_title_forecastChoice">
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/forecastChoiceArray"
+            android:entryValues="@array/forecastChoiceValues"
+            android:key="forecastChoice"
+            android:summary="@string/settings_summary_forecastChoice"
+            android:title="@string/settings_forecastChoice" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/settings_intervals">
+        <ListPreference
+            android:defaultValue="2"
+            android:entries="@array/refreshIntervalArray"
+            android:entryValues="@array/refreshIntervalValues"
+            android:key="pref_updateInterval"
+            android:summary="@string/settings_interval_summary"
+            android:title="@string/settings_update_interval" />
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

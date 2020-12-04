@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:id="@+id/nav_group_main"
+        android:checkableBehavior="all">
+        <item
+            android:id="@+id/nav_weather"
+            android:icon="@drawable/ic_menu_home"
+            android:title="@string/action_main" />
+        <item
+            android:id="@+id/nav_manage"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="@string/action_manage" />
+        <item
+            android:id="@+id/nav_radius"
+            android:icon="@drawable/ic_menu_send"
+            android:title="@string/radius_search_label" />
+    </group>
+
+    <group
+        android:id="@+id/nav_group_add"
+        android:checkableBehavior="all">
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_menu_settings"
+            android:title="@string/action_settings" />
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/ic_menu_info"
+            android:title="@string/action_about" />
+    </group>
+</menu>

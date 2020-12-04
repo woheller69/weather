@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="leaflet.css"/>
+    <script src="leaflet.js"></script>
+</head>
+
+
+
+<div id="map" style="position: absolute; top: 0px; left: 0; bottom: 0; right: 0;"></div>
+
+<script type="text/javascript">
+
+var Icon10 = L.icon({
+	iconUrl: 'images/10.png',
+
+	iconSize:     [48, 48], // size of the icon
+	iconAnchor:   [30, 43], // point of the icon which will correspond to marker's location
+	popupAnchor:  [-0, -0] // point from which the popup should open relative to the iconAnchor
+});
+
+
+var Icon20 = L.icon({
+	iconUrl: 'images/20.png',
+
+	iconSize:     [48, 48], // size of the icon
+	iconAnchor:   [30, 43], // point of the icon which will correspond to marker's location
+	popupAnchor:  [-0, -0] // point from which the popup should open relative to the iconAnchor
+});
+
+var Icon30 = L.icon({
+	iconUrl: 'images/30.png',
+
+	iconSize:     [48, 48], // size of the icon
+	iconAnchor:   [30, 43], // point of the icon which will correspond to marker's location
+	popupAnchor:  [-0, -0] // point from which the popup should open relative to the iconAnchor
+});
+
+var Icon40 = L.icon({
+	iconUrl: 'images/40.png',
+
+	iconSize:     [48, 48], // size of the icon
+	iconAnchor:   [30, 43], // point of the icon which will correspond to marker's location
+	popupAnchor:  [-0, -0] // point from which the popup should open relative to the iconAnchor
+});
+
+var Icon45 = L.icon({
+	iconUrl: 'images/45.png',
+
+	iconSize:     [48, 48], // size of the icon
+	iconAnchor:   [30, 43], // point of the icon which will correspond to marker's location
+	popupAnchor:  [-0, -0] // point from which the popup should open relative to the iconAnchor
+});
+
+var Icon50 = L.icon({
+	iconUrl: 'images/50.png',
+
+	iconSize:     [48, 48], // size of the icon
+	iconAnchor:   [30, 43], // point of the icon which will correspond to marker's location
+	popupAnchor:  [-0, -0] // point from which the popup should open relative to the iconAnchor
+});
+
+var Icon60 = L.icon({
+	iconUrl: 'images/60.png',
+
+	iconSize:     [48, 48], // size of the icon
+	iconAnchor:   [30, 43], // point of the icon which will correspond to marker's location
+	popupAnchor:  [-0, -0] // point from which the popup should open relative to the iconAnchor
+});
+
+var Icon70 = L.icon({
+	iconUrl: 'images/70.png',
+
+	iconSize:     [48, 48], // size of the icon
+	iconAnchor:   [30, 43], // point of the icon which will correspond to marker's location
+	popupAnchor:  [-0, -0] // point from which the popup should open relative to the iconAnchor
+});
+
+var Icon71 = L.icon({
+	iconUrl: 'images/71.png',
+
+	iconSize:     [48, 48], // size of the icon
+	iconAnchor:   [30, 43], // point of the icon which will correspond to marker's location
+	popupAnchor:  [-0, -0] // point from which the popup should open relative to the iconAnchor
+});
+
+var Icon72 = L.icon({
+	iconUrl: 'images/72.png',
+
+	iconSize:     [48, 48], // size of the icon
+	iconAnchor:   [30, 43], // point of the icon which will correspond to marker's location
+	popupAnchor:  [-0, -0] // point from which the popup should open relative to the iconAnchor
+});
+
+var Icon75 = L.icon({
+	iconUrl: 'images/75.png',
+
+	iconSize:     [48, 48], // size of the icon
+	iconAnchor:   [30, 43], // point of the icon which will correspond to marker's location
+	popupAnchor:  [-0, -0] // point from which the popup should open relative to the iconAnchor
+});
+
+var Icon80 = L.icon({
+	iconUrl: 'images/80.png',
+
+	iconSize:     [48, 48], // size of the icon
+	iconAnchor:   [30, 43], // point of the icon which will correspond to marker's location
+	popupAnchor:  [-0, -0] // point from which the popup should open relative to the iconAnchor
+});
+
+var Icon81 = L.icon({
+	iconUrl: 'images/81.png',
+
+	iconSize:     [48, 48], // size of the icon
+	iconAnchor:   [30, 43], // point of the icon which will correspond to marker's location
+	popupAnchor:  [-0, -0] // point from which the popup should open relative to the iconAnchor
+});
+var Icon82 = L.icon({
+	iconUrl: 'images/82.png',
+
+	iconSize:     [48, 48], // size of the icon
+	iconAnchor:   [30, 43], // point of the icon which will correspond to marker's location
+	popupAnchor:  [-0, -0] // point from which the popup should open relative to the iconAnchor
+});
+
+var Icon83 = L.icon({
+	iconUrl: 'images/83.png',
+
+	iconSize:     [48, 48], // size of the icon
+	iconAnchor:   [30, 43], // point of the icon which will correspond to marker's location
+	popupAnchor:  [-0, -0] // point from which the popup should open relative to the iconAnchor
+});
+
+var Icon85 = L.icon({
+	iconUrl: 'images/85.png',
+
+	iconSize:     [48, 48], // size of the icon
+	iconAnchor:   [30, 43], // point of the icon which will correspond to marker's location
+	popupAnchor:  [-0, -0] // point from which the popup should open relative to the iconAnchor
+});
+
+var Icon90 = L.icon({
+	iconUrl: 'images/90.png',
+
+	iconSize:     [48, 48], // size of the icon
+	iconAnchor:   [30, 43], // point of the icon which will correspond to marker's location
+	popupAnchor:  [-0, -0] // point from which the popup should open relative to the iconAnchor
+});
+
+var getUrlParameter = function getUrlParameter(sParam) {
+            var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+                sURLVariables = sPageURL.split('&'),
+                sParameterName,
+                i;
+
+            for (i = 0; i < sURLVariables.length; i++) {
+                sParameterName = sURLVariables[i].split('=');
+
+                if (sParameterName[0] === sParam) {
+                    return sParameterName[1] === undefined ? true : sParameterName[1];
+                }
+            }
+        };
+
+var bounds = new L.LatLngBounds([getUrlParameter('latmin'),getUrlParameter('lonmin')], [getUrlParameter('latmax'),getUrlParameter('lonmax')]);
+
+var map = L.map('map', {
+            zoomControl:true,
+            attributionControl: true
+        }).fitBounds(bounds, { padding: [20, 20] });
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: 'Map data ©<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+
+function addMarker(lat,lon,temp, unit, cat) {
+        var marker = L.marker([lat,lon]).addTo(map);
+       if (cat==10) marker.setIcon(Icon10);
+       else if (cat==20) marker.setIcon(Icon20);
+       else if (cat==30) marker.setIcon(Icon30);
+       else if (cat==40) marker.setIcon(Icon40);
+       else if (cat==45) marker.setIcon(Icon45);
+       else if (cat==50) marker.setIcon(Icon50);
+       else if (cat==60) marker.setIcon(Icon60);
+       else if (cat==70) marker.setIcon(Icon70);
+       else if (cat==71) marker.setIcon(Icon71);
+       else if (cat==72) marker.setIcon(Icon72);
+       else if (cat==75) marker.setIcon(Icon75);
+       else if (cat==80) marker.setIcon(Icon80);
+       else if (cat==81) marker.setIcon(Icon81);
+       else if (cat==82) marker.setIcon(Icon82);
+       else if (cat==83) marker.setIcon(Icon83);
+       else if (cat==85) marker.setIcon(Icon85);
+       else if (cat==90) marker.setIcon(Icon90);
+
+       if (unit==0) unitstring="C";
+       if (unit==1) unitstring="F";
+        marker.bindTooltip( temp + " °" + unitstring, { permanent: true, opacity:0.7, direction: 'right' });
+    }
+
+</script>
+
+</html>
