@@ -2,7 +2,7 @@
 
 This application is forked from Privacy Friendly Weather (https://github.com/SecUSo/privacy-friendly-weather) a privacy friendly weather app.
 The original function has been modified to support the new OpenWeather One Call API, which provides a lot more features, like rain forecast for the next 60 minutes,
-hourly forecasts for the next 2 days, 8 day week forecasts, etc. In addition a rain radar functionality powered by RainViewer API (https://www.rainviewer.com/api.html) has been added.
+hourly forecasts for the next 2 days, 8 day week forecasts, etc. In addition a rain radar functionality powered by RainViewer API (https://www.rainviewer.com/api.html) has been added. More weather categories were added, most images and icons were replaced.
 The widgets have been removed. A chart showing forecasts for the next week has been added.
 
 As One Call API only allows 1000 calls per day an own OpenWeatherMap API key is mandatory.
@@ -43,7 +43,7 @@ The icons used in the navigation drawer are licensed under the [CC BY 2.5] (http
 In addition to them the app uses icons from [Google Material Design Icons](https://material.io/resources/icons/) licensed under
 Apache License Version 2.0 (http://www.apache.org/licenses/LICENSE-2.0).
 
-In addition the app uses:
+The app also uses:
 - Leaflet which is licensed under the very permissive 2-clause BSD License. (https://github.com/Leaflet/Leaflet/blob/master/FAQ.md)
 - RainViewer API which is free. (https://www.rainviewer.com/api.html)
 - William Chart (com.db.chart) (https://github.com/diogobernardino/williamchart) which is licensed under Apache License Version 2.0 (http://www.apache.org/licenses/LICENSE-2.0).
