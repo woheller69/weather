@@ -31,7 +31,7 @@ import static org.woheller69.weather.services.UpdateDataService.SKIP_UPDATE_INTE
  */
 public class PFASQLiteHelper extends SQLiteAssetHelper {
 
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION = 1;
     private Context context;
 
     private List<City> allCities = new ArrayList<>();
