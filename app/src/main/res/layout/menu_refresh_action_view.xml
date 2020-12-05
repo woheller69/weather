@@ -3,6 +3,6 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:contentDescription="@string/action_refresh"
-    android:src="@drawable/ic_refresh"
+    android:src="@drawable/ic_refresh_24px"
     android:id="@+id/refresh_view"
     style="@android:style/Widget.ActionButton" />

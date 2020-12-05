@@ -6,15 +6,15 @@
         android:checkableBehavior="all">
         <item
             android:id="@+id/nav_weather"
-            android:icon="@drawable/ic_menu_home"
+            android:icon="@drawable/ic_home_24px"
             android:title="@string/action_main" />
         <item
             android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/ic_edit_location_24px"
             android:title="@string/action_manage" />
         <item
             android:id="@+id/nav_radius"
-            android:icon="@drawable/ic_menu_send"
+            android:icon="@drawable/ic_map_24px"
             android:title="@string/radius_search_label" />
     </group>
 
@@ -23,11 +23,11 @@
         android:checkableBehavior="all">
         <item
             android:id="@+id/nav_settings"
-            android:icon="@drawable/ic_menu_settings"
+            android:icon="@drawable/ic_settings_24px"
             android:title="@string/action_settings" />
         <item
             android:id="@+id/nav_about"
-            android:icon="@drawable/ic_menu_info"
+            android:icon="@drawable/ic_info_24px"
             android:title="@string/action_about" />
     </group>
 </menu>

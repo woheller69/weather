@@ -17,7 +17,6 @@
     <string name="dialog_add_close_button">Schließen</string>
     <string name="dialog_add_label">Ort, der hinzugefügt werden soll:</string>
     <string name="dialog_add_no_city_found">Es wurde kein Ort gefunden, der der Eingabe entspricht. Es wird empfohlen, einen Eintrag aus dem Dropdown-Menu zu wählen.</string>
-    <string name="help">Hilfe</string>
     <string name="help_privacy_heading">Privatsphäre-Informationen</string>
     <string name="more_info">Mehr Informationen können gefunden werden auf:</string>
     <string name="help_permission_internet_description">Zugriff auf alle Netzwerke: Diese Berechtigung "wird benötigt, um Wetter-Anfragen an Server zu stellen, die sich im Internet befinden. Ohne diese Berechtigung können keine Wetter-Daten bezogen werden.</string>
@@ -26,7 +25,7 @@
     <string name="radius_search_heading">Das beste Wetter um einen Ort herum finden</string>
     <string name="radius_search_tv_edge_length">Kantenlänge des Suchquadrates</string>
     <string name="navigation_drawer_close">Navigationsleiste schließen</string>
-    <string name="license_text">Diese App ist abgeleitet von Privacy Friendly Weather, entwickelt von der Forschungsgruppe SECUSO. Quelltext lizenziert unter GPLv3. Die Icons in der Navigation sind unter [CC BY 2.5] lizenziert. Die App benutzt Icons von Google Material Design Icons, lizenziert unter Apache License Version 2.0, die Leaflet Bibliothek, lizenziert unter 2-clause BSD License, die freie RainViewer API und die WilliamChart Bibliothek (com.db.chart), lizenziert unter der Apache License Version 2.0</string>
+    <string name="license_text">Diese App ist abgeleitet von Privacy Friendly Weather, entwickelt von der Forschungsgruppe SECUSO. Quelltext lizenziert unter GPLv3. Die App benutzt Icons von Google Material Design Icons, lizenziert unter Apache License Version 2.0, die Leaflet Bibliothek, lizenziert unter 2-clause BSD License, die freie RainViewer API, die Android SQLiteAssetHelper Bibliothek (com.readystatesoftware.sqliteasset), lizenziert unter der Apache License Version 2.0 und die WilliamChart Bibliothek (com.db.chart), lizenziert unter der Apache License Version 2.0</string>
     <string name="radius_search_btn_search">Suche</string>
     <string name="weather_category_snow">Schneefall</string>
     <string name="weather_category_thunderstorm">Gewitter</string>

@@ -38,14 +38,12 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-The icons used in the navigation drawer are licensed under the [CC BY 2.5] (http://creativecommons.org/licenses/by/2.5/).
-
-In addition to them the app uses icons from [Google Material Design Icons](https://material.io/resources/icons/) licensed under
-Apache License Version 2.0 (http://www.apache.org/licenses/LICENSE-2.0).
 
 The app also uses:
+- Icons from [Google Material Design Icons](https://material.io/resources/icons/) licensed under Apache License Version 2.0 (http://www.apache.org/licenses/LICENSE-2.0).
 - Leaflet which is licensed under the very permissive 2-clause BSD License. (https://github.com/Leaflet/Leaflet/blob/master/FAQ.md)
 - RainViewer API which is free. (https://www.rainviewer.com/api.html)
 - WilliamChart (com.db.chart) (https://github.com/diogobernardino/williamchart) which is licensed under Apache License Version 2.0 (http://www.apache.org/licenses/LICENSE-2.0).
+- Android SQLiteAssetHelper (com.readystatesoftware.sqliteasset) which is licensed under Apache License Version 2.0 (http://www.apache.org/licenses/LICENSE-2.0).
 - Map data from OpenStreetMap, licensed under the Open Data Commons Open Database License (ODbL) by the OpenStreetMap Foundation (OSMF) (https://www.openstreetmap.org/copyright).
 
