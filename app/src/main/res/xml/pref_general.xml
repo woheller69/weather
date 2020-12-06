@@ -27,7 +27,7 @@
 
     <PreferenceCategory android:title="@string/settings_title_forecastChoice">
         <ListPreference
-            android:defaultValue="1"
+            android:defaultValue="2"
             android:entries="@array/forecastChoiceArray"
             android:entryValues="@array/forecastChoiceValues"
             android:key="forecastChoice"
