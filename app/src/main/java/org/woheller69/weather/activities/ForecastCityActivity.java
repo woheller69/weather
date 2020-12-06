@@ -52,7 +52,6 @@ public class ForecastCityActivity extends NavigationActivity implements IUpdatea
         if (pagerAdapter.getCount()>0) {  //only if at least one city is watched
             // if Intent contains cityId use this city, otherwise go to previous position
             cityId = getIntent().getIntExtra("cityId", pagerAdapter.getCityIDForPos(viewPager.getCurrentItem()));
-            //TODO possible slowdown when opening Activity
             pagerAdapter.refreshSingleData(false, cityId);  //only update current tab at start
         }
         viewPager.setCurrentItem(pagerAdapter.getPosForCityID(cityId));
