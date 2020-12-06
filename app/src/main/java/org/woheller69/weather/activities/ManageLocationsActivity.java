@@ -74,12 +74,7 @@ public class ManageLocationsActivity extends NavigationActivity {
                 new RecyclerItemClickListener(getBaseContext(), recyclerView, new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-                        // Get the corresponding city_id of the entry and pass it on to the started activity
-                        int cityId = RecyclerOverviewListAdapter.getListItems().get(position).getCityId();
-                        Intent intent = new Intent(getBaseContext(), ForecastCityActivity.class);
-                        intent.putExtra("cityId", cityId);
-                        startFetchingService(cityId);
-                        startActivity(intent);
+
                     }
 
                     public void onLongItemClick(View view, int position) {
@@ -114,14 +109,6 @@ public class ManageLocationsActivity extends NavigationActivity {
 
         }
 
-    }
-
-    public void startFetchingService(int cityId) {
-        // Start a background task to retrieve and store the weather data
-        Intent intent = new Intent(this, UpdateDataService.class);
-        intent.setAction(UpdateDataService.UPDATE_SINGLE_ACTION);  //changed to update single. Only selected city needs update, others will be updated as their tabs are selected
-        intent.putExtra("cityId", cityId);
-        enqueueWork(this, UpdateDataService.class, 0, intent);
     }
 
     @Override
