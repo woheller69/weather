@@ -101,4 +101,5 @@
     <string name="weather_category_heavy_snow">Starker Schneefall</string>
     <string name="weather_category_rainsnow">Schneeregen</string>
     <string name="dialog_add_city_too_close">Der Ort liegt zu nahe an einem bereits beobachteten Ort</string>
+    <string name="no_radius_search_result">Keinen Ort gefunden. Suchradius vergrößern</string>
 </resources>

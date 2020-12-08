@@ -157,14 +157,18 @@ public class ProcessRadiusSearchRequest implements IProcessHttpRequest {
             for (int i = 0; i < endIndex; i++) {
                 resultList.add(radiusItems.get(i));
             }
-
-            // Finally, load the activity to show the result
-            Intent intent = new Intent(context, RadiusSearchResultActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            Bundle bundle = new Bundle();
-            bundle.putParcelableArrayList("resultList", resultList);
-            intent.putExtras(bundle);
-            context.startActivity(intent);
+            if (!resultList.isEmpty()) {
+                // Finally, load the activity to show the result
+                Intent intent = new Intent(context, RadiusSearchResultActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                Bundle bundle = new Bundle();
+                bundle.putParcelableArrayList("resultList", resultList);
+                intent.putExtras(bundle);
+                context.startActivity(intent);
+            }
+            else{
+                Toast.makeText(context,context.getResources().getString(R.string.no_radius_search_result),Toast.LENGTH_LONG).show();
+            }
         }
 
         /**
