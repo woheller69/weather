@@ -6,7 +6,7 @@
         android:checkableBehavior="all">
         <item
             android:id="@+id/nav_weather"
-            android:icon="@drawable/ic_home_24px"
+            android:icon="@drawable/ic_wb_sunny_24px"
             android:title="@string/action_main" />
         <item
             android:id="@+id/nav_manage"
