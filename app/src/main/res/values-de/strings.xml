@@ -100,4 +100,5 @@
     <string name="weather_category_light_snow">Leichter Schneefall</string>
     <string name="weather_category_heavy_snow">Starker Schneefall</string>
     <string name="weather_category_rainsnow">Schneeregen</string>
+    <string name="dialog_add_city_too_close">Der Ort liegt zu nahe an einem bereits beobachteten Ort</string>
 </resources>

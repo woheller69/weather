@@ -108,10 +108,23 @@ public class AddLocationDialog extends DialogFragment {
             Toast.makeText(activity, R.string.dialog_add_no_city_found, Toast.LENGTH_SHORT).show();
             return;
         }
-        if (database != null && !database.isCityWatched(selectedCity.getCityId())) {
-            addCity();
+  //      if (database != null && !database.isCityWatched(selectedCity.getCityId())) {
+        if (database != null ) {
+            List<CityToWatch> citytowatch = new ArrayList<>();
+            citytowatch = database.getAllCitiesToWatch();
+            boolean duplicate=false;
+            for (CityToWatch C : citytowatch){ // Do not add city if latitude and longitude are very close to a city already watched. Otherwise there may be problems in ProcessOwmForecastOneCallAPIRequest
+                if ((Math.abs(C.getLatitude() - selectedCity.getLatitude())<=0.01) && (Math.abs(C.getLongitude() - selectedCity.getLongitude())<=0.01)) {
+                    duplicate = true;
+                    break;
+                }
+            }
+            if (!duplicate) {
+                addCity();
+                ((ManageLocationsActivity) activity).addCityToList(convertCityToWatched());
+            }
+            else Toast.makeText(activity, R.string.dialog_add_city_too_close, Toast.LENGTH_SHORT).show();
         }
-        ((ManageLocationsActivity) activity).addCityToList(convertCityToWatched());
         dismiss();
     }
 

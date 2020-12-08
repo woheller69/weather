@@ -152,6 +152,7 @@
     <string name="weather_category_light_snow">Light Snow</string>
     <string name="weather_category_heavy_snow">Heavy Snow</string>
     <string name="weather_category_rainsnow">Rain and Snow</string>
+    <string name="dialog_add_city_too_close">City too close to other watched city</string>
 
 
 </resources>

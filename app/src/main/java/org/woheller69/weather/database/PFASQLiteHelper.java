@@ -316,7 +316,7 @@ public class PFASQLiteHelper extends SQLiteAssetHelper {
                 " ORDER BY " + CITIES_NAME +
                 " LIMIT " + dropdownListLimit;
 
-        Log.d("devtag", "searchphrase: " + String.format("%s", cityNameLetters));
+//        Log.d("devtag", "searchphrase: " + String.format("%s", cityNameLetters));
         String[] args = {String.format("%s%%", cityNameLetters)};
         Cursor cursor = database.rawQuery(query, args);
 
@@ -328,7 +328,19 @@ public class PFASQLiteHelper extends SQLiteAssetHelper {
                 city.setCountryCode(cursor.getString(2));
                 city.setLongitude(cursor.getFloat(3));
                 city.setLatitude(cursor.getFloat(4));
-                cities.add(city);
+
+                // Do not add city to list if latitude and longitude are very close to other city already on list. Otherwise there may be problems in ProcessOwmForecastOneCallAPIRequest
+                // OpenWeatherMaps rounds to 2 decimal places but with symmetrical rounding: 1.255 -> 1.26 but also 1.265 -> 1.26. So cities should differ by more than 0.01 in lat/lon
+                boolean duplicate=false;
+                for (City C : cities) {
+                    if ((Math.abs(C.getLatitude() - city.getLatitude())<=0.01) && (Math.abs(C.getLongitude() - city.getLongitude())<=0.01)) {
+                        duplicate = true;
+                        break;
+                    }
+                }
+
+                if (!duplicate) cities.add(city);
+
             } while (cursor.moveToNext());
         }
 

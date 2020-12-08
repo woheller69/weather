@@ -67,14 +67,15 @@ public class ProcessOwmForecastOneCallAPIRequest implements IProcessHttpRequest 
             float lon = (float)json.getDouble("lon");
  //           Log.d("URL JSON",Float.toString(lat));
  //           Log.d("URL JSON",Float.toString(lon));
+
             int cityId=0;
-            //get CityID from lat/lon
-            //Maybe a risk of rounding problems. Alternative: search closest citytowatch
+            //find CityID from lat/lon
             List<CityToWatch> citiesToWatch = dbHelper.getAllCitiesToWatch();
             for (int i = 0; i < citiesToWatch.size(); i++) {
                 CityToWatch city = citiesToWatch.get(i);
                 //if lat/lon of json response very close to lat/lon in citytowatch
-                if ((Math.abs(city.getLatitude() - lat)<0.01) && (Math.abs(city.getLongitude() - lon)<0.01)) {
+                //OpenWeatherMaps rounds to 2 decimal places, so the response lat/lon should differ by <=0.005
+                if ((Math.abs(city.getLatitude() - lat)<=0.005) && (Math.abs(city.getLongitude() - lon)<=0.005)) {
                     cityId=city.getCityId();
  //                   Log.d("URL CITYID", Integer.toString(cityId));
                     break;
