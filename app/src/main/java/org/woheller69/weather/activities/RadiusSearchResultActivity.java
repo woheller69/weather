@@ -39,14 +39,6 @@ public class RadiusSearchResultActivity extends AppCompatActivity {
 
 
 
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        webView.destroy();   //clear webView memory
-        // Another activity is taking focus (this activity is about to be "paused").
-    }
-
     @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,27 +50,11 @@ public class RadiusSearchResultActivity extends AppCompatActivity {
         ArrayList<RadiusSearchItem> resultList = bundle.getParcelableArrayList("resultList");
         itemsToDisplay = getItemsToDisplay(resultList);
 
-        //find center
-        double lat,lon,lat_min, lat_max, lon_min,lon_max;
-        lat = resultList.get(0).getLat();
-        lon = resultList.get(0).getLon();
-        lat_max=lat_min=lat;
-        lon_max=lon_min=lon;
-        for (int i = 0; i < resultList.size(); i++) {
-            lat = resultList.get(i).getLat();
-            lon = resultList.get(i).getLon();
-            if (lat<lat_min)lat_min=lat;
-            if (lat>lat_max)lat_max=lat;
-            if (lon<lon_min)lon_min=lon;
-            if (lon>lon_max)lon_max=lon;
-        }
-
         initialize();
         webView = findViewById(R.id.webViewRadiussearch);
         webView.getSettings().setJavaScriptEnabled(true);
+        webView.loadUrl("file:///android_asset/radiussearch.html");
         webView.setWebViewClient(new CustomWebViewClient(resultList));
-        webView.loadUrl("file:///android_asset/radiussearch.html?latmin=" + lat_min+ "&lonmin=" + lon_min +"&latmax="+lat_max+"&lonmax="+lon_max);
-
 
     }
     private class CustomWebViewClient extends WebViewClient {
@@ -94,6 +70,23 @@ public class RadiusSearchResultActivity extends AppCompatActivity {
             int unit;
             AppPreferencesManager prefManager =
                     new AppPreferencesManager(PreferenceManager.getDefaultSharedPreferences(getApplicationContext()));
+
+            //find bounds
+            double lat_min, lat_max, lon_min,lon_max;
+            lat = resultList.get(0).getLat();
+            lon = resultList.get(0).getLon();
+            lat_max=lat_min=lat;
+            lon_max=lon_min=lon;
+            for (int i = 0; i < resultList.size(); i++) {
+                lat = resultList.get(i).getLat();
+                lon = resultList.get(i).getLon();
+                if (lat<lat_min)lat_min=lat;
+                if (lat>lat_max)lat_max=lat;
+                if (lon<lon_min)lon_min=lon;
+                if (lon>lon_max)lon_max=lon;
+            }
+            webView.loadUrl("javascript:setBounds("+ lat_min + ","+ lat_max + "," + lon_min + "," + lon_max  + ");");
+
             for (int i = 0; i < resultList.size(); i++) {
                 lat = resultList.get(i).getLat();
                 lon = resultList.get(i).getLon();

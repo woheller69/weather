@@ -148,32 +148,21 @@ var Icon90 = L.icon({
 	popupAnchor:  [-0, -0] // point from which the popup should open relative to the iconAnchor
 });
 
-var getUrlParameter = function getUrlParameter(sParam) {
-            var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-                sURLVariables = sPageURL.split('&'),
-                sParameterName,
-                i;
-
-            for (i = 0; i < sURLVariables.length; i++) {
-                sParameterName = sURLVariables[i].split('=');
-
-                if (sParameterName[0] === sParam) {
-                    return sParameterName[1] === undefined ? true : sParameterName[1];
-                }
-            }
-        };
-
-var bounds = new L.LatLngBounds([getUrlParameter('latmin'),getUrlParameter('lonmin')], [getUrlParameter('latmax'),getUrlParameter('lonmax')]);
 
 var map = L.map('map', {
             zoomControl:true,
             attributionControl: true
-        }).fitBounds(bounds, { padding: [20, 20] });
+        })
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: 'Map data ©<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
+
+function setBounds(lat_min,lat_max,lon_min,lon_max){
+var b = new L.LatLngBounds([lat_min,lon_min],[lat_max,lon_max]);
+map.fitBounds(b, { padding: [20, 20] });
+}
 
 function addMarker(lat,lon,temp, unit, cat) {
         var marker = L.marker([lat,lon]).addTo(map);
