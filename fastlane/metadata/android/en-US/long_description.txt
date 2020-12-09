@@ -1,0 +1,16 @@
+RadarWeather lets you watch the weather for cities and locations you are interested in.
+
+Weather data is provided via the free API from OpenWeatherMap. As the new One Call API allows only 1000 calls per day, every user must enter his own free OpenWeatherMap key (https://home.openweathermap.org/users/sign_up). 
+Data for the rain radar is retrieved via the free RainViewer API.
+
+Features:
+- Current weather
+- Hourly forecasts for 48h or 3h forecasts for 5 days
+- 8 day forecast
+- Precipitation in next 60min
+- Rain radar
+- Radius search
+- no advertisement
+
+Minimum permissions:
+RadarWeather only requires the minimum amount of permission, namely only the INTERNET permission. This permission is necessary to make HTTP requests to remote servers for retrieving weather data.

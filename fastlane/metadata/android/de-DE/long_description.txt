@@ -1,0 +1,18 @@
+Mit RadarWeather kann das Wetter von Orten eingesehen werden.
+
+Die Wetterdaten werden über die freie API von OpenWeatherMap bereitgestellt. Da die neue One Call API nur 1000 Abrufe pro Tag erlaubt, muss jeder Nutzer seinen eigenen kostenlosen Key von OpenWeatherMap (https://home.openweathermap.org/users/sign_up) in der App hinterlegen. 
+Die Daten für das Regenradar werden über die freie API von RainViewer bezogen.
+
+Features:
+- Aktuelles Wetter
+- Stündliches Wetter für 48h oder 3h Vorhersagen für 5 Tage
+- 8 Tage Vorhersage
+- Niederschlag in den nächsten 60min
+- Regenradar
+- Umkreissuche
+- keine Werbung
+
+Minimale Berechtigungen:
+RadarWeather benötigt nur ein Minimum an Berechtigungen, nämlich nur die INTERNET-Berechtigung. Diese ist nötig, um HTTP-Anfragen an entfernte Server zu stellen, um Wetterdaten zu erhalten.
+
+
