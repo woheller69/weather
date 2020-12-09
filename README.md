@@ -47,3 +47,11 @@ The app also uses:
 - Android SQLiteAssetHelper (com.readystatesoftware.sqliteasset) which is licensed under Apache License Version 2.0 (http://www.apache.org/licenses/LICENSE-2.0).
 - Map data from OpenStreetMap, licensed under the Open Data Commons Open Database License (ODbL) by the OpenStreetMap Foundation (OSMF) (https://www.openstreetmap.org/copyright).
 
+## Contributing
+
+If you find a bug, please open an issue in the Github repository, assuming one does not already exist.
+  - Clearly describe the issue including steps to reproduce when it is a bug. In some cases screenshots can be supportive.
+  - Make sure you mention the Android version and the device you have used when you encountered the issue.
+  - Make your description as precise as possible.
+
+If you know the solution to a bug please report it in the corresponding issue and if possible modify the code and create a pull request.
