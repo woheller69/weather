@@ -24,7 +24,7 @@
     <string name="slide3_text">The sourcecode of this app is available at GitHub. For further explanations have a look at the About Page.</string>
 
     <!-- ###CARD_HEADINGs### -->
-    <string name="card_details_heading" translatable="false">Details</string>
+    <string name="card_details_heading" translatable="false">Now</string>
     <string name="card_week_heading">Week</string>
     <string name="card_day_heading">Course of the day</string>
 
@@ -154,6 +154,13 @@
     <string name="weather_category_rainsnow">Rain and Snow</string>
     <string name="dialog_add_city_too_close">City too close to other watched city</string>
     <string name="no_radius_search_result">No city found. Increase search radius</string>
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="friday">Friday</string>
+    <string name="saturday">Saturday</string>
+    <string name="sunday">Sunday</string>
 
 
 </resources>

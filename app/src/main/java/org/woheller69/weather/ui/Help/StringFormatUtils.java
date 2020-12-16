@@ -126,4 +126,34 @@ public final class StringFormatUtils {
         }
         return day;
     }
+
+    public static Integer getDayLong(int day){
+
+        switch(day)    {
+            case Calendar.MONDAY:
+                day = R.string.monday;
+                break;
+            case Calendar.TUESDAY:
+                day = R.string.tuesday;
+                break;
+            case Calendar.WEDNESDAY:
+                day = R.string.wednesday;
+                break;
+            case Calendar.THURSDAY:
+                day = R.string.thursday;
+                break;
+            case Calendar.FRIDAY:
+                day = R.string.friday;
+                break;
+            case Calendar.SATURDAY:
+                day = R.string.saturday;
+                break;
+            case Calendar.SUNDAY:
+                day = R.string.sunday;
+                break;
+            default:
+                day = R.string.monday;
+        }
+        return day;
+    }
 }

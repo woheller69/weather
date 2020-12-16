@@ -6,6 +6,7 @@
     <string name="action_about">Über</string>
     <string name="action_main">Wetter</string>
     <string name="action_settings">Einstellungen</string>
+    <string name="card_details_heading" translatable="false">Jetzt</string>
     <string name="activity_city_weather_details_label">Heutiges Wetter</string>
     <string name="activity_city_weather_iv_description">Ein Bild, das der Wetterkategorie entspricht.</string>
     <string name="activity_city_weather_tv_humidity">Luftfeuchtigkeit:</string>
@@ -102,4 +103,11 @@
     <string name="weather_category_rainsnow">Schneeregen</string>
     <string name="dialog_add_city_too_close">Der Ort liegt zu nahe an einem bereits beobachteten Ort</string>
     <string name="no_radius_search_result">Kein Ort gefunden. Suchradius vergrößern</string>
+    <string name="monday">Montag</string>
+    <string name="tuesday">Dienstag</string>
+    <string name="wednesday">Mittwoch</string>
+    <string name="thursday">Donnerstag</string>
+    <string name="friday">Freitag</string>
+    <string name="saturday">Samstag</string>
+    <string name="sunday">Sonntag</string>
 </resources>
