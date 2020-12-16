@@ -46,6 +46,8 @@ public class OwmToDatabaseConversion extends IApiToDatabaseConversion {
             return WeatherCategories.SCATTERED_CLOUDS.getNumVal();
         } else if (value == 803) {
             return WeatherCategories.BROKEN_CLOUDS.getNumVal();
+        } else if (value == 804) {
+            return WeatherCategories.OVERCAST_CLOUDS.getNumVal();
         }
         // Fallback: Clouds
         return WeatherCategories.OVERCAST_CLOUDS.getNumVal();
