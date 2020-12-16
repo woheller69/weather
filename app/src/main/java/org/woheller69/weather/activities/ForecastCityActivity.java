@@ -211,7 +211,7 @@ public class ForecastCityActivity extends NavigationActivity implements IUpdatea
 
             RotateAnimation rotate = new RotateAnimation(0, 360, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
             rotate.setDuration(500);
-            rotate.setRepeatCount(Animation.INFINITE);
+            rotate.setRepeatCount(5);
             rotate.setInterpolator(new LinearInterpolator());
             rotate.setAnimationListener(new Animation.AnimationListener() {
                 @Override
