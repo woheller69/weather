@@ -20,6 +20,7 @@ import org.woheller69.weather.database.WeekForecast;
 import org.woheller69.weather.database.PFASQLiteHelper;
 import org.woheller69.weather.ui.updater.ViewUpdater;
 import org.woheller69.weather.weather_api.IDataExtractor;
+import org.woheller69.weather.weather_api.IHttpRequestForForecast;
 import org.woheller69.weather.weather_api.IProcessHttpRequest;
 
 import java.util.ArrayList;
@@ -170,7 +171,11 @@ public class ProcessOwmForecastOneCallAPIRequest implements IProcessHttpRequest 
                     }
                 }
 
-                ViewUpdater.updateForecasts(hourlyforecasts);
+                //ViewUpdater.updateForecasts(hourlyforecasts);  //this is not done here anymore. updateForecasts will be called when also the 3h forecast for the time after 48h is retrieved
+
+                //now also request forecasts for the time after 48h from 5day/3h forecast API. These will be appended to the forecasts retrieved above.
+                IHttpRequestForForecast forecastRequest = new OwmHttpRequestForForecast(context);
+                forecastRequest.perform(cityId);
             }
 
         } catch (JSONException e) {
