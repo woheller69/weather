@@ -28,6 +28,7 @@ public abstract class IApiToDatabaseConversion {
         HEAVY_SNOW(82),
         RAIN_SNOW(83),
         SHOWER_SNOW(85),
+        SHOWER_RAIN_SNOW(86),   //only used as icon in week forecasts
         THUNDERSTORM(90);
 
         private int numVal;

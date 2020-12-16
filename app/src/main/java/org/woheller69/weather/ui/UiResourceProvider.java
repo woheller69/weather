@@ -117,6 +117,12 @@ public class UiResourceProvider {
                 } else {
                     return R.mipmap.weather_icon_85n;
                 }
+            case 86:
+                if (isDay) {
+                    return R.mipmap.weather_icon_86d;
+                } else {
+                    return R.mipmap.weather_icon_86n;
+                }
             case 90:
                 if (isDay) {
                     return R.mipmap.weather_icon_90d;
