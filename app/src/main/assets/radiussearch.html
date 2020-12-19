@@ -12,6 +12,22 @@
 
 <script type="text/javascript">
 
+var getUrlParameter = function getUrlParameter(sParam) {
+            var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+                sURLVariables = sPageURL.split('&'),
+                sParameterName,
+                i;
+
+            for (i = 0; i < sURLVariables.length; i++) {
+                sParameterName = sURLVariables[i].split('=');
+
+                if (sParameterName[0] === sParam) {
+                    return sParameterName[1] === undefined ? true : sParameterName[1];
+                }
+            }
+        };
+
+
 var Icon10 = L.icon({
 	iconUrl: 'images/10.png',
 
@@ -155,7 +171,15 @@ var map = L.map('map', {
         })
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: 'Map data ©<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        attribution: 'Map data ©<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors <br> Weather data OpenWeatherMap'
+    }).addTo(map);
+
+    L.tileLayer('https://tile.openweathermap.org/map/clouds_cls/{z}/{x}/{y}.png?appid=' + getUrlParameter('appid'),{
+        opacity:0.4
+    }).addTo(map);
+
+    L.tileLayer('https://tile.openweathermap.org/map/precipitation/{z}/{x}/{y}.png?appid=' + getUrlParameter('appid'),{
+        opacity:0.2
     }).addTo(map);
 
 

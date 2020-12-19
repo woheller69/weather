@@ -66,7 +66,11 @@ var map = L.map('mapid', {
 
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: 'Map data ©<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors&<a href="https://www.rainviewer.com/api.html">RainViewer</a>'
+        attribution: 'Map data ©<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors <br> Weather data <a href="https://www.rainviewer.com/api.html"> RainViewer </a>& OpenWeatherMap'
+    }).addTo(map);
+
+    L.tileLayer('https://tile.openweathermap.org/map/clouds_cls/{z}/{x}/{y}.png?appid=' + getUrlParameter('appid'),{
+        opacity:0.4
     }).addTo(map);
 
 var marker = L.marker([getUrlParameter('lat'), getUrlParameter('lon')]).addTo(map);

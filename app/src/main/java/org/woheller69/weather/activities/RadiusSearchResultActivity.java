@@ -30,7 +30,7 @@ public class RadiusSearchResultActivity extends AppCompatActivity {
      */
     private ListView listViewResult;
     private WebView webView;
-
+    private static String API_KEY;
     /**
      * Member variables
      */
@@ -49,11 +49,13 @@ public class RadiusSearchResultActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         ArrayList<RadiusSearchItem> resultList = bundle.getParcelableArrayList("resultList");
         itemsToDisplay = getItemsToDisplay(resultList);
-
+        AppPreferencesManager prefManager =
+                new AppPreferencesManager(PreferenceManager.getDefaultSharedPreferences(getApplicationContext()));
+        API_KEY=prefManager.getOWMApiKey(getApplicationContext());
         initialize();
         webView = findViewById(R.id.webViewRadiussearch);
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.loadUrl("file:///android_asset/radiussearch.html");
+        webView.loadUrl("file:///android_asset/radiussearch.html?appid=" + API_KEY);
         webView.setWebViewClient(new CustomWebViewClient(resultList));
 
     }
