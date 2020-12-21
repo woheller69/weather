@@ -624,11 +624,11 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
         //iterate over FCs 4h before and 4h past forecast time of the weekforecast (which should usually be noon)
         for (Forecast fc : forecastList) {
             if ((fc.getForecastTime() >= forecastTimeNoon-14400000) && (fc.getForecastTime() <= forecastTimeNoon+14400000)) {
-                Log.d("ID",Integer.toString(fc.getWeatherID()));
+//                Log.d("ID",Integer.toString(fc.getWeatherID()));
                 if (fc.getWeatherID() <= IApiToDatabaseConversion.WeatherCategories.BROKEN_CLOUDS.getNumVal()) sun = true;  //if weather better or equal broken clouds in one interval there is at least some sun during day.
             }
         }
-        Log.d("ID",Boolean.toString(sun));
+ //       Log.d("ID",Boolean.toString(sun));
         return sun;
     }
 
