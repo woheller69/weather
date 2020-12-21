@@ -45,9 +45,6 @@ public class WeatherCityFragment extends Fragment implements IUpdateableCityUI {
     }
 
     public void loadData() {
-        new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected Void doInBackground(Void... voids) {
                 CurrentWeatherData currentWeatherData = PFASQLiteHelper.getInstance(getContext()).getCurrentWeatherByCityId(mCityId);
 
                 if (currentWeatherData.getCity_id() == 0) {
@@ -55,18 +52,9 @@ public class WeatherCityFragment extends Fragment implements IUpdateableCityUI {
                 }
 
                 mAdapter = new CityWeatherAdapter(currentWeatherData, mDataSetTypes, getContext());
-
-                ((Activity) getContext()).runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        setAdapter(mAdapter);
-                    }
-                });
-
-                return null;
+                setAdapter(mAdapter);
             }
-        }.doInBackground();
-    }
+
 
     @Override
     public void onAttach(Context context) {
@@ -124,7 +112,6 @@ public class WeatherCityFragment extends Fragment implements IUpdateableCityUI {
                 mAdapter.updateForecastData(forecasts);
             }
         }
-        //TODO Update Titlebar Text
     }
 
     @Override
@@ -134,6 +121,5 @@ public class WeatherCityFragment extends Fragment implements IUpdateableCityUI {
                 mAdapter.updateWeekForecastData(forecasts);
             }
         }
-        //TODO Update Titlebar Text
     }
 }
