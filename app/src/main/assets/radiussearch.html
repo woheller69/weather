@@ -4,6 +4,7 @@
     <meta charset="utf-8"/>
     <link rel="stylesheet" href="leaflet.css"/>
     <script src="leaflet.js"></script>
+    <script src="leaflet-tilelayer-colorfilter.min.js"></script>
 </head>
 
 
@@ -168,19 +169,36 @@ var Icon90 = L.icon({
 var map = L.map('map', {
             zoomControl:true,
             attributionControl: true
-        })
+        });
+
+let myFilter = [
+    'contrast:10000%',
+    'opacity:80%',
+];
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: 'Map data ©<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors <br> Weather data OpenWeatherMap'
+        attribution: 'Map data ©<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors <br> Weather data <a href="https://www.rainviewer.com/api.html"> RainViewer </a>& OpenWeatherMap'
     }).addTo(map);
 
-    L.tileLayer('https://tile.openweathermap.org/map/clouds_cls/{z}/{x}/{y}.png?appid=' + getUrlParameter('appid'),{
-        opacity:0.4
+    L.tileLayer.colorFilter('https://tile.openweathermap.org/map/clouds/{z}/{x}/{y}.png?appid=' + getUrlParameter('appid'),{
+        filter: myFilter
     }).addTo(map);
 
-    L.tileLayer('https://tile.openweathermap.org/map/precipitation/{z}/{x}/{y}.png?appid=' + getUrlParameter('appid'),{
-        opacity:0.2
-    }).addTo(map);
+
+    // Load actual radar animation frames timestamps from RainViewer API
+    var apiRequest = new XMLHttpRequest();
+    apiRequest.open("GET", "https://api.rainviewer.com/public/maps.json", true);
+    apiRequest.onload = function(e) {
+        // save available timestamps and show the latest frame
+        var timestamps = [];
+        timestamps = JSON.parse(apiRequest.response);
+
+        L.tileLayer('https://tilecache.rainviewer.com/v2/radar/' + timestamps[timestamps.length-1] + '/256/{z}/{x}/{y}/2/1_1.png', {
+                tileSize: 256,
+                opacity: 0.4,
+            }).addTo(map);
+    };
+    apiRequest.send();
 
 
 function setBounds(lat_min,lat_max,lon_min,lon_max){

@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" href="leaflet.css"/>
     <script src="leaflet.js"></script>
+    <script src="leaflet-tilelayer-colorfilter.min.js"></script>
     <style type="text/css">
         li {
             list-style: none;
@@ -64,13 +65,17 @@ var map = L.map('mapid', {
             attributionControl: true
         }).setView([getUrlParameter('lat'), getUrlParameter('lon')], 8);  //zoom factor 8
 
+let myFilter = [
+    'contrast:10000%',
+    'opacity:80%',
+];
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: 'Map data ©<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors <br> Weather data <a href="https://www.rainviewer.com/api.html"> RainViewer </a>& OpenWeatherMap'
     }).addTo(map);
 
-    L.tileLayer('https://tile.openweathermap.org/map/clouds_cls/{z}/{x}/{y}.png?appid=' + getUrlParameter('appid'),{
-        opacity:0.4
+    L.tileLayer.colorFilter('https://tile.openweathermap.org/map/clouds/{z}/{x}/{y}.png?appid=' + getUrlParameter('appid'),{
+        filter: myFilter
     }).addTo(map);
 
 var marker = L.marker([getUrlParameter('lat'), getUrlParameter('lon')]).addTo(map);
@@ -104,7 +109,7 @@ var marker = L.marker([getUrlParameter('lat'), getUrlParameter('lon')]).addTo(ma
      */
     function addLayer(ts) {
         if (!radarLayers[ts]) {
-            radarLayers[ts] = new L.TileLayer('https://tilecache.rainviewer.com/v2/radar/' + ts + '/256/{z}/{x}/{y}/1/1_1.png', {
+            radarLayers[ts] = new L.tileLayer('https://tilecache.rainviewer.com/v2/radar/' + ts + '/256/{z}/{x}/{y}/2/1_1.png', {
                 tileSize: 256,
                 opacity: 0.001,
                 zIndex: ts
@@ -143,7 +148,7 @@ var marker = L.marker([getUrlParameter('lat'), getUrlParameter('lon')]).addTo(ma
         if (radarLayers[currentTimestamp]) {
             radarLayers[currentTimestamp].setOpacity(0);
         }
-        radarLayers[nextTimestamp].setOpacity(0.6);
+        radarLayers[nextTimestamp].setOpacity(0.4);
 
        document.getElementById("timestamp").innerHTML = (new Date(nextTimestamp * 1000)).toString();
 

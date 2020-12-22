@@ -49,7 +49,7 @@
     <string name="about">About</string>
     <string name="version_number" translatable="false">Version</string>
     <string name="about_license">License</string>
-    <string name="license_text">This application is derived from Privacy Friendly Weather, developed by the research group SECUSO. Sourcecode licensed under GPLv3. The app uses icons from Google Material Design Icons licensed under Apache License Version 2.0, the Leaflet library which is licensed under 2-clause BSD License, RainViewer API which is free, Android SQLiteAssetHelper library (com.readystatesoftware.sqliteasset) which is licensed under Apache License Version 2.0, and WilliamChart library (com.db.chart) which is licensed under Apache License Version 2.0</string>
+    <string name="license_text">This application is derived from Privacy Friendly Weather, developed by the research group SECUSO. Sourcecode licensed under GPLv3. The app uses icons from Google Material Design Icons licensed under Apache License Version 2.0, the Leaflet library which is licensed under 2-clause BSD License, the Leaflet.TileLayer.ColorFilter plugin which is licensed under MIT License, RainViewer API which is free, Android SQLiteAssetHelper library (com.readystatesoftware.sqliteasset) which is licensed under Apache License Version 2.0, and WilliamChart library (com.db.chart) which is licensed under Apache License Version 2.0</string>
     <string name="more_info">More information can be found on:</string>
     <string name="github" translatable="false"><a href="https://github.com/woheller69/weather">Github-Repo</a></string>
     <string name="github_secuso" translatable="false"><a href="https://github.com/SecUSo/privacy-friendly-weather-app">Github-SecUSo-Repo</a></string>

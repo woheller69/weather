@@ -26,7 +26,7 @@
     <string name="radius_search_heading">Das beste Wetter um einen Ort herum finden</string>
     <string name="radius_search_tv_edge_length">Kantenlänge des Suchquadrates</string>
     <string name="navigation_drawer_close">Navigationsleiste schließen</string>
-    <string name="license_text">Diese App ist abgeleitet von Privacy Friendly Weather, entwickelt von der Forschungsgruppe SECUSO. Quelltext lizenziert unter GPLv3. Die App benutzt Icons von Google Material Design Icons, lizenziert unter Apache License Version 2.0, die Leaflet Bibliothek, lizenziert unter 2-clause BSD License, die freie RainViewer API, die Android SQLiteAssetHelper Bibliothek (com.readystatesoftware.sqliteasset), lizenziert unter der Apache License Version 2.0 und die WilliamChart Bibliothek (com.db.chart), lizenziert unter der Apache License Version 2.0</string>
+    <string name="license_text">Diese App ist abgeleitet von Privacy Friendly Weather, entwickelt von der Forschungsgruppe SECUSO. Quelltext lizenziert unter GPLv3. Die App benutzt Icons von Google Material Design Icons, lizenziert unter Apache License Version 2.0, die Leaflet Bibliothek, lizenziert unter 2-clause BSD License, das Leaflet.TileLayer.ColorFilter Plugin, lizenziert unter MIT License, die freie RainViewer API, die Android SQLiteAssetHelper Bibliothek (com.readystatesoftware.sqliteasset), lizenziert unter der Apache License Version 2.0 und die WilliamChart Bibliothek (com.db.chart), lizenziert unter der Apache License Version 2.0</string>
     <string name="radius_search_btn_search">Suche</string>
     <string name="weather_category_snow">Schneefall</string>
     <string name="weather_category_thunderstorm">Gewitter</string>
@@ -93,7 +93,7 @@
     <string name="swipe_to_delete">Wischen Sie zum Löschen</string>
     <string name="RainViewer">Regenradar</string>
     <string name="settings_title_forecastChoice">Anzeigeoptionen</string>
-    <string name="settings_summary_forecastChoice">Wählen Sie zwischen 2 Tage / 3 h und 5 Tage / 1 h Vorhersage</string>
+    <string name="settings_summary_forecastChoice">Wählen Sie zwischen 5 Tage / 3h und 2 Tage / 1h Vorhersage</string>
     <string name="settings_forecastChoice">Vorhersage</string>
     <string name="about_permissions">Berechtigungen</string>
     <string name="registerOWM">Bitte geben Sie Ihren API Key in den Einstellungen ein. Wenn Sie noch keinen API Key haben, drücken Sie den Button unterhalb, um sich kostenlos zu registrieren:</string>
