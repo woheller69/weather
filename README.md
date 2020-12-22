@@ -9,7 +9,7 @@ As One Call API only allows 1000 calls per day an own OpenWeatherMap API key is 
 
 Please register for free account at: https://home.openweathermap.org/users/sign_up
 
-<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" height="75">
+[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" height="75">](https://f-droid.org/de/packages/org.woheller69.weather/)
 
 ## Building 
 
