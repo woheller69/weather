@@ -9,8 +9,7 @@ As One Call API only allows 1000 calls per day an own OpenWeatherMap API key is 
 
 Please register for free account at: https://home.openweathermap.org/users/sign_up
 
-
-Will be on F-Droid soon!
+<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" height="75">
 
 ## Building 
 
@@ -42,6 +41,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 The app also uses:
 - Icons from [Google Material Design Icons](https://material.io/resources/icons/) licensed under Apache License Version 2.0 (http://www.apache.org/licenses/LICENSE-2.0).
 - Leaflet which is licensed under the very permissive 2-clause BSD License. (https://github.com/Leaflet/Leaflet/blob/master/FAQ.md)
+- Leaflet.TileLayer.ColorFilter which is licensed under MIT License. (https://github.com/xtk93x/Leaflet.TileLayer.ColorFilter/blob/master/LICENSE)
 - RainViewer API which is free. (https://www.rainviewer.com/api.html)
 - WilliamChart (com.db.chart) (https://github.com/diogobernardino/williamchart) which is licensed under Apache License Version 2.0 (http://www.apache.org/licenses/LICENSE-2.0).
 - Android SQLiteAssetHelper (com.readystatesoftware.sqliteasset) which is licensed under Apache License Version 2.0 (http://www.apache.org/licenses/LICENSE-2.0).
