@@ -9,9 +9,9 @@
     <string name="card_details_heading" translatable="false">Jetzt</string>
     <string name="activity_city_weather_details_label">Heutiges Wetter</string>
     <string name="activity_city_weather_iv_description">Ein Bild, das der Wetterkategorie entspricht.</string>
-    <string name="activity_city_weather_tv_humidity">Luftfeuchtigkeit:</string>
+    <string name="activity_city_weather_tv_humidity">Luftfeuchte:</string>
     <string name="activity_city_weather_tv_pressure">Luftdruck:</string>
-    <string name="activity_city_weather_tv_wind_speed">Windgeschwindigkeit:</string>
+    <string name="activity_city_weather_tv_wind_speed">Wind:</string>
     <string name="app_name_long">RadarWeather: Wetter und Radar</string>
     <string name="convert_to_json_error">Die erhaltenen Wetterdaten entsprachen nicht dem erwarteten Format.</string>
     <string name="dialog_add_add_button">Hinzufügen</string>

@@ -75,7 +75,7 @@
     <string name="activity_city_weather_iv_description">An image that fits the weather category</string>
     <string name="activity_city_weather_tv_humidity">Humidity:</string>
     <string name="activity_city_weather_tv_pressure">Pressure:</string>
-    <string name="activity_city_weather_tv_wind_speed">Wind Speed:</string>
+    <string name="activity_city_weather_tv_wind_speed">Wind:</string>
     <string name="abbreviation_monday">Mo.</string>
     <string name="abbreviation_tuesday">Tu.</string>
     <string name="abbreviation_wednesday">We.</string>
