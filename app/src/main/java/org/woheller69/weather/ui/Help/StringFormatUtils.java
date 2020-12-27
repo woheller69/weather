@@ -97,7 +97,7 @@ public final class StringFormatUtils {
         }
     }
 
-    public static Integer getDay(int day){
+    public static Integer getDayShort(int day){
 
         switch(day)    {
             case Calendar.MONDAY:

@@ -18,7 +18,7 @@ public class Forecast {
     private float pressure;
     private float windSpeed;
     private float windDirection;
-    private float rainValue;
+    private float precipitation;
     private String city_name;
 
 
@@ -26,7 +26,7 @@ public class Forecast {
     }
 
     public Forecast(int id, int city_id, long timestamp, long forecastFor, int weatherID, float temperature, float humidity,
-                    float pressure, float windSpeed, float windDirection, float rainValue) {
+                    float pressure, float windSpeed, float windDirection, float precipitation) {
         this.id = id;
         this.city_id = city_id;
         this.timestamp = timestamp;
@@ -37,7 +37,7 @@ public class Forecast {
         this.pressure = pressure;
         this.windSpeed = windSpeed;
         this.windDirection = windDirection;
-        this.rainValue = rainValue;
+        this.precipitation = precipitation;
     }
 
     public float getWindDirection() {
@@ -53,7 +53,7 @@ public class Forecast {
     }
 
     public void setWindSpeed(float speed) {
-        windSpeed = speed;
+        this.windSpeed = speed;
     }
 
     /**
@@ -177,11 +177,7 @@ public class Forecast {
         this.city_name = city_name;
     }
 
-    public float getRainValue() {
-        return rainValue;
-    }
+    public float getPrecipitation() { return precipitation; }
 
-    public void setRainVolume(float RainValue) {
-        rainValue = RainValue;
-    }
+    public void setPrecipitation(float precipitation) { this.precipitation = precipitation; }
 }

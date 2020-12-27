@@ -6,18 +6,12 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
-import org.woheller69.weather.R;
-import org.woheller69.weather.files.FileReader;
 import org.woheller69.weather.services.UpdateDataService;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import static android.support.v4.app.JobIntentService.enqueueWork;
@@ -508,7 +502,7 @@ public class PFASQLiteHelper extends SQLiteAssetHelper {
         values.put(FORECAST_COLUMN_TEMPERATURE_CURRENT, forecast.getTemperature());
         values.put(FORECAST_COLUMN_HUMIDITY, forecast.getHumidity());
         values.put(FORECAST_COLUMN_PRESSURE, forecast.getPressure());
-        values.put(FORECAST_COLUMN_PRECIPITATION, forecast.getRainValue());
+        values.put(FORECAST_COLUMN_PRECIPITATION, forecast.getPrecipitation());
         values.put(FORECAST_COLUMN_WIND_SPEED, forecast.getWindSpeed());
         values.put(FORECAST_COLUMN_WIND_DIRECTION, forecast.getWindDirection());
         database.insert(TABLE_FORECAST, null, values);
@@ -555,7 +549,7 @@ public class PFASQLiteHelper extends SQLiteAssetHelper {
                 forecast.setTemperature(Float.parseFloat(cursor.getString(5)));
                 forecast.setHumidity(Float.parseFloat(cursor.getString(6)));
                 forecast.setPressure(Float.parseFloat(cursor.getString(7)));
-                forecast.setRainVolume(Float.parseFloat(cursor.getString(8)));
+                forecast.setPrecipitation(Float.parseFloat(cursor.getString(8)));
                 forecast.setWindSpeed(Float.parseFloat(cursor.getString(9)));
                 forecast.setWindDirection(Float.parseFloat(cursor.getString(10)));
                 list.add(forecast);
@@ -590,7 +584,7 @@ public class PFASQLiteHelper extends SQLiteAssetHelper {
                 forecast.setTemperature(Float.parseFloat(cursor.getString(5)));
                 forecast.setHumidity(Float.parseFloat(cursor.getString(6)));
                 forecast.setPressure(Float.parseFloat(cursor.getString(7)));
-                forecast.setRainVolume(Float.parseFloat(cursor.getString(8)));
+                forecast.setPrecipitation(Float.parseFloat(cursor.getString(8)));
                 forecast.setWindSpeed(Float.parseFloat(cursor.getString(9)));
                 forecast.setWindDirection(Float.parseFloat(cursor.getString(10)));
                 forecastList.add(forecast);

@@ -89,8 +89,8 @@ public class ProcessOwmForecastRequest implements IProcessHttpRequest {
                 else {
                     if ((choice==1) || (forecast.getForecastTime()>forecasts.get(47).getForecastTime())) {  //if 5day/3h mode or if ForecastTime > last time from OneCallAPI
                         if(choice==2){ //at the position where 1h forecast changes to 3h forecast the precipitation shown in 3h forecast could be duplicate (already included in previous 1h forecasts, and therefore needs substraction)
-                            if (forecast.getForecastTime()==(forecasts.get(47).getForecastTime()+60*60*1000)) forecast.setRainVolume(forecast.getRainValue()-forecasts.get(47).getRainValue()-forecasts.get(46).getRainValue());
-                            if (forecast.getForecastTime()==(forecasts.get(47).getForecastTime()+2*60*60*1000)) forecast.setRainVolume(forecast.getRainValue()-forecasts.get(47).getRainValue());
+                            if (forecast.getForecastTime()==(forecasts.get(47).getForecastTime()+60*60*1000)) forecast.setPrecipitation(forecast.getPrecipitation()-forecasts.get(47).getPrecipitation()-forecasts.get(46).getPrecipitation());
+                            if (forecast.getForecastTime()==(forecasts.get(47).getForecastTime()+2*60*60*1000)) forecast.setPrecipitation(forecast.getPrecipitation()-forecasts.get(47).getPrecipitation());
                         }
                         forecast.setCity_id(cityId);
                         // add it to the database

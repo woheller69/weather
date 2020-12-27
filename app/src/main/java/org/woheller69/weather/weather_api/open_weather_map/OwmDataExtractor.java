@@ -188,20 +188,20 @@ public class OwmDataExtractor implements IDataExtractor {
 
             // In case there was no rain in the past 3 hours, there is no "rain" field
             if (jsonData.isNull("rain")) {
-                forecast.setRainVolume(Forecast.NO_RAIN_VALUE);
+                forecast.setPrecipitation(Forecast.NO_RAIN_VALUE);
             } else {
                 JSONObject jsonRain = jsonData.getJSONObject("rain");
                 if (jsonRain.isNull("3h")) {
-                    forecast.setRainVolume(Forecast.NO_RAIN_VALUE);
+                    forecast.setPrecipitation(Forecast.NO_RAIN_VALUE);
                 } else {
-                    forecast.setRainVolume((float) jsonRain.getDouble("3h"));
+                    forecast.setPrecipitation((float) jsonRain.getDouble("3h"));
                 }
             }
             //add snow precipitation to rain
             if (!jsonData.isNull("snow")) {
                 JSONObject jsonSnow = jsonData.getJSONObject("snow");
                 if (!jsonSnow.isNull("3h")) {
-                    forecast.setRainVolume(forecast.getRainValue() + (float) jsonSnow.getDouble("3h"));
+                    forecast.setPrecipitation(forecast.getPrecipitation() + (float) jsonSnow.getDouble("3h"));
                 }
             }
 
@@ -285,20 +285,20 @@ public class OwmDataExtractor implements IDataExtractor {
 
             // In case there was no rain in the past 3 hours, there is no "rain" field
             if (jsonData.isNull("rain")) {
-                forecast.setRainVolume(Forecast.NO_RAIN_VALUE);
+                forecast.setPrecipitation(Forecast.NO_RAIN_VALUE);
             } else {
                 JSONObject jsonRain = jsonData.getJSONObject("rain");
                 if (jsonRain.isNull("1h")) {
-                    forecast.setRainVolume(Forecast.NO_RAIN_VALUE);
+                    forecast.setPrecipitation(Forecast.NO_RAIN_VALUE);
                 } else {
-                    forecast.setRainVolume((float) jsonRain.getDouble("1h"));
+                    forecast.setPrecipitation((float) jsonRain.getDouble("1h"));
                 }
             }
             //add snow precipitation to rain
             if (!jsonData.isNull("snow")) {
                 JSONObject jsonSnow = jsonData.getJSONObject("snow");
                 if (!jsonSnow.isNull("1h")) {
-                    forecast.setRainVolume(forecast.getRainValue() + (float) jsonSnow.getDouble("1h"));
+                    forecast.setPrecipitation(forecast.getPrecipitation() + (float) jsonSnow.getDouble("1h"));
                 }
             }
 

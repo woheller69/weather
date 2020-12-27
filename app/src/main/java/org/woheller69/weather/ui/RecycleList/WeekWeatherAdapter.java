@@ -57,7 +57,7 @@ public class WeekWeatherAdapter extends RecyclerView.Adapter<WeekWeatherAdapter.
         c.setTimeInMillis((long) dayValues[8]);
         int day = c.get(Calendar.DAY_OF_WEEK);
 
-        holder.day.setText(StringFormatUtils.getDay(day));
+        holder.day.setText(StringFormatUtils.getDayShort(day));
         holder.temperature_max.setText(String.format("%s\u200a%s", decimalFormat.format(prefManager.convertTemperatureFromCelsius(dayValues[0])), prefManager.getWeatherUnit()));
         holder.temperature_min.setText(String.format("%s\u200a%s", decimalFormat.format(prefManager.convertTemperatureFromCelsius(dayValues[1])), prefManager.getWeatherUnit()));
     }

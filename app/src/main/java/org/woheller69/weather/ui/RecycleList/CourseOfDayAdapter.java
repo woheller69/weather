@@ -77,10 +77,10 @@ public class CourseOfDayAdapter extends RecyclerView.Adapter<CourseOfDayAdapter.
         holder.wind_speed.setText(StringFormatUtils.formatWindSpeed(context, courseOfDayList.get(position).getWindSpeed()));
         holder.wind_direction.setText(StringFormatUtils.formatWindDir(context, courseOfDayList.get(position).getWindDirection()));
 
-        if (courseOfDayList.get(position).getRainValue() == 0)
+        if (courseOfDayList.get(position).getPrecipitation() == 0)
             holder.precipitation.setText("-");
         else
-            holder.precipitation.setText(StringFormatUtils.formatDecimal(courseOfDayList.get(position).getRainValue(), "mm"));
+            holder.precipitation.setText(StringFormatUtils.formatDecimal(courseOfDayList.get(position).getPrecipitation(), "mm"));
     }
 
     //update header according to date in first visible item on the left of recyclerview
