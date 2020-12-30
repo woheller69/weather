@@ -177,7 +177,7 @@ let myFilter = [
 ];
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: 'Map data ©<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors <br> Weather data <a href="https://www.rainviewer.com/api.html"> RainViewer </a>& OpenWeatherMap'
+        attribution: 'Map data ©<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors <br> Weather data <a href="https://www.rainviewer.com/api.html"> RainViewer </a>& <a href="https://openweathermap.org/api"> OpenWeatherMap </a>'
     }).addTo(map);
 
     L.tileLayer.colorFilter('https://tile.openweathermap.org/map/clouds/{z}/{x}/{y}.png?appid=' + getUrlParameter('appid'),{

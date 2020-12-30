@@ -41,7 +41,7 @@
 <div id="mapid" style="position: absolute; top: 100px; left: 0; bottom: 0; right: 0;"></div>
 
 <script>
-//call: rainviewer.html?lat={latitude}&lon={longitude} Takes latitude/longitude from request and shows rainviewer rain radar on openstreetmap for requested position and zoom
+//call: rainviewer.html?lat={latitude}&lon={longitude}&appid={API_KEY} Takes latitude/longitude and OWM API_Key from request and shows rainviewer rain radar and OWM clouds layer on openstreetmap for requested position and zoom
 
 
 var getUrlParameter = function getUrlParameter(sParam) {
@@ -71,7 +71,7 @@ let myFilter = [
 ];
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: 'Map data ©<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors <br> Weather data <a href="https://www.rainviewer.com/api.html"> RainViewer </a>& OpenWeatherMap'
+        attribution: 'Map data ©<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors <br> Weather data <a href="https://www.rainviewer.com/api.html"> RainViewer </a>& <a href="https://openweathermap.org/api"> OpenWeatherMap </a>'
     }).addTo(map);
 
     L.tileLayer.colorFilter('https://tile.openweathermap.org/map/clouds/{z}/{x}/{y}.png?appid=' + getUrlParameter('appid'),{
