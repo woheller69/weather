@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+
+import android.support.v7.widget.Toolbar;
 import android.webkit.WebView;
 import org.woheller69.weather.preferences.AppPreferencesManager;
 
@@ -38,5 +40,20 @@ public class RainViewerActivity extends AppCompatActivity {
         webView = findViewById(R.id.webView);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl("file:///android_asset/rainviewer.html?lat=" + latitude + "&lon=" + longitude + "&appid=" + API_KEY);
+
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        if (getSupportActionBar() == null) {
+            setSupportActionBar(toolbar);
+        }
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }
