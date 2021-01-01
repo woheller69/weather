@@ -22,12 +22,16 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center" />
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
+
     <TextView
         android:id="@+id/week_forecast_temperature_max"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="0dp"
         android:text="xy°C"
         android:textColor="@color/colorPrimaryDark"
         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -37,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="3dp"
         android:text="xy°C"
         android:textColor="@color/colorPrimaryDark"
         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -46,7 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="3dp"
         android:text="xy %rh"
         android:textColor="@color/colorPrimaryDark"
         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -56,7 +60,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="3dp"
         android:text="xy mm"
         android:textColor="@color/colorPrimaryDark"
         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -66,7 +70,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="3dp"
         android:text="10 Bft"
         android:textColor="@color/colorPrimaryDark"
         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -76,7 +80,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="3dp"
         android:text="uv xy"
         android:textColor="@color/colorPrimaryDark"
         android:textAppearance="?android:attr/textAppearanceMedium" />
