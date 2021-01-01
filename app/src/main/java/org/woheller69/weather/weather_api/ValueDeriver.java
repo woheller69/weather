@@ -4,11 +4,6 @@ import android.content.Context;
 
 import org.woheller69.weather.R;
 
-/**
- * TODO Delete after redesign
- * This class is sort of the counterpart class to IApiToDatabaseConversion as it takes values from
- * the database and converts them (not necessarily API-dependent).
- */
 public class ValueDeriver {
 
     /**

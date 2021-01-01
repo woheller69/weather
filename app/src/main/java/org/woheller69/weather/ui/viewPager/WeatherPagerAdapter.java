@@ -88,46 +88,11 @@ public class WeatherPagerAdapter extends FragmentStatePagerAdapter implements IU
     }
 
     @Override
-    public CharSequence getPageTitle(int position) {             //TODO: Remove, no longer needed. City is shown on TAB, time is now shown in card details,  as there is more space
-//        GregorianCalendar calendar = new GregorianCalendar();
-//        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
-//        dateFormat.setCalendar(calendar);
-//        calendar.setTimeInMillis(lastUpdateTime*1000);
+    public CharSequence getPageTitle(int position) {
         if (cities.size() == 0) {
             return mContext.getString(R.string.app_name);
         }
-        return cities.get(position).getCityName(); // + " (" + dateFormat.format(calendar.getTime()) + ")";
-    }
-
-    //TODO: Remove, no longer needed. City is shown on TAB, time is now shown in card details,  as there is more space
-    public CharSequence getPageTitleForActionBar(int position) {
-
-        int zoneseconds = 0;
-        //fallback to last time the weather data was updated
-        long time = lastUpdateTime;
-        int currentCityId = cities.get(position).getCityId();
-        //search for current city
-        //TODO could time get taken from an old weatherData or is it removed on Update?
-        for (CurrentWeatherData weatherData : currentWeathers) {
-            if (weatherData.getCity_id() == currentCityId) {
-                //set time to last update time for the city and zoneseconds to UTC difference (in seconds)
-                time = weatherData.getTimestamp();
-                zoneseconds += weatherData.getTimeZoneSeconds();
-                break;
-            }
-        }
-        //for formatting into time respective to UTC/GMT
-        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
-        dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
-        Date updateTime = new Date((time + zoneseconds) * 1000L);
-        return String.format("%s (%s)", getPageTitle(position), dateFormat.format(updateTime));
-    }
-
-    public void refreshData(Boolean asap) {
-        Intent intent = new Intent(mContext, UpdateDataService.class);
-        intent.setAction(UpdateDataService.UPDATE_ALL_ACTION);
-        intent.putExtra(SKIP_UPDATE_INTERVAL, asap);
-        enqueueWork(mContext, UpdateDataService.class, 0, intent);
+        return cities.get(position).getCityName();
     }
 
     public void refreshSingleData(Boolean asap, int cityId) {
