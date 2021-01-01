@@ -37,7 +37,7 @@
 
     <PreferenceCategory android:title="@string/settings_intervals">
         <ListPreference
-            android:defaultValue="2"
+            android:defaultValue="1"
             android:entries="@array/refreshIntervalArray"
             android:entryValues="@array/refreshIntervalValues"
             android:key="pref_updateInterval"
