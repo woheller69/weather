@@ -3,9 +3,9 @@ package org.woheller69.weather.ui.viewPager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import org.woheller69.weather.R;
 import org.woheller69.weather.database.CityToWatch;
@@ -18,14 +18,11 @@ import org.woheller69.weather.services.UpdateDataService;
 import org.woheller69.weather.ui.WeatherCityFragment;
 import org.woheller69.weather.ui.updater.IUpdateableCityUI;
 
-import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
-import java.util.TimeZone;
 
-import static android.support.v4.app.JobIntentService.enqueueWork;
+import static androidx.core.app.JobIntentService.enqueueWork;
 import static org.woheller69.weather.services.UpdateDataService.SKIP_UPDATE_INTERVAL;
 import static org.woheller69.weather.ui.RecycleList.CityWeatherAdapter.CHART;
 import static org.woheller69.weather.ui.RecycleList.CityWeatherAdapter.DAY;

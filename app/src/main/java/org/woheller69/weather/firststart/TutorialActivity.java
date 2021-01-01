@@ -7,9 +7,9 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.app.AppCompatActivity;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,7 +30,7 @@ import org.woheller69.weather.database.PFASQLiteHelper;
 import org.woheller69.weather.preferences.PrefManager;
 import org.woheller69.weather.ui.util.AutoCompleteCityTextViewGenerator;
 
-import static android.support.v4.app.JobIntentService.enqueueWork;
+import static androidx.core.app.JobIntentService.enqueueWork;
 
 /**
  * Class structure taken from tutorial at http://www.androidhive.info/2016/05/android-build-intro-slider-app/

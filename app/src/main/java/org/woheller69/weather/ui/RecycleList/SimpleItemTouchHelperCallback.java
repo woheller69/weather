@@ -1,7 +1,7 @@
 package org.woheller69.weather.ui.RecycleList;
 
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.ItemTouchHelper;
 
 /**
  * To use the ItemTouchHelper we need to create an ItemTouchHelper.Callback which this class is.
@@ -41,7 +41,7 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
     }
 
     /**
-     * @see android.support.v7.widget.helper.ItemTouchHelper.Callback#getMovementFlags(RecyclerView, RecyclerView.ViewHolder)
+     * @see androidx.recyclerview.widget.ItemTouchHelper.Callback#getMovementFlags(RecyclerView, RecyclerView.ViewHolder)
      * Sets the swipe flags for start and end.
      */
     @Override
@@ -52,7 +52,7 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
     }
 
     /**
-     * @see android.support.v7.widget.helper.ItemTouchHelper.Callback#onMove(RecyclerView, RecyclerView.ViewHolder, RecyclerView.ViewHolder)
+     * @see androidx.recyclerview.widget.ItemTouchHelper.Callback#onMove(RecyclerView, RecyclerView.ViewHolder, RecyclerView.ViewHolder)
      */
     @Override
     public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
@@ -61,7 +61,7 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
     }
 
     /**
-     * @see android.support.v7.widget.helper.ItemTouchHelper.Callback#onSwiped(RecyclerView.ViewHolder, int)
+     * @see androidx.recyclerview.widget.ItemTouchHelper.Callback#onSwiped(RecyclerView.ViewHolder, int)
      * On swipe, the corresponding element is removed from the list.
      */
     @Override

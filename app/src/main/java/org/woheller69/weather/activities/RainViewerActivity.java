@@ -3,9 +3,9 @@ package org.woheller69.weather.activities;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
 import android.webkit.WebView;
 import org.woheller69.weather.preferences.AppPreferencesManager;
 

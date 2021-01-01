@@ -31,7 +31,7 @@
                 android:layout_marginTop="20dp"
                 android:text="@string/radius_search_tv_heading" />
 
-            <android.support.v7.widget.AppCompatAutoCompleteTextView
+            <androidx.appcompat.widget.AppCompatAutoCompleteTextView
                 android:id="@+id/radius_search_edt_location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

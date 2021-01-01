@@ -14,7 +14,7 @@ import org.woheller69.weather.services.UpdateDataService;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.support.v4.app.JobIntentService.enqueueWork;
+import static androidx.core.app.JobIntentService.enqueueWork;
 import static org.woheller69.weather.services.UpdateDataService.SKIP_UPDATE_INTERVAL;
 
 /**

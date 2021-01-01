@@ -1,16 +1,14 @@
 package org.woheller69.weather.ui.RecycleList;
 
-import android.app.Activity;
 import android.content.Context;
-import android.support.design.widget.Snackbar;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import org.woheller69.weather.R;
 import org.woheller69.weather.database.CityToWatch;
-import org.woheller69.weather.database.CurrentWeatherData;
 import org.woheller69.weather.database.PFASQLiteHelper;
 import org.woheller69.weather.preferences.PrefManager;
 
@@ -46,7 +44,7 @@ public class RecyclerOverviewListAdapter extends RecyclerView.Adapter<ItemViewHo
 
 
     /**
-     * @see android.support.v7.widget.RecyclerView.Adapter#onCreateViewHolder(ViewGroup, int)
+     * @see RecyclerView.Adapter#onCreateViewHolder(ViewGroup, int)
      * Returns the template for a list item.
      */
     @Override
@@ -56,7 +54,7 @@ public class RecyclerOverviewListAdapter extends RecyclerView.Adapter<ItemViewHo
     }
 
     /**
-     * @see android.support.v7.widget.RecyclerView.Adapter#onBindViewHolder(RecyclerView.ViewHolder, int)
+     * @see RecyclerView.Adapter#onBindViewHolder(RecyclerView.ViewHolder, int)
      * Sets the content of items.
      */
     @Override

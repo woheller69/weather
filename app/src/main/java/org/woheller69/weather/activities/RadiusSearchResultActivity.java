@@ -1,16 +1,14 @@
 package org.woheller69.weather.activities;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import org.woheller69.weather.R;
 import org.woheller69.weather.preferences.AppPreferencesManager;
@@ -20,7 +18,6 @@ import org.woheller69.weather.weather_api.ValueDeriver;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class RadiusSearchResultActivity extends AppCompatActivity {
