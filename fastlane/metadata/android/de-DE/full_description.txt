@@ -5,12 +5,12 @@ Die Daten für das Regenradar werden über die freie API von RainViewer bezogen.
 
 Features:
 - Aktuelles Wetter
-- Stündliches Wetter für 48h oder 3h Vorhersagen für 5 Tage
+- Stündliches Wetter für 48h / 3h Vorhersagen für 5 Tage
 - 8 Tage Vorhersage
 - Niederschlag in den nächsten 60min
 - Regenradar
 - Umkreissuche
-- keine Werbung
+- Keine Werbung
 
 Minimale Berechtigungen:
 RadarWeather benötigt nur ein Minimum an Berechtigungen, nämlich nur die INTERNET-Berechtigung. Diese ist nötig, um HTTP-Anfragen an entfernte Server zu stellen, um Wetterdaten zu erhalten.

@@ -5,12 +5,12 @@ Data for the rain radar is retrieved via the free RainViewer API.
 
 Features:
 - Current weather
-- Hourly forecasts for 48h or 3h forecasts for 5 days
+- Hourly forecasts for 48h / 3h forecasts for 5 days
 - 8 day forecast
 - Precipitation in next 60min
 - Rain radar
 - Radius search
-- no advertisement
+- No advertisement
 
 Minimum permissions:
 RadarWeather only requires the minimum amount of permission, namely only the INTERNET permission. This permission is necessary to make HTTP requests to remote servers for retrieving weather data.
