@@ -25,20 +25,35 @@ public class ViewUpdater {
     }
 
     public static void updateCurrentWeatherData(CurrentWeatherData data) {
-        for (IUpdateableCityUI sub : subscribers) {
-            sub.processNewWeatherData(data);
+        try {
+            for (IUpdateableCityUI sub : subscribers) {
+                sub.processNewWeatherData(data);
+            }
+        }
+        catch ( Exception e) { //TODO: Sometimes app crashes during updateCurrentWeatherData, reason unknown
+        e.printStackTrace();
         }
     }
 
     public static void updateWeekForecasts(List<WeekForecast> forecasts) {
-        for (IUpdateableCityUI sub : subscribers) {
-            sub.updateWeekForecasts(forecasts);
+        try {
+            for (IUpdateableCityUI sub : subscribers) {
+                sub.updateWeekForecasts(forecasts);
+            }
+        }
+        catch ( Exception e) {
+            e.printStackTrace();
         }
     }
 
     public static void updateForecasts(List<Forecast> forecasts) {
-        for (IUpdateableCityUI sub : subscribers) {
-            sub.updateForecasts(forecasts);
+        try {
+            for (IUpdateableCityUI sub : subscribers) {
+                sub.updateForecasts(forecasts);
+            }
+        }
+        catch ( Exception e) {
+            e.printStackTrace();
         }
     }
 }

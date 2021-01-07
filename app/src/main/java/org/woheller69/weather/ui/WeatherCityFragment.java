@@ -98,7 +98,7 @@ public class WeatherCityFragment extends Fragment implements IUpdateableCityUI {
 
     @Override
     public void processNewWeatherData(CurrentWeatherData data) {
-        if (data.getCity_id() == mCityId) {
+        if (data != null && data.getCity_id() == mCityId) {
             setAdapter(new CityWeatherAdapter(data, mDataSetTypes, getContext()));
         }
     }
