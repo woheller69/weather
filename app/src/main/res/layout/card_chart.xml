@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:gravity="center"
-        android:text="CHART"
+        android:text="@string/chart"
         android:textAllCaps="true"
         android:textColor="@color/colorPrimaryDark"
         android:textStyle="bold" />

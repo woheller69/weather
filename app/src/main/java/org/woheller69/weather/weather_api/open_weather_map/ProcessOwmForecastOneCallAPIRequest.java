@@ -100,7 +100,7 @@ public class ProcessOwmForecastOneCallAPIRequest implements IProcessHttpRequest 
             CurrentWeatherData weatherData = extractor.extractCurrentWeatherDataOneCall(json.getString("current"));
 
             if (weatherData == null) {
-                final String ERROR_MSG = context.getResources().getString(R.string.convert_to_json_error);
+                final String ERROR_MSG = context.getResources().getString(R.string.error_convert_to_json);
                 Toast.makeText(context, ERROR_MSG, Toast.LENGTH_LONG).show();
             } else {
                 weatherData.setCity_id(cityId);
@@ -129,7 +129,7 @@ public class ProcessOwmForecastOneCallAPIRequest implements IProcessHttpRequest 
                 WeekForecast forecast = extractor.extractWeekForecast(currentItem);
                 // Data were not well-formed, abort
                 if (forecast == null) {
-                    final String ERROR_MSG = context.getResources().getString(R.string.convert_to_json_error);
+                    final String ERROR_MSG = context.getResources().getString(R.string.error_convert_to_json);
                     Toast.makeText(context, ERROR_MSG, Toast.LENGTH_LONG).show();
                     return;
                 }
@@ -158,7 +158,7 @@ public class ProcessOwmForecastOneCallAPIRequest implements IProcessHttpRequest 
                     Forecast forecast = extractor.extractHourlyForecast(currentItem);
                     // Data were not well-formed, abort
                     if (forecast == null) {
-                        final String ERROR_MSG = context.getResources().getString(R.string.convert_to_json_error);
+                        final String ERROR_MSG = context.getResources().getString(R.string.error_convert_to_json);
                         Toast.makeText(context, ERROR_MSG, Toast.LENGTH_LONG).show();
                         return;
                     }

@@ -58,7 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="15dp"
-        android:text="@string/help_where_from"
+        android:text="@string/about_where_from"
         android:textStyle="bold" />
 
 
@@ -68,7 +68,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="5dp"
         android:gravity="center_horizontal"
-        android:text="@string/help_where_from_answer" />
+        android:text="@string/about_where_from_answer" />
 
     <TextView
         android:id="@+id/textFieldLicence"
@@ -86,7 +86,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="5dp"
         android:gravity="center_horizontal"
-        android:text="@string/license_text" />
+        android:text="@string/about_license_text" />
 
     <TextView
         android:id="@+id/textFieldPermissions"
@@ -103,7 +103,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="5dp"
         android:gravity="center_horizontal"
-        android:text="@string/help_permission_internet_description" />
+        android:text="@string/about_permission_internet_description" />
 
     <TextView
         android:id="@+id/textFieldPrivacy"
@@ -111,7 +111,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
-        android:text="@string/help_privacy_heading"
+        android:text="@string/about_privacy_heading"
         android:textStyle="bold" />
 
     <TextView
@@ -120,7 +120,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="5dp"
         android:gravity="center_horizontal"
-        android:text="@string/help_privacy_answer" />
+        android:text="@string/about_privacy_answer" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -128,7 +128,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="15dp"
         android:gravity="center"
-        android:text="@string/more_info" />
+        android:text="@string/about_more_info" />
 
     <TextView
         android:id="@+id/githubURL"
@@ -137,7 +137,7 @@
         android:layout_gravity="center_horizontal"
         android:gravity="center_horizontal"
         android:layout_marginTop="5dp"
-        android:text="@string/github"
+        android:text="@string/about_github"
         android:textStyle="bold" />
 
     <Space
@@ -151,7 +151,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:gravity="center_horizontal"
-        android:text="@string/github_secuso"
+        android:text="@string/about_github_secuso"
         android:textStyle="bold" />
 
     <Space

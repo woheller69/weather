@@ -123,7 +123,7 @@ public class AddLocationDialog extends DialogFragment {
                 addCity();
                 ((ManageLocationsActivity) activity).addCityToList(convertCityToWatched());
             }
-            else Toast.makeText(activity, R.string.dialog_add_city_too_close, Toast.LENGTH_SHORT).show();
+            else Toast.makeText(activity, R.string.error_dialog_add_city_too_close, Toast.LENGTH_SHORT).show();
         }
         dismiss();
     }

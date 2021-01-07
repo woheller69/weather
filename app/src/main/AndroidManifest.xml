@@ -28,7 +28,7 @@
         <activity
             android:name="org.woheller69.weather.activities.ManageLocationsActivity"
             android:launchMode="singleTop"
-            android:label="@string/action_manage"
+            android:label="@string/activity_manage"
             android:theme="@style/AppTheme.NoActionBar"
             android:parentActivityName="org.woheller69.weather.activities.ForecastCityActivity" />
         <activity
@@ -38,7 +38,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="org.woheller69.weather.activities.RadiusSearchActivity"
-            android:label="@string/radius_search_label"
+            android:label="@string/activity_radius_search"
             android:parentActivityName="org.woheller69.weather.activities.ForecastCityActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -65,7 +65,7 @@
 
         <activity
             android:name="org.woheller69.weather.activities.SettingsActivity"
-            android:label="@string/title_activity_settings"
+            android:label="@string/activity_settings_title"
             android:parentActivityName="org.woheller69.weather.activities.ForecastCityActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data

@@ -30,7 +30,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                tools:text="@string/activity_city_weather_details_label"
                 tools:visibility="visible" />
 
             <TextView
@@ -38,9 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="2dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-
-                tools:text="US" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
         </LinearLayout>
 

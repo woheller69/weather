@@ -81,7 +81,7 @@ public class ProcessOwmForecastRequest implements IProcessHttpRequest {
                 Forecast forecast = extractor.extractForecast(currentItem);
                 // Data were not well-formed, abort
                 if (forecast == null) {
-                    final String ERROR_MSG = context.getResources().getString(R.string.convert_to_json_error);
+                    final String ERROR_MSG = context.getResources().getString(R.string.error_convert_to_json);
                     Toast.makeText(context, ERROR_MSG, Toast.LENGTH_LONG).show();
                     return;
                 }

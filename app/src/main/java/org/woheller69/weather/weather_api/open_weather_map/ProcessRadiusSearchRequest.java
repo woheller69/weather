@@ -139,7 +139,7 @@ public class ProcessRadiusSearchRequest implements IProcessHttpRequest {
                     RadiusSearchItem searchItem = extractor.extractRadiusSearchItemData(currentItem);
                     // Data were not well-formed, abort
                     if (searchItem == null) {
-                        final String ERROR_MSG = context.getResources().getString(R.string.convert_to_json_error);
+                        final String ERROR_MSG = context.getResources().getString(R.string.error_convert_to_json);
                         Toast.makeText(context, ERROR_MSG, Toast.LENGTH_LONG).show();
                         return;
                     } else {
@@ -167,7 +167,7 @@ public class ProcessRadiusSearchRequest implements IProcessHttpRequest {
                 context.startActivity(intent);
             }
             else{
-                Toast.makeText(context,context.getResources().getString(R.string.no_radius_search_result),Toast.LENGTH_LONG).show();
+                Toast.makeText(context,context.getResources().getString(R.string.error_no_radius_search_result),Toast.LENGTH_LONG).show();
             }
         }
 

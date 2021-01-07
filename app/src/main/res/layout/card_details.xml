@@ -20,7 +20,7 @@
             android:textColor="@color/colorPrimaryDark"
             android:textStyle="bold"
             android:text="@string/card_details_heading"
-            android:id="@+id/activity_city_weather_title"/>
+            android:id="@+id/card_details_title"/>
 
         <View
             android:layout_width="match_parent"
@@ -28,7 +28,7 @@
             android:background="@color/white" />
 
         <TextView
-            android:id="@+id/activity_city_weather_tv_rain60min_value"
+            android:id="@+id/card_details_rain60min_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
@@ -39,7 +39,7 @@
             android:textColor="@color/colorPrimaryDark" />
 
         <GridLayout
-            android:id="@+id/activity_city_weather_content_layout"
+            android:id="@+id/card_details_content_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -48,18 +48,18 @@
 
 
             <TextView
-                android:id="@+id/activity_city_weather_tv_humidity"
+                android:id="@+id/card_details_tv_humidity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="0"
                 android:layout_marginBottom="5dp"
                 android:layout_row="1"
-                android:text="@string/activity_city_weather_tv_humidity"
+                android:text="@string/card_details_humidity"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/colorPrimaryDark" />
 
             <TextView
-                android:id="@+id/activity_city_weather_tv_humidity_value"
+                android:id="@+id/card_details_humidity_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
@@ -70,18 +70,18 @@
                 android:textColor="@color/colorPrimaryDark" />
 
             <TextView
-                android:id="@+id/activity_city_weather_tv_pressure"
+                android:id="@+id/card_details_tv_pressure"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="0"
                 android:layout_marginBottom="5dp"
                 android:layout_row="2"
-                android:text="@string/activity_city_weather_tv_pressure"
+                android:text="@string/card_details_pressure"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/colorPrimaryDark" />
 
             <TextView
-                android:id="@+id/activity_city_weather_tv_pressure_value"
+                android:id="@+id/card_details_pressure_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
@@ -92,18 +92,18 @@
                 android:textColor="@color/colorPrimaryDark" />
 
             <TextView
-                android:id="@+id/activity_city_weather_tv_wind_speed"
+                android:id="@+id/card_details_tv_wind_speed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="0"
                 android:layout_marginBottom="5dp"
                 android:layout_row="3"
-                android:text="@string/activity_city_weather_tv_wind_speed"
+                android:text="@string/card_details_wind_speed"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/colorPrimaryDark" />
 
             <TextView
-                android:id="@+id/activity_city_weather_tv_wind_speed_value"
+                android:id="@+id/card_details_wind_speed_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="1"

@@ -7,15 +7,15 @@
         <item
             android:id="@+id/nav_weather"
             android:icon="@drawable/ic_wb_sunny_24px"
-            android:title="@string/action_main" />
+            android:title="@string/activity_weather" />
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_edit_location_24px"
-            android:title="@string/action_manage" />
+            android:title="@string/activity_manage" />
         <item
             android:id="@+id/nav_radius"
             android:icon="@drawable/ic_map_24px"
-            android:title="@string/radius_search_label" />
+            android:title="@string/activity_radius_search" />
     </group>
 
     <group
@@ -24,10 +24,10 @@
         <item
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_settings_24px"
-            android:title="@string/action_settings" />
+            android:title="@string/activity_settings" />
         <item
             android:id="@+id/nav_about"
             android:icon="@drawable/ic_info_24px"
-            android:title="@string/action_about" />
+            android:title="@string/activity_about" />
     </group>
 </menu>

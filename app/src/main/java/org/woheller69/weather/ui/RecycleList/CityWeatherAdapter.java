@@ -334,9 +334,9 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
 
         OverViewHolder(View v) {
             super(v);
-            this.temperature = v.findViewById(R.id.activity_city_weather_temperature);
-            this.weather = v.findViewById(R.id.activity_city_weather_image_view);
-            this.sun=v.findViewById(R.id.activity_city_weather_sun);
+            this.temperature = v.findViewById(R.id.card_overview_temperature);
+            this.weather = v.findViewById(R.id.card_overview_weather_image);
+            this.sun=v.findViewById(R.id.card_overview_sunrise_sunset);
         }
     }
 
@@ -349,11 +349,11 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
 
         DetailViewHolder(View v) {
             super(v);
-            this.humidity = v.findViewById(R.id.activity_city_weather_tv_humidity_value);
-            this.pressure = v.findViewById(R.id.activity_city_weather_tv_pressure_value);
-            this.windspeed = v.findViewById(R.id.activity_city_weather_tv_wind_speed_value);
-            this.rain60min = v.findViewById(R.id.activity_city_weather_tv_rain60min_value);
-            this.time=v.findViewById(R.id.activity_city_weather_title);
+            this.humidity = v.findViewById(R.id.card_details_humidity_value);
+            this.pressure = v.findViewById(R.id.card_details_pressure_value);
+            this.windspeed = v.findViewById(R.id.card_details_wind_speed_value);
+            this.rain60min = v.findViewById(R.id.card_details_rain60min_value);
+            this.time=v.findViewById(R.id.card_details_title);
         }
     }
 
