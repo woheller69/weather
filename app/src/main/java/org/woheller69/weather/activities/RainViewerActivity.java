@@ -6,7 +6,10 @@ import android.preference.PreferenceManager;
 import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.appcompat.widget.Toolbar;
+import android.view.View;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.Button;
 import org.woheller69.weather.preferences.AppPreferencesManager;
 
 import org.woheller69.weather.R;
@@ -15,9 +18,7 @@ import org.woheller69.weather.R;
 public class RainViewerActivity extends AppCompatActivity {
 
     private WebView webView;
-    private float latitude;
-    private float longitude;
-    private static String API_KEY;
+    private Button btnPrev, btnStartStop, btnNext;
 
     @Override
     protected void onPause() {
@@ -34,13 +35,44 @@ public class RainViewerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_rain_viewer);
         AppPreferencesManager prefManager =
                 new AppPreferencesManager(PreferenceManager.getDefaultSharedPreferences(getApplicationContext()));
-        API_KEY=prefManager.getOWMApiKey(getApplicationContext());
-        latitude = getIntent().getFloatExtra("latitude",-1);
-        longitude = getIntent().getFloatExtra("longitude",-1);
+        String API_KEY = prefManager.getOWMApiKey(getApplicationContext());
+        float latitude = getIntent().getFloatExtra("latitude", -1);
+        float longitude = getIntent().getFloatExtra("longitude", -1);
         webView = findViewById(R.id.webView);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl("file:///android_asset/rainviewer.html?lat=" + latitude + "&lon=" + longitude + "&appid=" + API_KEY);
 
+        webView.setWebViewClient(new WebViewClient() {
+            @Override
+            public void onPageFinished(WebView view, String url) {  //register buttons when loading of page finished
+                super.onPageFinished(webView, url);
+                btnNext = (Button) findViewById(R.id.rainviewer_next);
+                btnPrev = (Button) findViewById(R.id.rainviewer_prev);
+                btnStartStop = (Button) findViewById(R.id.rainviewer_startstop);
+
+                btnNext.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        webView.loadUrl("javascript:stop();showFrame(animationPosition + 1);");
+                    }
+                });
+
+                btnPrev.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        webView.loadUrl("javascript:stop();showFrame(animationPosition - 1);");
+                    }
+                });
+
+                btnStartStop.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        webView.loadUrl("javascript:playStop();");
+                    }
+                });
+
+            }
+        });
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         if (getSupportActionBar() == null) {

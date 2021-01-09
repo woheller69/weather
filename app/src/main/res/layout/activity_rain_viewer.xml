@@ -1,12 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.RainViewerActivity">
+    tools:context=".activities.RainViewerActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/backgroundBlue"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/rainviewer_prev"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/rainviewerback"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/rainviewer_startstop"
+            android:layout_width="wrap_content"
+            android:layout_weight="3"
+            android:text="@string/rainviewerstartstop"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/rainviewer_next"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/rainviewernext"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
 
     <WebView
         android:id="@+id/webView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="fill_parent" />
+</LinearLayout>
