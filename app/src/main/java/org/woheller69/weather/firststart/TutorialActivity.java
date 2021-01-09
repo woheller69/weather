@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
-import android.os.AsyncTask;
+
 import android.os.Build;
 import android.os.Bundle;
 import androidx.viewpager.widget.PagerAdapter;
@@ -16,7 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.AutoCompleteTextView;
+
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -24,13 +24,9 @@ import android.widget.TextView;
 import org.woheller69.weather.R;
 import org.woheller69.weather.activities.ForecastCityActivity;
 import org.woheller69.weather.activities.SettingsActivity;
-import org.woheller69.weather.database.City;
-import org.woheller69.weather.database.CityToWatch;
-import org.woheller69.weather.database.PFASQLiteHelper;
-import org.woheller69.weather.preferences.PrefManager;
-import org.woheller69.weather.ui.util.AutoCompleteCityTextViewGenerator;
 
-import static androidx.core.app.JobIntentService.enqueueWork;
+import org.woheller69.weather.preferences.PrefManager;
+
 
 /**
  * Class structure taken from tutorial at http://www.androidhive.info/2016/05/android-build-intro-slider-app/
@@ -49,10 +45,6 @@ public class TutorialActivity extends AppCompatActivity {
     private Button btnNext, btnRegister;
     private PrefManager prefManager;
 
-    PFASQLiteHelper database;
-    private AutoCompleteTextView autoCompleteTextView;
-    private AutoCompleteCityTextViewGenerator cityTextViewGenerator;
-    private City selectedCity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,8 +114,6 @@ public class TutorialActivity extends AppCompatActivity {
             }
         });
 
-        database = PFASQLiteHelper.getInstance(this);
-        cityTextViewGenerator = new AutoCompleteCityTextViewGenerator(this, database);
     }
 
 
@@ -152,9 +142,7 @@ public class TutorialActivity extends AppCompatActivity {
 
     private void launchHomeScreen() {
         prefManager.setFirstTimeLaunch(false);
-        if (selectedCity != null && database != null && !database.isCityWatched(selectedCity.getCityId())) {
-            addCity();
-        }
+
         startActivity(new Intent(TutorialActivity.this, ForecastCityActivity.class));
         finish();
     }
@@ -172,25 +160,6 @@ public class TutorialActivity extends AppCompatActivity {
         viewPagerPageChangeListener.onPageSelected(viewPager.getCurrentItem());
     }
 
-    public void addCity() {
-        new AsyncTask<Void, Void, Void>() {
-
-            @Override
-            protected Void doInBackground(Void... params) {
-                if (selectedCity != null) {
-                    database.addCityToWatch(new CityToWatch(
-                            0,
-                            selectedCity.getCountryCode(),
-                            -1,
-                            selectedCity.getCityId(), selectedCity.getLongitude(),selectedCity.getLatitude(),
-                            selectedCity.getCityName()
-                    ));
-                }
-
-                return null;
-            }
-        }.doInBackground();
-    }
 
     //  viewpager change listener
     ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
