@@ -12,23 +12,23 @@
         android:background="@color/backgroundBlue"
         android:orientation="horizontal">
 
-        <Button
+        <ImageButton
             android:id="@+id/rainviewer_prev"
             android:layout_width="wrap_content"
             android:layout_weight="1"
-            android:text="@string/rainviewerback"
+            android:src="@drawable/ic_skip_previous_24px"
             android:layout_height="wrap_content" />
-        <Button
+        <ImageButton
             android:id="@+id/rainviewer_startstop"
             android:layout_width="wrap_content"
             android:layout_weight="3"
-            android:text="@string/rainviewerstartstop"
+            android:src="@drawable/ic_playpause"
             android:layout_height="wrap_content" />
-        <Button
+        <ImageButton
             android:id="@+id/rainviewer_next"
             android:layout_width="wrap_content"
             android:layout_weight="1"
-            android:text="@string/rainviewernext"
+            android:src="@drawable/ic_skip_next_24px"
             android:layout_height="wrap_content" />
 
     </LinearLayout>

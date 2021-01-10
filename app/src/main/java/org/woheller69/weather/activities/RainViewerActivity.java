@@ -10,6 +10,8 @@ import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
+import android.widget.ImageButton;
+
 import org.woheller69.weather.preferences.AppPreferencesManager;
 
 import org.woheller69.weather.R;
@@ -18,7 +20,7 @@ import org.woheller69.weather.R;
 public class RainViewerActivity extends AppCompatActivity {
 
     private WebView webView;
-    private Button btnPrev, btnStartStop, btnNext;
+    private ImageButton btnPrev, btnNext, btnStartStop;
 
     @Override
     protected void onPause() {
@@ -46,9 +48,9 @@ public class RainViewerActivity extends AppCompatActivity {
             @Override
             public void onPageFinished(WebView view, String url) {  //register buttons when loading of page finished
                 super.onPageFinished(webView, url);
-                btnNext = (Button) findViewById(R.id.rainviewer_next);
-                btnPrev = (Button) findViewById(R.id.rainviewer_prev);
-                btnStartStop = (Button) findViewById(R.id.rainviewer_startstop);
+                btnNext = (ImageButton) findViewById(R.id.rainviewer_next);
+                btnPrev = (ImageButton) findViewById(R.id.rainviewer_prev);
+                btnStartStop = (ImageButton) findViewById(R.id.rainviewer_startstop);
 
                 btnNext.setOnClickListener(new View.OnClickListener() {
                     @Override

@@ -118,7 +118,4 @@
     <string name="saturday">Saturday</string>
     <string name="sunday">Sunday</string>
     <string name="chart">Chart</string>
-    <string name="rainviewerstartstop">Start / Stop</string>
-    <string name="rainviewerback">Back</string>
-    <string name="rainviewernext">Next</string>
 </resources>
