@@ -60,8 +60,9 @@ var map = L.map('mapid', {
         }).setView([getUrlParameter('lat'), getUrlParameter('lon')], 8);  //zoom factor 8
 
 let myFilter = [
-    'contrast:10000%',
-    'opacity:85%',
+    'contrast:0.1%',
+    'brightness:10%',
+    'opacity:65%',
 ];
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
