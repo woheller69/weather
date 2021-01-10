@@ -107,18 +107,6 @@ public class RadiusSearchActivity extends NavigationActivity {
             }
         });
 
-        //generator.getInstance(edtLocation, 8, dropdownSelectedCity);
-//        edtLocation.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                dropdownSelectedCity = (City) parent.getItemAtPosition(position);
-//                // Also close the keyboard
-//                InputMethodManager imm =
-//                        (InputMethodManager) getApplicationContext().getSystemService(getApplicationContext().INPUT_METHOD_SERVICE);
-//                imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
-//            }
-//        });
-
         sbEdgeLength = (SeekBar)
 
                 findViewById(R.id.radius_search_sb_edge_length);
