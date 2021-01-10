@@ -73,7 +73,13 @@ public class ProcessRadiusSearchRequest implements IProcessHttpRequest {
      */
     @Override
     public void processFailScenario(VolleyError error) {
-        // TODO: Fill with life
+        Handler h = new Handler(this.context.getMainLooper());
+        h.post(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(context, context.getResources().getString(R.string.error_fetch_forecast), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     /**
