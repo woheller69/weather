@@ -1,5 +1,12 @@
 Changelog
 ==========
+
+Version 1.3 (2021-01-11)
+
+ * Bugfix for rare crash
+ * Minor GUI modification
+ * Changed clouds layer on maps
+
 Version 1.2 (2021-01-02)
 
  * Fixed display bug #1
