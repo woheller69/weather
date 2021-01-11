@@ -59,18 +59,23 @@ var map = L.map('mapid', {
             attributionControl: true
         }).setView([getUrlParameter('lat'), getUrlParameter('lon')], 8);  //zoom factor 8
 
-let myFilter = [
+let myFilterClouds = [
     'contrast:1000%',
     'invert:100%',
     'opacity:20%'
 ];
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+let myFilterMap = [
+    'saturate:200%'
+];
+
+    L.tileLayer.colorFilter('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        filter: myFilterMap,
         attribution: 'Map data ©<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors <br> Weather data <a href="https://www.rainviewer.com/api.html"> RainViewer </a>& <a href="https://openweathermap.org/api"> OpenWeatherMap </a>'
     }).addTo(map);
 
     L.tileLayer.colorFilter('https://tile.openweathermap.org/map/clouds_cls/{z}/{x}/{y}.png?appid=' + getUrlParameter('appid'),{
-        filter: myFilter
+        filter: myFilterClouds
     }).addTo(map);
 
 var marker = L.marker([getUrlParameter('lat'), getUrlParameter('lon')]).addTo(map);
