@@ -172,16 +172,16 @@ var map = L.map('map', {
         });
 
 let myFilter = [
-    'contrast:0.1%',
-    'brightness:10%',
-    'opacity:65%',
+    'contrast:1000%',
+    'invert:100%',
+    'opacity:20%'
 ];
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: 'Map data ©<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors <br> Weather data <a href="https://www.rainviewer.com/api.html"> RainViewer </a>& <a href="https://openweathermap.org/api"> OpenWeatherMap </a>'
     }).addTo(map);
 
-    L.tileLayer.colorFilter('https://tile.openweathermap.org/map/clouds/{z}/{x}/{y}.png?appid=' + getUrlParameter('appid'),{
+    L.tileLayer.colorFilter('https://tile.openweathermap.org/map/clouds_cls/{z}/{x}/{y}.png?appid=' + getUrlParameter('appid'),{
         filter: myFilter
     }).addTo(map);
 
