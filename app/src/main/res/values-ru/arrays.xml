@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="temperatureUnitsArray">
+        <item>@string/settings_celsius</item>
+        <item>@string/settings_fahrenheit</item>
+    </string-array>
+    <string-array name="temperatureUnitsValues">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="distanceUnitsArray">
+        <item>@string/settings_kilometers</item>
+        <item>@string/settings_miles</item>
+    </string-array>
+    <string-array name="distanceUnitsValues">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="refreshIntervalValues">
+        <item>1</item>
+        <item>2</item>
+        <item>6</item>
+        <item>12</item>
+        <item>24</item>
+    </string-array>
+
+    <string-array name="forecastChoiceArray">
+        <item>5 Дней / 3h</item>
+        <item>2 Дней / 1h</item>
+    </string-array>
+    <string-array name="forecastChoiceValues">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+</resources>
