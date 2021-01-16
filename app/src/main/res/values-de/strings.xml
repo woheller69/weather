@@ -69,7 +69,6 @@
     <string name="settings_miles">Meilen</string>
     <string name="settings_summary_distance">Die Einheit, die zur Anzeige von Entfernungen verwendet wird.</string>
     <string name="settings_summary_temperature">Die Einheit, die zur Anzeige von Temperaturen verwendet wird.</string>
-    <string name="settings__API_key_default">-</string>
     <string name="settings_description_API">RadarWeather erhält die Wetterdaten von dem freien Service openweathermap.org. Dieser Service ist auf 1000 Anfragen pro Tag beschränkt. Bitte registrieren Sie ihren eigenen API Key.</string>
     <string name="settings_interval_summary">Setzen Sie das Interval der automatischen Updates</string>
     <string name="settings_intervals">Intervalle</string>
@@ -111,4 +110,9 @@
     <string name="saturday">Samstag</string>
     <string name="sunday">Sonntag</string>
     <string name="chart">Diagramm</string>
+    <string name="units_rh">%rh</string>
+    <string name="units_mm">mm</string>
+    <string name="units_hPa">hPa</string>
+    <string name="units_Bft">Bft</string>
+    <string name="units_rain60min_prefix">☔ 60 min:</string>
 </resources>

@@ -50,7 +50,6 @@
     <string name="settings_title_API">Ключ API</string>
     <string name="settings_description_API">RadarWeather получает данные от свободного сервиса openweathermap.org. Этот сервис ограничен 1000 запросами в день. Пожалуйста, введите Ваш собственный ключ API</string>
     <string name="settings_title_API_key">Введите ключ API</string>
-    <string name="settings__API_key_default">-</string>
     <string name="abbreviation_monday">Пн.</string>
     <string name="abbreviation_tuesday">Вт.</string>
     <string name="abbreviation_wednesday">Ср.</string>
@@ -109,4 +108,9 @@
     <string name="saturday">Суббота</string>
     <string name="sunday">Воскресенье</string>
     <string name="chart">Диаграмма</string>
+    <string name="units_rh">%rh</string>
+    <string name="units_mm">мм</string>
+    <string name="units_hPa">hPa</string>
+    <string name="units_Bft">Bft</string>
+    <string name="units_rain60min_prefix">☔ 60 min:</string>
 </resources>

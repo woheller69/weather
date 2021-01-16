@@ -54,7 +54,7 @@
     <string name="settings_title_API">API Key</string>
     <string name="settings_description_API">RadarWeather receives data from the free service of openweathermap.org. This service is limited to 1000 calls per day. Please enter your own API key</string>
     <string name="settings_title_API_key">Enter API Key</string>
-    <string name="settings__API_key_default">-</string>
+    <string name="settings__API_key_default" translatable="false">XXX_OWM-KEY_XXX</string>
     <string name="abbreviation_monday">Mo.</string>
     <string name="abbreviation_tuesday">Tu.</string>
     <string name="abbreviation_wednesday">We.</string>
@@ -118,4 +118,9 @@
     <string name="saturday">Saturday</string>
     <string name="sunday">Sunday</string>
     <string name="chart">Chart</string>
+    <string name="units_rh">%rh</string>
+    <string name="units_mm">mm</string>
+    <string name="units_hPa">hPa</string>
+    <string name="units_Bft">Bft</string>
+    <string name="units_rain60min_prefix">☔ 60 min:</string>
 </resources>

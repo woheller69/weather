@@ -27,17 +27,6 @@
             android:layout_height="1dp"
             android:background="@color/white" />
 
-        <TextView
-            android:id="@+id/card_details_rain60min_value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            android:text="Rain60min"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/colorPrimaryDark" />
-
         <GridLayout
             android:id="@+id/card_details_content_layout"
             android:layout_width="wrap_content"
@@ -46,6 +35,27 @@
             android:columnCount="2"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/card_details_tv_rain60min"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_marginBottom="5dp"
+                android:layout_row="0"
+                android:text="@string/units_rain60min_prefix"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <TextView
+                android:id="@+id/card_details_rain60min_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:layout_marginLeft="10dp"
+                android:layout_row="0"
+                android:text=""
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/colorPrimaryDark" />
 
             <TextView
                 android:id="@+id/card_details_tv_humidity"

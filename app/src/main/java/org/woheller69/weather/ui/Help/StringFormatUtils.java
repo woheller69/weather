@@ -46,31 +46,31 @@ public final class StringFormatUtils {
 
     public static String formatWindSpeed(Context context, float wind_speed) {
         if (wind_speed < 0.3) {
-            return formatInt(0, "Bft"); // Calm
+            return formatInt(0, context.getString(R.string.units_Bft)); // Calm
         } else if (wind_speed < 1.5) {
-            return formatInt(1, "Bft"); // Light air
+            return formatInt(1, context.getString(R.string.units_Bft)); // Light air
         } else if (wind_speed < 3.3) {
-            return formatInt(2, "Bft"); // Light breeze
+            return formatInt(2, context.getString(R.string.units_Bft)); // Light breeze
         } else if (wind_speed < 5.5) {
-            return formatInt(3, "Bft"); // Gentle breeze
+            return formatInt(3, context.getString(R.string.units_Bft)); // Gentle breeze
         } else if (wind_speed < 7.9) {
-            return formatInt(4, "Bft"); // Moderate breeze
+            return formatInt(4, context.getString(R.string.units_Bft)); // Moderate breeze
         } else if (wind_speed < 10.7) {
-            return formatInt(5, "Bft"); // Fresh breeze
+            return formatInt(5, context.getString(R.string.units_Bft)); // Fresh breeze
         } else if (wind_speed < 13.8) {
-            return formatInt(6, "Bft"); // Strong breeze
+            return formatInt(6, context.getString(R.string.units_Bft)); // Strong breeze
         } else if (wind_speed < 17.1) {
-            return formatInt(7, "Bft"); // High wind
+            return formatInt(7, context.getString(R.string.units_Bft)); // High wind
         } else if (wind_speed < 20.7) {
-            return formatInt(8, "Bft"); // Gale
+            return formatInt(8, context.getString(R.string.units_Bft)); // Gale
         } else if (wind_speed < 24.4) {
-            return formatInt(9, "Bft"); // Strong gale
+            return formatInt(9, context.getString(R.string.units_Bft)); // Strong gale
         } else if (wind_speed < 28.4) {
-            return formatInt(10, "Bft"); // Storm
+            return formatInt(10, context.getString(R.string.units_Bft)); // Storm
         } else if (wind_speed < 32.6) {
-            return formatInt(11, "Bft"); // Violent storm
+            return formatInt(11, context.getString(R.string.units_Bft)); // Violent storm
         } else {
-            return formatInt(12, "Bft"); // Hurricane
+            return formatInt(12, context.getString(R.string.units_Bft)); // Hurricane
         }
     }
 
