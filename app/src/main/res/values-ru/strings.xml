@@ -108,10 +108,10 @@
     <string name="saturday">Суббота</string>
     <string name="sunday">Воскресенье</string>
     <string name="chart">Диаграмма</string>
-    <string name="units_rh">%отн</string>
+    <string name="units_rh">%вл.</string>
     <string name="units_mm">мм</string>
     <string name="units_km">км</string>
     <string name="units_hPa">гПа</string>
-    <string name="units_Bft">Bft</string>
+    <string name="units_Bft">Бфт</string>
     <string name="card_details_rain60min">☔ 60 мин:</string>
 </resources>

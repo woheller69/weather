@@ -1,5 +1,8 @@
 Changelog
 ==========
+Version 1.4 (2021-01-17)
+
+ * Added translation for Russian #2
 
 Version 1.3 (2021-01-11)
 
