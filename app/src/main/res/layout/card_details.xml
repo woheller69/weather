@@ -42,7 +42,7 @@
                 android:layout_column="0"
                 android:layout_marginBottom="5dp"
                 android:layout_row="0"
-                android:text="@string/units_rain60min_prefix"
+                android:text="@string/card_details_rain60min"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/colorPrimaryDark" />
 

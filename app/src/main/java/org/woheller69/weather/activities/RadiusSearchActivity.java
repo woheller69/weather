@@ -131,7 +131,7 @@ public class RadiusSearchActivity extends NavigationActivity {
         sbEdgeLength.setMax(edgeRange);
         sbEdgeLength.setProgress(((edgeRange + minEdgeLength) >> 1) - minEdgeLength);
         tvEdgeLengthValue.setText(
-                String.format(FORMAT_EDGE_LENGTH_VALUE, sbEdgeLength.getProgress() + minEdgeLength, prefManager.getDistanceUnit())
+                String.format(FORMAT_EDGE_LENGTH_VALUE, sbEdgeLength.getProgress() + minEdgeLength, prefManager.getDistanceUnit(getApplicationContext()))
         );
 
         sbNumReturns.setMax(numberOfReturnsRange);
@@ -203,7 +203,7 @@ public class RadiusSearchActivity extends NavigationActivity {
 
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-            String text = String.format("%s %s", progress + minEdgeLength, prefManager.getDistanceUnit());
+            String text = String.format("%s %s", progress + minEdgeLength, prefManager.getDistanceUnit(getApplicationContext()));
             tvEdgeLengthValue.setText(text);
         }
 

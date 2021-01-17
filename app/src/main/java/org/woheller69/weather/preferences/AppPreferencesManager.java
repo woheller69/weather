@@ -111,11 +111,12 @@ public class AppPreferencesManager {
 
     /**
      * @return Returns "km" in case kilometer is set and "mi" if miles was selected.
+     * @param applicationContext
      */
-    public String getDistanceUnit() {
+    public String getDistanceUnit(Context applicationContext) {
         int prefValue = Integer.parseInt(preferences.getString("distanceUnit", "1"));
         if (prefValue == 1) {
-            return "km";
+            return applicationContext.getString(R.string.units_km);
         } else {
             return "mi";
         }

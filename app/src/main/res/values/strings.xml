@@ -120,7 +120,8 @@
     <string name="chart">Chart</string>
     <string name="units_rh">%rh</string>
     <string name="units_mm">mm</string>
+    <string name="units_km">km</string>
     <string name="units_hPa">hPa</string>
     <string name="units_Bft">Bft</string>
-    <string name="units_rain60min_prefix">☔ 60 min:</string>
+    <string name="card_details_rain60min">☔ 60 min:</string>
 </resources>
