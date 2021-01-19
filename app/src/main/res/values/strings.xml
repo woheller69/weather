@@ -106,7 +106,7 @@
     <string name="long_press_text">Hold and drag to sort.</string>
     <string name="swipe_to_delete">Swipe to delete</string>
     <string name="settings_title_forecastChoice">Display options</string>
-    <string name="settings_summary_forecastChoice">Select between 5 day / 3h and 2 day / 1h forecasts</string>
+    <string name="settings_summary_forecastChoice">Select between 5 day / 3h and 2 day / 1h + 3 day / 3h forecasts</string>
     <string name="settings_forecastChoice">Forecast</string>
     <string name="registerOWM">Please enter your API key in settings. If you do not yet have an API key, please press the button below for free registration:</string>
     <string name="registerOWMbutton">Register for free</string>

@@ -43,9 +43,5 @@ public class ItemViewHolder extends RecyclerView.ViewHolder {
         return tvCountry;
     }
 
-    /**
-     * @return Returns the TextView of the item.
-     */
-
 
 }

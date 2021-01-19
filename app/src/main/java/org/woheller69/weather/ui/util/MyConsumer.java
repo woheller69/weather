@@ -5,5 +5,5 @@ package org.woheller69.weather.ui.util;
  */
 
 public interface MyConsumer<T> {
-    public void accept(T t);
+    void accept(T t);
 }

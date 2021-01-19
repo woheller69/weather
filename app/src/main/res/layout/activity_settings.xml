@@ -17,7 +17,6 @@
         <include layout="@layout/toolbar" />
 
         <LinearLayout
-            android:id="@+id/main_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#FFFFFF"
@@ -27,11 +26,11 @@
             android:layout_marginTop="?attr/actionBarSize"
             android:weightSum="1">
 
-            <fragment
-                android:name="org.woheller69.weather.activities.SettingsActivity$GeneralPreferenceFragment"
-                android:id="@+id/settings_fragment"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+        <androidx.fragment.app.FragmentContainerView
+            android:name="org.woheller69.weather.activities.SettingsActivity$GeneralPreferenceFragment"
+            android:id="@+id/settings_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
         </LinearLayout>
 

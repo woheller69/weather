@@ -29,7 +29,7 @@
 
     <string-array name="forecastChoiceArray">
         <item>5 Tage / 3h</item>
-        <item>2 Tage / 1h</item>
+        <item>2 Tage / 1h + 3 Tage / 3h</item>
     </string-array>
     <string-array name="forecastChoiceValues">
         <item>1</item>

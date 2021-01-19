@@ -45,9 +45,11 @@ public class AddLocationDialog extends DialogFragment {
     final int LIST_LIMIT = 100;
 
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        this.activity = activity;
+    public void onAttach(Context context) {
+        super.onAttach(context);
+       if (context instanceof Activity){
+            this.activity=(Activity) context;
+        }
     }
 
 
@@ -110,7 +112,7 @@ public class AddLocationDialog extends DialogFragment {
         }
   //      if (database != null && !database.isCityWatched(selectedCity.getCityId())) {
         if (database != null ) {
-            List<CityToWatch> citytowatch = new ArrayList<>();
+            List<CityToWatch> citytowatch;
             citytowatch = database.getAllCitiesToWatch();
             boolean duplicate=false;
             for (CityToWatch C : citytowatch){ // Do not add city if latitude and longitude are very close to a city already watched. Otherwise there may be problems in ProcessOwmForecastOneCallAPIRequest

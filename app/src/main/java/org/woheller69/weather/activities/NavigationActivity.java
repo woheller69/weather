@@ -27,10 +27,6 @@ public class NavigationActivity extends AppCompatActivity implements OnNavigatio
 
     // delay to launch nav drawer item, to allow close animation to play
     static final int NAVDRAWER_LAUNCH_DELAY = 250;
-    // fade in and fade out durations for the main content when switching between
-    // different Activities of the app through the Nav Drawer
-    static final int MAIN_CONTENT_FADEOUT_DURATION = 150;
-    static final int MAIN_CONTENT_FADEIN_DURATION = 250;
 
     // Navigation drawer:
     private DrawerLayout mDrawerLayout;
@@ -43,16 +39,10 @@ public class NavigationActivity extends AppCompatActivity implements OnNavigatio
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_main);
 
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mHandler = new Handler();
 
-        //ActionBar ab = getSupportActionBar();
-        //if (ab != null) {
-        //    mActionBar = ab;
-        //    ab.setDisplayHomeAsUpEnabled(true);
-        //}
 
         overridePendingTransition(0, 0);
     }
@@ -98,11 +88,7 @@ public class NavigationActivity extends AppCompatActivity implements OnNavigatio
 
         selectNavigationItem(itemId);
 
-        // fade out the active activity
-        View mainContent = findViewById(R.id.main_content);
-        if (mainContent != null) {
-            mainContent.animate().alpha(0).setDuration(MAIN_CONTENT_FADEOUT_DURATION);
-        }
+
         return true;
     }
 
@@ -121,14 +107,9 @@ public class NavigationActivity extends AppCompatActivity implements OnNavigatio
      * @param intent
      */
     private void createBackStack(Intent intent) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            TaskStackBuilder builder = TaskStackBuilder.create(this);
-            builder.addNextIntentWithParentStack(intent);
-            builder.startActivities();
-        } else {
-            startActivity(intent);
-            finish();
-        }
+        TaskStackBuilder builder = TaskStackBuilder.create(this);
+        builder.addNextIntentWithParentStack(intent);
+        builder.startActivities();
     }
 
     private void callDrawerItem(final int itemId) {
@@ -166,27 +147,22 @@ public class NavigationActivity extends AppCompatActivity implements OnNavigatio
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         if (getSupportActionBar() == null) {
             setSupportActionBar(toolbar);
         }
 
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerLayout = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, mDrawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         mDrawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        mNavigationView = (NavigationView) findViewById(R.id.nav_view);
+        mNavigationView = findViewById(R.id.nav_view);
         mNavigationView.setNavigationItemSelectedListener(this);
 
         selectNavigationItem(getNavigationDrawerID());
 
-        View mainContent = findViewById(R.id.main_content);
-        if (mainContent != null) {
-            mainContent.setAlpha(0);
-            mainContent.animate().alpha(1).setDuration(MAIN_CONTENT_FADEIN_DURATION);
-        }
     }
 
 

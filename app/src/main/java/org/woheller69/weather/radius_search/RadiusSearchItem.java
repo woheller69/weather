@@ -132,7 +132,6 @@ public class RadiusSearchItem implements Parcelable {
      * from http://stackoverflow.com/questions/6743084/how-to-pass-an-object-to-another-activity
      * as of 2016-08-04)
      */
-    @SuppressWarnings("unchecked")
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
         @Override
         public RadiusSearchItem createFromParcel(Parcel in) {

@@ -24,8 +24,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import static androidx.core.app.JobIntentService.enqueueWork;
-
 //in-App: where cities get added & sorted
 public class ManageLocationsActivity extends NavigationActivity {
 
@@ -45,7 +43,7 @@ public class ManageLocationsActivity extends NavigationActivity {
 
         database = PFASQLiteHelper.getInstance(this);
 
-        cities = new ArrayList<CityToWatch>();
+        cities = new ArrayList<>();
 
         try {
             cities = database.getAllCitiesToWatch();

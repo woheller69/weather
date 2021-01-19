@@ -124,9 +124,7 @@ public class VolleyHttpRequest implements IHttpRequest {
             SSLContext context = SSLContext.getInstance("TLS");
             context.init(null, tmf.getTrustManagers(), null);
 
-            SSLSocketFactory sf = context.getSocketFactory();
-
-            return sf;
+            return context.getSocketFactory();
 
         } catch (CertificateException e) {
             Log.e("CERT", "CertificateException");

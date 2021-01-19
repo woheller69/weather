@@ -415,7 +415,7 @@ public class PFASQLiteHelper extends SQLiteAssetHelper {
     }
 
     public synchronized List<CityToWatch> getAllCitiesToWatch() {
-        List<CityToWatch> cityToWatchList = new ArrayList<CityToWatch>();
+        List<CityToWatch> cityToWatchList = new ArrayList<>();
 
         SQLiteDatabase database = this.getWritableDatabase();
 
@@ -564,7 +564,7 @@ public class PFASQLiteHelper extends SQLiteAssetHelper {
 
 
     public synchronized List<Forecast> getAllForecasts() {
-        List<Forecast> forecastList = new ArrayList<Forecast>();
+        List<Forecast> forecastList = new ArrayList<>();
 
         String selectQuery = "SELECT  * FROM " + TABLE_FORECAST;
 
@@ -761,7 +761,7 @@ public class PFASQLiteHelper extends SQLiteAssetHelper {
     }
 
     public synchronized List<CurrentWeatherData> getAllCurrentWeathers() {
-        List<CurrentWeatherData> currentWeatherList = new ArrayList<CurrentWeatherData>();
+        List<CurrentWeatherData> currentWeatherList = new ArrayList<>();
 
         String selectQuery = "SELECT * FROM " + TABLE_CURRENT_WEATHER;
 

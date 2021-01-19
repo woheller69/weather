@@ -50,7 +50,7 @@ public class WeatherPagerAdapter extends FragmentStatePagerAdapter implements IU
     private static int[] errorDataSetTypes = {ERROR};
 
     public WeatherPagerAdapter(Context context, FragmentManager supportFragmentManager) {
-        super(supportFragmentManager);
+        super(supportFragmentManager,FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         this.mContext = context;
         this.prefManager = new PrefManager(context);
         this.database = PFASQLiteHelper.getInstance(context);

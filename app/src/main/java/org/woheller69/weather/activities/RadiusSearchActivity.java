@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import androidx.core.content.res.ResourcesCompat;
+
 import org.woheller69.weather.R;
 import org.woheller69.weather.database.City;
 import org.woheller69.weather.database.PFASQLiteHelper;
@@ -164,9 +166,9 @@ public class RadiusSearchActivity extends NavigationActivity {
     private void enableOkButton(Boolean enabled) {
         btnSearch.setEnabled(enabled);
         if (enabled) {
-            btnSearch.setBackground(getResources().getDrawable(R.drawable.button_fullwidth));
+            btnSearch.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.button_fullwidth,null));
         } else {
-            btnSearch.setBackground(getResources().getDrawable(R.drawable.button_disabled));
+            btnSearch.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.button_disabled,null));
         }
     }
 

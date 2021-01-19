@@ -96,7 +96,7 @@
     <string name="long_press_text">Удерживайте и тащите для сортировки.</string>
     <string name="swipe_to_delete">Проведите, чтобы удалить</string>
     <string name="settings_title_forecastChoice">Предпочтения отображения</string>
-    <string name="settings_summary_forecastChoice">Выбрать между прогнозами в формате 5 дней / 3ч и 2 дня / 1ч</string>
+    <string name="settings_summary_forecastChoice">Выбрать между прогнозами в формате 5 дней / 3ч и 2 дня / 1ч + 3 дней / 3ч</string>
     <string name="settings_forecastChoice">Прогноз погоды</string>
     <string name="registerOWM">Пожалуйста, введите Ваш ключ API в настройках. Если у Вас ещё нет ключа API, пожалуйста, нажмите на кнопку ниже для бесплатной регистрации:</string>
     <string name="registerOWMbutton">Бесплатная регистрация</string>
