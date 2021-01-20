@@ -114,4 +114,5 @@
     <string name="units_hPa">гПа</string>
     <string name="units_Bft">Бфт</string>
     <string name="card_details_rain60min">☔ 60 мин:</string>
+    <string name="error_no_rain60min_data">нет данных</string>
 </resources>

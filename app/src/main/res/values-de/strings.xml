@@ -116,4 +116,5 @@
     <string name="units_hPa">hPa</string>
     <string name="units_Bft">Bft</string>
     <string name="card_details_rain60min">☔ 60 min:</string>
+    <string name="error_no_rain60min_data">keine Daten</string>
 </resources>

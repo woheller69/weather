@@ -83,7 +83,7 @@ public class ProcessOwmForecastOneCallAPIRequest implements IProcessHttpRequest 
                 }
             }
 
-            String rain60min="no data";
+            String rain60min=context.getResources().getString(R.string.error_no_rain60min_data);
             if (json.has("minutely")) {
                 rain60min="";
                 JSONArray listrain = json.getJSONArray("minutely");
@@ -151,7 +151,7 @@ public class ProcessOwmForecastOneCallAPIRequest implements IProcessHttpRequest 
                 JSONArray listhourly = json.getJSONArray("hourly");
 
                 dbHelper.deleteForecastsByCityId(cityId);
-                List<Forecast> hourlyforecasts = new ArrayList<>();
+                //List<Forecast> hourlyforecasts = new ArrayList<>();
 
                 for (int i = 0; i < listhourly.length(); i++) {
                     String currentItem = listhourly.get(i).toString();
@@ -167,7 +167,7 @@ public class ProcessOwmForecastOneCallAPIRequest implements IProcessHttpRequest 
                         forecast.setCity_id(cityId);
                         // add it to the database
                         dbHelper.addForecast(forecast);
-                        hourlyforecasts.add(forecast);
+                        //hourlyforecasts.add(forecast);
                     }
                 }
 

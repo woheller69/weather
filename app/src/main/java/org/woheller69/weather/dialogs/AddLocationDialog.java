@@ -25,7 +25,6 @@ import org.woheller69.weather.database.PFASQLiteHelper;
 import org.woheller69.weather.ui.util.AutoCompleteCityTextViewGenerator;
 import org.woheller69.weather.ui.util.MyConsumer;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
