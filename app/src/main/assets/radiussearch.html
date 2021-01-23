@@ -174,9 +174,14 @@ var map = L.map('map', {
 let myFilterClouds = [
     'contrast:1000%',
     'invert:100%',
-    'opacity:20%'
+    'opacity:10%'
 ];
 
+let myFilterCloudsLight = [
+    'brightness:1000%',
+    'invert:100%',
+    'opacity:20%'
+];
 let myFilterMap = [
     'saturate:200%'
 ];
@@ -190,6 +195,10 @@ let myFilterMap = [
         filter: myFilterClouds
     }).addTo(map);
 
+
+    L.tileLayer.colorFilter('https://tile.openweathermap.org/map/clouds_cls/{z}/{x}/{y}.png?appid=' + getUrlParameter('appid'),{
+        filter: myFilterCloudsLight
+    }).addTo(map);
 
     // Load actual radar animation frames timestamps from RainViewer API
     var apiRequest = new XMLHttpRequest();

@@ -62,6 +62,12 @@ var map = L.map('mapid', {
 let myFilterClouds = [
     'contrast:1000%',
     'invert:100%',
+    'opacity:10%'
+];
+
+let myFilterCloudsLight = [
+    'brightness:1000%',
+    'invert:100%',
     'opacity:20%'
 ];
 
@@ -76,6 +82,10 @@ let myFilterMap = [
 
     L.tileLayer.colorFilter('https://tile.openweathermap.org/map/clouds_cls/{z}/{x}/{y}.png?appid=' + getUrlParameter('appid'),{
         filter: myFilterClouds
+    }).addTo(map);
+
+    L.tileLayer.colorFilter('https://tile.openweathermap.org/map/clouds_cls/{z}/{x}/{y}.png?appid=' + getUrlParameter('appid'),{
+        filter: myFilterCloudsLight
     }).addTo(map);
 
 var marker = L.marker([getUrlParameter('lat'), getUrlParameter('lon')]).addTo(map);
