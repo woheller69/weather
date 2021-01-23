@@ -65,13 +65,12 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/colorPrimaryDark" />
 
-    <TextView
+    <ImageView
         android:id="@+id/course_of_day_wind_direction"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="20sp"
+        android:layout_height="20sp"
         android:layout_gravity="center"
         android:layout_marginBottom="3dp"
-        android:text="x"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/colorPrimaryDark" />
+        android:src="@drawable/ic_south_24px" />
+
 </LinearLayout>

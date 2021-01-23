@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -31,7 +32,7 @@
             android:id="@+id/card_details_content_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:columnCount="2"
             android:orientation="vertical">
 
@@ -51,9 +52,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_row="0"
                 android:text=""
+                android:letterSpacing="-0.07"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/colorPrimaryDark" />
 
@@ -73,7 +75,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_row="1"
                 android:text=""
                 android:textAppearance="?android:attr/textAppearanceMedium"
@@ -95,7 +97,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_row="2"
                 android:text=""
                 android:textAppearance="?android:attr/textAppearanceMedium"
@@ -112,16 +114,31 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/colorPrimaryDark" />
 
-            <TextView
-                android:id="@+id/card_details_wind_speed_value"
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
-                android:layout_marginLeft="10dp"
-                android:layout_row="3"
-                android:text=""
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/colorPrimaryDark" />
+                android:layout_marginStart="10dp"
+                android:layout_row="3">
+
+                <TextView
+                    android:id="@+id/card_details_wind_speed_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/colorPrimaryDark" />
+
+                <ImageView
+                    android:id="@+id/card_details_wind_direction_value"
+                    android:layout_width="15sp"
+                    android:layout_height="15sp"
+                    android:layout_toEndOf="@id/card_details_wind_speed_value"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_south_24px"
+                    tools:ignore="ContentDescription" />
+
+            </RelativeLayout>
 
         </GridLayout>
     </LinearLayout>

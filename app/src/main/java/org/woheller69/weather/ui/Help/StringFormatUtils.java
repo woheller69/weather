@@ -75,28 +75,6 @@ public final class StringFormatUtils {
     }
 
 
-    public static String formatWindDir(Context context, float wind_direction) {
-        if (wind_direction < 22.5) {
-            return Character.toString((char) 0x2193); // North
-        } else if (wind_direction < 67.5) {
-            return Character.toString((char) 0x2199); // North East
-        } else if (wind_direction < 112.5) {
-            return Character.toString((char) 0x2190); // East
-        } else if (wind_direction < 157.5) {
-            return Character.toString((char) 0x2196); // South East
-        } else if (wind_direction < 202.5) {
-            return Character.toString((char) 0x2191); // South
-        } else if (wind_direction < 247.5) {
-            return Character.toString((char) 0x2197); // South West
-        } else if (wind_direction < 292.5) {
-            return Character.toString((char) 0x2192); // West
-        } else if (wind_direction < 337.5) {
-            return Character.toString((char) 0x2198); // North West
-        } else {
-            return Character.toString((char) 0x2193); // North
-        }
-    }
-
     public static Integer getDayShort(int day){
 
         switch(day)    {
