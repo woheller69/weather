@@ -13,41 +13,55 @@
         android:background="@color/backgroundBlue">
 
 
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:gravity="center"
-        android:text="@string/chart"
-        android:textAllCaps="true"
-        android:textColor="@color/colorPrimaryDark"
-        android:textStyle="bold" />
-
-    <RelativeLayout
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-        <View
-            android:id="@+id/spacer"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/white" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:text="@string/chart"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold" />
 
-        <com.db.chart.view.LineChartView
-            android:id="@+id/graph_temperature"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_below="@+id/spacer"
-            android:background="@color/backgroundBlue"
-            chart:chart_axisBorderSpacing="8dp" />
+            <TextView
+                android:id="@+id/graph_temperatureunit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/rounded_corner"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold" />
+        </RelativeLayout>
 
-        <com.db.chart.view.BarChartView
-            android:id="@+id/graph_precipitation"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_below="@+id/spacer"
-            chart:chart_axisBorderSpacing="8dp" />
-    </RelativeLayout>
+        <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            <View
+                android:id="@+id/spacer"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/white" />
+
+            <com.db.chart.view.LineChartView
+                android:id="@+id/graph_temperature"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_below="@+id/spacer"
+                android:background="@color/backgroundBlue"
+                chart:chart_axisBorderSpacing="8dp" />
+
+            <com.db.chart.view.BarChartView
+                android:id="@+id/graph_precipitation"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_below="@+id/spacer"
+                chart:chart_axisBorderSpacing="8dp" />
+
+        </RelativeLayout>
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>
