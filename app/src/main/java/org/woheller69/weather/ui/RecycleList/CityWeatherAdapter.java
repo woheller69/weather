@@ -382,15 +382,19 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
     }
 
     public class ChartViewHolder extends ViewHolder {
-        TextView sunrise;
-        TextView sunset;
+        TextView temperatureunit;
+        TextView precipitationunit;
         LineChartView lineChartView;
         BarChartView barChartView;
+        BarChartView barChartViewAxis;
 
         ChartViewHolder(View v) {
             super(v);
             this.lineChartView = v.findViewById(R.id.graph_temperature);
             this.barChartView = v.findViewById(R.id.graph_precipitation);
+            this.temperatureunit=v.findViewById(R.id.graph_temperatureunit);
+            this.barChartViewAxis=v.findViewById(R.id.graph_axis);
+            this.precipitationunit=v.findViewById(R.id.graph_precipitationunit);
         }
     }
 
@@ -580,7 +584,7 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
             xaxis.setColor(context.getResources().getColor(R.color.colorPrimaryDark));
 
             ArrayList<ChartSet> precipitation = new ArrayList<>();
-            precipitation.add((precipitationDataset));
+            precipitation.add(precipitationDataset);
 
             precipitationDataset.setColor(context.getResources().getColor(R.color.blue));
             precipitationDataset.setAlpha(0.8f);  // make precipitation bars transparent
@@ -610,6 +614,30 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
             holder.barChartView.setBorderSpacing(Tools.fromDpToPx(30));
 
             holder.barChartView.show();
+
+            //create another bar chart to show the y-axis for precipitation on the right of the chart
+            BarSet precipitationAxisData = new BarSet();
+            precipitationAxisData.addBar("", 0);
+            ArrayList<ChartSet> precipitationAxis = new ArrayList<>();
+            precipitationAxis.add(precipitationAxisData);
+
+            precipitationAxisData.setColor(0);  //transparent color, make invisible
+
+            holder.barChartViewAxis.addData(precipitationAxis);
+            holder.barChartViewAxis.setBarSpacing(0);
+            holder.barChartViewAxis.setAxisBorderValues(0,(int) Math.max(10,pmax*2));  //scale down in case of high precipitation, limit to lower half of chart
+            holder.barChartViewAxis.setStep(Math.max(1, (int) Math.ceil(Math.max(10,pmax*2))/4));
+            holder.barChartViewAxis.setXAxis(false);
+            holder.barChartViewAxis.setYAxis(false);
+            holder.barChartViewAxis.setYLabels(AxisController.LabelPosition.OUTSIDE); // labels for precipitation at the right
+            holder.barChartViewAxis.setLabelsColor(context.getResources().getColor(R.color.colorPrimaryDark));
+            holder.barChartViewAxis.setAxisColor(context.getResources().getColor(R.color.colorPrimaryDark));
+            holder.barChartViewAxis.setFontSize((int) Tools.fromDpToPx(17));
+
+            holder.barChartViewAxis.show();
+
+            holder.temperatureunit.setText(" "+ prefManager.getWeatherUnit() + " ");
+            holder.precipitationunit.setText(" " + context.getResources().getString(R.string.units_mm)+" ");
         }
         //No update for error needed
     }
