@@ -1,5 +1,11 @@
 Changelog
 ==========
+
+Version 1.5 (2021-01-29)
+
+ * Improved GUI
+ * Code cleanup, replaced deprecated APIs
+
 Version 1.4 (2021-01-17)
 
  * Added translation for Russian #2
