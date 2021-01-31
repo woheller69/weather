@@ -10,8 +10,6 @@ package org.woheller69.weather.database;
 
 public class City {
 
-    private static final String UNKNOWN_POSTAL_CODE_VALUE = "-";
-
     private int cityId;
     private String cityName;
     private String countryCode;
@@ -55,7 +53,7 @@ public class City {
 
     @Override
     public String toString() {
-        return String.format("%s, %s (%f - %f)", cityName, countryCode, lon, lat);
+        return String.format("%s, %s (%.2f / %.2f)", cityName, countryCode, lat, lon);
     }
 
     public void setLatitude(float latitude) {
