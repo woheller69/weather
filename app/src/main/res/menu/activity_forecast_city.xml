@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/menu_refresh"
-        android:orderInCategory="100"
+        android:orderInCategory="90"
         android:title="@string/action_refresh"
         android:icon="@drawable/ic_refresh_24px"
         app:actionViewClass="android.widget.ImageButton"
