@@ -60,6 +60,7 @@
                 android:id="@+id/graph_temperature"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_below="@+id/spacer"
                 android:background="@color/backgroundBlue"
@@ -69,16 +70,18 @@
                 android:id="@+id/graph_precipitation"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_below="@+id/spacer"
                 chart:chart_axisBorderSpacing="8dp" />
 
             <com.db.chart.view.BarChartView
                 android:id="@+id/graph_axis"
-                android:layout_width="25dp"
+                android:layout_width="30dp"
                 android:layout_height="200dp"
                 android:layout_below="@+id/spacer"
-                android:layout_marginEnd="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="2dp"
                 android:layout_alignParentEnd="true" />
         </RelativeLayout>
 
