@@ -146,7 +146,12 @@ public class AutoCompleteCityTextViewGenerator {
                 } else {
                     cityAdapter.clear();
                     cityAdapter.addAll(cities);
-                    editField.showDropDown();
+                    try {
+                        editField.showDropDown();
+                    }
+                    catch(Exception e) {
+                        //avoid app crash when screen rotated while drop down list is shown
+                    }
                 }
             } else {
                 editField.dismissDropDown();
