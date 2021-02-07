@@ -32,6 +32,7 @@
             android:id="@+id/card_details_content_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:layout_marginStart="10dp"
             android:columnCount="2"
             android:orientation="vertical">
