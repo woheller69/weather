@@ -1,0 +1,2 @@
+Übersetzung für Französisch
+Kleine GUI Änderungen und Bugfixes

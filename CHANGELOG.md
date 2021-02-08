@@ -1,6 +1,11 @@
 Changelog
 ==========
 
+Version 1.6 (2021-02-08)
+
+ * Added French translation
+ * Minor GUI changes and bugfixes
+
 Version 1.5 (2021-01-29)
 
  * Improved GUI

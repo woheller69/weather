@@ -1,0 +1,2 @@
+ Added French translation
+ Minor GUI changes and bugfixes

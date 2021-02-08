@@ -1,0 +1,16 @@
+RadarWeather vous permet de regarder le temps pour les villes et les lieux que vous êtes intéressé.
+
+Les données météorologiques sont fournies via l'API libre de OpenWeatherMap. Comme la nouvelle API One Call permet seulement 1000 appels par jour, chaque utilisateur doit entrer sa propre clé OpenWeatherMap gratuite (https://home.openweathermap.org/users/sign_up).
+Les données pour le radar de pluie sont récupérées via l'API RainViewer gratuite.
+
+Caractéristiques:
+- Météo actuelle
+- Prévisions horaires pour les prévisions de 48h / 3h pour 5 jours
+- Prévisions de 8 jours
+- Précipitations à 60min
+- Radar de pluie
+- Recherche radius
+- Pas de publicité
+
+Autorisations minimales:
+RadarWeather n'exige que le minimum de permission, à savoir seulement la permission INTERNET. Cette autorisation est nécessaire pour faire des requêtes HTTP à des serveurs distants pour récupérer des données météorologiques.
