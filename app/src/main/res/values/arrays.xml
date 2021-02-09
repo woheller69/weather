@@ -56,8 +56,8 @@
     </array>
 
     <string-array name="forecastChoiceArray">
-        <item>5 day / 3h</item>
-        <item>2 day / 1h + 3 day / 3h</item>
+        <item>@string/settings_forecast_option_1</item>
+        <item>@string/settings_forecast_option_2</item>
     </string-array>
     <string-array name="forecastChoiceValues">
         <item>1</item>

@@ -77,6 +77,8 @@
     <string name="settings_update_interval">Update Intervall</string>
     <string name="settings_title_forecastChoice">Anzeigeoptionen</string>
     <string name="settings_summary_forecastChoice">Wählen Sie zwischen 5 Tage / 3h und 2 Tage / 1h + 3 Tage / 3h Vorhersage</string>
+    <string name="settings_forecast_option_1">5 Tage / 3h</string>
+    <string name="settings_forecast_option_2">2 Tage / 1h + 3 Tage / 3h</string>
     <string name="settings_forecastChoice">Vorhersage</string>
 
     <string name="navigation_drawer_open">Navigationsleiste öffnen</string>
