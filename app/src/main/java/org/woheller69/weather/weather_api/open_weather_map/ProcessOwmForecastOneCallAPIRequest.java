@@ -175,7 +175,7 @@ public class ProcessOwmForecastOneCallAPIRequest implements IProcessHttpRequest 
 
                 //now also request forecasts for the time after 48h from 5day/3h forecast API. These will be appended to the forecasts retrieved above.
                 IHttpRequestForForecast forecastRequest = new OwmHttpRequestForForecast(context);
-                forecastRequest.perform(cityId);
+                forecastRequest.perform(lat,lon);
             }
 
         } catch (JSONException e) {

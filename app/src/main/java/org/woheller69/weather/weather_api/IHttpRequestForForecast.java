@@ -7,8 +7,9 @@ package org.woheller69.weather.weather_api;
 public interface IHttpRequestForForecast {
 
     /**
-     * @param cityId The (OWM) ID of the city to get the data for.
+     * @param lat The latitude of the city to get the data for.
+     * @param lon The longitude of the city to get the data for.
      */
-    void perform(int cityId);
+    void perform(float lat, float lon);
 
 }

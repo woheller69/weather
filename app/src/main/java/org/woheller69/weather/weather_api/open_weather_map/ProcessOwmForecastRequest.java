@@ -12,6 +12,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.woheller69.weather.R;
+import org.woheller69.weather.database.CityToWatch;
 import org.woheller69.weather.database.Forecast;
 import org.woheller69.weather.database.PFASQLiteHelper;
 import org.woheller69.weather.database.WeekForecast;
@@ -61,7 +62,26 @@ public class ProcessOwmForecastRequest implements IProcessHttpRequest {
         try {
             JSONObject json = new JSONObject(response);
             JSONArray list = json.getJSONArray("list");
-            int cityId = json.getJSONObject("city").getInt("id");
+            JSONObject jsoncity = json.getJSONObject("city");
+            JSONObject coord = jsoncity.getJSONObject("coord");
+            float lat = (float)coord.getDouble("lat");
+            float lon = (float)coord.getDouble("lon");
+             //          Log.d("URL JSON",Float.toString(lat));
+             //          Log.d("URL JSON",Float.toString(lon));
+
+            int cityId=0;
+            //find CityID from lat/lon
+            List<CityToWatch> citiesToWatch = dbHelper.getAllCitiesToWatch();
+            for (int i = 0; i < citiesToWatch.size(); i++) {
+                CityToWatch city = citiesToWatch.get(i);
+                //if lat/lon of json response very close to lat/lon in citytowatch
+                //OpenWeatherMaps rounds to 2 decimal places, so the response lat/lon should differ by <=0.005
+                if ((Math.abs(city.getLatitude() - lat)<=0.005) && (Math.abs(city.getLongitude() - lon)<=0.005)) {
+                    cityId=city.getCityId();
+                     //                  Log.d("URL CITYID", Integer.toString(cityId));
+                    break;
+                }
+            }
 
             List<Forecast> forecasts = new ArrayList<>();
 
