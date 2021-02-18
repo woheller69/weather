@@ -1,5 +1,7 @@
 # RadarWeather
 
+<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/2.png" width="150"/> <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/3.png" width="150"/> <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/4.png" width="150"/> <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/5.png" width="150"/> <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/6.png" width="150"/>
+
 This application is forked from Privacy Friendly Weather (https://github.com/SecUSo/privacy-friendly-weather) a privacy friendly weather app.
 The original function has been modified to support the new OpenWeather One Call API, which provides a lot more features, like precipitation forecast for the next 60 minutes,
 hourly forecasts for the next 2 days, 8 day week forecasts, etc. In addition a rain radar functionality powered by RainViewer API (https://www.rainviewer.com/api.html) has been added. More weather categories were added, most images and icons were replaced. RadiusSearch now also shows the results on a map with weather icons.
@@ -11,14 +13,6 @@ Please register for free account at: https://home.openweathermap.org/users/sign_
 
 [<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" height="75">](https://f-droid.org/de/packages/org.woheller69.weather/)
 
-## Building 
-
-Further development requires Android Studio, we recommend to use at least version 2.2.2
-
-### API Reference
-
-Minimum SDK: 17
-Target SDK: 25
 
 ## License
 
