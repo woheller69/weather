@@ -14,18 +14,15 @@
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Enter API Key"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/slide_title"
-            android:textStyle="bold" />
+
 
         <ImageView
             android:layout_width="@dimen/img_width_height"
             android:layout_height="@dimen/img_width_height"
             android:background="@drawable/splash_icon" />
+        <Space
+            android:layout_width="1dp"
+            android:layout_height="20dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -39,10 +36,9 @@
             android:textColor="@android:color/white"
             android:textSize="@dimen/slide_desc" />
 
-
         <Space
             android:layout_width="1dp"
-            android:layout_height="80dp"/>
+            android:layout_height="60dp"/>
 
     </LinearLayout>
 

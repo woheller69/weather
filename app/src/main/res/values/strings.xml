@@ -110,7 +110,7 @@
     <string name="settings_forecast_option_1">5 day / 3h</string>
     <string name="settings_forecast_option_2">2 day / 1h + 3 day / 3h</string>
     <string name="settings_forecastChoice">Forecast</string>
-    <string name="registerOWM">Please enter your API key in settings. If you do not yet have an API key, please press the button below for free registration:</string>
+    <string name="registerOWM">Weather information is fetched from OpenWeatherMap. Please enter your API key in settings. If you do not yet have an API key, please press the button below for free registration:</string>
     <string name="registerOWMbutton">Register for free</string>
     <string name="monday">Monday</string>
     <string name="tuesday">Tuesday</string>

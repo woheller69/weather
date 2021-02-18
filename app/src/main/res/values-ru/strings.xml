@@ -100,7 +100,7 @@
     <string name="settings_forecast_option_1">5 дней / 3ч</string>
     <string name="settings_forecast_option_2">2 Дней / 1h + 3 Дней / 3h</string>
     <string name="settings_forecastChoice">Прогноз погоды</string>
-    <string name="registerOWM">Пожалуйста, введите Ваш ключ API в настройках. Если у Вас ещё нет ключа API, пожалуйста, нажмите на кнопку ниже для бесплатной регистрации:</string>
+    <string name="registerOWM">Информация о погоде достаётся из сервиса OpenWeatherMap. Пожалуйста, введите Ваш ключ API в настройках. Если у Вас ещё нет ключа API, пожалуйста, нажмите на кнопку ниже для бесплатной регистрации:</string>
     <string name="registerOWMbutton">Бесплатная регистрация</string>
     <string name="monday">Понедельник</string>
     <string name="tuesday">Вторник</string>

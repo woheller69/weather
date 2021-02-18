@@ -101,7 +101,7 @@
     <string name="settings_forecast_option_1">5 días /3h</string>
     <string name="settings_forecast_option_2">2 días /1h + 3 días /3h</string>
     <string name="settings_forecastChoice">Previsión del tiempo</string>
-    <string name="registerOWM">Ingrese su clave API en la configuración. Si aún no tiene una clave API, presione el botón a continuación para registrarse gratis:</string>
+    <string name="registerOWM">La información meteorológica se obtiene de OpenWeatherMap. Ingrese su clave API en la configuración. Si aún no tiene una clave API, presione el botón a continuación para registrarse gratis:</string>
     <string name="registerOWMbutton">Registrate gratis</string>
     <string name="monday">lunes</string>
     <string name="tuesday">martes</string>

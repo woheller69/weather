@@ -104,7 +104,7 @@
     <string name="long_press_text">Maintenez et faites glisser pour trier les villes.</string>
     <string name="swipe_to_delete">Balayez pour effacer</string>
     <string name="RainViewer">Radar de pluie</string>
-    <string name="registerOWM">Veuillez saisir votre clé API dans les paramètres. Si vous n\'avez pas encore de clé API, appuyez sur le bouton ci-dessous pour vous inscrire gratuitement:</string>
+    <string name="registerOWM">Les informations météorologiques proviennent du OpenWeatherMap. Veuillez saisir votre clé API dans les paramètres. Si vous n\'avez pas encore de clé API, appuyez sur le bouton ci-dessous pour vous inscrire gratuitement:</string>
     <string name="registerOWMbutton">Inscription gratuite</string>
 
     <string name="monday">Lundi</string>
