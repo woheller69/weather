@@ -75,8 +75,8 @@ public class AddLocationDialog extends DialogFragment {
         cityTextViewGenerator.generate(autoCompleteTextView, LIST_LIMIT, EditorInfo.IME_ACTION_DONE, new MyConsumer<City>() {
             @Override
             public void accept(City city) {
-                selectedCity = city;
-                if(selectedCity!=null) {
+                if(city!=null) {
+                    selectedCity = city;
                     //Hide keyboard to have more space
                     final InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(rootView.getWindowToken(), 0);
