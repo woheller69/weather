@@ -1,6 +1,11 @@
 Changelog
 ==========
 
+Version 1.7 (2021-02-22)
+
+ * Added Spanish translation
+ * Minor internal changes and bugfixes (#7)
+
 Version 1.6 (2021-02-08)
 
  * Added French translation
