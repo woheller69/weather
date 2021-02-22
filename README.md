@@ -33,6 +33,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 
 The app also uses:
+- The weather data service is provided by [OpenWeatherMap](https://openweathermap.org/), under <a href='http://creativecommons.org/licenses/by-sa/4.0/'>Creative Commons licence CC BY-SA 4.0</a>.
 - Icons from [Google Material Design Icons](https://material.io/resources/icons/) licensed under Apache License Version 2.0 (http://www.apache.org/licenses/LICENSE-2.0)
 - Leaflet which is licensed under the very permissive 2-clause BSD License. (https://github.com/Leaflet/Leaflet/blob/master/FAQ.md)
 - Leaflet.TileLayer.ColorFilter which is licensed under MIT License. (https://github.com/xtk93x/Leaflet.TileLayer.ColorFilter/blob/master/LICENSE)
