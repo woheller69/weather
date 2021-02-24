@@ -195,7 +195,7 @@ public class RadiusSearchActivity extends NavigationActivity {
         }
 
         IHttpRequestForRadiusSearch radiusSearchRequest = new OwmHttpRequestForRadiusSearch(getApplicationContext());
-        radiusSearchRequest.perform(dropdownSelectedCity.getCityId(), edgeLength, numberOfReturnCities);
+        radiusSearchRequest.perform(dropdownSelectedCity.getLatitude(),dropdownSelectedCity.getLongitude(), edgeLength, numberOfReturnCities);
     }
 
     /**

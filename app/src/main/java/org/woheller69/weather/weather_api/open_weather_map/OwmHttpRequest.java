@@ -36,17 +36,19 @@ public class OwmHttpRequest {
      *
      *
      * @param context
-     * @param cityId    The ID of the city to get the data for.
+     * @param lat The latitude of the city to get the forecast data for.
+     * @param lon The longitude of the city to get the forecast data for.
      * @param useMetric If set to true, temperature values will be in Celsius.
      * @return Returns the URL that can be used to query the weather for the given city.
      */
-    protected String getUrlForQueryingSingleCity(Context context, int cityId, boolean useMetric) {
+    protected String getUrlForQueryingSingleCity(Context context, float lat, float lon, boolean useMetric) {
         AppPreferencesManager prefManager =
                 new AppPreferencesManager(PreferenceManager.getDefaultSharedPreferences(context));
                 return String.format(
-                "%sweather?id=%s%s&appid=%s",
+                "%sweather?lat=%s&lon=%s%s&appid=%s",
                         BuildConfig.BASE_URL,
-                cityId,
+                        lat,
+                        lon,
                 (useMetric) ? "&units=metric" : "",
                 prefManager.getOWMApiKey(context)
         );

@@ -27,9 +27,9 @@ public class OwmHttpRequestForRadiusSearch extends OwmHttpRequest implements IHt
     }
 
     @Override
-    public void perform(int cityId, int edgeLength, int resultCount) {
+    public void perform(float lat, float lon, int edgeLength, int resultCount) {
         IHttpRequest httpRequest = new VolleyHttpRequest(context);
-        final String URL = getUrlForQueryingSingleCity(context, cityId, false);
+        final String URL = getUrlForQueryingSingleCity(context, lat, lon, false);
         httpRequest.make(URL, HttpRequestType.GET, new ProcessRadiusSearchRequest(context, edgeLength, resultCount));
     }
 
