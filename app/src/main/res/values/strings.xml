@@ -127,5 +127,13 @@
     <string name="units_Bft">Bft</string>
     <string name="card_details_rain60min">☔ 60 min:</string>
     <string name="error_no_rain60min_data">no data</string>
+    <string name="dialog_edit_change_button">Modify</string>
+    <string name="dialog_edit_label">CAUTION: This will modify the internal city list!</string>
+    <string name="edit_location_hint_search">Search location</string>
+    <string name="edit_location_hint_name">Name</string>
+    <string name="edit_location_hint_latitude">Latitude</string>
+    <string name="edit_location_hint_longitude">Longitude</string>
+    <string name="edit_location_hint_country_code">Country Code</string>
+    <string name="edit_location_hint_ID" translatable="false">ID</string>
 
 </resources>

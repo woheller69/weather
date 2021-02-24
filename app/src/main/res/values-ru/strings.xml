@@ -117,4 +117,11 @@
     <string name="units_Bft">Бфт</string>
     <string name="card_details_rain60min">☔ 60 мин:</string>
     <string name="error_no_rain60min_data">нет данных</string>
+    <string name="dialog_edit_change_button">модифицировать</string>
+    <string name="dialog_edit_label">"ВНИМАНИЕ: это изменит внутренний список городов! "</string>
+    <string name="edit_location_hint_search">Искать место</string>
+    <string name="edit_location_hint_name">Имя</string>
+    <string name="edit_location_hint_latitude">"Широта "</string>
+    <string name="edit_location_hint_longitude">Долгота</string>
+    <string name="edit_location_hint_country_code">код страны</string>
 </resources>

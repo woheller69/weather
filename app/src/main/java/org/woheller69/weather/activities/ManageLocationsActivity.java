@@ -14,6 +14,7 @@ import org.woheller69.weather.R;
 import org.woheller69.weather.database.CityToWatch;
 import org.woheller69.weather.database.PFASQLiteHelper;
 import org.woheller69.weather.dialogs.AddLocationDialog;
+import org.woheller69.weather.dialogs.EditLocationDialog;
 import org.woheller69.weather.preferences.PrefManager;
 import org.woheller69.weather.ui.RecycleList.RecyclerItemClickListener;
 import org.woheller69.weather.ui.RecycleList.RecyclerOverviewListAdapter;
@@ -88,18 +89,34 @@ public class ManageLocationsActivity extends NavigationActivity {
         touchHelper = new ItemTouchHelper(callback);
         touchHelper.attachToRecyclerView(recyclerView);
 
-        FloatingActionButton addFab = (FloatingActionButton) findViewById(R.id.fabAddLocation);
-        if (addFab != null) {
+        FloatingActionButton addFab1 = (FloatingActionButton) findViewById(R.id.fabAddLocation);
+        FloatingActionButton addFab2 = (FloatingActionButton) findViewById(R.id.fabEditLocation);
 
-            addFab.setOnClickListener(new View.OnClickListener() {
+        if (addFab1 != null) {
+
+            addFab1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     FragmentManager fragmentManager = getSupportFragmentManager();
+
                     AddLocationDialog addLocationDialog = new AddLocationDialog();
                     addLocationDialog.show(fragmentManager, "AddLocationDialog");
                     getSupportFragmentManager().executePendingTransactions();
                     addLocationDialog.getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+                }
+            });
+        }
 
+        if (addFab2 != null) {
+
+            addFab2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    EditLocationDialog editLocationDialog = new EditLocationDialog();
+                    editLocationDialog.show(fragmentManager, "EditLocationDialog");
+                    getSupportFragmentManager().executePendingTransactions();
+                    editLocationDialog.getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
                 }
             });
 

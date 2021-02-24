@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="0dp"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="0dp">
+
+    <AutoCompleteTextView
+        android:id="@+id/autoCompleteTvAddDialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/edit_location_hint_search"
+        android:imeOptions="actionDone"
+        android:maxLines="1"
+        android:inputType="text" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/EditLocationName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/edit_location_hint_name"/>
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/EditLocation_Lat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/edit_location_hint_latitude"/>
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/EditLocationLon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/edit_location_hint_longitude"/>
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/EditLocationCounty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/edit_location_hint_country_code"/>
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/EditLocation_ID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/edit_location_hint_ID"/>
+</LinearLayout>
+</ScrollView>

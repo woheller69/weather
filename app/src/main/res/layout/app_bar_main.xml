@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true"
     tools:context="org.woheller69.weather.activities.ManageLocationsActivity">
 
@@ -17,5 +18,14 @@
         android:layout_gravity="end|bottom"
         android:layout_margin="@dimen/fab_margin"
         android:src="@drawable/ic_add_location_alt_24px" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabEditLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start|bottom"
+        app:fabCustomSize="30dp"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/ic_edit_location_alt_24px" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

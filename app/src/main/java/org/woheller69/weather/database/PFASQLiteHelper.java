@@ -264,6 +264,20 @@ public class PFASQLiteHelper extends SQLiteAssetHelper {
         }
     }
 
+    public synchronized int updateCity(City city) {
+        SQLiteDatabase database = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(CITIES_ID, city.getCityId());
+        values.put(CITIES_NAME, city.getCityName());
+        values.put(CITIES_COUNTRY_CODE, city.getCountryCode());
+        values.put(CITIES_LONGITUDE, city.getLongitude());
+        values.put(CITIES_LATITUDE, city.getLatitude());
+
+        return database.update(TABLE_CITIES, values, CITIES_ID + " = ?",
+                new String[]{String.valueOf(city.getCityId())});
+    }
+
     public synchronized City getCityById(Integer id) {
         SQLiteDatabase database = this.getReadableDatabase();
 
@@ -323,7 +337,7 @@ public class PFASQLiteHelper extends SQLiteAssetHelper {
                 city.setLongitude(cursor.getFloat(3));
                 city.setLatitude(cursor.getFloat(4));
 
-                // Do not add city to list if latitude and longitude are very close to other city already on list. Otherwise there may be problems in ProcessOwmForecastOneCallAPIRequest
+                // Do not add city to list if latitude and longitude are very close to other city already on list. Otherwise there may be problems in ProcessOwmForecastOneCallAPIRequest and ProcessOwmForecastRequest
                 // OpenWeatherMaps rounds to 2 decimal places but with symmetrical rounding: 1.255 -> 1.26 but also 1.265 -> 1.26. So cities should differ by more than 0.01 in lat/lon
                 boolean duplicate=false;
                 for (City C : cities) {
@@ -465,6 +479,13 @@ public class PFASQLiteHelper extends SQLiteAssetHelper {
     }
 
     public void deleteCityToWatch(CityToWatch cityToWatch) {
+
+        //First delete all weather data for city which is deleted
+        deleteCurrentWeatherByCityId(cityToWatch.getCityId());
+        deleteForecastsByCityId(cityToWatch.getCityId());
+        deleteWeekForecastsByCityId(cityToWatch.getCityId());
+
+        //Now remove city from CITIES_TO_WATCH
         SQLiteDatabase database = this.getWritableDatabase();
         database.delete(TABLE_CITIES_TO_WATCH, CITIES_TO_WATCH_ID + " = ?",
                 new String[]{Integer.toString(cityToWatch.getId())});
