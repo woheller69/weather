@@ -124,4 +124,6 @@
     <string name="edit_location_hint_latitude">"Широта "</string>
     <string name="edit_location_hint_longitude">Долгота</string>
     <string name="edit_location_hint_country_code">код страны</string>
+    <string name="edit_location_range_error">значение вне диапазона</string>
+
 </resources>

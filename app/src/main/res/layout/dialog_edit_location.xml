@@ -30,11 +30,13 @@
         android:id="@+id/EditLocation_Lat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="numberDecimal|numberSigned"
         android:hint="@string/edit_location_hint_latitude"/>
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/EditLocationLon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="numberDecimal|numberSigned"
         android:hint="@string/edit_location_hint_longitude"/>
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/EditLocationCounty"

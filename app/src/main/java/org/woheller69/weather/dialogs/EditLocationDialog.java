@@ -118,19 +118,23 @@ public class EditLocationDialog extends DialogFragment {
         if (selectedCity == null) {
             Toast.makeText(activity, R.string.dialog_add_no_city_found, Toast.LENGTH_SHORT).show();
             return;
-        }else{
+        }else {
             selectedCity.setCityName(String.valueOf(editName.getText()));
             selectedCity.setLongitude(Float.parseFloat(String.valueOf(editLon.getText())));
             selectedCity.setLatitude(Float.parseFloat(String.valueOf(editLat.getText())));
             selectedCity.setCountryCode(String.valueOf(editCC.getText()));
 
-            if (database != null) {
-                database.updateCity(selectedCity);  // store changed properties of city
+            if ((Math.abs(selectedCity.getLatitude()) <= 90) && (Math.abs(selectedCity.getLongitude()) <= 180)) {
+                if (database != null) {
+                    database.updateCity(selectedCity);  // store changed properties of city
 
-                if(database.isCityWatched(selectedCity.getCityId())) {   // if city is watched, delete it. Can be added again with AddLocation Dialog
-                    CityToWatch c = database.getCityToWatch(selectedCity.getCityId());
-                    database.deleteCityToWatch(c);
+                    if (database.isCityWatched(selectedCity.getCityId())) {   // if city is watched, delete it. Can be added again with AddLocation Dialog
+                        CityToWatch c = database.getCityToWatch(selectedCity.getCityId());
+                        database.deleteCityToWatch(c);
+                    }
                 }
+            } else {
+                Toast.makeText(activity,R.string.edit_location_range_error,Toast.LENGTH_LONG).show();
             }
         }
         dismiss();

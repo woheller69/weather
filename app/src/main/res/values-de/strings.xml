@@ -126,4 +126,5 @@
     <string name="edit_location_hint_latitude">Breitengrad</string>
     <string name="edit_location_hint_longitude">Längengrad</string>
     <string name="edit_location_hint_country_code">Länderkennung</string>
+    <string name="edit_location_range_error">Wert außerhalb des Bereichs</string>
 </resources>
