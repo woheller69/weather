@@ -1,5 +1,8 @@
 Changelog
 ==========
+Version 1.8 (2021-02-26)
+
+* Added editor for internal city list
 
 Version 1.7 (2021-02-22)
 
