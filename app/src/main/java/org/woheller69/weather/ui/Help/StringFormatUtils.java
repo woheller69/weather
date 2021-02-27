@@ -1,8 +1,10 @@
 package org.woheller69.weather.ui.Help;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.preference.PreferenceManager;
 
+import androidx.core.content.res.ResourcesCompat;
 import org.woheller69.weather.R;
 import org.woheller69.weather.preferences.AppPreferencesManager;
 
@@ -14,8 +16,8 @@ import java.util.TimeZone;
 
 public final class StringFormatUtils {
 
-    private static DecimalFormat decimalFormat = new DecimalFormat("0.0");
-    private static DecimalFormat intFormat = new DecimalFormat("0");
+    private static final DecimalFormat decimalFormat = new DecimalFormat("0.0");
+    private static final DecimalFormat intFormat = new DecimalFormat("0");
 
     public static String formatDecimal(float decimal) {
         return decimalFormat.format(decimal);
@@ -74,6 +76,49 @@ public final class StringFormatUtils {
         }
     }
 
+    public static Drawable colorWindSpeed(Context context, float wind_speed) {
+        if (wind_speed < 0.3) {
+            return ResourcesCompat.getDrawable(context.getResources(),R.drawable.rounded_transparent,null);
+        } else if (wind_speed < 1.5) {
+            return ResourcesCompat.getDrawable(context.getResources(),R.drawable.rounded_transparent,null);
+        } else if (wind_speed < 3.3) {
+            return ResourcesCompat.getDrawable(context.getResources(),R.drawable.rounded_transparent,null);
+        } else if (wind_speed < 5.5) {
+            return ResourcesCompat.getDrawable(context.getResources(),R.drawable.rounded_transparent,null);
+        } else if (wind_speed < 7.9) {
+            return ResourcesCompat.getDrawable(context.getResources(),R.drawable.rounded_transparent,null);
+        } else if (wind_speed < 10.7) {
+            return ResourcesCompat.getDrawable(context.getResources(),R.drawable.rounded_yellow,null);
+        } else if (wind_speed < 13.8) {
+            return ResourcesCompat.getDrawable(context.getResources(),R.drawable.rounded_yellow,null);
+        } else if (wind_speed < 17.1) {
+            return ResourcesCompat.getDrawable(context.getResources(),R.drawable.rounded_yellow,null);
+        } else if (wind_speed < 20.7) {
+            return ResourcesCompat.getDrawable(context.getResources(),R.drawable.rounded_orange,null);
+        } else if (wind_speed < 24.4) {
+            return ResourcesCompat.getDrawable(context.getResources(),R.drawable.rounded_orange,null);
+        } else if (wind_speed < 28.4) {
+            return ResourcesCompat.getDrawable(context.getResources(),R.drawable.rounded_lightred,null);
+        } else if (wind_speed < 32.6) {
+            return ResourcesCompat.getDrawable(context.getResources(),R.drawable.rounded_lightred,null);
+        } else {
+            return ResourcesCompat.getDrawable(context.getResources(),R.drawable.rounded_red,null);
+        }
+    }
+
+    public static Drawable colorUVindex(Context context, int uvindex) {
+        if (uvindex <=2) {
+            return ResourcesCompat.getDrawable(context.getResources(),R.drawable.rounded_transparent,null);
+        } else if (uvindex <= 5) {
+            return ResourcesCompat.getDrawable(context.getResources(),R.drawable.rounded_yellow,null);
+        } else if (uvindex <= 7) {
+            return ResourcesCompat.getDrawable(context.getResources(),R.drawable.rounded_orange,null);
+        } else if (uvindex <= 10) {
+            return ResourcesCompat.getDrawable(context.getResources(),R.drawable.rounded_lightred,null);
+        } else  {
+            return ResourcesCompat.getDrawable(context.getResources(),R.drawable.rounded_red,null);
+        }
+    }
 
     public static Integer getDayShort(int day){
 

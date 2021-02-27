@@ -134,6 +134,7 @@
                     android:id="@+id/card_details_wind_direction_value"
                     android:layout_width="15sp"
                     android:layout_height="15sp"
+                    android:layout_marginStart="10dp"
                     android:layout_toEndOf="@id/card_details_wind_speed_value"
                     android:layout_centerVertical="true"
                     android:src="@drawable/ic_south_24px"
