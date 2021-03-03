@@ -97,14 +97,14 @@ public class WeatherCityFragment extends Fragment implements IUpdateableCityUI {
     }
 
     @Override
-    public void processNewWeatherData(CurrentWeatherData data) {
+    public void processNewCurrentWeatherData(CurrentWeatherData data) {
         if (data != null && data.getCity_id() == mCityId) {
             setAdapter(new CityWeatherAdapter(data, mDataSetTypes, getContext()));
         }
     }
 
     @Override
-    public void updateForecasts(List<Forecast> forecasts) {
+    public void processNewForecasts(List<Forecast> forecasts) {
         if (forecasts != null && forecasts.size() > 0 && forecasts.get(0).getCity_id() == mCityId) {
             if (mAdapter != null) {
                 mAdapter.updateForecastData(forecasts);
@@ -113,7 +113,7 @@ public class WeatherCityFragment extends Fragment implements IUpdateableCityUI {
     }
 
     @Override
-    public void updateWeekForecasts(List<WeekForecast> forecasts) {
+    public void processNewWeekForecasts(List<WeekForecast> forecasts) {
         if (forecasts != null && forecasts.size() > 0 && forecasts.get(0).getCity_id() == mCityId) {
             if (mAdapter != null) {
                 mAdapter.updateWeekForecastData(forecasts);

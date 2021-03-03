@@ -25,35 +25,29 @@ public class ViewUpdater {
     }
 
     public static void updateCurrentWeatherData(CurrentWeatherData data) {
-        try {
+
             for (IUpdateableCityUI sub : subscribers) {
-                sub.processNewWeatherData(data);
+                if (subscribers.contains(sub)) {        //Check if list element has not been removed in the meantime; Bugfix for Concurrent Modification Exception
+                    sub.processNewCurrentWeatherData(data);
+                }
             }
-        }
-        catch ( Exception e) { //TODO: Sometimes app crashes during updateCurrentWeatherData, reason unknown
-        e.printStackTrace();
-        }
     }
 
     public static void updateWeekForecasts(List<WeekForecast> forecasts) {
-        try {
+
             for (IUpdateableCityUI sub : subscribers) {
-                sub.updateWeekForecasts(forecasts);
+                if (subscribers.contains(sub)) {
+                    sub.processNewWeekForecasts(forecasts);
+                }
             }
-        }
-        catch ( Exception e) {
-            e.printStackTrace();
-        }
     }
 
     public static void updateForecasts(List<Forecast> forecasts) {
-        try {
+
             for (IUpdateableCityUI sub : subscribers) {
-                sub.updateForecasts(forecasts);
+                if (subscribers.contains(sub)) {
+                    sub.processNewForecasts(forecasts);
+                }
             }
-        }
-        catch ( Exception e) {
-            e.printStackTrace();
-        }
     }
 }

@@ -160,20 +160,18 @@ public class ForecastCityActivity extends NavigationActivity implements IUpdatea
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         PFASQLiteHelper db = PFASQLiteHelper.getInstance(this);
-        switch(id) {
-            case R.id.menu_rainviewer:
-                if (!db.getAllCitiesToWatch().isEmpty()) {  //only if at least one city is watched, otherwise crash
-                    Intent intent = new Intent(this, RainViewerActivity.class);
-                    intent.putExtra("latitude", pagerAdapter.getLatForPos((viewPager.getCurrentItem())));
-                    intent.putExtra("longitude", pagerAdapter.getLonForPos((viewPager.getCurrentItem())));
-                    startActivity(intent);
-                    break;
-                }
-            case R.id.menu_refresh:
-                 if (!db.getAllCitiesToWatch().isEmpty()) {  //only if at least one city is watched, otherwise crash
-                     pagerAdapter.refreshSingleData(true, pagerAdapter.getCityIDForPos(viewPager.getCurrentItem()));
-                     startRefreshAnimation();
-                 }
+        if (id==R.id.menu_rainviewer) {
+            if (!db.getAllCitiesToWatch().isEmpty()) {  //only if at least one city is watched, otherwise crash
+                Intent intent = new Intent(this, RainViewerActivity.class);
+                intent.putExtra("latitude", pagerAdapter.getLatForPos((viewPager.getCurrentItem())));
+                intent.putExtra("longitude", pagerAdapter.getLonForPos((viewPager.getCurrentItem())));
+                startActivity(intent);
+            }
+        }else if (id==R.id.menu_refresh){
+            if (!db.getAllCitiesToWatch().isEmpty()) {  //only if at least one city is watched, otherwise crash
+                pagerAdapter.refreshSingleData(true, pagerAdapter.getCityIDForPos(viewPager.getCurrentItem()));
+                startRefreshAnimation();
+            }
         }
 
         return super.onOptionsItemSelected(item);
@@ -186,21 +184,21 @@ public class ForecastCityActivity extends NavigationActivity implements IUpdatea
     }
 
     @Override
-    public void processNewWeatherData(CurrentWeatherData data) {
+    public void processNewCurrentWeatherData(CurrentWeatherData data) {
         if (refreshActionButton != null && refreshActionButton.getActionView() != null) {
             refreshActionButton.getActionView().clearAnimation();
         }
     }
 
     @Override
-    public void updateWeekForecasts(List<WeekForecast> forecasts) {
+    public void processNewWeekForecasts(List<WeekForecast> forecasts) {
         if (refreshActionButton != null && refreshActionButton.getActionView() != null) {
             refreshActionButton.getActionView().clearAnimation();
         }
     }
 
     @Override
-    public void updateForecasts(List<Forecast> forecasts) {
+    public void processNewForecasts(List<Forecast> forecasts) {
         if (refreshActionButton != null && refreshActionButton.getActionView() != null) {
             refreshActionButton.getActionView().clearAnimation();
         }

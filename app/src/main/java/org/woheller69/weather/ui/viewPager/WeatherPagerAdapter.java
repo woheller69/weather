@@ -108,7 +108,7 @@ public class WeatherPagerAdapter extends FragmentStatePagerAdapter implements IU
     }
 
     @Override
-    public void processNewWeatherData(CurrentWeatherData data) {
+    public void processNewCurrentWeatherData(CurrentWeatherData data) {
         lastUpdateTime = data.getTimestamp();
         int id = data.getCity_id();
         CurrentWeatherData old = findWeatherFromID(currentWeathers, id);
@@ -118,12 +118,12 @@ public class WeatherPagerAdapter extends FragmentStatePagerAdapter implements IU
     }
 
     @Override
-    public void updateForecasts(List<Forecast> forecasts) {
+    public void processNewForecasts(List<Forecast> forecasts) {
         //empty because Fragments are subscribers themselves
     }
 
     @Override
-    public void updateWeekForecasts(List<WeekForecast> forecasts) {
+    public void processNewWeekForecasts(List<WeekForecast> forecasts) {
         //empty because Fragments are subscribers themselves
     }
 
