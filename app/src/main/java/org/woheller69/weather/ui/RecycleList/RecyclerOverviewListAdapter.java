@@ -27,7 +27,7 @@ public class RecyclerOverviewListAdapter extends RecyclerView.Adapter<ItemViewHo
      * Member variables
      */
     private Context context;
-    private static List<CityToWatch> cities;
+    private final List<CityToWatch> cities;
     PrefManager prefManager;
     PFASQLiteHelper database;
 
@@ -37,9 +37,9 @@ public class RecyclerOverviewListAdapter extends RecyclerView.Adapter<ItemViewHo
      */
     public RecyclerOverviewListAdapter(Context context, List<CityToWatch> cities) {
         this.context = context;
-        RecyclerOverviewListAdapter.cities = cities;
-        prefManager = new PrefManager(context);
-        database = PFASQLiteHelper.getInstance(context);
+        this.cities = cities;
+        this.prefManager = new PrefManager(context);
+        this.database = PFASQLiteHelper.getInstance(context);
     }
 
 
@@ -78,12 +78,9 @@ public class RecyclerOverviewListAdapter extends RecyclerView.Adapter<ItemViewHo
      */
     @Override
     public void onItemDismiss(int position) {
-        List<CityToWatch> cityList = getListItems();
 
-        CityToWatch city = cityList.get(position);
-
+        CityToWatch city = cities.get(position);
         database.deleteCityToWatch(city);
-
         cities.remove(position);
         notifyItemRemoved(position);
     }
@@ -106,13 +103,6 @@ public class RecyclerOverviewListAdapter extends RecyclerView.Adapter<ItemViewHo
         Collections.swap(cities, fromPosition, toPosition);
         notifyItemMoved(fromPosition, toPosition);
 
-    }
-
-    /**
-     * @return Returns the items of the list.
-     */
-    public static List<CityToWatch> getListItems() {
-        return cities;
     }
 
 

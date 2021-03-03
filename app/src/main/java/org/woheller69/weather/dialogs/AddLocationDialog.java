@@ -121,33 +121,12 @@ public class AddLocationDialog extends DialogFragment {
                 }
             }
             if (!duplicate) {
-                addCity();
-                ((ManageLocationsActivity) activity).addCityToList(convertCityToWatched());
+                ((ManageLocationsActivity) activity).addCityToList(selectedCity);
+
             }
             else Toast.makeText(activity, R.string.error_dialog_add_city_too_close, Toast.LENGTH_SHORT).show();
         }
         dismiss();
     }
 
-    private CityToWatch convertCityToWatched() {
-
-
-        return new CityToWatch(
-                database.getMaxRank() + 1,
-                selectedCity.getCountryCode(),
-                -1,
-                selectedCity.getCityId(), selectedCity.getLongitude(),selectedCity.getLatitude(),
-                selectedCity.getCityName()
-        );
-    }
-
-    public void addCity() {
-        new AsyncTask<CityToWatch, Void, Void>() {
-            @Override
-            protected Void doInBackground(CityToWatch... params) {
-                database.addCityToWatch(params[0]);
-                return null;
-            }
-        }.doInBackground(convertCityToWatched());
-    }
 }

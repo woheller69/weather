@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import org.woheller69.weather.R;
+import org.woheller69.weather.database.City;
 import org.woheller69.weather.database.CityToWatch;
 import org.woheller69.weather.database.PFASQLiteHelper;
 import org.woheller69.weather.dialogs.AddLocationDialog;
@@ -42,9 +43,9 @@ public class ManageLocationsActivity extends NavigationActivity {
         setContentView(R.layout.activity_manage_locations);
         overridePendingTransition(0, 0);
 
-        database = PFASQLiteHelper.getInstance(this);
+        database = PFASQLiteHelper.getInstance(getApplicationContext());
 
-        cities = new ArrayList<>();
+        //cities = new ArrayList<>();
 
         try {
             cities = database.getAllCitiesToWatch();
@@ -81,7 +82,7 @@ public class ManageLocationsActivity extends NavigationActivity {
                 })
         );
 
-        adapter = new RecyclerOverviewListAdapter(getBaseContext(), cities);
+        adapter = new RecyclerOverviewListAdapter(getApplicationContext(), cities);
         recyclerView.setAdapter(adapter);
         recyclerView.setFocusable(false);
 
@@ -98,7 +99,6 @@ public class ManageLocationsActivity extends NavigationActivity {
                 @Override
                 public void onClick(View view) {
                     FragmentManager fragmentManager = getSupportFragmentManager();
-
                     AddLocationDialog addLocationDialog = new AddLocationDialog();
                     addLocationDialog.show(fragmentManager, "AddLocationDialog");
                     getSupportFragmentManager().executePendingTransactions();
@@ -139,9 +139,31 @@ public class ManageLocationsActivity extends NavigationActivity {
         return R.id.nav_manage;
     }
 
-    public void addCityToList(CityToWatch city) {
-        cities.add(city);
+    public void deleteCityFromList(CityToWatch city) {
+        for (int i=0;i<cities.size();i++){
+            if (cities.get(i).getCityId()==city.getCityId()) {
+                cities.remove(i);
+                break;
+            }
+        }
+        database.deleteCityToWatch(city);
         adapter.notifyDataSetChanged();
     }
 
+    public void addCityToList(City city) {
+        CityToWatch newCity=convertCityToWatched(city);
+        cities.add(newCity);
+        database.addCityToWatch(newCity);
+        adapter.notifyDataSetChanged();
+    }
+    private CityToWatch convertCityToWatched(City selectedCity) {
+
+        return new CityToWatch(
+                database.getMaxRank() + 1,
+                selectedCity.getCountryCode(),
+                -1,
+                selectedCity.getCityId(), selectedCity.getLongitude(),selectedCity.getLatitude(),
+                selectedCity.getCityName()
+        );
+    }
 }

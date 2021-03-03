@@ -21,6 +21,7 @@ import androidx.appcompat.widget.AppCompatEditText;
 import androidx.fragment.app.DialogFragment;
 
 import org.woheller69.weather.R;
+import org.woheller69.weather.activities.ManageLocationsActivity;
 import org.woheller69.weather.database.City;
 import org.woheller69.weather.database.CityToWatch;
 import org.woheller69.weather.database.PFASQLiteHelper;
@@ -130,7 +131,7 @@ public class EditLocationDialog extends DialogFragment {
 
                     if (database.isCityWatched(selectedCity.getCityId())) {   // if city is watched, delete it. Can be added again with AddLocation Dialog
                         CityToWatch c = database.getCityToWatch(selectedCity.getCityId());
-                        database.deleteCityToWatch(c);
+                        ((ManageLocationsActivity) activity).deleteCityFromList(c);
                     }
                 }
             } else {
