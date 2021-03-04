@@ -139,14 +139,16 @@ public class ManageLocationsActivity extends NavigationActivity {
         return R.id.nav_manage;
     }
 
-    public void deleteCityFromList(CityToWatch city) {
+    public void modifyCityToWatch(CityToWatch city, City selectedCity) {
         for (int i=0;i<cities.size();i++){
             if (cities.get(i).getCityId()==city.getCityId()) {
-                cities.remove(i);
+                cities.get(i).setCityName(selectedCity.getCityName());
+                cities.get(i).setLongitude(selectedCity.getLongitude());
+                cities.get(i).setLatitude(selectedCity.getLatitude());
+                cities.get(i).setCountryCode(selectedCity.getCountryCode());
                 break;
             }
         }
-        database.deleteCityToWatch(city);
         adapter.notifyDataSetChanged();
     }
 

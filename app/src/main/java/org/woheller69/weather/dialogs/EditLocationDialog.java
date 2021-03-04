@@ -16,6 +16,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
 
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatEditText;
 
 import androidx.fragment.app.DialogFragment;
@@ -129,9 +130,9 @@ public class EditLocationDialog extends DialogFragment {
                 if (database != null) {
                     database.updateCity(selectedCity);  // store changed properties of city
 
-                    if (database.isCityWatched(selectedCity.getCityId())) {   // if city is watched, delete it. Can be added again with AddLocation Dialog
+                    if (database.isCityWatched(selectedCity.getCityId())) {   // if city is watched, modify it.
                         CityToWatch c = database.getCityToWatch(selectedCity.getCityId());
-                        ((ManageLocationsActivity) activity).deleteCityFromList(c);
+                        ((ManageLocationsActivity) activity).modifyCityToWatch(c,selectedCity);
                     }
                 }
             } else {
