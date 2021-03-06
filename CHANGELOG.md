@@ -1,5 +1,11 @@
 Changelog
 ==========
+
+Version 1.9 (2021-03-06)
+
+* Added colored background for wind scale and UV index
+* Minor bugfixes
+
 Version 1.8 (2021-02-26)
 
 * Added editor for internal city list
