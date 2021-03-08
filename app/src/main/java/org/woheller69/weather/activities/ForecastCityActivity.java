@@ -79,7 +79,7 @@ public class ForecastCityActivity extends NavigationActivity implements IUpdatea
 
                 long timestamp = currentWeather.getTimestamp();
                 long systemTime = System.currentTimeMillis() / 1000;
-                long updateInterval = Long.parseLong(prefManager.getString("pref_updateInterval", "2")) * 60 * 60;
+                long updateInterval = (long) (Float.parseFloat(prefManager.getString("pref_updateInterval", "2")) * 60 * 60);
 
                 if (timestamp + updateInterval - systemTime <= 0) {
                     startRefreshAnimation();

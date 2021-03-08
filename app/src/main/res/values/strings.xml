@@ -54,7 +54,7 @@
     <string name="settings_title_API">API Key</string>
     <string name="settings_description_API">RadarWeather receives data from the free service of openweathermap.org. This service is limited to 1000 calls per day. Please enter your own API key</string>
     <string name="settings_title_API_key">Enter API Key</string>
-    <string name="settings__API_key_default" translatable="false"></string>
+    <string name="settings__API_key_default" translatable="false" />
     <string name="abbreviation_monday">Mo.</string>
     <string name="abbreviation_tuesday">Tu.</string>
     <string name="abbreviation_wednesday">We.</string>
@@ -90,6 +90,8 @@
     <string name="error_no_city_selected">There is no city selected. To select a city go to \"Manage locations\".</string>
     <string name="error_dialog_add_city_too_close">City too close to other watched city</string>
     <string name="error_no_radius_search_result">No city found. Increase search radius</string>
+    <string name="settings_interval_quarter" translatable="false">15 min</string>
+    <string name="settings_interval_half" translatable="false">30 min</string>
     <string name="settings_interval_one" translatable="false">1 h</string>
     <string name="settings_interval_two" translatable="false">2 h</string>
     <string name="settings_interval_six" translatable="false">6 h</string>

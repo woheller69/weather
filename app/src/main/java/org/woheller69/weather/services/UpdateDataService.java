@@ -103,7 +103,7 @@ public class UpdateDataService extends JobIntentService {
 
         long timestamp = 0;
         long systemTime = System.currentTimeMillis() / 1000;
-        long updateInterval = 2 * 60 * 60;
+        long updateInterval = (long) (Float.parseFloat(prefManager.getString("pref_updateInterval", "2")) * 60 * 60);
 
         if (!skipUpdateInterval) {
             // check timestamp of the current forecasts
@@ -111,12 +111,9 @@ public class UpdateDataService extends JobIntentService {
             if (forecasts.size() > 0) {
                 timestamp = forecasts.get(0).getTimestamp();
             }
-
-
-            updateInterval = Long.parseLong(prefManager.getString("pref_updateInterval", "2")) * 60 * 60;
         }
 
-        // only Update if a certain time has passed
+        // Update if update forced or if a certain time has passed
         if (skipUpdateInterval || timestamp + updateInterval - systemTime <= 0) {
             //if forecastChoice = 1 (3h) perform both else only one call API
             int choice = Integer.parseInt(prefManager.getString("forecastChoice","1"));

@@ -20,6 +20,8 @@
     </string-array>
 
     <string-array name="refreshIntervalArray">
+        <item>@string/settings_interval_quarter</item>
+        <item>@string/settings_interval_half</item>
         <item>@string/settings_interval_one</item>
         <item>@string/settings_interval_two</item>
         <item>@string/settings_interval_six</item>
@@ -28,6 +30,8 @@
     </string-array>
 
     <string-array name="refreshIntervalValues">
+        <item>0.25</item>
+        <item>0.5</item>
         <item>1</item>
         <item>2</item>
         <item>6</item>
