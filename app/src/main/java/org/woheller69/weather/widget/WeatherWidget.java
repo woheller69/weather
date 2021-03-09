@@ -55,7 +55,7 @@ public class WeatherWidget extends AppWidgetProvider {
         for (int i = 0; i < cities.size(); i++) {   //find cityID for first city to watch = lowest Rank
             CityToWatch city = cities.get(i);
             //Log.d("debugtag",Integer.toString(city.getRank()));
-            if (city.getRank() < rank ){
+            if (city.getRank() <= rank ){
                 rank=city.getRank();
                 cityID = city.getCityId();
             }
