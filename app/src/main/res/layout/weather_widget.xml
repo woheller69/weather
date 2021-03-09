@@ -2,8 +2,19 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:id="@+id/widget_layout"
-    android:background="@drawable/rounded_transparent"
+
     android:previewImage="@drawable/weather_widget_preview">
+
+    <ImageView
+        android:id="@+id/widget_city_weather_background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/widget_city_weather_rain60min"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignEnd="@id/widget_city_weather_update"
+        android:src="@drawable/rounded_transparent" />
 
     <ImageView
         android:id="@+id/widget_city_weather_image_view"
@@ -11,6 +22,7 @@
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
+        android:layout_marginStart="5dp"
         android:layout_centerVertical="true"
         android:src="@mipmap/weather_icon_10d" />
 
@@ -32,12 +44,12 @@
         android:layout_height="wrap_content"
         android:textSize="20dp"
         android:textStyle="bold"
-        android:text="++++++++++++++"
-        android:letterSpacing="-0.07"
-        android:layout_marginEnd="5dp"
-        android:layout_alignParentBottom="true"
+        android:text="@string/error_no_rain60min_data"
+        android:letterSpacing="-0.1"
+        android:layout_marginEnd="2dp"
+        android:layout_below="@id/widget_sunrise_sunset"
         android:layout_alignParentEnd="true"
-        android:paddingRight="7dp"
+        android:paddingEnd="7dp"
         android:paddingBottom="7dp"
         android:textColor="@color/colorPrimaryDark" />
 
@@ -47,7 +59,7 @@
         android:layout_height="wrap_content"
         android:scaleType="fitCenter"
         android:paddingTop="7dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="15dp"
         android:layout_alignParentEnd="true"
         android:src="@drawable/ic_refresh_24px"
         />
@@ -60,7 +72,7 @@
         android:textSize="10dp"
         android:layout_below="@id/widget_city_weather_update"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="15dp"
         android:textColor="@color/white" />
 
     <TextView
@@ -105,6 +117,7 @@
         android:background="@drawable/rounded_corner"
         android:layout_below="@id/widget_city_weather_wind"
         android:layout_alignParentEnd="true"
+        android:layout_marginBottom="5dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:paddingRight="7dp"

@@ -51,9 +51,12 @@ public class WeatherWidget extends AppWidgetProvider {
         PFASQLiteHelper db = PFASQLiteHelper.getInstance(context);
         int cityID=0;
         List<CityToWatch> cities = db.getAllCitiesToWatch();
-        for (int i = 0; i < cities.size(); i++) {   //find cityID for first city to watch = Rank 1
+        int rank=cities.get(0).getRank();
+        for (int i = 0; i < cities.size(); i++) {   //find cityID for first city to watch = lowest Rank
             CityToWatch city = cities.get(i);
-            if (city.getRank() == 1 ){
+            //Log.d("debugtag",Integer.toString(city.getRank()));
+            if (city.getRank() < rank ){
+                rank=city.getRank();
                 cityID = city.getCityId();
             }
          }
