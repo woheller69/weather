@@ -1,10 +1,14 @@
 package org.woheller69.weather.weather_api.open_weather_map;
 
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 
+import android.util.Log;
+import android.widget.RemoteViews;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
@@ -13,6 +17,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.woheller69.weather.R;
+import org.woheller69.weather.database.City;
 import org.woheller69.weather.database.CityToWatch;
 import org.woheller69.weather.database.CurrentWeatherData;
 import org.woheller69.weather.database.Forecast;
@@ -22,6 +27,7 @@ import org.woheller69.weather.ui.updater.ViewUpdater;
 import org.woheller69.weather.weather_api.IDataExtractor;
 import org.woheller69.weather.weather_api.IHttpRequestForForecast;
 import org.woheller69.weather.weather_api.IProcessHttpRequest;
+import org.woheller69.weather.widget.WeatherWidget;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -114,6 +120,7 @@ public class ProcessOwmForecastOneCallAPIRequest implements IProcessHttpRequest 
                 }
 
                 ViewUpdater.updateCurrentWeatherData(weatherData);
+                possiblyUpdateWidgets(cityId, weatherData);
             }
 
 
@@ -199,4 +206,26 @@ public class ProcessOwmForecastOneCallAPIRequest implements IProcessHttpRequest 
         });
     }
 
+    private void possiblyUpdateWidgets(int cityID, CurrentWeatherData currentWeather) {
+        //search for widgets with same city ID
+        int widgetCityID=WeatherWidget.getWidgetCityID(context);
+
+        int[] widgetIDs = AppWidgetManager.getInstance(context).getAppWidgetIds(new ComponentName(context, WeatherWidget.class));
+
+        for (int widgetID : widgetIDs) {
+            //check if city ID is same
+            if (cityID == widgetCityID) {
+                //perform update for the widget
+                //Log.d("debugtag", "found 1 day widget to update with data: " + cityID + " with widgetID " + widgetID);
+
+                RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.weather_widget);
+                AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
+
+                City city=dbHelper.getCityById(cityID);
+
+                WeatherWidget.updateView(context, appWidgetManager, views, widgetID, city, currentWeather);
+                appWidgetManager.updateAppWidget(widgetID, views);
+            }
+        }
+    }
 }

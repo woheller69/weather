@@ -1,0 +1,114 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/widget_layout"
+    android:background="@drawable/rounded_transparent"
+    android:previewImage="@drawable/weather_widget_preview">
+
+    <ImageView
+        android:id="@+id/widget_city_weather_image_view"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:layout_centerVertical="true"
+        android:src="@mipmap/weather_icon_10d" />
+
+    <TextView
+        android:id="@+id/widget_city_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CityName"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:paddingTop="7dp"
+        android:layout_marginStart="7dp"
+        android:textColor="@color/colorPrimaryDark" />
+
+
+    <TextView
+        android:id="@+id/widget_city_weather_rain60min"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:text="++++++++++++++"
+        android:letterSpacing="-0.07"
+        android:layout_marginEnd="5dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:paddingRight="7dp"
+        android:paddingBottom="7dp"
+        android:textColor="@color/colorPrimaryDark" />
+
+    <ImageView
+        android:id="@+id/widget_city_weather_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="fitCenter"
+        android:paddingTop="7dp"
+        android:layout_marginEnd="10dp"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/ic_refresh_24px"
+        />
+
+    <TextView
+        android:id="@+id/widget_city_weather_updatetime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="(19:15)"
+        android:textSize="10dp"
+        android:layout_below="@id/widget_city_weather_update"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/widget_city_weather_temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-273,15°C"
+        android:textSize="22dp"
+        android:textStyle="bold"
+        android:background="@drawable/rounded_corner"
+        android:layout_below="@id/widget_city_weather_updatetime"
+        android:layout_toStartOf="@id/widget_city_weather_wind"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:paddingRight="7dp"
+        android:paddingLeft="7dp"
+        android:textColor="@color/colorPrimaryDark" />
+
+    <TextView
+        android:id="@+id/widget_city_weather_wind"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3 Bft"
+        android:textSize="22dp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_below="@id/widget_city_weather_updatetime"
+        android:background="@drawable/rounded_corner"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp"
+        android:paddingRight="7dp"
+        android:paddingLeft="7dp"
+        android:textColor="@color/colorPrimaryDark" />
+
+    <TextView
+        android:id="@+id/widget_sunrise_sunset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:background="@drawable/rounded_corner"
+        android:layout_below="@id/widget_city_weather_wind"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:paddingRight="7dp"
+        android:paddingLeft="7dp" />
+
+</RelativeLayout>
+
