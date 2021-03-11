@@ -142,17 +142,20 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
         today[9]=forecasts.get(0).getWeatherID();
         if ((today[9]>=IApiToDatabaseConversion.WeatherCategories.LIGHT_RAIN.getNumVal()) && (today[9]<=IApiToDatabaseConversion.WeatherCategories.RAIN.getNumVal())){
             if (checkSun(cityId,forecasts.get(0).getForecastTime())) {
-                today[9]=IApiToDatabaseConversion.WeatherCategories.SHOWER_RAIN.getNumVal();
+                today[9]=IApiToDatabaseConversion.WeatherCategories.SHOWER_RAIN.getNumVal(); //if at least one interval with sun +/-4 from noon, use shower rain instead of rain
+                if (getCorrectedWeatherID(cityId,forecasts.get(0).getForecastTime())<today[9]) today[9]=getCorrectedWeatherID(cityId,forecasts.get(0).getForecastTime()); //if always sun use worst sun category
             }
         }
         if ((today[9]>=IApiToDatabaseConversion.WeatherCategories.LIGHT_SNOW.getNumVal()) && (today[9]<=IApiToDatabaseConversion.WeatherCategories.HEAVY_SNOW.getNumVal())){
             if (checkSun(cityId,forecasts.get(0).getForecastTime())) {
                 today[9]=IApiToDatabaseConversion.WeatherCategories.SHOWER_SNOW.getNumVal();
+                if (getCorrectedWeatherID(cityId,forecasts.get(0).getForecastTime())<today[9]) today[9]=getCorrectedWeatherID(cityId,forecasts.get(0).getForecastTime());
             }
         }
         if (today[9]==IApiToDatabaseConversion.WeatherCategories.RAIN_SNOW.getNumVal()){
             if (checkSun(cityId,forecasts.get(0).getForecastTime())) {
                 today[9]=IApiToDatabaseConversion.WeatherCategories.SHOWER_RAIN_SNOW.getNumVal();
+                if (getCorrectedWeatherID(cityId,forecasts.get(0).getForecastTime())<today[9]) today[9]=getCorrectedWeatherID(cityId,forecasts.get(0).getForecastTime());
             }
         }
         today[10]=1;
@@ -170,16 +173,19 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
         if ((tomorrow[9]>=IApiToDatabaseConversion.WeatherCategories.LIGHT_RAIN.getNumVal()) && (tomorrow[9]<=IApiToDatabaseConversion.WeatherCategories.RAIN.getNumVal())){
             if (checkSun(cityId,forecasts.get(1).getForecastTime())) {
                 tomorrow[9]=IApiToDatabaseConversion.WeatherCategories.SHOWER_RAIN.getNumVal();
+                if (getCorrectedWeatherID(cityId,forecasts.get(1).getForecastTime())<tomorrow[9]) tomorrow[9]=getCorrectedWeatherID(cityId,forecasts.get(1).getForecastTime());
             }
         }
         if ((tomorrow[9]>=IApiToDatabaseConversion.WeatherCategories.LIGHT_SNOW.getNumVal()) && (tomorrow[9]<=IApiToDatabaseConversion.WeatherCategories.HEAVY_SNOW.getNumVal())){
             if (checkSun(cityId,forecasts.get(1).getForecastTime())) {
                 tomorrow[9]=IApiToDatabaseConversion.WeatherCategories.SHOWER_SNOW.getNumVal();
+                if (getCorrectedWeatherID(cityId,forecasts.get(1).getForecastTime())<tomorrow[9]) tomorrow[9]=getCorrectedWeatherID(cityId,forecasts.get(1).getForecastTime());
             }
         }
         if (tomorrow[9]==IApiToDatabaseConversion.WeatherCategories.RAIN_SNOW.getNumVal()){
             if (checkSun(cityId,forecasts.get(1).getForecastTime())) {
                 tomorrow[9]=IApiToDatabaseConversion.WeatherCategories.SHOWER_RAIN_SNOW.getNumVal();
+                if (getCorrectedWeatherID(cityId,forecasts.get(1).getForecastTime())<tomorrow[9]) tomorrow[9]=getCorrectedWeatherID(cityId,forecasts.get(1).getForecastTime());
             }
         }
         tomorrow[10]=1;
@@ -197,16 +203,19 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
         if ((in2days[9]>=IApiToDatabaseConversion.WeatherCategories.LIGHT_RAIN.getNumVal()) && (in2days[9]<=IApiToDatabaseConversion.WeatherCategories.RAIN.getNumVal())){
             if (checkSun(cityId,forecasts.get(2).getForecastTime())) {
                 in2days[9]=IApiToDatabaseConversion.WeatherCategories.SHOWER_RAIN.getNumVal();
+                if (getCorrectedWeatherID(cityId,forecasts.get(2).getForecastTime())<in2days[9]) in2days[9]=getCorrectedWeatherID(cityId,forecasts.get(2).getForecastTime());
             }
         }
         if ((in2days[9]>=IApiToDatabaseConversion.WeatherCategories.LIGHT_SNOW.getNumVal()) && (in2days[9]<=IApiToDatabaseConversion.WeatherCategories.HEAVY_SNOW.getNumVal())){
             if (checkSun(cityId,forecasts.get(2).getForecastTime())) {
                 in2days[9]=IApiToDatabaseConversion.WeatherCategories.SHOWER_SNOW.getNumVal();
+                if (getCorrectedWeatherID(cityId,forecasts.get(2).getForecastTime())<in2days[9]) in2days[9]=getCorrectedWeatherID(cityId,forecasts.get(2).getForecastTime());
             }
         }
         if (in2days[9]==IApiToDatabaseConversion.WeatherCategories.RAIN_SNOW.getNumVal()){
             if (checkSun(cityId,forecasts.get(2).getForecastTime())) {
                 in2days[9]=IApiToDatabaseConversion.WeatherCategories.SHOWER_RAIN_SNOW.getNumVal();
+                if (getCorrectedWeatherID(cityId,forecasts.get(2).getForecastTime())<in2days[9]) in2days[9]=getCorrectedWeatherID(cityId,forecasts.get(2).getForecastTime());
             }
         }
         in2days[10]=1;
@@ -224,16 +233,19 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
         if ((in3days[9]>=IApiToDatabaseConversion.WeatherCategories.LIGHT_RAIN.getNumVal()) && (in3days[9]<=IApiToDatabaseConversion.WeatherCategories.RAIN.getNumVal())){
             if (checkSun(cityId,forecasts.get(3).getForecastTime())) {
                 in3days[9]=IApiToDatabaseConversion.WeatherCategories.SHOWER_RAIN.getNumVal();
+                if (getCorrectedWeatherID(cityId,forecasts.get(3).getForecastTime())<in3days[9]) in3days[9]=getCorrectedWeatherID(cityId,forecasts.get(3).getForecastTime());
             }
         }
         if ((in3days[9]>=IApiToDatabaseConversion.WeatherCategories.LIGHT_SNOW.getNumVal()) && (in3days[9]<=IApiToDatabaseConversion.WeatherCategories.HEAVY_SNOW.getNumVal())){
             if (checkSun(cityId,forecasts.get(3).getForecastTime())) {
                 in3days[9]=IApiToDatabaseConversion.WeatherCategories.SHOWER_SNOW.getNumVal();
+                if (getCorrectedWeatherID(cityId,forecasts.get(3).getForecastTime())<in3days[9]) in3days[9]=getCorrectedWeatherID(cityId,forecasts.get(3).getForecastTime());
             }
         }
         if (in3days[9]==IApiToDatabaseConversion.WeatherCategories.RAIN_SNOW.getNumVal()){
             if (checkSun(cityId,forecasts.get(3).getForecastTime())) {
                 in3days[9]=IApiToDatabaseConversion.WeatherCategories.SHOWER_RAIN_SNOW.getNumVal();
+                if (getCorrectedWeatherID(cityId,forecasts.get(3).getForecastTime())<in3days[9]) in3days[9]=getCorrectedWeatherID(cityId,forecasts.get(3).getForecastTime());
             }
         }
         in3days[10]=1;
@@ -251,16 +263,19 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
         if ((in4days[9]>=IApiToDatabaseConversion.WeatherCategories.LIGHT_RAIN.getNumVal()) && (in4days[9]<=IApiToDatabaseConversion.WeatherCategories.RAIN.getNumVal())){
             if (checkSun(cityId,forecasts.get(4).getForecastTime())) {
                 in4days[9]=IApiToDatabaseConversion.WeatherCategories.SHOWER_RAIN.getNumVal();
+                if (getCorrectedWeatherID(cityId,forecasts.get(4).getForecastTime())<in4days[9]) in4days[9]=getCorrectedWeatherID(cityId,forecasts.get(4).getForecastTime());
             }
         }
         if ((in4days[9]>=IApiToDatabaseConversion.WeatherCategories.LIGHT_SNOW.getNumVal()) && (in4days[9]<=IApiToDatabaseConversion.WeatherCategories.HEAVY_SNOW.getNumVal())){
             if (checkSun(cityId,forecasts.get(4).getForecastTime())) {
                 in4days[9]=IApiToDatabaseConversion.WeatherCategories.SHOWER_SNOW.getNumVal();
+                if (getCorrectedWeatherID(cityId,forecasts.get(4).getForecastTime())<in4days[9]) in4days[9]=getCorrectedWeatherID(cityId,forecasts.get(4).getForecastTime());
             }
         }
         if (in4days[9]==IApiToDatabaseConversion.WeatherCategories.RAIN_SNOW.getNumVal()){
             if (checkSun(cityId,forecasts.get(4).getForecastTime())) {
                 in4days[9]=IApiToDatabaseConversion.WeatherCategories.SHOWER_RAIN_SNOW.getNumVal();
+                if (getCorrectedWeatherID(cityId,forecasts.get(4).getForecastTime())<in4days[9]) in4days[9]=getCorrectedWeatherID(cityId,forecasts.get(4).getForecastTime());
             }
         }
         in4days[10]=1;
@@ -278,16 +293,19 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
         if ((in5days[9]>=IApiToDatabaseConversion.WeatherCategories.LIGHT_RAIN.getNumVal()) && (in5days[9]<=IApiToDatabaseConversion.WeatherCategories.RAIN.getNumVal())){
             if (checkSun(cityId,forecasts.get(5).getForecastTime())) {
                 in5days[9]=IApiToDatabaseConversion.WeatherCategories.SHOWER_RAIN.getNumVal();
+                if (getCorrectedWeatherID(cityId,forecasts.get(5).getForecastTime())<in5days[9]) in5days[9]=getCorrectedWeatherID(cityId,forecasts.get(5).getForecastTime());
             }
         }
         if ((in5days[9]>=IApiToDatabaseConversion.WeatherCategories.LIGHT_SNOW.getNumVal()) && (in5days[9]<=IApiToDatabaseConversion.WeatherCategories.HEAVY_SNOW.getNumVal())){
             if (checkSun(cityId,forecasts.get(5).getForecastTime())) {
                 in5days[9]=IApiToDatabaseConversion.WeatherCategories.SHOWER_SNOW.getNumVal();
+                if (getCorrectedWeatherID(cityId,forecasts.get(5).getForecastTime())<in5days[9]) in5days[9]=getCorrectedWeatherID(cityId,forecasts.get(5).getForecastTime());
             }
         }
         if (in5days[9]==IApiToDatabaseConversion.WeatherCategories.RAIN_SNOW.getNumVal()){
             if (checkSun(cityId,forecasts.get(5).getForecastTime())) {
                 in5days[9]=IApiToDatabaseConversion.WeatherCategories.SHOWER_RAIN_SNOW.getNumVal();
+                if (getCorrectedWeatherID(cityId,forecasts.get(5).getForecastTime())<in5days[9]) in5days[9]=getCorrectedWeatherID(cityId,forecasts.get(5).getForecastTime());
             }
         }
         in5days[10]=1;
@@ -651,7 +669,6 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
     private boolean checkSun(int cityId, long forecastTimeNoon ) {
         PFASQLiteHelper dbHelper = PFASQLiteHelper.getInstance(context);
         List<Forecast> forecastList = dbHelper.getForecastsByCityId(cityId);
-
         boolean sun=false;
         //iterate over FCs 4h before and 4h past forecast time of the weekforecast (which should usually be noon)
         for (Forecast fc : forecastList) {
@@ -662,6 +679,24 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
         }
  //       Log.d("ID",Boolean.toString(sun));
         return sun;
+    }
+    //this method fixes the problem that OpenWeatherMap will show a rain symbol for the whole day even if weather during day is great and there are just a few drops of rain during night
+    private Integer getCorrectedWeatherID(int cityId, long forecastTimeNoon ) {
+        PFASQLiteHelper dbHelper = PFASQLiteHelper.getInstance(context);
+        List<Forecast> forecastList = dbHelper.getForecastsByCityId(cityId);
+        int category=0;
+        //iterate over FCs 4h before and 4h past forecast time of the weekforecast (which should usually be noon)
+        for (Forecast fc : forecastList) {
+            if ((fc.getForecastTime() >= forecastTimeNoon - 14400000) && (fc.getForecastTime() <= forecastTimeNoon + 14400000)) {
+                //Log.d("Category",Integer.toString(fc.getWeatherID()));
+                if (fc.getWeatherID() > category) {
+                    category = fc.getWeatherID();  //find worst weather
+                }
+            }
+        }
+        if (category>IApiToDatabaseConversion.WeatherCategories.BROKEN_CLOUDS.getNumVal()) category=1000;
+        //Log.d("Category",Integer.toString(category));
+        return category;
     }
 
 

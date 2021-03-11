@@ -64,7 +64,7 @@
         android:layout_below="@id/widget_sunrise_sunset"
         android:layout_alignParentStart="true"
         android:layout_marginTop="8dp"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="7dp"
         android:paddingStart="2dp"
         android:paddingEnd="2dp"
         android:textColor="@color/colorPrimaryDark" />
