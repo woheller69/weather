@@ -120,6 +120,50 @@ public final class StringFormatUtils {
         }
     }
 
+    public static Integer widgetColorWindSpeed(Context context, float wind_speed) {
+        if (wind_speed < 0.3) {
+            return R.drawable.rounded_grey;
+        } else if (wind_speed < 1.5) {
+            return R.drawable.rounded_grey;
+        } else if (wind_speed < 3.3) {
+            return R.drawable.rounded_grey;
+        } else if (wind_speed < 5.5) {
+            return R.drawable.rounded_grey;
+        } else if (wind_speed < 7.9) {
+            return R.drawable.rounded_grey;
+        } else if (wind_speed < 10.7) {
+            return R.drawable.rounded_yellow;
+        } else if (wind_speed < 13.8) {
+            return R.drawable.rounded_yellow;
+        } else if (wind_speed < 17.1) {
+            return R.drawable.rounded_yellow;
+        } else if (wind_speed < 20.7) {
+            return R.drawable.rounded_orange;
+        } else if (wind_speed < 24.4) {
+            return R.drawable.rounded_orange;
+        } else if (wind_speed < 28.4) {
+            return R.drawable.rounded_lightred;
+        } else if (wind_speed < 32.6) {
+            return R.drawable.rounded_lightred;
+        } else {
+            return R.drawable.rounded_red;
+        }
+    }
+
+    public static Integer widgetColorUVindex(Context context, int uvindex) {
+        if (uvindex <=2) {
+            return R.drawable.rounded_green;
+        } else if (uvindex <= 5) {
+            return R.drawable.rounded_yellow;
+        } else if (uvindex <= 7) {
+            return R.drawable.rounded_orange;
+        } else if (uvindex <= 10) {
+            return R.drawable.rounded_lightred;
+        } else  {
+            return R.drawable.rounded_red;
+        }
+    }
+
     public static Integer getDayShort(int day){
 
         switch(day)    {

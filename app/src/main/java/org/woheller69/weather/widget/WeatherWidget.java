@@ -15,6 +15,7 @@ import org.woheller69.weather.database.City;
 import org.woheller69.weather.database.CityToWatch;
 import org.woheller69.weather.database.CurrentWeatherData;
 import org.woheller69.weather.database.PFASQLiteHelper;
+import org.woheller69.weather.database.WeekForecast;
 import org.woheller69.weather.services.UpdateDataService;
 import org.woheller69.weather.ui.Help.StringFormatUtils;
 import org.woheller69.weather.ui.UiResourceProvider;
@@ -63,7 +64,7 @@ public class WeatherWidget extends AppWidgetProvider {
         return cityID;
 }
 
-    public static void updateView(Context context, AppWidgetManager appWidgetManager, RemoteViews views, int appWidgetId, City city, CurrentWeatherData weatherData) {
+    public static void updateView(Context context, AppWidgetManager appWidgetManager, RemoteViews views, int appWidgetId, City city, CurrentWeatherData weatherData, List<WeekForecast> weekforecasts) {
 
         long time = weatherData.getTimestamp();
         int zoneseconds = weatherData.getTimeZoneSeconds();
@@ -76,23 +77,28 @@ public class WeatherWidget extends AppWidgetProvider {
         Date setTime = new Date((weatherData.getTimeSunset() + zoneseconds) * 1000L);
         String sunSet = dateFormat.format(setTime);
 
-        views.setTextViewText(R.id.widget_city_weather_updatetime, String.format("(%s)", dateFormat.format(updateTime)));
-        views.setTextViewText(R.id.widget_city_weather_temperature, StringFormatUtils.formatTemperature(context, weatherData.getTemperatureCurrent()));
-        views.setTextViewText(R.id.widget_city_weather_rain60min,"☔  "+weatherData.getRain60min());
+        views.setTextViewText(R.id.widget_updatetime, String.format("(%s)", dateFormat.format(updateTime)));
+        views.setTextViewText(R.id.widget_temperature, " "+StringFormatUtils.formatTemperature(context, weatherData.getTemperatureCurrent())+" ");
+        views.setViewPadding(R.id.widget_temperature,1,1,1,1);
+        views.setTextViewText(R.id.widget_rain60min,"☔  "+weatherData.getRain60min());
         views.setTextViewText(R.id.widget_city_name, city.getCityName());
-        views.setTextViewText(R.id.widget_city_weather_wind, StringFormatUtils.formatWindSpeed(context,weatherData.getWindSpeed()));
+        views.setTextViewText(R.id.widget_wind, " "+StringFormatUtils.formatWindSpeed(context,weatherData.getWindSpeed())+" ");
+        views.setInt(R.id.widget_wind,"setBackgroundResource",StringFormatUtils.widgetColorWindSpeed(context,weatherData.getWindSpeed()));
+        views.setViewPadding(R.id.widget_wind,1,1,1,1);
         views.setTextViewText(R.id.widget_sunrise_sunset,"\u2600\u25b2 " + sunRise + " \u25bc " + sunSet);
+        views.setTextViewText(R.id.widget_UVindex,"UV");
+        views.setInt(R.id.widget_UVindex,"setBackgroundResource",StringFormatUtils.widgetColorUVindex(context,(int) weekforecasts.get(0).getUv_index()));
 
         boolean isDay = weatherData.getTimestamp()  > weatherData.getTimeSunrise() && weatherData.getTimestamp() < weatherData.getTimeSunset();
 
-        views.setImageViewResource(R.id.widget_city_weather_image_view, UiResourceProvider.getIconResourceForWeatherCategory(weatherData.getWeatherID(), isDay));
+        views.setImageViewResource(R.id.widget_image_view, UiResourceProvider.getIconResourceForWeatherCategory(weatherData.getWeatherID(), isDay));
 
         Intent intentUpdate = new Intent(context, WeatherWidget.class);
         intentUpdate.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
         int[] idArray = new int[]{appWidgetId};
         intentUpdate.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, idArray);
         PendingIntent pendingUpdate = PendingIntent.getBroadcast(context, appWidgetId, intentUpdate, PendingIntent.FLAG_UPDATE_CURRENT);
-        views.setOnClickPendingIntent(R.id.widget_city_weather_update, pendingUpdate);
+        views.setOnClickPendingIntent(R.id.widget_update, pendingUpdate);
 
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views);

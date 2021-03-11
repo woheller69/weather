@@ -120,7 +120,7 @@ public class ProcessOwmForecastOneCallAPIRequest implements IProcessHttpRequest 
                 }
 
                 ViewUpdater.updateCurrentWeatherData(weatherData);
-                possiblyUpdateWidgets(cityId, weatherData);
+
             }
 
 
@@ -150,6 +150,7 @@ public class ProcessOwmForecastOneCallAPIRequest implements IProcessHttpRequest 
             }
 
             ViewUpdater.updateWeekForecasts(weekforecasts);
+            possiblyUpdateWidgets(cityId, weatherData,weekforecasts);
 
             //Use hourly data only if forecastChoice 2 (1h) is active
             SharedPreferences prefManager = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
@@ -206,7 +207,7 @@ public class ProcessOwmForecastOneCallAPIRequest implements IProcessHttpRequest 
         });
     }
 
-    private void possiblyUpdateWidgets(int cityID, CurrentWeatherData currentWeather) {
+    private void possiblyUpdateWidgets(int cityID, CurrentWeatherData currentWeather, List<WeekForecast> weekforecasts) {
         //search for widgets with same city ID
         int widgetCityID=WeatherWidget.getWidgetCityID(context);
 
@@ -223,7 +224,7 @@ public class ProcessOwmForecastOneCallAPIRequest implements IProcessHttpRequest 
 
                 City city=dbHelper.getCityById(cityID);
 
-                WeatherWidget.updateView(context, appWidgetManager, views, widgetID, city, currentWeather);
+                WeatherWidget.updateView(context, appWidgetManager, views, widgetID, city, currentWeather,weekforecasts);
                 appWidgetManager.updateAppWidget(widgetID, views);
             }
         }
