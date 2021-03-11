@@ -87,7 +87,7 @@ public class WeatherWidget extends AppWidgetProvider {
         views.setViewPadding(R.id.widget_wind,1,1,1,1);
         views.setTextViewText(R.id.widget_sunrise_sunset,"\u2600\u25b2 " + sunRise + " \u25bc " + sunSet);
         views.setTextViewText(R.id.widget_UVindex,"UV");
-        views.setInt(R.id.widget_UVindex,"setBackgroundResource",StringFormatUtils.widgetColorUVindex(context,(int) weekforecasts.get(0).getUv_index()));
+        views.setInt(R.id.widget_UVindex,"setBackgroundResource",StringFormatUtils.widgetColorUVindex(context,Math.round(weekforecasts.get(0).getUv_index())));
 
         boolean isDay = weatherData.getTimestamp()  > weatherData.getTimeSunrise() && weatherData.getTimestamp() < weatherData.getTimeSunset();
 
