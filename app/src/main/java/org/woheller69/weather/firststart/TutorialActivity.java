@@ -7,6 +7,8 @@ import android.net.Uri;
 
 import android.os.Build;
 import android.os.Bundle;
+
+import androidx.preference.PreferenceManager;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,7 +27,7 @@ import org.woheller69.weather.R;
 import org.woheller69.weather.activities.ForecastCityActivity;
 import org.woheller69.weather.activities.SettingsActivity;
 
-import org.woheller69.weather.preferences.PrefManager;
+import org.woheller69.weather.preferences.AppPreferencesManager;
 
 
 /**
@@ -43,7 +45,7 @@ public class TutorialActivity extends AppCompatActivity {
     private TextView[] dots;
     private int[] layouts;
     private Button btnNext, btnRegister;
-    private PrefManager prefManager;
+    private AppPreferencesManager prefManager;
 
 
     @Override
@@ -51,7 +53,7 @@ public class TutorialActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         // Checking for first time launch - before calling setContentView()
-        prefManager = new PrefManager(this);
+        prefManager = new AppPreferencesManager(PreferenceManager.getDefaultSharedPreferences(this));
 
         if (!prefManager.isFirstTimeLaunch()) {
             launchHomeScreen();

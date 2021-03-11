@@ -11,6 +11,7 @@ import org.woheller69.weather.R;
  */
 public class AppPreferencesManager {
 
+    private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
     /**
      * Member variables
      */
@@ -25,12 +26,23 @@ public class AppPreferencesManager {
         this.preferences = preferences;
     }
 
+    public void setFirstTimeLaunch(boolean isFirstTime) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean(IS_FIRST_TIME_LAUNCH, isFirstTime);
+        editor.commit();
+    }
+
+    public boolean isFirstTimeLaunch() {
+        return preferences.getBoolean(IS_FIRST_TIME_LAUNCH, true);
+    }
+
     /**
      * This method converts a given temperature value into the unit that was set in the preferences.
      *
      * @param temperature The temperature to convert into the unit that is set in the preferences.
      *                    Make sure to pass a value in celsius.
      * @return Returns the converted temperature.
+     **
      */
     public float convertTemperatureFromCelsius(float temperature) {
         // 1 = Celsius (fallback), 2 = Fahrenheit

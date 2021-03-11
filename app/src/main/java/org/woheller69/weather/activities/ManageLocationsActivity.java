@@ -16,12 +16,10 @@ import org.woheller69.weather.database.CityToWatch;
 import org.woheller69.weather.database.PFASQLiteHelper;
 import org.woheller69.weather.dialogs.AddLocationDialog;
 import org.woheller69.weather.dialogs.EditLocationDialog;
-import org.woheller69.weather.preferences.PrefManager;
 import org.woheller69.weather.ui.RecycleList.RecyclerItemClickListener;
 import org.woheller69.weather.ui.RecycleList.RecyclerOverviewListAdapter;
 import org.woheller69.weather.ui.RecycleList.SimpleItemTouchHelperCallback;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -31,7 +29,7 @@ public class ManageLocationsActivity extends NavigationActivity {
 
     private final String DEBUG_TAG = "main_activity_debug";
     private PFASQLiteHelper database;
-    PrefManager prefManager;
+
     private ItemTouchHelper.Callback callback;
     private ItemTouchHelper touchHelper;
     RecyclerOverviewListAdapter adapter;
@@ -62,7 +60,7 @@ public class ManageLocationsActivity extends NavigationActivity {
             toast.show();
         }
 
-        prefManager = new PrefManager(this);
+
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.list_view_cities);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);

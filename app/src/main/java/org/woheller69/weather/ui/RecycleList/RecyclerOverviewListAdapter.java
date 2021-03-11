@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import org.woheller69.weather.R;
 import org.woheller69.weather.database.CityToWatch;
 import org.woheller69.weather.database.PFASQLiteHelper;
-import org.woheller69.weather.preferences.PrefManager;
 
 import java.util.Collections;
 import java.util.List;
@@ -28,7 +27,7 @@ public class RecyclerOverviewListAdapter extends RecyclerView.Adapter<ItemViewHo
      */
     private Context context;
     private final List<CityToWatch> cities;
-    PrefManager prefManager;
+
     PFASQLiteHelper database;
 
 
@@ -38,7 +37,6 @@ public class RecyclerOverviewListAdapter extends RecyclerView.Adapter<ItemViewHo
     public RecyclerOverviewListAdapter(Context context, List<CityToWatch> cities) {
         this.context = context;
         this.cities = cities;
-        this.prefManager = new PrefManager(context);
         this.database = PFASQLiteHelper.getInstance(context);
     }
 

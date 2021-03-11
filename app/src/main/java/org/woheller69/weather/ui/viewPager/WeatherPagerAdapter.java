@@ -13,7 +13,6 @@ import org.woheller69.weather.database.CurrentWeatherData;
 import org.woheller69.weather.database.Forecast;
 import org.woheller69.weather.database.PFASQLiteHelper;
 import org.woheller69.weather.database.WeekForecast;
-import org.woheller69.weather.preferences.PrefManager;
 import org.woheller69.weather.services.UpdateDataService;
 import org.woheller69.weather.ui.WeatherCityFragment;
 import org.woheller69.weather.ui.updater.IUpdateableCityUI;
@@ -40,7 +39,6 @@ public class WeatherPagerAdapter extends FragmentStatePagerAdapter implements IU
     private Context mContext;
 
     private PFASQLiteHelper database;
-    PrefManager prefManager;
     long lastUpdateTime;
 
     private List<CityToWatch> cities;
@@ -52,7 +50,6 @@ public class WeatherPagerAdapter extends FragmentStatePagerAdapter implements IU
     public WeatherPagerAdapter(Context context, FragmentManager supportFragmentManager) {
         super(supportFragmentManager,FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         this.mContext = context;
-        this.prefManager = new PrefManager(context);
         this.database = PFASQLiteHelper.getInstance(context);
         this.currentWeathers = database.getAllCurrentWeathers();
         this.cities = database.getAllCitiesToWatch();
