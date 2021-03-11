@@ -694,6 +694,8 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
                 }
             }
         }
+        //if worst is overcast clouds set category to broken clouds because fix is only used if checkSun=true, i.e. at least one interval with sun
+        if (category==IApiToDatabaseConversion.WeatherCategories.OVERCAST_CLOUDS.getNumVal()) category=IApiToDatabaseConversion.WeatherCategories.BROKEN_CLOUDS.getNumVal();
         if (category>IApiToDatabaseConversion.WeatherCategories.BROKEN_CLOUDS.getNumVal()) category=1000;
         //Log.d("Category",Integer.toString(category));
         return category;
