@@ -143,14 +143,11 @@ public class TutorialActivity extends AppCompatActivity {
     }
 
     private void launchHomeScreen() {
-        prefManager.setFirstTimeLaunch(false);
-
         startActivity(new Intent(TutorialActivity.this, ForecastCityActivity.class));
         finish();
     }
 
     private void launchSettings() {
-        prefManager.setFirstTimeLaunch(false);
         startActivity(new Intent(TutorialActivity.this, SettingsActivity.class));
         finish();
     }

@@ -11,7 +11,7 @@ import org.woheller69.weather.R;
  */
 public class AppPreferencesManager {
 
-    private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
+
     /**
      * Member variables
      */
@@ -26,14 +26,8 @@ public class AppPreferencesManager {
         this.preferences = preferences;
     }
 
-    public void setFirstTimeLaunch(boolean isFirstTime) {
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putBoolean(IS_FIRST_TIME_LAUNCH, isFirstTime);
-        editor.commit();
-    }
-
     public boolean isFirstTimeLaunch() {
-        return preferences.getBoolean(IS_FIRST_TIME_LAUNCH, true);
+        return preferences.getString("API_key_value", BuildConfig.DEFAULT_API_KEY).equals("");
     }
 
     /**
