@@ -142,7 +142,7 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
         today[9]=forecasts.get(0).getWeatherID();
         if ((today[9]>=IApiToDatabaseConversion.WeatherCategories.LIGHT_RAIN.getNumVal()) && (today[9]<=IApiToDatabaseConversion.WeatherCategories.RAIN.getNumVal())){
             if (checkSun(cityId,forecasts.get(0).getForecastTime())) {
-                today[9]=IApiToDatabaseConversion.WeatherCategories.SHOWER_RAIN.getNumVal(); //if at least one interval with sun +/-4 from noon, use shower rain instead of rain
+                today[9]=IApiToDatabaseConversion.WeatherCategories.SHOWER_RAIN.getNumVal(); //if at least one interval with sun +/-5 from noon, use shower rain instead of rain
                 if (getCorrectedWeatherID(cityId,forecasts.get(0).getForecastTime())<today[9]) today[9]=getCorrectedWeatherID(cityId,forecasts.get(0).getForecastTime()); //if always sun use worst sun category
             }
         }
@@ -670,9 +670,9 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
         PFASQLiteHelper dbHelper = PFASQLiteHelper.getInstance(context);
         List<Forecast> forecastList = dbHelper.getForecastsByCityId(cityId);
         boolean sun=false;
-        //iterate over FCs 4h before and 4h past forecast time of the weekforecast (which should usually be noon)
+        //iterate over FCs 5h before and 5h past forecast time of the weekforecast (which should usually be noon)
         for (Forecast fc : forecastList) {
-            if ((fc.getForecastTime() >= forecastTimeNoon-14400000) && (fc.getForecastTime() <= forecastTimeNoon+14400000)) {
+            if ((fc.getForecastTime() >= forecastTimeNoon-18000000) && (fc.getForecastTime() <= forecastTimeNoon+18000000)) {
 //                Log.d("ID",Integer.toString(fc.getWeatherID()));
                 if (fc.getWeatherID() <= IApiToDatabaseConversion.WeatherCategories.BROKEN_CLOUDS.getNumVal()) sun = true;  //if weather better or equal broken clouds in one interval there is at least some sun during day.
             }
@@ -685,9 +685,9 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
         PFASQLiteHelper dbHelper = PFASQLiteHelper.getInstance(context);
         List<Forecast> forecastList = dbHelper.getForecastsByCityId(cityId);
         int category=0;
-        //iterate over FCs 4h before and 4h past forecast time of the weekforecast (which should usually be noon)
+        //iterate over FCs 5h before and 5h past forecast time of the weekforecast (which should usually be noon)
         for (Forecast fc : forecastList) {
-            if ((fc.getForecastTime() >= forecastTimeNoon - 14400000) && (fc.getForecastTime() <= forecastTimeNoon + 14400000)) {
+            if ((fc.getForecastTime() >= forecastTimeNoon - 18000000) && (fc.getForecastTime() <= forecastTimeNoon + 18000000)) {
                 //Log.d("Category",Integer.toString(fc.getWeatherID()));
                 if (fc.getWeatherID() > category) {
                     category = fc.getWeatherID();  //find worst weather
