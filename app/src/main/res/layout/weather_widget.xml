@@ -75,7 +75,7 @@
         android:layout_height="wrap_content"
         android:scaleType="fitCenter"
         android:paddingTop="7dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginEnd="10dp"
         android:layout_alignParentEnd="true"
         android:src="@drawable/ic_refresh_24px"
         />
@@ -85,10 +85,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="(19:15)"
-        android:textSize="12dp"
+        android:textSize="14dp"
         android:layout_below="@id/widget_update"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="15dp"
+        android:layout_marginEnd="10dp"
         android:textColor="@color/white" />
 
     <TextView
@@ -138,7 +138,7 @@
         android:layout_below="@id/widget_wind"
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="3dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="10dp"
         android:paddingTop="1dp"
         android:paddingBottom="1dp"
