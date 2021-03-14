@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 2.0 (2021-03-14)
+
+* Added a home screen widget
+* Added additional update intervals 15min, 30min
+* Bugfixes
+
 Version 1.9 (2021-03-06)
 
 * Added colored background for wind scale and UV index

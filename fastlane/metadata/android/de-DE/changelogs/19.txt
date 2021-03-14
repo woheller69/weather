@@ -1,2 +1,2 @@
-* Farbiger Hintergrund für Windskala und UV Index
-* Kleinere Bugfixes
+Farbiger Hintergrund für Windskala und UV Index
+Kleinere Bugfixes

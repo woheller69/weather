@@ -5,7 +5,11 @@
 This application is forked from Privacy Friendly Weather (https://github.com/SecUSo/privacy-friendly-weather) a privacy friendly weather app.
 The original function has been modified to support the new OpenWeather One Call API, which provides a lot more features, like precipitation forecast for the next 60 minutes,
 hourly forecasts for the next 2 days, 8 day week forecasts, etc. In addition a rain radar functionality powered by RainViewer API (https://www.rainviewer.com/api.html) has been added. More weather categories were added, most images and icons were replaced. RadiusSearch now also shows the results on a map with weather icons.
-The widgets have been removed. A chart showing forecasts with min/max temperature and precipitation for the next week has been added.
+A chart showing forecasts with min/max temperature and precipitation for the next week has been added.
+
+There is also a new widget:
+
+<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/10.png" width="150"/>
 
 As One Call API only allows 1000 calls per day an own OpenWeatherMap API key is mandatory.
 
