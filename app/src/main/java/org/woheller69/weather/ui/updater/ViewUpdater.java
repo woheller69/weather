@@ -25,29 +25,23 @@ public class ViewUpdater {
     }
 
     public static void updateCurrentWeatherData(CurrentWeatherData data) {
-
-            for (IUpdateableCityUI sub : subscribers) {
-                if (subscribers.contains(sub)) {        //Check if list element has not been removed in the meantime; Bugfix for Concurrent Modification Exception
-                    sub.processNewCurrentWeatherData(data);
-                }
-            }
+        ArrayList<IUpdateableCityUI> subcopy = new ArrayList<>(subscribers);  //copy list needed as bugfix for concurrent modification exception
+        for (IUpdateableCityUI sub : subcopy) {
+            sub.processNewCurrentWeatherData(data);
+        }
     }
 
     public static void updateWeekForecasts(List<WeekForecast> forecasts) {
-
-            for (IUpdateableCityUI sub : subscribers) {
-                if (subscribers.contains(sub)) {
-                    sub.processNewWeekForecasts(forecasts);
-                }
-            }
+        ArrayList<IUpdateableCityUI> subcopy = new ArrayList<>(subscribers);
+        for (IUpdateableCityUI sub : subcopy) {
+            sub.processNewWeekForecasts(forecasts);
+        }
     }
 
     public static void updateForecasts(List<Forecast> forecasts) {
-
-            for (IUpdateableCityUI sub : subscribers) {
-                if (subscribers.contains(sub)) {
-                    sub.processNewForecasts(forecasts);
-                }
-            }
+        ArrayList<IUpdateableCityUI> subcopy = new ArrayList<>(subscribers);
+        for (IUpdateableCityUI sub : subcopy) {
+            sub.processNewForecasts(forecasts);
+        }
     }
 }
