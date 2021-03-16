@@ -46,6 +46,7 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
     private float[][] forecastData;
 
     private Context context;
+    private ViewGroup mParent;
 
     private CurrentWeatherData currentWeatherDataList;
 
@@ -425,6 +426,7 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         View v;
+        mParent=viewGroup;
         if (viewType == OVERVIEW) {
             v = LayoutInflater.from(viewGroup.getContext())
                     .inflate(R.layout.card_overview, viewGroup, false);
@@ -507,6 +509,45 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
             WeekWeatherAdapter adapter = new WeekWeatherAdapter(forecastData, context);
             holder.recyclerView.setAdapter(adapter);
             holder.recyclerView.setFocusable(false);
+            holder.recyclerView.addOnItemTouchListener(
+                    new RecyclerItemClickListener(context, holder.recyclerView, new RecyclerItemClickListener.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(View view, int position) {
+                            PFASQLiteHelper database = PFASQLiteHelper.getInstance(context.getApplicationContext());
+                            List<WeekForecast> weekforecasts = database.getWeekForecastsByCityId(currentWeatherDataList.getCity_id());
+                            long time = weekforecasts.get(position).getForecastTime();  //time of clicked week item
+                            time=time-6*3600000;                                       //week item normally midday -> subtract 6h to get morning time
+
+                            RecyclerView courseOfDay;
+                            courseOfDay = mParent.findViewById(R.id.recycler_view_course_day); //get access to course of day recyclerview
+                            if (courseOfDay!=null){  //otherwise crash if courseOfDay not visible
+                                LinearLayoutManager llm = (LinearLayoutManager) courseOfDay.getLayoutManager();
+
+                                int num = llm.findLastVisibleItemPosition() - llm.findFirstVisibleItemPosition();  //get number of visible elements
+                                int i;
+
+                                for (i = 0; i < courseDayList.size(); i++) {
+                                    if (courseDayList.get(i).getForecastTime() > time) {        //find first ForecastTime > time of clicked item
+                                        break;
+                                    }
+                                }
+
+                                if (i < courseDayList.size()) {  //only if element found
+                                    if (i > llm.findFirstVisibleItemPosition()) {               //if scroll right
+                                        int min = Math.min(i + num, courseDayList.size()-1);      //scroll to i+num so that requested element is on the left. Max scroll to courseDayList.size()
+                                        courseOfDay.getLayoutManager().scrollToPosition(min);
+                                    } else {                                                    //if scroll left
+                                        courseOfDay.getLayoutManager().scrollToPosition(i);
+                                    }
+                                }
+                            }
+                        }
+
+                        public void onLongItemClick(View view, int position) {
+
+                        }
+                    })
+            );
 
         } else if (viewHolder.getItemViewType() == DAY) {
 
