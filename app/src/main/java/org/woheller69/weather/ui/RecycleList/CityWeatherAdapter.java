@@ -109,231 +109,46 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
         PFASQLiteHelper dbHelper = PFASQLiteHelper.getInstance(context.getApplicationContext());
         int zonemilliseconds = dbHelper.getCurrentWeatherByCityId(cityId).getTimeZoneSeconds() * 1000;
 
-        //temp max 0, temp min 1, humidity 2, pressure 3, precipitation 4, wind 5, wind direction 6, uv_index 7, time 8, weather ID 9, number of FCs for day 10
-        float[] today = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-        LinkedList<Integer> todayIDs = new LinkedList<>();
-        float[] tomorrow = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-        LinkedList<Integer> tomorrowIDs = new LinkedList<>();
-        float[] in2days = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-        LinkedList<Integer> in2daysIDs = new LinkedList<>();
-        float[] in3days = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-        LinkedList<Integer> in3daysIDs = new LinkedList<>();
-        float[] in4days = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-        LinkedList<Integer> in4daysIDs = new LinkedList<>();
-        float[] in5days = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-        LinkedList<Integer> in5daysIDs = new LinkedList<>();
-        float[] in6days = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-        LinkedList<Integer> in6daysIDs = new LinkedList<>();
-        float[] in7days = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-        LinkedList<Integer> in7daysIDs = new LinkedList<>();
-        float[] empty = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};  //last field is not displayed otherwise
-        LinkedList<Integer> emptyIDs = new LinkedList<>();
+        //temp max 0, temp min 1, humidity 2, pressure 3, precipitation 4, wind 5, wind direction 6, uv_index 7, forecast time 8, weather ID 9, number of FCs for day 10
 
-        forecastData = new float[][]{today, tomorrow, in2days, in3days, in4days, in5days, in6days,in7days,empty};
+        forecastData = new float[9][11];  //must be [9], otherwise last day not displayed
 
-        today[0]=forecasts.get(0).getMaxTemperature();
-        today[1]=forecasts.get(0).getMinTemperature();
-        today[2]=forecasts.get(0).getHumidity();
-        today[3]=forecasts.get(0).getPressure();
-        today[4]=forecasts.get(0).getPrecipitation();
-        today[5]=forecasts.get(0).getWind_speed();
-        today[6]=forecasts.get(0).getWind_direction();
-        today[7]=forecasts.get(0).getUv_index();
-        today[8]=forecasts.get(0).getForecastTime()+zonemilliseconds;
-        today[9]=forecasts.get(0).getWeatherID();
-        if ((today[9]>=IApiToDatabaseConversion.WeatherCategories.LIGHT_RAIN.getNumVal()) && (today[9]<=IApiToDatabaseConversion.WeatherCategories.RAIN.getNumVal())){
-            if (checkSun(cityId,forecasts.get(0).getForecastTime())) {
-                today[9]=IApiToDatabaseConversion.WeatherCategories.SHOWER_RAIN.getNumVal(); //if at least one interval with sun +/-5 from noon, use shower rain instead of rain
-                if (getCorrectedWeatherID(cityId,forecasts.get(0).getForecastTime())<today[9]) today[9]=getCorrectedWeatherID(cityId,forecasts.get(0).getForecastTime()); //if always sun use worst sun category
+        for (int i=0;i<=7;i++){
+            forecastData[i][0]=forecasts.get(i).getMaxTemperature();
+            forecastData[i][1]=forecasts.get(i).getMinTemperature();
+            forecastData[i][2]=forecasts.get(i).getHumidity();
+            forecastData[i][3]=forecasts.get(i).getPressure();
+            forecastData[i][4]=forecasts.get(i).getPrecipitation();
+            forecastData[i][5]=forecasts.get(i).getWind_speed();
+            forecastData[i][6]=forecasts.get(i).getWind_direction();
+            forecastData[i][7]=forecasts.get(i).getUv_index();
+            forecastData[i][8]=forecasts.get(i).getForecastTime()+zonemilliseconds;
+            forecastData[i][9]=forecasts.get(i).getWeatherID();
+            if (i<=5) {  //there are only 1h or 3h forecasts for 5 days. Only there a correction of the weatherID is possible
+                if ((forecastData[i][9] >= IApiToDatabaseConversion.WeatherCategories.LIGHT_RAIN.getNumVal()) && (forecastData[i][9] <= IApiToDatabaseConversion.WeatherCategories.RAIN.getNumVal())) {
+                    if (checkSun(cityId, forecasts.get(i).getForecastTime())) {
+                        forecastData[i][9] = IApiToDatabaseConversion.WeatherCategories.SHOWER_RAIN.getNumVal(); //if at least one interval with sun +/-5 from noon, use shower rain instead of rain
+                        if (getCorrectedWeatherID(cityId, forecasts.get(i).getForecastTime()) < forecastData[i][9])
+                            forecastData[i][9] = getCorrectedWeatherID(cityId, forecasts.get(i).getForecastTime()); //if always sun use worst sun category
+                    }
+                }
+                if ((forecastData[i][9] >= IApiToDatabaseConversion.WeatherCategories.LIGHT_SNOW.getNumVal()) && (forecastData[i][9] <= IApiToDatabaseConversion.WeatherCategories.HEAVY_SNOW.getNumVal())) {
+                    if (checkSun(cityId, forecasts.get(i).getForecastTime())) {
+                        forecastData[i][9] = IApiToDatabaseConversion.WeatherCategories.SHOWER_SNOW.getNumVal();
+                        if (getCorrectedWeatherID(cityId, forecasts.get(i).getForecastTime()) < forecastData[i][9])
+                            forecastData[i][9] = getCorrectedWeatherID(cityId, forecasts.get(i).getForecastTime());
+                    }
+                }
+                if (forecastData[i][9] == IApiToDatabaseConversion.WeatherCategories.RAIN_SNOW.getNumVal()) {
+                    if (checkSun(cityId, forecasts.get(i).getForecastTime())) {
+                        forecastData[i][9] = IApiToDatabaseConversion.WeatherCategories.SHOWER_RAIN_SNOW.getNumVal();
+                        if (getCorrectedWeatherID(cityId, forecasts.get(i).getForecastTime()) < forecastData[i][9])
+                            forecastData[i][9] = getCorrectedWeatherID(cityId, forecasts.get(i).getForecastTime());
+                    }
+                }
             }
+            forecastData[i][10]=1;
         }
-        if ((today[9]>=IApiToDatabaseConversion.WeatherCategories.LIGHT_SNOW.getNumVal()) && (today[9]<=IApiToDatabaseConversion.WeatherCategories.HEAVY_SNOW.getNumVal())){
-            if (checkSun(cityId,forecasts.get(0).getForecastTime())) {
-                today[9]=IApiToDatabaseConversion.WeatherCategories.SHOWER_SNOW.getNumVal();
-                if (getCorrectedWeatherID(cityId,forecasts.get(0).getForecastTime())<today[9]) today[9]=getCorrectedWeatherID(cityId,forecasts.get(0).getForecastTime());
-            }
-        }
-        if (today[9]==IApiToDatabaseConversion.WeatherCategories.RAIN_SNOW.getNumVal()){
-            if (checkSun(cityId,forecasts.get(0).getForecastTime())) {
-                today[9]=IApiToDatabaseConversion.WeatherCategories.SHOWER_RAIN_SNOW.getNumVal();
-                if (getCorrectedWeatherID(cityId,forecasts.get(0).getForecastTime())<today[9]) today[9]=getCorrectedWeatherID(cityId,forecasts.get(0).getForecastTime());
-            }
-        }
-        today[10]=1;
-
-        tomorrow[0]=forecasts.get(1).getMaxTemperature();
-        tomorrow[1]=forecasts.get(1).getMinTemperature();
-        tomorrow[2]=forecasts.get(1).getHumidity();
-        tomorrow[3]=forecasts.get(1).getPressure();
-        tomorrow[4]=forecasts.get(1).getPrecipitation();
-        tomorrow[5]=forecasts.get(1).getWind_speed();
-        tomorrow[6]=forecasts.get(1).getWind_direction();
-        tomorrow[7]=forecasts.get(1).getUv_index();
-        tomorrow[8]=forecasts.get(1).getForecastTime()+zonemilliseconds;
-        tomorrow[9]=forecasts.get(1).getWeatherID();
-        if ((tomorrow[9]>=IApiToDatabaseConversion.WeatherCategories.LIGHT_RAIN.getNumVal()) && (tomorrow[9]<=IApiToDatabaseConversion.WeatherCategories.RAIN.getNumVal())){
-            if (checkSun(cityId,forecasts.get(1).getForecastTime())) {
-                tomorrow[9]=IApiToDatabaseConversion.WeatherCategories.SHOWER_RAIN.getNumVal();
-                if (getCorrectedWeatherID(cityId,forecasts.get(1).getForecastTime())<tomorrow[9]) tomorrow[9]=getCorrectedWeatherID(cityId,forecasts.get(1).getForecastTime());
-            }
-        }
-        if ((tomorrow[9]>=IApiToDatabaseConversion.WeatherCategories.LIGHT_SNOW.getNumVal()) && (tomorrow[9]<=IApiToDatabaseConversion.WeatherCategories.HEAVY_SNOW.getNumVal())){
-            if (checkSun(cityId,forecasts.get(1).getForecastTime())) {
-                tomorrow[9]=IApiToDatabaseConversion.WeatherCategories.SHOWER_SNOW.getNumVal();
-                if (getCorrectedWeatherID(cityId,forecasts.get(1).getForecastTime())<tomorrow[9]) tomorrow[9]=getCorrectedWeatherID(cityId,forecasts.get(1).getForecastTime());
-            }
-        }
-        if (tomorrow[9]==IApiToDatabaseConversion.WeatherCategories.RAIN_SNOW.getNumVal()){
-            if (checkSun(cityId,forecasts.get(1).getForecastTime())) {
-                tomorrow[9]=IApiToDatabaseConversion.WeatherCategories.SHOWER_RAIN_SNOW.getNumVal();
-                if (getCorrectedWeatherID(cityId,forecasts.get(1).getForecastTime())<tomorrow[9]) tomorrow[9]=getCorrectedWeatherID(cityId,forecasts.get(1).getForecastTime());
-            }
-        }
-        tomorrow[10]=1;
-
-        in2days[0]=forecasts.get(2).getMaxTemperature();
-        in2days[1]=forecasts.get(2).getMinTemperature();
-        in2days[2]=forecasts.get(2).getHumidity();
-        in2days[3]=forecasts.get(2).getPressure();
-        in2days[4]=forecasts.get(2).getPrecipitation();
-        in2days[5]=forecasts.get(2).getWind_speed();
-        in2days[6]=forecasts.get(2).getWind_direction();
-        in2days[7]=forecasts.get(2).getUv_index();
-        in2days[8]=forecasts.get(2).getForecastTime()+zonemilliseconds;
-        in2days[9]=forecasts.get(2).getWeatherID();
-        if ((in2days[9]>=IApiToDatabaseConversion.WeatherCategories.LIGHT_RAIN.getNumVal()) && (in2days[9]<=IApiToDatabaseConversion.WeatherCategories.RAIN.getNumVal())){
-            if (checkSun(cityId,forecasts.get(2).getForecastTime())) {
-                in2days[9]=IApiToDatabaseConversion.WeatherCategories.SHOWER_RAIN.getNumVal();
-                if (getCorrectedWeatherID(cityId,forecasts.get(2).getForecastTime())<in2days[9]) in2days[9]=getCorrectedWeatherID(cityId,forecasts.get(2).getForecastTime());
-            }
-        }
-        if ((in2days[9]>=IApiToDatabaseConversion.WeatherCategories.LIGHT_SNOW.getNumVal()) && (in2days[9]<=IApiToDatabaseConversion.WeatherCategories.HEAVY_SNOW.getNumVal())){
-            if (checkSun(cityId,forecasts.get(2).getForecastTime())) {
-                in2days[9]=IApiToDatabaseConversion.WeatherCategories.SHOWER_SNOW.getNumVal();
-                if (getCorrectedWeatherID(cityId,forecasts.get(2).getForecastTime())<in2days[9]) in2days[9]=getCorrectedWeatherID(cityId,forecasts.get(2).getForecastTime());
-            }
-        }
-        if (in2days[9]==IApiToDatabaseConversion.WeatherCategories.RAIN_SNOW.getNumVal()){
-            if (checkSun(cityId,forecasts.get(2).getForecastTime())) {
-                in2days[9]=IApiToDatabaseConversion.WeatherCategories.SHOWER_RAIN_SNOW.getNumVal();
-                if (getCorrectedWeatherID(cityId,forecasts.get(2).getForecastTime())<in2days[9]) in2days[9]=getCorrectedWeatherID(cityId,forecasts.get(2).getForecastTime());
-            }
-        }
-        in2days[10]=1;
-
-        in3days[0]=forecasts.get(3).getMaxTemperature();
-        in3days[1]=forecasts.get(3).getMinTemperature();
-        in3days[2]=forecasts.get(3).getHumidity();
-        in3days[3]=forecasts.get(3).getPressure();
-        in3days[4]=forecasts.get(3).getPrecipitation();
-        in3days[5]=forecasts.get(3).getWind_speed();
-        in3days[6]=forecasts.get(3).getWind_direction();
-        in3days[7]=forecasts.get(3).getUv_index();
-        in3days[8]=forecasts.get(3).getForecastTime()+zonemilliseconds;
-        in3days[9]=forecasts.get(3).getWeatherID();
-        if ((in3days[9]>=IApiToDatabaseConversion.WeatherCategories.LIGHT_RAIN.getNumVal()) && (in3days[9]<=IApiToDatabaseConversion.WeatherCategories.RAIN.getNumVal())){
-            if (checkSun(cityId,forecasts.get(3).getForecastTime())) {
-                in3days[9]=IApiToDatabaseConversion.WeatherCategories.SHOWER_RAIN.getNumVal();
-                if (getCorrectedWeatherID(cityId,forecasts.get(3).getForecastTime())<in3days[9]) in3days[9]=getCorrectedWeatherID(cityId,forecasts.get(3).getForecastTime());
-            }
-        }
-        if ((in3days[9]>=IApiToDatabaseConversion.WeatherCategories.LIGHT_SNOW.getNumVal()) && (in3days[9]<=IApiToDatabaseConversion.WeatherCategories.HEAVY_SNOW.getNumVal())){
-            if (checkSun(cityId,forecasts.get(3).getForecastTime())) {
-                in3days[9]=IApiToDatabaseConversion.WeatherCategories.SHOWER_SNOW.getNumVal();
-                if (getCorrectedWeatherID(cityId,forecasts.get(3).getForecastTime())<in3days[9]) in3days[9]=getCorrectedWeatherID(cityId,forecasts.get(3).getForecastTime());
-            }
-        }
-        if (in3days[9]==IApiToDatabaseConversion.WeatherCategories.RAIN_SNOW.getNumVal()){
-            if (checkSun(cityId,forecasts.get(3).getForecastTime())) {
-                in3days[9]=IApiToDatabaseConversion.WeatherCategories.SHOWER_RAIN_SNOW.getNumVal();
-                if (getCorrectedWeatherID(cityId,forecasts.get(3).getForecastTime())<in3days[9]) in3days[9]=getCorrectedWeatherID(cityId,forecasts.get(3).getForecastTime());
-            }
-        }
-        in3days[10]=1;
-
-        in4days[0]=forecasts.get(4).getMaxTemperature();
-        in4days[1]=forecasts.get(4).getMinTemperature();
-        in4days[2]=forecasts.get(4).getHumidity();
-        in4days[3]=forecasts.get(4).getPressure();
-        in4days[4]=forecasts.get(4).getPrecipitation();
-        in4days[5]=forecasts.get(4).getWind_speed();
-        in4days[6]=forecasts.get(4).getWind_direction();
-        in4days[7]=forecasts.get(4).getUv_index();
-        in4days[8]=forecasts.get(4).getForecastTime()+zonemilliseconds;
-        in4days[9]=forecasts.get(4).getWeatherID();
-        if ((in4days[9]>=IApiToDatabaseConversion.WeatherCategories.LIGHT_RAIN.getNumVal()) && (in4days[9]<=IApiToDatabaseConversion.WeatherCategories.RAIN.getNumVal())){
-            if (checkSun(cityId,forecasts.get(4).getForecastTime())) {
-                in4days[9]=IApiToDatabaseConversion.WeatherCategories.SHOWER_RAIN.getNumVal();
-                if (getCorrectedWeatherID(cityId,forecasts.get(4).getForecastTime())<in4days[9]) in4days[9]=getCorrectedWeatherID(cityId,forecasts.get(4).getForecastTime());
-            }
-        }
-        if ((in4days[9]>=IApiToDatabaseConversion.WeatherCategories.LIGHT_SNOW.getNumVal()) && (in4days[9]<=IApiToDatabaseConversion.WeatherCategories.HEAVY_SNOW.getNumVal())){
-            if (checkSun(cityId,forecasts.get(4).getForecastTime())) {
-                in4days[9]=IApiToDatabaseConversion.WeatherCategories.SHOWER_SNOW.getNumVal();
-                if (getCorrectedWeatherID(cityId,forecasts.get(4).getForecastTime())<in4days[9]) in4days[9]=getCorrectedWeatherID(cityId,forecasts.get(4).getForecastTime());
-            }
-        }
-        if (in4days[9]==IApiToDatabaseConversion.WeatherCategories.RAIN_SNOW.getNumVal()){
-            if (checkSun(cityId,forecasts.get(4).getForecastTime())) {
-                in4days[9]=IApiToDatabaseConversion.WeatherCategories.SHOWER_RAIN_SNOW.getNumVal();
-                if (getCorrectedWeatherID(cityId,forecasts.get(4).getForecastTime())<in4days[9]) in4days[9]=getCorrectedWeatherID(cityId,forecasts.get(4).getForecastTime());
-            }
-        }
-        in4days[10]=1;
-
-        in5days[0]=forecasts.get(5).getMaxTemperature();
-        in5days[1]=forecasts.get(5).getMinTemperature();
-        in5days[2]=forecasts.get(5).getHumidity();
-        in5days[3]=forecasts.get(5).getPressure();
-        in5days[4]=forecasts.get(5).getPrecipitation();
-        in5days[5]=forecasts.get(5).getWind_speed();
-        in5days[6]=forecasts.get(5).getWind_direction();
-        in5days[7]=forecasts.get(5).getUv_index();
-        in5days[8]=forecasts.get(5).getForecastTime()+zonemilliseconds;
-        in5days[9]=forecasts.get(5).getWeatherID();
-        if ((in5days[9]>=IApiToDatabaseConversion.WeatherCategories.LIGHT_RAIN.getNumVal()) && (in5days[9]<=IApiToDatabaseConversion.WeatherCategories.RAIN.getNumVal())){
-            if (checkSun(cityId,forecasts.get(5).getForecastTime())) {
-                in5days[9]=IApiToDatabaseConversion.WeatherCategories.SHOWER_RAIN.getNumVal();
-                if (getCorrectedWeatherID(cityId,forecasts.get(5).getForecastTime())<in5days[9]) in5days[9]=getCorrectedWeatherID(cityId,forecasts.get(5).getForecastTime());
-            }
-        }
-        if ((in5days[9]>=IApiToDatabaseConversion.WeatherCategories.LIGHT_SNOW.getNumVal()) && (in5days[9]<=IApiToDatabaseConversion.WeatherCategories.HEAVY_SNOW.getNumVal())){
-            if (checkSun(cityId,forecasts.get(5).getForecastTime())) {
-                in5days[9]=IApiToDatabaseConversion.WeatherCategories.SHOWER_SNOW.getNumVal();
-                if (getCorrectedWeatherID(cityId,forecasts.get(5).getForecastTime())<in5days[9]) in5days[9]=getCorrectedWeatherID(cityId,forecasts.get(5).getForecastTime());
-            }
-        }
-        if (in5days[9]==IApiToDatabaseConversion.WeatherCategories.RAIN_SNOW.getNumVal()){
-            if (checkSun(cityId,forecasts.get(5).getForecastTime())) {
-                in5days[9]=IApiToDatabaseConversion.WeatherCategories.SHOWER_RAIN_SNOW.getNumVal();
-                if (getCorrectedWeatherID(cityId,forecasts.get(5).getForecastTime())<in5days[9]) in5days[9]=getCorrectedWeatherID(cityId,forecasts.get(5).getForecastTime());
-            }
-        }
-        in5days[10]=1;
-
-        in6days[0]=forecasts.get(6).getMaxTemperature();
-        in6days[1]=forecasts.get(6).getMinTemperature();
-        in6days[2]=forecasts.get(6).getHumidity();
-        in6days[3]=forecasts.get(6).getPressure();
-        in6days[4]=forecasts.get(6).getPrecipitation();
-        in6days[5]=forecasts.get(6).getWind_speed();
-        in6days[6]=forecasts.get(6).getWind_direction();
-        in6days[7]=forecasts.get(6).getUv_index();
-        in6days[8]=forecasts.get(6).getForecastTime()+zonemilliseconds;
-        in6days[9]=forecasts.get(6).getWeatherID();
-        in6days[10]=1;
-
-        in7days[0]=forecasts.get(7).getMaxTemperature();
-        in7days[1]=forecasts.get(7).getMinTemperature();
-        in7days[2]=forecasts.get(7).getHumidity();
-        in7days[3]=forecasts.get(7).getPressure();
-        in7days[4]=forecasts.get(7).getPrecipitation();
-        in7days[7]=forecasts.get(7).getWind_speed();
-        in7days[6]=forecasts.get(7).getWind_direction();
-        in7days[7]=forecasts.get(7).getUv_index();
-        in7days[8]=forecasts.get(7).getForecastTime()+zonemilliseconds;
-        in7days[9]=forecasts.get(7).getWeatherID();
-        in7days[10]=1;
 
         notifyDataSetChanged();
     }
@@ -523,6 +338,7 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
                             if (courseOfDay!=null){  //otherwise crash if courseOfDay not visible
                                 LinearLayoutManager llm = (LinearLayoutManager) courseOfDay.getLayoutManager();
 
+                                assert llm != null;
                                 int num = llm.findLastVisibleItemPosition() - llm.findFirstVisibleItemPosition();  //get number of visible elements
                                 int i;
 
