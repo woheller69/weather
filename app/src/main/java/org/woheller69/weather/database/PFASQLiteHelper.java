@@ -362,15 +362,16 @@ public class PFASQLiteHelper extends SQLiteAssetHelper {
     /**
      * Methods for TABLE_CITIES_TO_WATCH
      */
-    public synchronized void addCityToWatch(CityToWatch city) {
+    public synchronized long addCityToWatch(CityToWatch city) {
         SQLiteDatabase database = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(CITIES_TO_WATCH_CITY_ID, city.getCityId());
         values.put(CITIES_TO_WATCH_COLUMN_RANK, city.getRank());
 
-        database.insert(TABLE_CITIES_TO_WATCH, null, values);
+        long id=database.insert(TABLE_CITIES_TO_WATCH, null, values);
         database.close();
+        return id;
     }
 
     public synchronized CityToWatch getCityToWatch(int id) {
@@ -473,8 +474,8 @@ public class PFASQLiteHelper extends SQLiteAssetHelper {
         values.put(CITIES_TO_WATCH_CITY_ID, cityToWatch.getCityId());
         values.put(CITIES_TO_WATCH_COLUMN_RANK, cityToWatch.getRank());
 
-        database.update(TABLE_CITIES_TO_WATCH, values, CITIES_TO_WATCH_CITY_ID + " = ?",
-                new String[]{String.valueOf(cityToWatch.getCityId())});
+        database.update(TABLE_CITIES_TO_WATCH, values, CITIES_TO_WATCH_ID + " = ?",
+                new String[]{String.valueOf(cityToWatch.getId())});
     }
 
     public void deleteCityToWatch(CityToWatch cityToWatch) {
@@ -486,8 +487,8 @@ public class PFASQLiteHelper extends SQLiteAssetHelper {
 
         //Now remove city from CITIES_TO_WATCH
         SQLiteDatabase database = this.getWritableDatabase();
-        database.delete(TABLE_CITIES_TO_WATCH, CITIES_TO_WATCH_CITY_ID + " = ?",
-                new String[]{Integer.toString(cityToWatch.getCityId())});
+        database.delete(TABLE_CITIES_TO_WATCH, CITIES_TO_WATCH_ID + " = ?",
+                new String[]{Integer.toString(cityToWatch.getId())});
         database.close();
     }
 

@@ -152,8 +152,9 @@ public class ManageLocationsActivity extends NavigationActivity {
 
     public void addCityToList(City city) {
         CityToWatch newCity=convertCityToWatched(city);
+        long id=database.addCityToWatch(newCity);
+        newCity.setId((int) id);
         cities.add(newCity);
-        database.addCityToWatch(newCity);
         adapter.notifyDataSetChanged();
     }
     private CityToWatch convertCityToWatched(City selectedCity) {
