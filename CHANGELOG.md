@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 2.1 (2021-03-18)
+
+* A click on a week day now automatically scrolls to corresponding course of day
+* Bugfix for wind in last week forecast day
+
+
 Version 2.0 (2021-03-14)
 
 * Added a home screen widget

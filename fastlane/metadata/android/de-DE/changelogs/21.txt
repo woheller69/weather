@@ -1,0 +1,2 @@
+Ein Klick auf einen Wochentag blättert nun automatisch zum entsprechenden Tagesverlauf
+Bugfix für Wind im letzten Tag der Vorhersage

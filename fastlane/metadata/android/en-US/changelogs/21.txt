@@ -1,0 +1,2 @@
+A click on a week day now automatically scrolls to corresponding course of day
+Bugfix for wind in last week forecast day
