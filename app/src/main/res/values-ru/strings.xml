@@ -110,12 +110,12 @@
     <string name="saturday">Суббота</string>
     <string name="sunday">Воскресенье</string>
     <string name="chart">Диаграмма</string>
-    <string name="units_rh">% вл.</string>
+    <string name="units_rh">% вл.</string>
     <string name="units_mm">мм</string>
     <string name="units_km">км</string>
     <string name="units_hPa">гПа</string>
     <string name="units_Bft">Бфт</string>
-    <string name="card_details_rain60min">☔ час:</string>
+    <string name="card_details_rain60min">☔ час:</string>
     <string name="error_no_rain60min_data">нет данных</string>
     <string name="dialog_edit_change_button">Изменить</string>
     <string name="dialog_edit_label">ВНИМАНИЕ: будет изменён внутренний список городов!</string>
