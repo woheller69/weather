@@ -1,11 +1,15 @@
 package org.woheller69.weather.activities;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.ItemTouchHelper;
+
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -15,6 +19,7 @@ import org.woheller69.weather.database.City;
 import org.woheller69.weather.database.CityToWatch;
 import org.woheller69.weather.database.PFASQLiteHelper;
 import org.woheller69.weather.dialogs.AddLocationDialog;
+import org.woheller69.weather.dialogs.AddLocationDialogPhotonAPI;
 import org.woheller69.weather.dialogs.EditLocationDialog;
 import org.woheller69.weather.ui.RecycleList.RecyclerItemClickListener;
 import org.woheller69.weather.ui.RecycleList.RecyclerOverviewListAdapter;
@@ -91,35 +96,59 @@ public class ManageLocationsActivity extends NavigationActivity {
         FloatingActionButton addFab1 = (FloatingActionButton) findViewById(R.id.fabAddLocation);
         FloatingActionButton addFab2 = (FloatingActionButton) findViewById(R.id.fabEditLocation);
 
-        if (addFab1 != null) {
+        SharedPreferences prefManager = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        if(prefManager.getString("pref_citySearch", "1").equals("1")){
 
-            addFab1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    FragmentManager fragmentManager = getSupportFragmentManager();
-                    AddLocationDialog addLocationDialog = new AddLocationDialog();
-                    addLocationDialog.show(fragmentManager, "AddLocationDialog");
-                    getSupportFragmentManager().executePendingTransactions();
-                    addLocationDialog.getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-                }
-            });
+            if (addFab1 != null) {
+
+                addFab1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        FragmentManager fragmentManager = getSupportFragmentManager();
+                        AddLocationDialog addLocationDialog = new AddLocationDialog();
+                        addLocationDialog.show(fragmentManager, "AddLocationDialog");
+                        getSupportFragmentManager().executePendingTransactions();
+                        addLocationDialog.getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+                    }
+                });
+            }
+
+            if (addFab2 != null) {
+
+                addFab2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        FragmentManager fragmentManager = getSupportFragmentManager();
+                        EditLocationDialog editLocationDialog = new EditLocationDialog();
+                        editLocationDialog.show(fragmentManager, "EditLocationDialog");
+                        getSupportFragmentManager().executePendingTransactions();
+                        editLocationDialog.getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+                    }
+                });
+
+            }
+        } else {
+
+            if (addFab1 != null) {
+
+                addFab1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        FragmentManager fragmentManager = getSupportFragmentManager();
+                        AddLocationDialogPhotonAPI addLocationDialog = new AddLocationDialogPhotonAPI();
+                        addLocationDialog.show(fragmentManager, "AddLocationDialog");
+                        getSupportFragmentManager().executePendingTransactions();
+                        addLocationDialog.getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+                    }
+                });
+            }
+
+            if (addFab2 != null) {
+
+                addFab2.setVisibility(View.GONE);
+
+            }
         }
-
-        if (addFab2 != null) {
-
-            addFab2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    FragmentManager fragmentManager = getSupportFragmentManager();
-                    EditLocationDialog editLocationDialog = new EditLocationDialog();
-                    editLocationDialog.show(fragmentManager, "EditLocationDialog");
-                    getSupportFragmentManager().executePendingTransactions();
-                    editLocationDialog.getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-                }
-            });
-
-        }
-
     }
 
     @Override
