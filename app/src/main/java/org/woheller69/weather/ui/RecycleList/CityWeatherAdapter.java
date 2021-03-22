@@ -111,7 +111,7 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
 
         //temp max 0, temp min 1, humidity 2, pressure 3, precipitation 4, wind 5, wind direction 6, uv_index 7, forecast time 8, weather ID 9, number of FCs for day 10
 
-        forecastData = new float[8][11];
+        forecastData = new float[9][11];  //must be [9], otherwise last day not displayed
 
         for (int i=0;i<=7;i++){
             forecastData[i][0]=forecasts.get(i).getMaxTemperature();
