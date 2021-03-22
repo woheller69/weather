@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
@@ -25,7 +26,7 @@ import static org.woheller69.weather.services.UpdateDataService.SKIP_UPDATE_INTE
  */
 public class PFASQLiteHelper extends SQLiteAssetHelper {
 
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private Context context;
 
     private List<City> allCities = new ArrayList<>();
@@ -56,6 +57,10 @@ public class PFASQLiteHelper extends SQLiteAssetHelper {
     private static final String CITIES_TO_WATCH_ID = "cities_to_watch_id";
     private static final String CITIES_TO_WATCH_CITY_ID = "city_id";
     private static final String CITIES_TO_WATCH_COLUMN_RANK = "rank";
+    private static final String CITIES_TO_WATCH_NAME = "city_name";
+    private static final String CITIES_TO_WATCH_COUNTRY_CODE = "country_code";
+    private static final String CITIES_TO_WATCH_LONGITUDE = "longitude";
+    private static final String CITIES_TO_WATCH_LATITUDE = "latitude";
 
     //Names of columns in TABLE_FORECAST
     private static final String FORECAST_ID = "forecast_id";
@@ -173,7 +178,10 @@ public class PFASQLiteHelper extends SQLiteAssetHelper {
             CITIES_TO_WATCH_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             CITIES_TO_WATCH_CITY_ID + " INTEGER," +
             CITIES_TO_WATCH_COLUMN_RANK + " INTEGER," +
-            " FOREIGN KEY (" + CITIES_TO_WATCH_CITY_ID + ") REFERENCES " + TABLE_CITIES + "(" + CITIES_ID + "));";
+            CITIES_TO_WATCH_NAME + " VARCHAR(100) NOT NULL," +
+            CITIES_TO_WATCH_COUNTRY_CODE + " VARCHAR(10) NOT NULL," +
+            CITIES_TO_WATCH_LONGITUDE + " REAL NOT NULL," +
+            CITIES_TO_WATCH_LATITUDE + " REAL NOT NULL ); ";
 
     public static PFASQLiteHelper getInstance(Context context) {
         if (instance == null && context != null) {
@@ -368,8 +376,18 @@ public class PFASQLiteHelper extends SQLiteAssetHelper {
         ContentValues values = new ContentValues();
         values.put(CITIES_TO_WATCH_CITY_ID, city.getCityId());
         values.put(CITIES_TO_WATCH_COLUMN_RANK, city.getRank());
+        values.put(CITIES_TO_WATCH_NAME,city.getCityName());
+        values.put(CITIES_TO_WATCH_COUNTRY_CODE,city.getCountryCode());
+        values.put(CITIES_TO_WATCH_LATITUDE,city.getLatitude());
+        values.put(CITIES_TO_WATCH_LONGITUDE,city.getLongitude());
 
         long id=database.insert(TABLE_CITIES_TO_WATCH, null, values);
+
+        //use id also instead of city id as unique identifier
+        values.put(CITIES_TO_WATCH_CITY_ID,id);
+        database.update(TABLE_CITIES_TO_WATCH, values, CITIES_TO_WATCH_ID + " = ?",
+                new String[]{String.valueOf(id)});
+
         database.close();
         return id;
     }
@@ -387,8 +405,7 @@ public class PFASQLiteHelper extends SQLiteAssetHelper {
                         ", " + CITIES_LONGITUDE +
                         ", " + CITIES_LATITUDE +
                         ", " + CITIES_TO_WATCH_COLUMN_RANK +
-                        " FROM " + TABLE_CITIES_TO_WATCH + " INNER JOIN " + TABLE_CITIES +
-                        " ON " + TABLE_CITIES_TO_WATCH + "." + CITIES_TO_WATCH_CITY_ID + " = " + TABLE_CITIES + "." + CITIES_ID +
+                        " FROM " + TABLE_CITIES_TO_WATCH +
                         " WHERE " + CITIES_TO_WATCH_CITY_ID + " = ?", arguments);
 
         CityToWatch cityToWatch = new CityToWatch();
@@ -429,7 +446,7 @@ public class PFASQLiteHelper extends SQLiteAssetHelper {
         return result;
     }
 
-    public synchronized List<CityToWatch> getAllCitiesToWatch() {
+    public synchronized List<CityToWatch> oldGetAllCitiesToWatch() {
         List<CityToWatch> cityToWatchList = new ArrayList<>();
 
         SQLiteDatabase database = this.getWritableDatabase();
@@ -467,12 +484,54 @@ public class PFASQLiteHelper extends SQLiteAssetHelper {
         return cityToWatchList;
     }
 
+
+    public synchronized List<CityToWatch> getAllCitiesToWatch() {
+        List<CityToWatch> cityToWatchList = new ArrayList<>();
+
+        SQLiteDatabase database = this.getWritableDatabase();
+
+        Cursor cursor = database.rawQuery(
+                "SELECT " + CITIES_TO_WATCH_ID +
+                        ", " + CITIES_TO_WATCH_CITY_ID +
+                        ", " + CITIES_NAME +
+                        ", " + CITIES_COUNTRY_CODE +
+                        ", " + CITIES_LONGITUDE +
+                        ", " + CITIES_LATITUDE +
+                        ", " + CITIES_TO_WATCH_COLUMN_RANK +
+                        " FROM " + TABLE_CITIES_TO_WATCH
+                , new String[]{});
+
+        CityToWatch cityToWatch;
+
+        if (cursor.moveToFirst()) {
+            do {
+                cityToWatch = new CityToWatch();
+                cityToWatch.setId(Integer.parseInt(cursor.getString(0)));
+                cityToWatch.setCityId(Integer.parseInt(cursor.getString(1)));
+                cityToWatch.setCityName(cursor.getString(2));
+                cityToWatch.setCountryCode(cursor.getString(3));
+                cityToWatch.setLongitude(Float.parseFloat(cursor.getString(4)));
+                cityToWatch.setLatitude(Float.parseFloat(cursor.getString(5)));
+                cityToWatch.setRank(Integer.parseInt(cursor.getString(6)));
+
+                cityToWatchList.add(cityToWatch);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        return cityToWatchList;
+    }
+
     public synchronized void updateCityToWatch(CityToWatch cityToWatch) {
         SQLiteDatabase database = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(CITIES_TO_WATCH_CITY_ID, cityToWatch.getCityId());
         values.put(CITIES_TO_WATCH_COLUMN_RANK, cityToWatch.getRank());
+        values.put(CITIES_TO_WATCH_NAME,cityToWatch.getCityName());
+        values.put(CITIES_TO_WATCH_COUNTRY_CODE,cityToWatch.getCountryCode());
+        values.put(CITIES_TO_WATCH_LATITUDE,cityToWatch.getLatitude());
+        values.put(CITIES_TO_WATCH_LONGITUDE,cityToWatch.getLongitude());
 
         database.update(TABLE_CITIES_TO_WATCH, values, CITIES_TO_WATCH_ID + " = ?",
                 new String[]{String.valueOf(cityToWatch.getId())});
