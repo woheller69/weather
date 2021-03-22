@@ -68,4 +68,15 @@
         <item>2</item>
     </string-array>
 
+    <string-array name="citySearchArray">
+        <item>@string/settings_search_option_1</item>
+        <item>@string/settings_search_option_2</item>
+    </string-array>
+    <string-array name="citySearchValues">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string name="settings_search_option_1">Internal city list</string>
+    <string name="settings_search_option_2" translatable="false">Photon API</string>
 </resources>

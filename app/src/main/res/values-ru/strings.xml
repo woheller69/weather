@@ -125,5 +125,8 @@
     <string name="edit_location_hint_longitude">Долгота</string>
     <string name="edit_location_hint_country_code">код страны</string>
     <string name="edit_location_range_error">значение вне диапазона</string>
+    <string name="settings_search_option_1">Список внутренних городов</string>
+    <string name="settings_search_summary">"Поиск местоположений через Photon API или внутренний список городов "</string>
+    <string name="settings_search">Поиск</string>
 
 </resources>

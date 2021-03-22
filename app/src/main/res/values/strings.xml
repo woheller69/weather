@@ -138,5 +138,7 @@
     <string name="edit_location_hint_country_code">Country Code</string>
     <string name="edit_location_hint_ID" translatable="false">ID</string>
     <string name="edit_location_range_error">Value out of range</string>
+    <string name="settings_search_summary">Search locations via Photon API or internal city list</string>
+    <string name="settings_search">Search</string>
 
 </resources>

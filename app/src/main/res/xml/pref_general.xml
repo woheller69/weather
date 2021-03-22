@@ -45,5 +45,14 @@
             android:title="@string/settings_update_interval" />
     </PreferenceCategory>
 
+    <PreferenceCategory android:title="@string/settings_search">
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/citySearchArray"
+            android:entryValues="@array/citySearchValues"
+            android:key="pref_citySearch"
+            android:summary="@string/settings_search_summary"
+            android:title="@string/settings_search" />
+    </PreferenceCategory>
 
 </PreferenceScreen>
