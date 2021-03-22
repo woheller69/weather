@@ -222,7 +222,7 @@ public class ProcessOwmForecastOneCallAPIRequest implements IProcessHttpRequest 
                 RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.weather_widget);
                 AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
 
-                City city=dbHelper.getCityById(cityID);
+                CityToWatch city=dbHelper.getCityToWatch(cityID);
 
                 WeatherWidget.updateView(context, appWidgetManager, views, widgetID, city, currentWeather,weekforecasts);
                 appWidgetManager.updateAppWidget(widgetID, views);
