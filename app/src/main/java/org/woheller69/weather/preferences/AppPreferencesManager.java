@@ -27,7 +27,7 @@ public class AppPreferencesManager {
     }
 
     public boolean isFirstTimeLaunch() {
-        return preferences.getString("API_key_value", BuildConfig.DEFAULT_API_KEY).equals("");
+        return preferences.getString("API_key_value", "").equals("");
     }
 
     /**
