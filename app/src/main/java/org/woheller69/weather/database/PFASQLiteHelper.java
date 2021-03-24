@@ -265,7 +265,9 @@ public class PFASQLiteHelper extends SQLiteAssetHelper {
                 //Now remove city from CITIES_TO_WATCH
                 db.delete(TABLE_CITIES_TO_WATCH, CITIES_TO_WATCH_ID + " = ?",
                         new String[]{Integer.toString(city.getId())});
+            }
 
+            for (CityToWatch city : cityToWatchList) {
                 //Add city again to CITIES_TO_WATCH
                 ContentValues values = new ContentValues();
                 values.put(CITIES_TO_WATCH_CITY_ID, city.getCityId());
