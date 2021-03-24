@@ -1,9 +1,4 @@
-DROP TABLE CITIES_TO_WATCH;
-CREATE TABLE CITIES_TO_WATCH (
-            cities_to_watch_id INTEGER PRIMARY KEY,
-            city_id INTEGER,
-            rank INTEGER,
-            city_name TEXT,
-            country_code TEXT,
-            longitude REAL NOT NULL,
-            latitude REAL NOT NULL);
+ALTER TABLE CITIES_TO_WATCH ADD COLUMN city_name TEXT;
+ALTER TABLE CITIES_TO_WATCH ADD COLUMN country_code TEXT;
+ALTER TABLE CITIES_TO_WATCH ADD COLUMN longitude REAL NOT NULL DEFAULT 0;
+ALTER TABLE CITIES_TO_WATCH ADD COLUMN latitude REAL NOT NULL DEFAULT 0;

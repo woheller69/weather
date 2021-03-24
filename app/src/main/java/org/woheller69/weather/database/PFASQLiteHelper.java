@@ -208,10 +208,95 @@ public class PFASQLiteHelper extends SQLiteAssetHelper {
          // create new tables
          onCreate(db);
          **/
-        super.onUpgrade(db, oldVersion, newVersion);
+
+        if (oldVersion==1 && newVersion==2) {
+
+            Log.d("Upgrade:", "Start");
+            Log.d("Upgrade OldDBVersion:",Integer.toString(oldVersion));
+            Log.d("Upgrade NewDBVersion:",Integer.toString(newVersion));
+
+            List<CityToWatch> cityToWatchList = new ArrayList<>();
+
+            //First read all existing Cities_To_Watch
+
+            Cursor cursor = db.rawQuery(
+                    "SELECT " + CITIES_TO_WATCH_ID +
+                            ", " + CITIES_TO_WATCH_CITY_ID +
+                            ", " + CITIES_NAME +
+                            ", " + CITIES_COUNTRY_CODE +
+                            ", " + CITIES_LONGITUDE +
+                            ", " + CITIES_LATITUDE +
+                            ", " + CITIES_TO_WATCH_COLUMN_RANK +
+                            " FROM " + TABLE_CITIES_TO_WATCH + " INNER JOIN " + TABLE_CITIES +
+                            " ON " + TABLE_CITIES_TO_WATCH + "." + CITIES_TO_WATCH_CITY_ID + " = " + TABLE_CITIES + "." + CITIES_ID
+                    , new String[]{});
+
+            CityToWatch cityToWatch;
+
+            if (cursor.moveToFirst()) {
+                do {
+                    cityToWatch = new CityToWatch();
+                    cityToWatch.setId(Integer.parseInt(cursor.getString(0)));
+                    cityToWatch.setCityId(Integer.parseInt(cursor.getString(1)));
+                    cityToWatch.setCityName(cursor.getString(2));
+                    cityToWatch.setCountryCode(cursor.getString(3));
+                    cityToWatch.setLongitude(Float.parseFloat(cursor.getString(4)));
+                    cityToWatch.setLatitude(Float.parseFloat(cursor.getString(5)));
+                    cityToWatch.setRank(Integer.parseInt(cursor.getString(6)));
+
+                    cityToWatchList.add(cityToWatch);
+                } while (cursor.moveToNext());
+            }
+
+            cursor.close();
+
+            //then upgrade database
+            super.onUpgrade(db, oldVersion, newVersion);
+
+            for (CityToWatch city : cityToWatchList) {
+                //first delete weather data for this city
+                db.delete(TABLE_CURRENT_WEATHER, CURRENT_WEATHER_CITY_ID + " = ?",
+                        new String[]{Integer.toString(city.getCityId())});
+                db.delete(TABLE_FORECAST, FORECAST_CITY_ID + " = ?",
+                        new String[]{Integer.toString(city.getCityId())});
+                db.delete(TABLE_WEEKFORECAST, WEEKFORECAST_CITY_ID + " = ?",
+                        new String[]{Integer.toString(city.getCityId())});
+
+                //Now remove city from CITIES_TO_WATCH
+                db.delete(TABLE_CITIES_TO_WATCH, CITIES_TO_WATCH_ID + " = ?",
+                        new String[]{Integer.toString(city.getId())});
+
+                //Add city again to CITIES_TO_WATCH
+                ContentValues values = new ContentValues();
+                values.put(CITIES_TO_WATCH_CITY_ID, city.getCityId());
+                values.put(CITIES_TO_WATCH_COLUMN_RANK, city.getRank());
+                values.put(CITIES_TO_WATCH_NAME, city.getCityName());
+                values.put(CITIES_TO_WATCH_COUNTRY_CODE, city.getCountryCode());
+                values.put(CITIES_TO_WATCH_LATITUDE, city.getLatitude());
+                values.put(CITIES_TO_WATCH_LONGITUDE, city.getLongitude());
+
+                long id = db.insert(TABLE_CITIES_TO_WATCH, null, values);
+                Log.d("Upgrade: Modified ",city.getCityName());
+
+                //use id also instead of city id as unique identifier
+                values.put(CITIES_TO_WATCH_CITY_ID, id);
+                db.update(TABLE_CITIES_TO_WATCH, values, CITIES_TO_WATCH_ID + " = ?",
+                        new String[]{String.valueOf(id)});
+
+            }
+        }
+
+
 
        //if (oldVersion < 1) fillCityDatabase(db);
 
+/*        List<CityToWatch> cityToWatchList = oldGetAllCitiesToWatch();
+        for (CityToWatch city:cityToWatchList){
+            CityToWatch newCity=city;
+            Log.d("City",newCity.getCityName());
+
+        }
+*/
         Intent intent = new Intent(context, UpdateDataService.class);
         intent.setAction(UpdateDataService.UPDATE_ALL_ACTION);
         intent.putExtra(SKIP_UPDATE_INTERVAL, true);
