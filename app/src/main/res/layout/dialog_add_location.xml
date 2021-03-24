@@ -17,20 +17,17 @@
         android:imeOptions="actionDone"
         android:maxLines="1"
         android:inputType="text" />
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-         <WebView
+    <WebView
              android:id="@+id/webViewAddLocation"
              android:layout_width="match_parent"
             android:layout_height="200dp" />
-        <TextView
+
+    <TextView
             android:id="@+id/textViewAddLocation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:text="@string/dialog_add_tv"/>
 
-    </RelativeLayout>
 </LinearLayout>
