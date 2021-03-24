@@ -35,7 +35,7 @@
     <string name="about_permission_internet_description">Подключение к сети: это разрешение требуется, так как данные о погоде ищутся путём выполнения запросов к серверам в Интернете. Без этого разрешения данные о погоде не могут быть получены.</string>
     <string name="about">О программе</string>
     <string name="about_license">Лицензия</string>
-    <string name="about_license_text">Это приложение является ответвлением от Privacy Friendly Weather, разработанным исследовательской группой SECUSO. Исходный код лицензирован под GPLv3. Приложение использует иконки от Google Material Design Icons, лицензированные под Apache License Version 2.0, библиотеку Leaflet, которая лицензирована под 2-clause BSD License, подключаемый модуль Leaflet.TileLayer.ColorFilter, лицензированный под лицензией MIT, свободное RainViewer API, библиотеку Android SQLiteAssetHelper (com.readystatesoftware.sqliteasset), которая лицензирована под Apache License Version 2.0 и библиотеку WilliamChart (com.db.chart), которая лицензирована под Apache License Version 2.0</string>
+    <string name="about_license_text">Это приложение является ответвлением от Privacy Friendly Weather, разработанным исследовательской группой SECUSO. Исходный код лицензирован под GPLv3. Приложение использует значки от Google Material Design Icons, лицензированные под Apache License Version 2.0, библиотеку Leaflet, которая лицензирована под 2-clause BSD License, подключаемый модуль Leaflet.TileLayer.ColorFilter, лицензированный под лицензией MIT, свободное RainViewer API, библиотеку Android SQLiteAssetHelper (com.readystatesoftware.sqliteasset), которая лицензирована под Apache License Version 2.0, AutoSuggestTextViewAPICall, которая лицензирована под Apache License Version 2.0 и библиотеку WilliamChart (com.db.chart), которая лицензирована под Apache License Version 2.0, </string>
     <string name="about_more_info">Больше информации может быть найдено на:</string>
     <string name="activity_settings_title">Настройки</string>
     <string name="settings_title_units">Единицы</string>
@@ -125,8 +125,9 @@
     <string name="edit_location_hint_longitude">Долгота</string>
     <string name="edit_location_hint_country_code">код страны</string>
     <string name="edit_location_range_error">значение вне диапазона</string>
-    <string name="settings_search_option_1">Список внутренних городов</string>
+    <string name="settings_search_option_1">Внутренний список городов</string>
     <string name="settings_search_summary">"Поиск местоположений через Photon API или внутренний список городов "</string>
     <string name="settings_search">Поиск</string>
+    <string name="dialog_add_tv">Для улучшения результатов поиска активируйте онлайн-поиск через photon API в настройках.</string>
 
 </resources>

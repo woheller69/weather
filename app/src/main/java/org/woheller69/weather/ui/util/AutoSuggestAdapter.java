@@ -1,4 +1,9 @@
 package org.woheller69.weather.ui.util;
+/*
+* Taken from https://github.com/Truiton/AutoSuggestTextViewAPICall
+* Modified by woheller69
+*/
+
 
 import android.content.Context;
 

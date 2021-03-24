@@ -10,21 +10,24 @@ import com.android.volley.toolbox.Volley;
 
 /**
  * Created by MG on 04-03-2018.
+ *
+ * Taken from https://github.com/Truiton/AutoSuggestTextViewAPICall
+ * Modified by woheller69
  */
 
-public class ApiCall {
-    private static org.woheller69.weather.ui.util.ApiCall mInstance;
+public class photonApiCall {
+    private static photonApiCall mInstance;
     private RequestQueue mRequestQueue;
     private static Context mCtx;
 
-    public ApiCall(Context ctx) {
-        mCtx = ctx;
+    public photonApiCall(Context ctx) {
+        mCtx = ctx.getApplicationContext();
         mRequestQueue = getRequestQueue();
     }
 
-    public static synchronized org.woheller69.weather.ui.util.ApiCall getInstance(Context context) {
+    public static synchronized photonApiCall getInstance(Context context) {
         if (mInstance == null) {
-            mInstance = new org.woheller69.weather.ui.util.ApiCall(context);
+            mInstance = new photonApiCall(context);
         }
         return mInstance;
     }
@@ -45,6 +48,6 @@ public class ApiCall {
         url = url + query+"&lang="+lang;
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 listener, errorListener);
-        org.woheller69.weather.ui.util.ApiCall.getInstance(ctx).addToRequestQueue(stringRequest);
+        photonApiCall.getInstance(ctx).addToRequestQueue(stringRequest);
     }
 }

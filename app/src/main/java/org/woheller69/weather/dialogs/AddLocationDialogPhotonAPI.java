@@ -19,8 +19,10 @@ import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.core.os.ConfigurationCompat;
 import androidx.fragment.app.DialogFragment;
 
@@ -34,7 +36,7 @@ import org.woheller69.weather.activities.ManageLocationsActivity;
 import org.woheller69.weather.database.City;
 import org.woheller69.weather.database.CityToWatch;
 import org.woheller69.weather.database.PFASQLiteHelper;
-import org.woheller69.weather.ui.util.ApiCall;
+import org.woheller69.weather.ui.util.photonApiCall;
 import org.woheller69.weather.ui.util.AutoCompleteCityTextViewGenerator;
 import org.woheller69.weather.ui.util.AutoSuggestAdapter;
 
@@ -42,6 +44,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 
 public class AddLocationDialogPhotonAPI extends DialogFragment {
@@ -51,10 +54,7 @@ public class AddLocationDialogPhotonAPI extends DialogFragment {
     PFASQLiteHelper database;
 
     private AutoCompleteTextView autoCompleteTextView;
-    private AutoCompleteCityTextViewGenerator cityTextViewGenerator;
     City selectedCity;
-    final int LIST_LIMIT = 100;
-
 
     private static final int TRIGGER_AUTO_COMPLETE = 100;
     private static final long AUTO_COMPLETE_DELAY = 300;
@@ -64,7 +64,7 @@ public class AddLocationDialogPhotonAPI extends DialogFragment {
     String lang="default";
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
        if (context instanceof Activity){
             this.activity=(Activity) context;
@@ -72,6 +72,7 @@ public class AddLocationDialogPhotonAPI extends DialogFragment {
     }
 
 
+    @NonNull
     @SuppressLint("SetJavaScriptEnabled")
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -100,12 +101,15 @@ public class AddLocationDialogPhotonAPI extends DialogFragment {
         final WebView webview= rootView.findViewById(R.id.webViewAddLocation);
         webview.getSettings().setJavaScriptEnabled(true);
         webview.setBackgroundColor(0x00000000);
-        webview.setBackgroundResource(R.drawable.map_back);
+        webview.setBackgroundResource(R.drawable.photon);
+
+        final TextView textview = rootView.findViewById(R.id.textViewAddLocation);
+        textview.setVisibility(View.GONE);
 
         autoCompleteTextView = (AutoCompleteTextView) rootView.findViewById(R.id.autoCompleteTvAddDialog);
 
         //Setting up the adapter for AutoSuggest
-        autoSuggestAdapter = new AutoSuggestAdapter(getContext(),
+        autoSuggestAdapter = new AutoSuggestAdapter(requireContext(),
                 android.R.layout.simple_dropdown_item_1line);
         autoCompleteTextView.setThreshold(2);
         autoCompleteTextView.setAdapter(autoSuggestAdapter);
@@ -171,7 +175,7 @@ public class AddLocationDialogPhotonAPI extends DialogFragment {
 
     }
     private void makeApiCall(String text) {
-        ApiCall.make(getContext(), text, url,lang, new Response.Listener<String>() {
+        photonApiCall.make(getContext(), text, url,lang, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 //parsing logic, please change it as per your requirement
@@ -182,30 +186,43 @@ public class AddLocationDialogPhotonAPI extends DialogFragment {
                     JSONArray array = responseObject.getJSONArray("features");
                     for (int i = 0; i < array.length(); i++) {
                         City city =new City();
+                        String citystring="";
                         JSONObject jsonFeatures = array.getJSONObject(i);
                         JSONObject jsonProperties = jsonFeatures.getJSONObject("properties");
                         JSONObject jsonGeometry=jsonFeatures.getJSONObject("geometry");
                         JSONArray jsonCoordinates=jsonGeometry.getJSONArray("coordinates");
                         String name="";
-                        if (jsonProperties.has("name")) name=jsonProperties.getString("name");
-                        String countrycode="";
-                        if (jsonProperties.has("countrycode")) countrycode=jsonProperties.getString("countrycode");
-                        String state="";
-                        if (jsonProperties.has("state")) state=jsonProperties.getString("state");
+                        if (jsonProperties.has("name")) {
+                            name=jsonProperties.getString("name");
+                            citystring=citystring+name+", ";
+                        }
                         String postcode="";
-                        if (jsonProperties.has("postcode")) postcode=jsonProperties.getString("postcode");
+                        if (jsonProperties.has("postcode")) {
+                            postcode=jsonProperties.getString("postcode");
+                            citystring=citystring+postcode+", ";
+                        }
                         String cityname=name;
-                        if (jsonProperties.has("city")) cityname=jsonProperties.getString("city");
-
-                        String pattern="###.00";
-                        DecimalFormat df=new DecimalFormat(pattern);
+                        if (jsonProperties.has("city")) {
+                            cityname=jsonProperties.getString("city");
+                            citystring=citystring+cityname+", ";
+                        }
+                        String state="";
+                        if (jsonProperties.has("state")) {
+                            state=jsonProperties.getString("state");
+                            citystring=citystring+state+", ";
+                        }
+                        String countrycode="";
+                        if (jsonProperties.has("countrycode")) {
+                            countrycode=jsonProperties.getString("countrycode");
+                            citystring=citystring+countrycode;
+                        }
 
                         city.setCityName(cityname);
                         city.setCountryCode(countrycode);
                         city.setLatitude((float) jsonCoordinates.getDouble(1));
                         city.setLongitude((float) jsonCoordinates.getDouble(0));
                         cityList.add(city);
-                        stringList.add(name+", "+postcode+" "+cityname+", "+state+", "+countrycode+", ("+df.format(jsonCoordinates.get(1))+"/"+df.format(jsonCoordinates.get(0))+")");
+                        stringList.add(citystring);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
