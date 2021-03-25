@@ -1,11 +1,18 @@
 package org.woheller69.weather.activities;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.preference.PreferenceManager;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.SeekBar;
@@ -13,14 +20,24 @@ import android.widget.TextView;
 
 import androidx.core.content.res.ResourcesCompat;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.woheller69.weather.R;
 import org.woheller69.weather.database.City;
 import org.woheller69.weather.database.PFASQLiteHelper;
 import org.woheller69.weather.preferences.AppPreferencesManager;
 import org.woheller69.weather.ui.util.AutoCompleteCityTextViewGenerator;
+import org.woheller69.weather.ui.util.AutoSuggestAdapter;
 import org.woheller69.weather.ui.util.MyConsumer;
+import org.woheller69.weather.ui.util.photonApiCall;
 import org.woheller69.weather.weather_api.IHttpRequestForRadiusSearch;
 import org.woheller69.weather.weather_api.open_weather_map.OwmHttpRequestForRadiusSearch;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This activity provides the functionality to search the best weather around a given location.
@@ -31,12 +48,20 @@ public class RadiusSearchActivity extends NavigationActivity {
      * Visual components
      */
     private AppPreferencesManager prefManager;
+    private SharedPreferences sharedPreferences;
     private AutoCompleteTextView edtLocation;
     private SeekBar sbEdgeLength;
     private TextView tvEdgeLengthValue;
     private SeekBar sbNumReturns;
     private TextView tvNumReturnsValue;
     private Button btnSearch;
+
+    private static final int TRIGGER_AUTO_COMPLETE = 100;
+    private static final long AUTO_COMPLETE_DELAY = 300;
+    private Handler handler;
+    private AutoSuggestAdapter autoSuggestAdapter;
+    String url="https://photon.komoot.io/api/?q=";
+    String lang="default";
 
     private AutoCompleteCityTextViewGenerator cityTextViewGenerator;
     private int LIMIT_LENGTH = 8;
@@ -83,6 +108,7 @@ public class RadiusSearchActivity extends NavigationActivity {
 
         // Values which are necessary down below
         prefManager = new AppPreferencesManager(PreferenceManager.getDefaultSharedPreferences(this));
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplication().getApplicationContext());
         edgeRange = Math.round(prefManager.convertDistanceFromKilometers(MAX_EDGE_LENGTH_IN_KM - MIN_EDGE_LENGTH_IN_KM));
         minEdgeLength = Math.round(prefManager.convertDistanceFromKilometers(MIN_EDGE_LENGTH_IN_KM));
         numberOfReturnsRange = MAX_NUMBER_OF_RETURNS - MIN_NUMBER_OF_RETURNS;
@@ -91,23 +117,84 @@ public class RadiusSearchActivity extends NavigationActivity {
         // Visual components
         cityTextViewGenerator = new AutoCompleteCityTextViewGenerator(this, dbHelper);
         edtLocation = (AutoCompleteTextView) findViewById(R.id.radius_search_edt_location);
-        cityTextViewGenerator.generate(edtLocation, LIMIT_LENGTH, EditorInfo.IME_ACTION_SEARCH, new MyConsumer<City>() {
-            @Override
-            public void accept(City city) {
-                dropdownSelectedCity = city;
-                if(dropdownSelectedCity!=null) {
-                    //Hide keyboard to have more space
-                    final InputMethodManager imm = (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+
+
+        if(sharedPreferences.getString("pref_citySearch", "1").equals("1")) {
+
+            // Option 1: Search city list
+            cityTextViewGenerator.generate(edtLocation, LIMIT_LENGTH, EditorInfo.IME_ACTION_SEARCH, new MyConsumer<City>() {
+                @Override
+                public void accept(City city) {
+                    dropdownSelectedCity = city;
+                    if (dropdownSelectedCity != null) {
+                        //Hide keyboard to have more space
+                        final InputMethodManager imm = (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+                    }
+                    enableOkButton(city != null);
                 }
-                enableOkButton(city != null);
-            }
-        }, new Runnable() {
-            @Override
-            public void run() {
-                handleOnButtonSearchClick();
-            }
-        });
+            }, new Runnable() {
+                @Override
+                public void run() {
+                    handleOnButtonSearchClick();
+                }
+            });
+        }else {
+
+            // Option 2: Search photon API
+            autoSuggestAdapter = new AutoSuggestAdapter(getApplicationContext(),
+                    android.R.layout.simple_dropdown_item_1line);
+            edtLocation.setThreshold(2);
+            edtLocation.setAdapter(autoSuggestAdapter);
+            edtLocation.setOnItemClickListener(
+                    new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view,
+                                                int position, long id) {
+                            dropdownSelectedCity = autoSuggestAdapter.getObject(position);
+                            enableOkButton(Boolean.TRUE);
+                            //Hide keyboard to have more space
+                            final InputMethodManager imm = (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                            imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+                        }
+                    });
+
+            edtLocation.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int
+                        count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before,
+                                          int count) {
+                    handler.removeMessages(TRIGGER_AUTO_COMPLETE);
+                    handler.sendEmptyMessageDelayed(TRIGGER_AUTO_COMPLETE,
+                            AUTO_COMPLETE_DELAY);
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+
+                }
+            });
+
+            handler = new Handler(new Handler.Callback() {
+                @Override
+                public boolean handleMessage(Message msg) {
+                    if (msg.what == TRIGGER_AUTO_COMPLETE) {
+                        if (!TextUtils.isEmpty(edtLocation.getText())) {
+                            makeApiCall(edtLocation.getText().toString());
+                        }
+                    }
+                    return false;
+                }
+            });
+
+        }
+
+
 
         sbEdgeLength = (SeekBar)
 
@@ -237,6 +324,73 @@ public class RadiusSearchActivity extends NavigationActivity {
         public void onStopTrackingTouch(SeekBar seekBar) {
         }
 
+    }
+
+
+
+    private void makeApiCall(String text) {
+        photonApiCall.make(getApplicationContext(), text, url,lang, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                //parsing logic, please change it as per your requirement
+                List<String> stringList = new ArrayList<>();
+                List<City> cityList = new ArrayList<>();
+                try {
+                    JSONObject responseObject = new JSONObject(response);
+                    JSONArray array = responseObject.getJSONArray("features");
+                    for (int i = 0; i < array.length(); i++) {
+                        City city =new City();
+                        String citystring="";
+                        JSONObject jsonFeatures = array.getJSONObject(i);
+                        JSONObject jsonProperties = jsonFeatures.getJSONObject("properties");
+                        JSONObject jsonGeometry=jsonFeatures.getJSONObject("geometry");
+                        JSONArray jsonCoordinates=jsonGeometry.getJSONArray("coordinates");
+                        String name="";
+                        if (jsonProperties.has("name")) {
+                            name=jsonProperties.getString("name");
+                            citystring=citystring+name+", ";
+                        }
+                        String postcode="";
+                        if (jsonProperties.has("postcode")) {
+                            postcode=jsonProperties.getString("postcode");
+                            citystring=citystring+postcode+", ";
+                        }
+                        String cityname=name;
+                        if (jsonProperties.has("city")) {
+                            cityname=jsonProperties.getString("city");
+                            citystring=citystring+cityname+", ";
+                        }
+                        String state="";
+                        if (jsonProperties.has("state")) {
+                            state=jsonProperties.getString("state");
+                            citystring=citystring+state+", ";
+                        }
+                        String countrycode="";
+                        if (jsonProperties.has("countrycode")) {
+                            countrycode=jsonProperties.getString("countrycode");
+                            citystring=citystring+countrycode;
+                        }
+
+                        city.setCityName(cityname);
+                        city.setCountryCode(countrycode);
+                        city.setLatitude((float) jsonCoordinates.getDouble(1));
+                        city.setLongitude((float) jsonCoordinates.getDouble(0));
+                        cityList.add(city);
+                        stringList.add(citystring);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                //IMPORTANT: set data here and notify
+                autoSuggestAdapter.setData(stringList,cityList);
+                autoSuggestAdapter.notifyDataSetChanged();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
     }
 
 }
