@@ -134,5 +134,6 @@
     <string name="settings_search_summary">"Rechercher des emplacements via l'API Photon ou la liste interne des villes "</string>
     <string name="settings_search">Chercher</string>
     <string name="dialog_add_tv">"Pour de meilleurs résultats de recherche, veuillez activer la recherche en ligne via l'API photon dans les paramètres "</string>
+    <string name="settings_temp_decimal">Afficher la température avec une décimale </string>
 
 </resources>

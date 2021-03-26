@@ -1,6 +1,7 @@
 package org.woheller69.weather.ui.Help;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.preference.PreferenceManager;
 
@@ -8,11 +9,14 @@ import androidx.core.content.res.ResourcesCompat;
 import org.woheller69.weather.R;
 import org.woheller69.weather.preferences.AppPreferencesManager;
 
+import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.TimeZone;
+
+import static java.lang.Boolean.TRUE;
 
 public final class StringFormatUtils {
 
@@ -20,10 +24,12 @@ public final class StringFormatUtils {
     private static final DecimalFormat intFormat = new DecimalFormat("0");
 
     public static String formatDecimal(float decimal) {
+        decimalFormat.setRoundingMode(RoundingMode.HALF_UP);
         return decimalFormat.format(decimal);
     }
 
     public static String formatInt(float decimal) {
+        intFormat.setRoundingMode(RoundingMode.HALF_UP);
         return intFormat.format(decimal);
     }
 
@@ -35,9 +41,18 @@ public final class StringFormatUtils {
         return String.format("%s\u200a%s", formatDecimal(decimal), appendix);
     }
 
+    public static String formatDecimalTemperature(Context context, float decimal, String appendix) {
+        SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(context);
+        if(sharedPreferences.getBoolean("pref_TempDecimals", true)==TRUE){
+            return String.format("%s\u200a%s", formatDecimal(decimal), appendix);
+        }else{
+            return String.format("%s\u200a%s", formatInt(decimal), appendix);
+        }
+    }
+
     public static String formatTemperature(Context context, float temperature) {
         AppPreferencesManager prefManager = new AppPreferencesManager(PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext()));
-        return formatDecimal(prefManager.convertTemperatureFromCelsius(temperature), prefManager.getWeatherUnit());
+        return formatDecimalTemperature(context, prefManager.convertTemperatureFromCelsius(temperature), prefManager.getWeatherUnit());
     }
 
     public static String formatTimeWithoutZone(long time) {

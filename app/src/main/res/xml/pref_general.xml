@@ -33,6 +33,13 @@
             android:key="forecastChoice"
             android:summary="@string/settings_summary_forecastChoice"
             android:title="@string/settings_forecastChoice" />
+
+        <SwitchPreference
+            android:key="pref_TempDecimals"
+            android:title="@string/settings_temp_decimal"
+            android:defaultValue="true"
+            />
+
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/settings_intervals">
