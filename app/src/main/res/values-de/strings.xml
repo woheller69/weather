@@ -112,7 +112,7 @@
     <string name="saturday">Samstag</string>
     <string name="sunday">Sonntag</string>
     <string name="chart">Diagramm</string>
-    <string name="units_rh">%rh</string>
+    <string name="units_rh">% rh</string>
     <string name="units_mm">mm</string>
     <string name="units_km">km</string>
     <string name="units_hPa">hPa</string>
