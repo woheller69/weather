@@ -44,9 +44,13 @@ public final class StringFormatUtils {
     public static String formatDecimalTemperature(Context context, float decimal, String appendix) {
         SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(context);
         if(sharedPreferences.getBoolean("pref_TempDecimals", true)==TRUE){
-            return String.format("%s\u200a%s", formatDecimal(decimal), appendix);
+            if (appendix.equals("")){
+                return formatDecimal(decimal);
+            } else return String.format("%s\u200a%s", formatDecimal(decimal), appendix);
         }else{
-            return String.format("%s\u200a%s", formatInt(decimal), appendix);
+            if (appendix.equals("")){
+                return formatInt(decimal);
+            } else return String.format("%s\u200a%s", formatInt(decimal), appendix);
         }
     }
 

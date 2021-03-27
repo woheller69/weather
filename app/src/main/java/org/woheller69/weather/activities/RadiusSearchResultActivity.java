@@ -13,6 +13,7 @@ import android.widget.ListView;
 import org.woheller69.weather.R;
 import org.woheller69.weather.preferences.AppPreferencesManager;
 import org.woheller69.weather.radius_search.RadiusSearchItem;
+import org.woheller69.weather.ui.Help.StringFormatUtils;
 import org.woheller69.weather.weather_api.IApiToDatabaseConversion;
 import org.woheller69.weather.weather_api.ValueDeriver;
 
@@ -90,9 +91,9 @@ public class RadiusSearchResultActivity extends AppCompatActivity {
                 lat = resultList.get(i).getLat();
                 lon = resultList.get(i).getLon();
 
-                temp = Math.round(prefManager.convertTemperatureFromCelsius((float) resultList.get(i).getTemperature())*10.0)/10.0;  //round 1 digit
+                temp = Math.round(prefManager.convertTemperatureFromCelsius((float) resultList.get(i).getTemperature())*1.0)/1.0;  //round 1 digit
                 cat = resultList.get(i).getWeatherCategory();
-                 if (prefManager.getWeatherUnit() =="°C") unit=0;
+                 if (prefManager.getWeatherUnit().equals("°C")) unit=0;
                 else unit=1;
                 
                 webView.loadUrl("javascript:addMarker("+ lat + ","+ lon + "," + temp + "," + unit + "," + cat + ");");
@@ -121,12 +122,11 @@ public class RadiusSearchResultActivity extends AppCompatActivity {
         for (int i = 0; i < resultList.size(); i++) {
             category = IApiToDatabaseConversion.getLabelForValue(resultList.get(i).getWeatherCategory());
             itemsToDisplay.add(String.format(
-                    "%s. %s, %s %s %s",
+                    "%s. %s, %s %s",
                     i + 1,
                     resultList.get(i).getCityName(),
                     deriver.getWeatherDescriptionByCategory(category),
-                    decimalFormatter.format(prefManager.convertTemperatureFromCelsius((float) resultList.get(i).getTemperature())),
-                    prefManager.getWeatherUnit()
+                    StringFormatUtils.formatTemperature(getApplicationContext(),(float) resultList.get(i).getTemperature())
             ));
         }
         return itemsToDisplay;
