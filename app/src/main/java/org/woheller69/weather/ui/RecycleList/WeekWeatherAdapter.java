@@ -1,7 +1,6 @@
 package org.woheller69.weather.ui.RecycleList;
 
 import android.content.Context;
-import android.preference.PreferenceManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,11 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.woheller69.weather.R;
-import org.woheller69.weather.preferences.AppPreferencesManager;
 import org.woheller69.weather.ui.Help.StringFormatUtils;
 import org.woheller69.weather.ui.UiResourceProvider;
 
-import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.TimeZone;
 
@@ -41,10 +38,7 @@ public class WeekWeatherAdapter extends RecyclerView.Adapter<WeekWeatherAdapter.
     @Override
     public void onBindViewHolder(WeekForecastViewHolder holder, int position) {
         float[] dayValues = forecastData[position];
-        AppPreferencesManager prefManager =
-                new AppPreferencesManager(PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext()));
-        DecimalFormat decimalFormat = new DecimalFormat("0.0");
-
+        if (dayValues.length!=11) return;  //Fixes app crash if forecastData not yet ready.
 
         setIcon((int) dayValues[9], holder.weather);
         holder.humidity.setText(StringFormatUtils.formatInt(dayValues[2],context.getString(R.string.units_rh)));
