@@ -166,19 +166,6 @@ public class ManageLocationsActivity extends NavigationActivity {
         return R.id.nav_manage;
     }
 
-    public void modifyCityToWatch(CityToWatch city, City selectedCity) {
-        for (int i=0;i<cities.size();i++){
-            if (cities.get(i).getCityId()==city.getCityId()) {
-                cities.get(i).setCityName(selectedCity.getCityName());
-                cities.get(i).setLongitude(selectedCity.getLongitude());
-                cities.get(i).setLatitude(selectedCity.getLatitude());
-                cities.get(i).setCountryCode(selectedCity.getCountryCode());
-                break;
-            }
-        }
-        adapter.notifyDataSetChanged();
-    }
-
     public void addCityToList(City city) {
         CityToWatch newCity=convertCityToWatched(city);
         long id=database.addCityToWatch(newCity);

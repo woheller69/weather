@@ -17,7 +17,6 @@ import org.woheller69.weather.ui.Help.StringFormatUtils;
 import org.woheller69.weather.weather_api.IApiToDatabaseConversion;
 import org.woheller69.weather.weather_api.ValueDeriver;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -93,7 +92,7 @@ public class RadiusSearchResultActivity extends AppCompatActivity {
 
                 temp = Math.round(prefManager.convertTemperatureFromCelsius((float) resultList.get(i).getTemperature())*1.0)/1.0;  //round 1 digit
                 cat = resultList.get(i).getWeatherCategory();
-                 if (prefManager.getWeatherUnit().equals("°C")) unit=0;
+                 if (prefManager.getTemperatureUnit().equals("°C")) unit=0;
                 else unit=1;
                 
                 webView.loadUrl("javascript:addMarker("+ lat + ","+ lon + "," + temp + "," + unit + "," + cat + ");");
@@ -114,10 +113,6 @@ public class RadiusSearchResultActivity extends AppCompatActivity {
         List<String> itemsToDisplay = new ArrayList<>();
         IApiToDatabaseConversion.WeatherCategories category;
         ValueDeriver deriver = new ValueDeriver(getApplicationContext());
-
-        DecimalFormat decimalFormatter = new DecimalFormat("0.0");
-        AppPreferencesManager prefManager =
-                new AppPreferencesManager(PreferenceManager.getDefaultSharedPreferences(this));
 
         for (int i = 0; i < resultList.size(); i++) {
             category = IApiToDatabaseConversion.getLabelForValue(resultList.get(i).getWeatherCategory());

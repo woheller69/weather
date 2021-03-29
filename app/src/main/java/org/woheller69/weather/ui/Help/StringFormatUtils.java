@@ -56,7 +56,7 @@ public final class StringFormatUtils {
 
     public static String formatTemperature(Context context, float temperature) {
         AppPreferencesManager prefManager = new AppPreferencesManager(PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext()));
-        return formatDecimalTemperature(context, prefManager.convertTemperatureFromCelsius(temperature), prefManager.getWeatherUnit());
+        return formatDecimalTemperature(context, prefManager.convertTemperatureFromCelsius(temperature), prefManager.getTemperatureUnit());
     }
 
     public static String formatTimeWithoutZone(long time) {

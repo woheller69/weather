@@ -513,64 +513,6 @@ public class PFASQLiteHelper extends SQLiteAssetHelper {
 
     }
 
-    public synchronized boolean isCityWatched(int cityId) {
-        SQLiteDatabase database = this.getReadableDatabase();
-
-        String query = "SELECT " + CITIES_TO_WATCH_CITY_ID +
-                " FROM " + TABLE_CITIES_TO_WATCH +
-                " WHERE " + CITIES_TO_WATCH_CITY_ID + " = ?";
-
-        String[] params = {String.valueOf(cityId)};
-        Cursor cursor = database.rawQuery(query, params);
-
-        boolean result = false;
-
-        if (cursor.moveToFirst()) {
-            result = !cursor.isNull(0);
-        }
-        cursor.close();
-
-        return result;
-    }
-
-    public synchronized List<CityToWatch> oldGetAllCitiesToWatch() {
-        List<CityToWatch> cityToWatchList = new ArrayList<>();
-
-        SQLiteDatabase database = this.getWritableDatabase();
-
-        Cursor cursor = database.rawQuery(
-                "SELECT " + CITIES_TO_WATCH_ID +
-                        ", " + CITIES_TO_WATCH_CITY_ID +
-                        ", " + CITIES_NAME +
-                        ", " + CITIES_COUNTRY_CODE +
-                        ", " + CITIES_LONGITUDE +
-                        ", " + CITIES_LATITUDE +
-                        ", " + CITIES_TO_WATCH_COLUMN_RANK +
-                        " FROM " + TABLE_CITIES_TO_WATCH + " INNER JOIN " + TABLE_CITIES +
-                        " ON " + TABLE_CITIES_TO_WATCH + "." + CITIES_TO_WATCH_CITY_ID + " = " + TABLE_CITIES + "." + CITIES_ID
-                , new String[]{});
-
-        CityToWatch cityToWatch;
-
-        if (cursor.moveToFirst()) {
-            do {
-                cityToWatch = new CityToWatch();
-                cityToWatch.setId(Integer.parseInt(cursor.getString(0)));
-                cityToWatch.setCityId(Integer.parseInt(cursor.getString(1)));
-                cityToWatch.setCityName(cursor.getString(2));
-                cityToWatch.setCountryCode(cursor.getString(3));
-                cityToWatch.setLongitude(Float.parseFloat(cursor.getString(4)));
-                cityToWatch.setLatitude(Float.parseFloat(cursor.getString(5)));
-                cityToWatch.setRank(Integer.parseInt(cursor.getString(6)));
-
-                cityToWatchList.add(cityToWatch);
-            } while (cursor.moveToNext());
-        }
-
-        cursor.close();
-        return cityToWatchList;
-    }
-
 
     public synchronized List<CityToWatch> getAllCitiesToWatch() {
         List<CityToWatch> cityToWatchList = new ArrayList<>();
@@ -963,7 +905,7 @@ public class PFASQLiteHelper extends SQLiteAssetHelper {
         return currentWeatherList;
     }
 
-    public synchronized int updateCurrentWeather(CurrentWeatherData currentWeather) {
+    public synchronized void updateCurrentWeather(CurrentWeatherData currentWeather) {
         SQLiteDatabase database = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -981,7 +923,7 @@ public class PFASQLiteHelper extends SQLiteAssetHelper {
         values.put(COLUMN_TIMEZONE_SECONDS, currentWeather.getTimeZoneSeconds());
         values.put(COLUMN_RAIN60MIN, currentWeather.getRain60min());
 
-        return database.update(TABLE_CURRENT_WEATHER, values, CURRENT_WEATHER_CITY_ID + " = ?",
+        database.update(TABLE_CURRENT_WEATHER, values, CURRENT_WEATHER_CITY_ID + " = ?",
                 new String[]{String.valueOf(currentWeather.getCity_id())});
     }
 

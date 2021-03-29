@@ -32,7 +32,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.TimeZone;
 
@@ -512,7 +511,7 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
 
             holder.barChartViewAxis.show();
 
-            holder.temperatureunit.setText(" "+ prefManager.getWeatherUnit() + " ");
+            holder.temperatureunit.setText(" "+ prefManager.getTemperatureUnit() + " ");
             holder.precipitationunit.setText(" " + context.getResources().getString(R.string.units_mm)+" ");
         }
         //No update for error needed

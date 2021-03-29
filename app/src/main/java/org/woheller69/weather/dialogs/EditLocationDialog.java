@@ -129,11 +129,6 @@ public class EditLocationDialog extends DialogFragment {
             if ((Math.abs(selectedCity.getLatitude()) <= 90) && (Math.abs(selectedCity.getLongitude()) <= 180)) {
                 if (database != null) {
                     database.updateCity(selectedCity);  // store changed properties of city
-
-                    if (database.isCityWatched(selectedCity.getCityId())) {   // if city is watched, modify it.
-                        CityToWatch c = database.getCityToWatch(selectedCity.getCityId());
-                        ((ManageLocationsActivity) activity).modifyCityToWatch(c,selectedCity);
-                    }
                 }
             } else {
                 Toast.makeText(activity,R.string.edit_location_range_error,Toast.LENGTH_LONG).show();
