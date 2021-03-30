@@ -170,6 +170,7 @@ public class ManageLocationsActivity extends NavigationActivity {
         CityToWatch newCity=convertCityToWatched(city);
         long id=database.addCityToWatch(newCity);
         newCity.setId((int) id);
+        newCity.setCityId((int) id);  //use id also instead of city id as unique identifier
         cities.add(newCity);
         adapter.notifyDataSetChanged();
     }
