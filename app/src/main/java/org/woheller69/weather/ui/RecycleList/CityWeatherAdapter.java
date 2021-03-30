@@ -99,7 +99,7 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
     public void updateWeekForecastData(List<WeekForecast> forecasts) {
         if (forecasts.isEmpty()) {
             Log.d("devtag", "######## forecastlist empty");
-            forecastData = new float[][]{new float[]{0}};
+            forecastData = new float[][]{new float[]{0,0,0,0,0,0,0,0,0,0,0}};  //initialize array with one empty row which will not be displayed
             return;
         }
 
