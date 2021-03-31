@@ -37,14 +37,14 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 
 The app also uses:
-- The weather data service is provided by [OpenWeatherMap](https://openweathermap.org/), under <a href='http://creativecommons.org/licenses/by-sa/4.0/'>Creative Commons licence CC BY-SA 4.0</a>.
-- Icons from [Google Material Design Icons](https://material.io/resources/icons/) licensed under Apache License Version 2.0 (http://www.apache.org/licenses/LICENSE-2.0)
-- Leaflet which is licensed under the very permissive 2-clause BSD License. (https://github.com/Leaflet/Leaflet/blob/master/FAQ.md)
-- Leaflet.TileLayer.ColorFilter which is licensed under MIT License. (https://github.com/xtk93x/Leaflet.TileLayer.ColorFilter/blob/master/LICENSE)
+- The weather data service is provided by [OpenWeatherMap](https://openweathermap.org/), under <a href='http://creativecommons.org/licenses/by-sa/4.0/'>Creative Commons licence CC BY-SA 4.0</a>
+- Icons from [Google Material Design Icons](https://material.io/resources/icons/) licensed under <a href='http://www.apache.org/licenses/LICENSE-2.0'>Apache License Version 2.0</a>
+- Leaflet which is licensed under the very permissive <a href='https://github.com/Leaflet/Leaflet/blob/master/FAQ.md'>2-clause BSD License</a>
+- Leaflet.TileLayer.ColorFilter which is licensed under <a href='https://github.com/xtk93x/Leaflet.TileLayer.ColorFilter/blob/master/LICENSE'>MIT License</a>
 - RainViewer API which is free (https://www.rainviewer.com/api.html) & RainViewer API Example (https://github.com/rainviewer/rainviewer-api-example)
-- WilliamChart (com.db.chart) (https://github.com/diogobernardino/williamchart) which is licensed under Apache License Version 2.0 (http://www.apache.org/licenses/LICENSE-2.0)
-- Android SQLiteAssetHelper (com.readystatesoftware.sqliteasset) which is licensed under Apache License Version 2.0 (http://www.apache.org/licenses/LICENSE-2.0)
-- AutoSuggestTextViewAPICall (https://github.com/Truiton/AutoSuggestTextViewAPICall) which is licensed under Apache License Version 2.0 (http://www.apache.org/licenses/LICENSE-2.0)
+- WilliamChart (com.db.chart) (https://github.com/diogobernardino/williamchart) which is licensed under <a href='http://www.apache.org/licenses/LICENSE-2.0'>Apache License Version 2.0</a>
+- Android SQLiteAssetHelper (com.readystatesoftware.sqliteasset) (https://github.com/jgilfelt/android-sqlite-asset-helper) which is licensed under <a href='https://github.com/jgilfelt/android-sqlite-asset-helper/blob/master/LICENSE'>Apache License Version 2.0</a>
+- AutoSuggestTextViewAPICall (https://github.com/Truiton/AutoSuggestTextViewAPICall) which is licensed under <a href='https://github.com/Truiton/AutoSuggestTextViewAPICall/blob/master/LICENSE'>Apache License Version 2.0</a>
 - Map data from OpenStreetMap, licensed under the Open Data Commons Open Database License (ODbL) by the OpenStreetMap Foundation (OSMF) (https://www.openstreetmap.org/copyright)
 - Search-as-you-type location search is provided by [photon API](https://photon.komoot.io), based on OpenStreetMap. See also (https://github.com/komoot/photon)
 
