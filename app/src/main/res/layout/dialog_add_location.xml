@@ -27,6 +27,7 @@
             android:id="@+id/textViewAddLocation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="16sp"
             android:textStyle="bold"
             android:text="@string/dialog_add_tv"/>
 
