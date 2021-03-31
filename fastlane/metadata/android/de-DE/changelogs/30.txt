@@ -1,0 +1,5 @@
+Online-Suche nach Orten über die photon API (neue Option in Einstellungen)
+Datenbank modifiziert
+Russische Übersetzung verbessert
+Temperaturanzeige ohne Dezimalstelle (neue Option in Einstellungen)
+Bugfixes
