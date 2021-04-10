@@ -1,6 +1,8 @@
 package org.woheller69.weather.activities;
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +21,8 @@ import org.woheller69.weather.weather_api.ValueDeriver;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static java.lang.Boolean.TRUE;
 
 public class RadiusSearchResultActivity extends AppCompatActivity {
 
@@ -50,9 +54,17 @@ public class RadiusSearchResultActivity extends AppCompatActivity {
                 new AppPreferencesManager(PreferenceManager.getDefaultSharedPreferences(getApplicationContext()));
         API_KEY=prefManager.getOWMApiKey(getApplicationContext());
         initialize();
+
+        int nightmode=0;
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        if(sharedPreferences.getBoolean("pref_DarkMode", false)==TRUE) {
+            int nightModeFlags = getApplicationContext().getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+            if (nightModeFlags==Configuration.UI_MODE_NIGHT_YES) nightmode=1;
+        }
+
         webView = findViewById(R.id.webViewRadiussearch);
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.loadUrl("file:///android_asset/radiussearch.html?appid=" + API_KEY);
+        webView.loadUrl("file:///android_asset/radiussearch.html?appid=" + API_KEY + "&nightmode=" + nightmode);
         webView.setWebViewClient(new CustomWebViewClient(resultList));
 
     }

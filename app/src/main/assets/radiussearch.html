@@ -185,12 +185,23 @@ let myFilterCloudsLight = [
 let myFilterMap = [
     'saturate:200%'
 ];
+let myFilterMapNight = [
+    'invert:100%',
+    'hue:185deg',
+    'saturate:200%'
+];
 
+if (getUrlParameter('nightmode')==0){
     L.tileLayer.colorFilter('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         filter: myFilterMap,
         attribution: 'Map data ©<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors <br> Weather data <a href="https://www.rainviewer.com/api.html"> RainViewer </a>& <a href="https://openweathermap.org/api"> OpenWeatherMap </a>'
     }).addTo(map);
-
+    }else{
+    L.tileLayer.colorFilter('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        filter: myFilterMapNight,
+        attribution: 'Map data ©<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors <br> Weather data <a href="https://www.rainviewer.com/api.html"> RainViewer </a>& <a href="https://openweathermap.org/api"> OpenWeatherMap </a>'
+    }).addTo(map);
+    }
     L.tileLayer.colorFilter('https://tile.openweathermap.org/map/clouds_cls/{z}/{x}/{y}.png?appid=' + getUrlParameter('appid'),{
         filter: myFilterClouds
     }).addTo(map);

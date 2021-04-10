@@ -1,6 +1,8 @@
 package org.woheller69.weather.activities;
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +16,8 @@ import android.widget.ImageButton;
 import org.woheller69.weather.preferences.AppPreferencesManager;
 
 import org.woheller69.weather.R;
+
+import static java.lang.Boolean.TRUE;
 
 
 public class RainViewerActivity extends AppCompatActivity {
@@ -39,9 +43,17 @@ public class RainViewerActivity extends AppCompatActivity {
         String API_KEY = prefManager.getOWMApiKey(getApplicationContext());
         float latitude = getIntent().getFloatExtra("latitude", -1);
         float longitude = getIntent().getFloatExtra("longitude", -1);
+
+        int nightmode=0;
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        if(sharedPreferences.getBoolean("pref_DarkMode", false)==TRUE) {
+            int nightModeFlags = getApplicationContext().getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+            if (nightModeFlags==Configuration.UI_MODE_NIGHT_YES) nightmode=1;
+        }
+
         webView = findViewById(R.id.webView);
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.loadUrl("file:///android_asset/rainviewer.html?lat=" + latitude + "&lon=" + longitude + "&appid=" + API_KEY);
+        webView.loadUrl("file:///android_asset/rainviewer.html?lat=" + latitude + "&lon=" + longitude + "&appid=" + API_KEY + "&nightmode=" + nightmode);
 
         webView.setWebViewClient(new WebViewClient() {
             @Override
