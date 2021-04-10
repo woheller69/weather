@@ -130,5 +130,6 @@
     <string name="settings_search">Поиск</string>
     <string name="dialog_add_tv">Для улучшения результатов поиска активируйте онлайн-поиск через photon API в настройках.</string>
     <string name="settings_temp_decimal">отображение температуры с одним десятичным знаком</string>
+    <string name="settings_darkmode">Android 10+ темный режим</string>
 
 </resources>

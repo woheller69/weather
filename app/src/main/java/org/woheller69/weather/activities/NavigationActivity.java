@@ -8,6 +8,7 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.navigation.NavigationView.OnNavigationItemSelectedListener;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.TaskStackBuilder;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -18,6 +19,8 @@ import android.view.MenuItem;
 
 
 import org.woheller69.weather.R;
+
+import static java.lang.Boolean.TRUE;
 
 /**
  * Created by Chris on 04.07.2016.
@@ -114,31 +117,30 @@ public class NavigationActivity extends AppCompatActivity implements OnNavigatio
     private void callDrawerItem(final int itemId) {
 
         Intent intent;
+        SharedPreferences prefManager = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        if(prefManager.getBoolean("pref_DarkMode", false)==TRUE) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+        }else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
 
-        switch (itemId) {
-            case R.id.nav_weather:
-                intent = new Intent(this, ForecastCityActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.nav_manage:
-                intent = new Intent(this, ManageLocationsActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.nav_radius:
-                intent = new Intent(this, RadiusSearchActivity.class);
-                createBackStack(intent);
-                break;
-            case R.id.nav_about:
-                intent = new Intent(this, AboutActivity.class);
-                createBackStack(intent);
-                break;
-            case R.id.nav_settings:
-                intent = new Intent(this, SettingsActivity.class);
-                intent.putExtra(PreferenceActivity.EXTRA_SHOW_FRAGMENT, SettingsActivity.GeneralPreferenceFragment.class.getName());
-                intent.putExtra(PreferenceActivity.EXTRA_NO_HEADERS, true);
-                createBackStack(intent);
-                break;
-            default:
+        if (itemId==R.id.nav_weather) {
+            intent = new Intent(this, ForecastCityActivity.class);
+            startActivity(intent);
+        }else if (itemId==R.id.nav_manage){
+            intent = new Intent(this, ManageLocationsActivity.class);
+            startActivity(intent);
+        }else if (itemId==R.id.nav_radius) {
+            intent = new Intent(this, RadiusSearchActivity.class);
+            createBackStack(intent);
+        }else if (itemId==R.id.nav_about) {
+            intent = new Intent(this, AboutActivity.class);
+            createBackStack(intent);
+        }else if(itemId==R.id.nav_settings) {
+            intent = new Intent(this, SettingsActivity.class);
+            intent.putExtra(PreferenceActivity.EXTRA_SHOW_FRAGMENT, SettingsActivity.GeneralPreferenceFragment.class.getName());
+            intent.putExtra(PreferenceActivity.EXTRA_NO_HEADERS, true);
+            createBackStack(intent);
         }
     }
 

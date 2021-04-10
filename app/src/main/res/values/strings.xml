@@ -142,5 +142,6 @@
     <string name="settings_search">Search</string>
     <string name="dialog_add_tv">For better search results please activate online search via photon API in settings</string>
     <string name="settings_temp_decimal">Show temperature with one decimal</string>
+    <string name="settings_darkmode">Android 10+ Dark Mode</string>
 
 </resources>

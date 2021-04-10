@@ -12,7 +12,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#ffffff"
+        android:background="?attr/colorPrimary"
         android:orientation="horizontal"
         android:paddingBottom="7dp"
         android:paddingTop="7dp">
@@ -33,7 +33,6 @@
             android:layout_marginStart="5dp"
             android:text="@string/app_name"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="@color/colorPrimary"
             android:textSize="18sp" />
 
     </RelativeLayout>

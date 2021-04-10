@@ -142,8 +142,8 @@ public class RadiusSearchActivity extends NavigationActivity {
         }else {
 
             // Option 2: Search photon API
-            autoSuggestAdapter = new AutoSuggestAdapter(getApplicationContext(),
-                    android.R.layout.simple_dropdown_item_1line);
+            autoSuggestAdapter = new AutoSuggestAdapter(getBaseContext(),
+                    R.layout.list_item_autocomplete);
             edtLocation.setThreshold(2);
             edtLocation.setAdapter(autoSuggestAdapter);
             edtLocation.setOnItemClickListener(

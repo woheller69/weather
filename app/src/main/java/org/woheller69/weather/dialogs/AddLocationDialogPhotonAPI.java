@@ -110,7 +110,7 @@ public class AddLocationDialogPhotonAPI extends DialogFragment {
 
         //Setting up the adapter for AutoSuggest
         autoSuggestAdapter = new AutoSuggestAdapter(requireContext(),
-                android.R.layout.simple_dropdown_item_1line);
+                R.layout.list_item_autocomplete);
         autoCompleteTextView.setThreshold(2);
         autoCompleteTextView.setAdapter(autoSuggestAdapter);
 

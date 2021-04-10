@@ -11,6 +11,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.woheller69.weather.R;
 import org.woheller69.weather.database.City;
 import org.woheller69.weather.database.PFASQLiteHelper;
 
@@ -55,7 +56,7 @@ public class AutoCompleteCityTextViewGenerator {
      * @param listLimit Determines how many items shall be shown in the drop down list at most.
      */
     public void generate(AutoCompleteTextView editField, int listLimit, final int enterActionId, final MyConsumer<City> cityConsumer, final Runnable selectAction) {
-        cityAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, new ArrayList<City>());
+        cityAdapter = new ArrayAdapter<>(context, R.layout.list_item_autocomplete, new ArrayList<City>());
         this.editField = editField;
         this.cityConsumer = cityConsumer;
         this.listLimit = listLimit;

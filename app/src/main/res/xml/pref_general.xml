@@ -35,6 +35,12 @@
             android:title="@string/settings_forecastChoice" />
 
         <SwitchPreference
+            android:key="pref_DarkMode"
+            android:title="@string/settings_darkmode"
+            android:defaultValue="false"
+            />
+
+        <SwitchPreference
             android:key="pref_TempDecimals"
             android:title="@string/settings_temp_decimal"
             android:defaultValue="true"
