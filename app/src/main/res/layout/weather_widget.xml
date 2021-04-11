@@ -89,7 +89,7 @@
         android:layout_below="@id/widget_update"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="10dp"
-        android:textColor="@color/white" />
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:id="@+id/widget_temperature"
