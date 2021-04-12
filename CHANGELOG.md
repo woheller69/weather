@@ -1,6 +1,10 @@
 Changelog
 ==========
 
+Version 3.1 (2021-04-12)
+
+* Dark Mode for Android 10+ (new settings option)
+
 Version 3.0 (2021-03-31)
 
 * Online location search by photon API (new settings option)
