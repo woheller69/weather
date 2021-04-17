@@ -206,32 +206,32 @@ public class ForecastCityActivity extends NavigationActivity implements IUpdatea
 
     public void startRefreshAnimation(){
         {
+            if(refreshActionButton !=null && refreshActionButton.getActionView() != null) {
+                RotateAnimation rotate = new RotateAnimation(0, 360, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+                rotate.setDuration(500);
+                rotate.setRepeatCount(5);
+                rotate.setInterpolator(new LinearInterpolator());
+                rotate.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+                        refreshActionButton.getActionView().setActivated(false);
+                        refreshActionButton.getActionView().setEnabled(false);
+                        refreshActionButton.getActionView().setClickable(false);
+                    }
 
-            RotateAnimation rotate = new RotateAnimation(0, 360, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
-            rotate.setDuration(500);
-            rotate.setRepeatCount(5);
-            rotate.setInterpolator(new LinearInterpolator());
-            rotate.setAnimationListener(new Animation.AnimationListener() {
-                @Override
-                public void onAnimationStart(Animation animation) {
-                    refreshActionButton.getActionView().setActivated(false);
-                    refreshActionButton.getActionView().setEnabled(false);
-                    refreshActionButton.getActionView().setClickable(false);
-                }
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        refreshActionButton.getActionView().setActivated(true);
+                        refreshActionButton.getActionView().setEnabled(true);
+                        refreshActionButton.getActionView().setClickable(true);
+                    }
 
-                @Override
-                public void onAnimationEnd(Animation animation) {
-                    refreshActionButton.getActionView().setActivated(true);
-                    refreshActionButton.getActionView().setEnabled(true);
-                    refreshActionButton.getActionView().setClickable(true);
-                }
-
-                @Override
-                public void onAnimationRepeat(Animation animation) {
-                }
-            });
-
-            refreshActionButton.getActionView().startAnimation(rotate);
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+                    }
+                });
+                refreshActionButton.getActionView().startAnimation(rotate);
+            }
         }
     }
 }
