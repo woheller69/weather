@@ -1,6 +1,11 @@
 Changelog
 ==========
 
+Version 3.2 (2021-04-22)
+
+* Translation for Italian
+* Bugfixes
+
 Version 3.1 (2021-04-12)
 
 * Dark Mode for Android 10+ (new settings option)
