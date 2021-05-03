@@ -92,6 +92,16 @@
                 android:resource="@xml/weather_widget_info" />
         </receiver>
 
+        <receiver android:name="org.woheller69.weather.widget.WeatherWidget5day">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/weather_widget_5day_info" />
+        </receiver>
+
     </application>
 
 </manifest>
