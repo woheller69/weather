@@ -35,13 +35,20 @@
 
             <ImageView
                 android:id="@+id/widget_5day_image1"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:scaleType="centerCrop"
                 android:src="@mipmap/weather_icon_10d"
                 android:layout_row="2"
                 android:layout_gravity="center" />
-
+            <ImageView
+                android:id="@+id/widget_5day_wind1"
+                android:layout_width="12dp"
+                android:layout_height="wrap_content"
+                android:scaleType="fitCenter"
+                android:layout_row="2"
+                android:layout_marginLeft="35dp"
+                android:layout_gravity="top|center" />
             <TextView
                 android:id="@+id/widget_5day_temp_max1"
                 android:layout_width="wrap_content"
@@ -86,12 +93,21 @@
 
             <ImageView
                 android:id="@+id/widget_5day_image2"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:scaleType="centerCrop"
                 android:src="@mipmap/weather_icon_10d"
                 android:layout_row="2"
                 android:layout_gravity="center" />
+
+            <ImageView
+                android:id="@+id/widget_5day_wind2"
+                android:layout_width="12dp"
+                android:layout_height="wrap_content"
+                android:scaleType="fitCenter"
+                android:layout_row="2"
+                android:layout_marginLeft="35dp"
+                android:layout_gravity="top|center" />
 
             <TextView
                 android:id="@+id/widget_5day_temp_max2"
@@ -138,12 +154,21 @@
 
             <ImageView
                 android:id="@+id/widget_5day_image3"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:scaleType="centerCrop"
                 android:src="@mipmap/weather_icon_10d"
                 android:layout_row="2"
                 android:layout_gravity="center" />
+
+            <ImageView
+                android:id="@+id/widget_5day_wind3"
+                android:layout_width="12dp"
+                android:layout_height="wrap_content"
+                android:scaleType="fitCenter"
+                android:layout_row="2"
+                android:layout_marginLeft="35dp"
+                android:layout_gravity="top|center" />
 
             <TextView
                 android:id="@+id/widget_5day_temp_max3"
@@ -190,12 +215,21 @@
 
             <ImageView
                 android:id="@+id/widget_5day_image4"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:scaleType="centerCrop"
                 android:src="@mipmap/weather_icon_10d"
                 android:layout_row="2"
                 android:layout_gravity="center" />
+
+            <ImageView
+                android:id="@+id/widget_5day_wind4"
+                android:layout_width="12dp"
+                android:layout_height="wrap_content"
+                android:scaleType="fitCenter"
+                android:layout_row="2"
+                android:layout_marginLeft="35dp"
+                android:layout_gravity="top|center" />
 
             <TextView
                 android:id="@+id/widget_5day_temp_max4"
@@ -224,10 +258,9 @@
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center"
             android:orientation="vertical"
             android:layout_weight="1"
-            android:paddingStart="11dp">
+            android:layout_gravity="center_horizontal">
 
             <TextView
                 android:id="@+id/widget_5day_day5"
@@ -242,12 +275,21 @@
 
             <ImageView
                 android:id="@+id/widget_5day_image5"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:scaleType="centerCrop"
                 android:src="@mipmap/weather_icon_10d"
                 android:layout_row="2"
                 android:layout_gravity="center" />
+
+            <ImageView
+                android:id="@+id/widget_5day_wind5"
+                android:layout_width="12dp"
+                android:layout_height="wrap_content"
+                android:scaleType="fitCenter"
+                android:layout_row="2"
+                android:layout_marginLeft="35dp"
+                android:layout_gravity="top|center" />
 
             <TextView
                 android:id="@+id/widget_5day_temp_max5"
@@ -272,7 +314,6 @@
                 android:textColor="@color/midblue" />
 
         </GridLayout>
-
 
     </LinearLayout>
 </LinearLayout>
