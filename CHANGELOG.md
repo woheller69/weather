@@ -1,5 +1,8 @@
 Changelog
 ==========
+Version 3.3 (2021-05-05)
+
+* New 5 day widget
 
 Version 3.2 (2021-04-22)
 
