@@ -1,7 +1,8 @@
 package org.woheller69.weather.ui.RecycleList;
 
 import android.content.Context;
-import android.preference.PreferenceManager;
+import androidx.core.content.ContextCompat;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
@@ -445,23 +446,23 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
             temperature.add(datasetmin);
             temperature.add(xaxis);
 
-            datasetmax.setColor(context.getResources().getColor(R.color.red));
+            datasetmax.setColor(ContextCompat.getColor(context,R.color.red));
             datasetmax.setThickness(6);
             datasetmax.setSmooth(true);
-            datasetmax.setFill(context.getResources().getColor(R.color.middlegrey));
+            datasetmax.setFill(ContextCompat.getColor(context,R.color.middlegrey));
 
-            datasetmin.setColor(context.getResources().getColor(R.color.lightblue));
+            datasetmin.setColor(ContextCompat.getColor(context,R.color.lightblue));
             datasetmin.setThickness(6);
             datasetmin.setSmooth(true);
-            datasetmin.setFill(context.getResources().getColor(R.color.backgroundBlue)); //fill with background, so only range between curves is visible
+            datasetmin.setFill(ContextCompat.getColor(context,R.color.backgroundBlue)); //fill with background, so only range between curves is visible
 
             xaxis.setThickness(3);
-            xaxis.setColor(context.getResources().getColor(R.color.colorPrimaryDark));
+            xaxis.setColor(ContextCompat.getColor(context,R.color.colorPrimaryDark));
 
             ArrayList<ChartSet> precipitation = new ArrayList<>();
             precipitation.add(precipitationDataset);
 
-            precipitationDataset.setColor(context.getResources().getColor(R.color.blue));
+            precipitationDataset.setColor(ContextCompat.getColor(context,R.color.blue));
             precipitationDataset.setAlpha(0.8f);  // make precipitation bars transparent
 
             holder.lineChartView.addData(temperature);
@@ -470,8 +471,8 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
             holder.lineChartView.setXAxis(false);
             holder.lineChartView.setYAxis(false);
             holder.lineChartView.setYLabels(AxisController.LabelPosition.INSIDE);  //must be INSIDE! OUTSIDE will destroy alignment with precipitation bar chart
-            holder.lineChartView.setLabelsColor(context.getResources().getColor(R.color.colorPrimaryDark));
-            holder.lineChartView.setAxisColor(context.getResources().getColor(R.color.colorPrimaryDark));
+            holder.lineChartView.setLabelsColor(ContextCompat.getColor(context,R.color.colorPrimaryDark));
+            holder.lineChartView.setAxisColor(ContextCompat.getColor(context,R.color.colorPrimaryDark));
             holder.lineChartView.setFontSize((int) Tools.fromDpToPx(17));
             holder.lineChartView.setBorderSpacing(Tools.fromDpToPx(30));
 
@@ -484,7 +485,7 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
             holder.barChartView.setYAxis(false);
             holder.barChartView.setYLabels(AxisController.LabelPosition.NONE); //no labels for precipitation
             holder.barChartView.setLabelsColor(0);  //transparent color, make labels invisible
-            holder.barChartView.setAxisColor(context.getResources().getColor(R.color.colorPrimaryDark));
+            holder.barChartView.setAxisColor(ContextCompat.getColor(context,R.color.colorPrimaryDark));
             holder.barChartView.setFontSize((int) Tools.fromDpToPx(17));
             holder.barChartView.setBorderSpacing(Tools.fromDpToPx(30));
 
@@ -505,8 +506,8 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
             holder.barChartViewAxis.setXAxis(false);
             holder.barChartViewAxis.setYAxis(false);
             holder.barChartViewAxis.setYLabels(AxisController.LabelPosition.OUTSIDE); // labels for precipitation at the right
-            holder.barChartViewAxis.setLabelsColor(context.getResources().getColor(R.color.colorPrimaryDark));
-            holder.barChartViewAxis.setAxisColor(context.getResources().getColor(R.color.colorPrimaryDark));
+            holder.barChartViewAxis.setLabelsColor(ContextCompat.getColor(context,R.color.colorPrimaryDark));
+            holder.barChartViewAxis.setAxisColor(ContextCompat.getColor(context,R.color.colorPrimaryDark));
             holder.barChartViewAxis.setFontSize((int) Tools.fromDpToPx(17));
 
             holder.barChartViewAxis.show();

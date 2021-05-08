@@ -3,7 +3,7 @@ package org.woheller69.weather.ui.Help;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
-import android.preference.PreferenceManager;
+import androidx.preference.PreferenceManager;
 
 import androidx.core.content.res.ResourcesCompat;
 import org.woheller69.weather.R;

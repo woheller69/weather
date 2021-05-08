@@ -1,7 +1,7 @@
 package org.woheller69.weather.weather_api.open_weather_map;
 
 import android.content.Context;
-import android.preference.PreferenceManager;
+import androidx.preference.PreferenceManager;
 import android.text.TextUtils;
 
 import org.woheller69.weather.BuildConfig;

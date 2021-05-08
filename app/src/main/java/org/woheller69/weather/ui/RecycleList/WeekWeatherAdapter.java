@@ -1,6 +1,7 @@
 package org.woheller69.weather.ui.RecycleList;
 
 import android.content.Context;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -85,9 +86,9 @@ public class WeekWeatherAdapter extends RecyclerView.Adapter<WeekWeatherAdapter.
             day = itemView.findViewById(R.id.week_forecast_day);
             weather = itemView.findViewById(R.id.week_forecast_weather);
             temperature_max = itemView.findViewById(R.id.week_forecast_temperature_max);
-            temperature_max.setTextColor(context.getResources().getColor(R.color.red));
+            temperature_max.setTextColor(ContextCompat.getColor(context,R.color.red));
             temperature_min = itemView.findViewById(R.id.week_forecast_temperature_min);
-            temperature_min.setTextColor(context.getResources().getColor(R.color.midblue));
+            temperature_min.setTextColor(ContextCompat.getColor(context,R.color.midblue));
             humidity = itemView.findViewById(R.id.week_forecast_humidity);
             wind_speed = itemView.findViewById(R.id.week_forecast_wind_speed);
             precipitation = itemView.findViewById(R.id.week_forecast_precipitation);
