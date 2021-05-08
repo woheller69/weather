@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -125,6 +126,26 @@ public class WeatherWidget extends AppWidgetProvider {
     @Override
     public void onEnabled(Context context) {
         // Enter relevant functionality for when the first widget is created
+        PFASQLiteHelper dbHelper = PFASQLiteHelper.getInstance(context);
+
+        int widgetCityID=WeatherWidget.getWidgetCityID(context);
+
+        CurrentWeatherData currentWeather=dbHelper.getCurrentWeatherByCityId(widgetCityID);
+        List<WeekForecast> weekforecasts=dbHelper.getWeekForecastsByCityId(widgetCityID);
+
+        int[] widgetIDs = AppWidgetManager.getInstance(context).getAppWidgetIds(new ComponentName(context, WeatherWidget.class));
+
+        for (int widgetID : widgetIDs) {
+
+                RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.weather_widget);
+                AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
+
+                CityToWatch city=dbHelper.getCityToWatch(widgetCityID);
+
+                WeatherWidget.updateView(context, appWidgetManager, views, widgetID, city, currentWeather,weekforecasts);
+                appWidgetManager.updateAppWidget(widgetID, views);
+
+        }
      }
 
     @Override

@@ -3,6 +3,7 @@ package org.woheller69.weather.widget;
 
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -163,6 +164,26 @@ public class WeatherWidget5day extends AppWidgetProvider {
     @Override
     public void onEnabled(Context context) {
         // Enter relevant functionality for when the first widget is created
+        PFASQLiteHelper dbHelper = PFASQLiteHelper.getInstance(context);
+
+        int widgetCityID=WeatherWidget.getWidgetCityID(context);
+
+        List<Forecast> forecasts=dbHelper.getForecastsByCityId(widgetCityID);
+        List<WeekForecast> weekforecasts=dbHelper.getWeekForecastsByCityId(widgetCityID);
+
+        int[] widgetIDs = AppWidgetManager.getInstance(context).getAppWidgetIds(new ComponentName(context, WeatherWidget5day.class));
+
+        for (int widgetID : widgetIDs) {
+
+            RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.weather_widget_5day);
+            AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
+
+            CityToWatch city=dbHelper.getCityToWatch(widgetCityID);
+
+            WeatherWidget5day.updateView(context, appWidgetManager, views, widgetID, city, forecasts,weekforecasts);
+            appWidgetManager.updateAppWidget(widgetID, views);
+
+        }
      }
 
     @Override
