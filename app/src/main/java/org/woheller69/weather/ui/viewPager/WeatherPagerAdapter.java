@@ -3,7 +3,7 @@ package org.woheller69.weather.ui.viewPager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
+import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
@@ -67,13 +67,14 @@ public class WeatherPagerAdapter extends FragmentStatePagerAdapter implements IU
         }
     }
 
+    @NonNull
     @Override
     public WeatherCityFragment getItem(int position) {
         Bundle args = new Bundle();
         args.putInt("city_id", cities.get(position).getCityId());
         args.putIntArray("dataSetTypes", mDataSetTypes);
 
-        return (WeatherCityFragment) Fragment.instantiate(mContext, WeatherCityFragment.class.getName(), args);
+        return WeatherCityFragment.newInstance(args);
     }
 
     @Override

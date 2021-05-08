@@ -31,6 +31,12 @@ public class WeatherCityFragment extends Fragment implements IUpdateableCityUI {
 
     private RecyclerView recyclerView;
 
+    public static WeatherCityFragment newInstance(Bundle args)
+    {
+        WeatherCityFragment weatherCityFragment = new WeatherCityFragment();
+        weatherCityFragment.setArguments(args);
+        return weatherCityFragment;
+    }
 
     public void setAdapter(CityWeatherAdapter adapter) {
         mAdapter = adapter;
