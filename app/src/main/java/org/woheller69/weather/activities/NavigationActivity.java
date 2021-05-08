@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.preference.PreferenceActivity;
+
 import androidx.preference.PreferenceManager;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.navigation.NavigationView.OnNavigationItemSelectedListener;
@@ -138,8 +138,6 @@ public class NavigationActivity extends AppCompatActivity implements OnNavigatio
             createBackStack(intent);
         }else if(itemId==R.id.nav_settings) {
             intent = new Intent(this, SettingsActivity.class);
-            intent.putExtra(PreferenceActivity.EXTRA_SHOW_FRAGMENT, SettingsActivity.GeneralPreferenceFragment.class.getName());
-            intent.putExtra(PreferenceActivity.EXTRA_NO_HEADERS, true);
             createBackStack(intent);
         }
     }
