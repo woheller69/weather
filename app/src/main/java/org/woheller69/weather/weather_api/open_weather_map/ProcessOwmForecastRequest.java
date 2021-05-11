@@ -96,6 +96,11 @@ public class ProcessOwmForecastRequest implements IProcessHttpRequest {
                 dbHelper.deleteForecastsByCityId(cityId); //start with empty forecast list
             } else{  //load 48 1h forecasts and then append the 3h forecasts
                 forecasts = dbHelper.getForecastsByCityId(cityId);
+                if (forecasts==null || forecasts.size()!=48) { //data from OneCallAPI not available even though it should
+                    final String ERROR_MSG = context.getResources().getString(R.string.error_convert_to_json);
+                    Toast.makeText(context, ERROR_MSG, Toast.LENGTH_LONG).show();
+                    return;
+                }
             }
 
             // Continue with inserting new records
