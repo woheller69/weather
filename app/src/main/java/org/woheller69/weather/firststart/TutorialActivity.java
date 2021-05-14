@@ -12,7 +12,6 @@ import androidx.preference.PreferenceManager;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -128,7 +127,7 @@ public class TutorialActivity extends AppCompatActivity {
         dotsLayout.removeAllViews();
         for (int i = 0; i < dots.length; i++) {
             dots[i] = new TextView(this);
-            dots[i].setText(Html.fromHtml("&#8226;"));
+            dots[i].setText("\u2022");
             dots[i].setTextSize(35);
             dots[i].setTextColor(colorsInactive[currentPage]);
             dotsLayout.addView(dots[i]);
