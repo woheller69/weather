@@ -10,6 +10,7 @@ import androidx.core.app.JobIntentService;
 import android.widget.Toast;
 
 import org.woheller69.weather.R;
+import org.woheller69.weather.activities.NavigationActivity;
 import org.woheller69.weather.database.CityToWatch;
 import org.woheller69.weather.database.Forecast;
 import org.woheller69.weather.database.PFASQLiteHelper;
@@ -65,7 +66,7 @@ public class UpdateDataService extends JobIntentService {
             h.post(new Runnable() {
                 @Override
                 public void run() {
-                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.error_no_internet), Toast.LENGTH_LONG).show();
+                    if (NavigationActivity.isVisible) Toast.makeText(getApplicationContext(), getResources().getString(R.string.error_no_internet), Toast.LENGTH_LONG).show();
                 }
             });
             return;

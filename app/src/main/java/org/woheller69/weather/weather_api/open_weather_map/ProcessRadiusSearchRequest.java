@@ -12,6 +12,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.woheller69.weather.R;
+import org.woheller69.weather.activities.NavigationActivity;
 import org.woheller69.weather.activities.RadiusSearchResultActivity;
 import org.woheller69.weather.radius_search.RadiusSearchItem;
 import org.woheller69.weather.radius_search.RadiusSearchItemComparator;
@@ -77,7 +78,7 @@ public class ProcessRadiusSearchRequest implements IProcessHttpRequest {
         h.post(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(context, context.getResources().getString(R.string.error_fetch_forecast), Toast.LENGTH_LONG).show();
+                if (NavigationActivity.isVisible) Toast.makeText(context, context.getResources().getString(R.string.error_fetch_forecast), Toast.LENGTH_LONG).show();
             }
         });
     }

@@ -17,6 +17,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.woheller69.weather.R;
+import org.woheller69.weather.activities.NavigationActivity;
 import org.woheller69.weather.database.City;
 import org.woheller69.weather.database.CityToWatch;
 import org.woheller69.weather.database.CurrentWeatherData;
@@ -107,7 +108,7 @@ public class ProcessOwmForecastOneCallAPIRequest implements IProcessHttpRequest 
 
             if (weatherData == null) {
                 final String ERROR_MSG = context.getResources().getString(R.string.error_convert_to_json);
-                Toast.makeText(context, ERROR_MSG, Toast.LENGTH_LONG).show();
+                if (NavigationActivity.isVisible) Toast.makeText(context, ERROR_MSG, Toast.LENGTH_LONG).show();
             } else {
                 weatherData.setCity_id(cityId);
                 weatherData.setRain60min(rain60min);
@@ -137,7 +138,7 @@ public class ProcessOwmForecastOneCallAPIRequest implements IProcessHttpRequest 
                 // Data were not well-formed, abort
                 if (forecast == null) {
                     final String ERROR_MSG = context.getResources().getString(R.string.error_convert_to_json);
-                    Toast.makeText(context, ERROR_MSG, Toast.LENGTH_LONG).show();
+                    if (NavigationActivity.isVisible) Toast.makeText(context, ERROR_MSG, Toast.LENGTH_LONG).show();
                     return;
                 }
                 // Could retrieve all data, so proceed
@@ -167,7 +168,7 @@ public class ProcessOwmForecastOneCallAPIRequest implements IProcessHttpRequest 
                     // Data were not well-formed, abort
                     if (forecast == null) {
                         final String ERROR_MSG = context.getResources().getString(R.string.error_convert_to_json);
-                        Toast.makeText(context, ERROR_MSG, Toast.LENGTH_LONG).show();
+                        if (NavigationActivity.isVisible) Toast.makeText(context, ERROR_MSG, Toast.LENGTH_LONG).show();
                         return;
                     }
                     // Could retrieve all data, so proceed
@@ -202,7 +203,7 @@ public class ProcessOwmForecastOneCallAPIRequest implements IProcessHttpRequest 
         h.post(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(context, context.getResources().getString(R.string.error_fetch_forecast), Toast.LENGTH_LONG).show();
+                if (NavigationActivity.isVisible) Toast.makeText(context, context.getResources().getString(R.string.error_fetch_forecast), Toast.LENGTH_LONG).show();
             }
         });
     }

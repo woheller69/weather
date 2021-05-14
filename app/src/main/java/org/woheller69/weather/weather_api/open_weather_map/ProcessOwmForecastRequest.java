@@ -15,6 +15,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.woheller69.weather.R;
+import org.woheller69.weather.activities.NavigationActivity;
 import org.woheller69.weather.database.CityToWatch;
 import org.woheller69.weather.database.Forecast;
 import org.woheller69.weather.database.PFASQLiteHelper;
@@ -97,8 +98,6 @@ public class ProcessOwmForecastRequest implements IProcessHttpRequest {
             } else{  //load 48 1h forecasts and then append the 3h forecasts
                 forecasts = dbHelper.getForecastsByCityId(cityId);
                 if (forecasts==null || forecasts.size()!=48) { //data from OneCallAPI not available even though it should
-                    final String ERROR_MSG = context.getResources().getString(R.string.error_convert_to_json);
-                    Toast.makeText(context, ERROR_MSG, Toast.LENGTH_LONG).show();
                     return;
                 }
             }
@@ -111,7 +110,7 @@ public class ProcessOwmForecastRequest implements IProcessHttpRequest {
                 // Data were not well-formed, abort
                 if (forecast == null) {
                     final String ERROR_MSG = context.getResources().getString(R.string.error_convert_to_json);
-                    Toast.makeText(context, ERROR_MSG, Toast.LENGTH_LONG).show();
+                    if (NavigationActivity.isVisible) Toast.makeText(context, ERROR_MSG, Toast.LENGTH_LONG).show();
                     return;
                 }
                 // Could retrieve all data, so proceed
@@ -151,7 +150,7 @@ public class ProcessOwmForecastRequest implements IProcessHttpRequest {
         h.post(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(context, context.getResources().getString(R.string.error_fetch_forecast), Toast.LENGTH_LONG).show();
+                if (NavigationActivity.isVisible) Toast.makeText(context, context.getResources().getString(R.string.error_fetch_forecast), Toast.LENGTH_LONG).show();
             }
         });
     }

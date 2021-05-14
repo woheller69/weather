@@ -29,6 +29,7 @@ public class NavigationActivity extends AppCompatActivity implements OnNavigatio
 
     // delay to launch nav drawer item, to allow close animation to play
     static final int NAVDRAWER_LAUNCH_DELAY = 250;
+    public static boolean isVisible = false;
 
     // Navigation drawer:
     private DrawerLayout mDrawerLayout;
@@ -163,6 +164,16 @@ public class NavigationActivity extends AppCompatActivity implements OnNavigatio
         selectNavigationItem(getNavigationDrawerID());
 
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        isVisible=true;
+    }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        isVisible=false;
+    }
 
 }
