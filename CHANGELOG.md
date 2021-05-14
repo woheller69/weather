@@ -1,5 +1,12 @@
 Changelog
 ==========
+
+Version 3.4 (2021-05-14)
+
+* Add symbols for very light rain (<0.5mm/h) to 60min forecast
+* Replace deprecated APIs
+* Bugfixes
+
 Version 3.3 (2021-05-05)
 
 * New 5 day widget
