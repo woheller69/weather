@@ -56,7 +56,16 @@ public class NavigationActivity extends AppCompatActivity implements OnNavigatio
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            if (getNavigationDrawerID()!=R.id.nav_weather)
+            {
+                Intent intent = new Intent(this, ForecastCityActivity.class);
+                startActivity(intent);
+            }else{
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                startActivity(intent);
+            }
         }
     }
 
