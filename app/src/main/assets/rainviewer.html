@@ -30,12 +30,12 @@
 
 <body style="background-color:#6fb1e2;">
 
-<div id="timestamp" style="text-align:center; position: absolute;top: 5px; left: 0; right: 0; height: 80px;">FRAME TIME</div>
+<div id="timestamp" style="text-align:center; font-weight:bold; position: absolute;top: 5px; left: 0; right: 0; height: 80px;">FRAME TIME</div>
 
-<div id="mapid" style="position: absolute; top: 55px; left: 0; bottom: 0; right: 0;"></div>
+<div id="mapid" style="position: absolute; top: 45px; left: 0; bottom: 0; right: 0;"></div>
 
 <script>
-//call: rainviewer.html?lat={latitude}&lon={longitude}&appid={API_KEY} Takes latitude/longitude and OWM API_Key from request and shows rainviewer rain radar and OWM clouds layer on openstreetmap for requested position and zoom
+//call: rainviewer.html?lat={latitude}&lon={longitude}&appid={API_KEY}&nightmode={mode} Takes latitude/longitude and OWM API_Key from request and shows rainviewer rain radar and OWM clouds layer on openstreetmap for requested position and zoom
 
 
 var getUrlParameter = function getUrlParameter(sParam) {
@@ -186,18 +186,18 @@ var marker = L.marker([getUrlParameter('lat'), getUrlParameter('lon')]).addTo(ma
         }
         radarLayers[nextFrame.path].setOpacity(0.4);
 
-        document.getElementById("timestamp").innerHTML = (new Date(nextFrame.time * 1000)).toString();
+        document.getElementById("timestamp").innerHTML = (new Date(nextFrame.time * 1000)).toLocaleString();
 
         //change color of forecasts from black to red
         if (animationPosition > lastPastFramePosition){
             document.getElementById("timestamp").style.color = 'red';
         }else{
-            document.getElementById("timestamp").style.color = 'black';
+            document.getElementById("timestamp").style.color = '#024265';
         }
     }
 
     /**
-     * Check avialability and show particular frame position from the timestamps list
+     * Check availability and show particular frame position from the timestamps list
      */
     function showFrame(nextPosition) {
         var preloadingDirection = nextPosition - animationPosition > 0 ? 1 : -1;
