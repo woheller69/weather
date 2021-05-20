@@ -2,6 +2,7 @@ package org.woheller69.weather.ui.RecycleList;
 
 import android.content.Context;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -318,10 +319,12 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
 
         } else if (viewHolder.getItemViewType() == WEEK) {
 
-            WeekViewHolder holder = (WeekViewHolder) viewHolder;
+            final WeekViewHolder holder = (WeekViewHolder) viewHolder;
             LinearLayoutManager layoutManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
             holder.recyclerView.setLayoutManager(layoutManager);
-            WeekWeatherAdapter adapter = new WeekWeatherAdapter(forecastData, context);
+
+
+            final WeekWeatherAdapter adapter = new WeekWeatherAdapter(context, forecastData);
             holder.recyclerView.setAdapter(adapter);
             holder.recyclerView.setFocusable(false);
             holder.recyclerView.addOnItemTouchListener(
@@ -344,6 +347,10 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
 
                                 for (i = 0; i < courseDayList.size(); i++) {
                                     if (courseDayList.get(i).getForecastTime() > time) {        //find first ForecastTime > time of clicked item
+                                        Calendar HeaderTime = Calendar.getInstance();
+                                        HeaderTime.setTimeZone(TimeZone.getTimeZone("GMT"));
+                                        HeaderTime.setTimeInMillis(courseDayList.get(i).getLocalForecastTime(context));
+                                        adapter.setCourseOfDayHeaderDate(HeaderTime.getTime());
                                         break;
                                     }
                                 }
@@ -355,7 +362,15 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
                                     } else {                                                    //if scroll left
                                         courseOfDay.getLayoutManager().scrollToPosition(i);
                                     }
+
+                                    for (int j=0;j<courseDayList.size();j++){
+                                        if (holder.recyclerView.getChildAt(j)!=null){
+                                            holder.recyclerView.getLayoutManager().getChildAt(j).setBackground(ResourcesCompat.getDrawable(context.getResources(),R.drawable.rounded_transparent,null));
+                                        }
+                                    }
+                                    view.setBackground(ResourcesCompat.getDrawable(context.getResources(),R.drawable.rounded_grey,null));
                                 }
+
                             }
                         }
 
@@ -370,7 +385,7 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
             DayViewHolder holder = (DayViewHolder) viewHolder;
             LinearLayoutManager layoutManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
             holder.recyclerView.setLayoutManager(layoutManager);
-            CourseOfDayAdapter adapter = new CourseOfDayAdapter(courseDayList, context,holder.recyclerViewHeader,holder.recyclerView);
+            CourseOfDayAdapter adapter = new CourseOfDayAdapter(courseDayList, context,holder.recyclerViewHeader,holder.recyclerView,mParent);
             holder.recyclerView.setAdapter(adapter);
             holder.recyclerView.setFocusable(false);
 

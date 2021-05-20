@@ -2,6 +2,7 @@ package org.woheller69.weather.ui.RecycleList;
 
 import android.content.Context;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import org.woheller69.weather.ui.Help.StringFormatUtils;
 import org.woheller69.weather.ui.UiResourceProvider;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.TimeZone;
 
 /**
@@ -24,11 +26,29 @@ public class WeekWeatherAdapter extends RecyclerView.Adapter<WeekWeatherAdapter.
 
     private Context context;
     private float[][] forecastData;
+    private Date courseOfDayHeaderDate;
 
-    WeekWeatherAdapter(float[][] forecastData, Context context) {
+    WeekWeatherAdapter(Context context, float[][] forecastData) {
         this.context = context;
         this.forecastData = forecastData;
+        this.courseOfDayHeaderDate=new Date();
     }
+
+    public void setCourseOfDayHeaderDate(Date courseOfDayHeaderDate){
+        Date oldDate=this.courseOfDayHeaderDate;
+        this.courseOfDayHeaderDate=courseOfDayHeaderDate;
+        Calendar c = Calendar.getInstance();
+        c.setTimeZone(TimeZone.getTimeZone("GMT"));
+
+        c.setTime(oldDate);
+        int oldDay=c.get(Calendar.DAY_OF_MONTH);
+        c.setTime(courseOfDayHeaderDate);
+        int newDay=c.get(Calendar.DAY_OF_MONTH);
+        if (newDay!=oldDay){
+            notifyDataSetChanged();
+        }
+    }
+
 
     @Override
     public WeekForecastViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -62,6 +82,16 @@ public class WeekWeatherAdapter extends RecyclerView.Adapter<WeekWeatherAdapter.
         holder.day.setText(StringFormatUtils.getDayShort(day));
         holder.temperature_max.setText(StringFormatUtils.formatTemperature(context,dayValues[0]));
         holder.temperature_min.setText(StringFormatUtils.formatTemperature(context,dayValues[1]));
+
+        day=c.get(Calendar.DAY_OF_MONTH);
+        c.setTimeInMillis(courseOfDayHeaderDate.getTime());
+        int dayheader=c.get(Calendar.DAY_OF_MONTH);
+        if (dayheader==day) {
+            holder.itemView.setBackground(ResourcesCompat.getDrawable(context.getResources(),R.drawable.rounded_grey,null));
+        }else{
+            holder.itemView.setBackground(ResourcesCompat.getDrawable(context.getResources(),R.drawable.rounded_transparent,null));
+        }
+
     }
 
     @Override

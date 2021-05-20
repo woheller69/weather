@@ -17,6 +17,7 @@ import org.woheller69.weather.ui.Help.StringFormatUtils;
 import org.woheller69.weather.ui.UiResourceProvider;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 
@@ -31,12 +32,17 @@ public class CourseOfDayAdapter extends RecyclerView.Adapter<CourseOfDayAdapter.
     private Context context;
     private TextView recyclerViewHeader;
     private RecyclerView recyclerView;
+    private RecyclerView weekRecyclerView;
+    private Date courseOfDayHeaderDate;
+    private ViewGroup mParent;
 
-    CourseOfDayAdapter(List<Forecast> courseOfDayList, Context context, TextView recyclerViewHeader, RecyclerView recyclerView) {
+    CourseOfDayAdapter(List<Forecast> courseOfDayList, Context context, TextView recyclerViewHeader, RecyclerView recyclerView, ViewGroup mParent) {
         this.context = context;
         this.courseOfDayList = courseOfDayList;
         this.recyclerViewHeader=recyclerViewHeader;
         this.recyclerView=recyclerView;
+        this.courseOfDayHeaderDate=new Date();
+        this.mParent=mParent;
     }
 
     @Override
@@ -97,6 +103,18 @@ public class CourseOfDayAdapter extends RecyclerView.Adapter<CourseOfDayAdapter.
             int headerday = HeaderTime.get(Calendar.DAY_OF_WEEK);
             headerday = StringFormatUtils.getDayLong(headerday);
             recyclerViewHeader.setText(context.getResources().getString(headerday));
+
+            courseOfDayHeaderDate=HeaderTime.getTime();
+
+            RecyclerView week = mParent.findViewById(R.id.recycler_view_week); //get access to week recyclerview
+            if (weekRecyclerView==null && week!=null){
+                weekRecyclerView=week;      //store it for times when week recyclerview is invisible
+            }
+
+            if (weekRecyclerView!=null){
+                WeekWeatherAdapter weekadapter = (WeekWeatherAdapter) weekRecyclerView.getAdapter();
+                weekadapter.setCourseOfDayHeaderDate(courseOfDayHeaderDate);
+            }
         }
     }
 
