@@ -41,10 +41,17 @@ public class CourseOfDayAdapter extends RecyclerView.Adapter<CourseOfDayAdapter.
         this.courseOfDayList = courseOfDayList;
         this.recyclerViewHeader=recyclerViewHeader;
         this.recyclerView=recyclerView;
-        this.courseOfDayHeaderDate=new Date();
+        this.courseOfDayHeaderDate=new Date(courseOfDayList.get(0).getLocalForecastTime(context));
         this.mParent=mParent;
     }
 
+    public void setWeekRecyclerView(RecyclerView weekRecyclerView){
+        this.weekRecyclerView=weekRecyclerView;
+    }
+
+    public Date getCourseOfDayHeaderDate(){
+        return this.courseOfDayHeaderDate;
+    }
     @Override
     public CourseOfDayViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_course_of_day, parent, false);

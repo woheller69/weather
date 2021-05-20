@@ -6,7 +6,6 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -100,7 +99,6 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
     // function for week forecast list
     public void updateWeekForecastData(List<WeekForecast> forecasts) {
         if (forecasts.isEmpty()) {
-            Log.d("devtag", "######## forecastlist empty");
             forecastData = new float[][]{new float[]{0,0,0,0,0,0,0,0,0,0,0}};  //initialize array with one empty row which will not be displayed
             return;
         }
@@ -327,6 +325,15 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
             final WeekWeatherAdapter adapter = new WeekWeatherAdapter(context, forecastData);
             holder.recyclerView.setAdapter(adapter);
             holder.recyclerView.setFocusable(false);
+
+            RecyclerView courseOfDay;
+            courseOfDay = mParent.findViewById(R.id.recycler_view_course_day); //get access to course of day recyclerview
+            if (courseOfDay!=null) {  //otherwise crash if courseOfDay not visible
+                CourseOfDayAdapter dayadapter = (CourseOfDayAdapter) courseOfDay.getAdapter();
+                dayadapter.setWeekRecyclerView(holder.recyclerView);        //provide CourseOfDayAdapter with reference to week recyclerview
+                adapter.setCourseOfDayHeaderDate(dayadapter.getCourseOfDayHeaderDate());  //initialize WeekWeatherAdapter with current HeaderDate from CourseOfDayAdapter
+            }
+
             holder.recyclerView.addOnItemTouchListener(
                     new RecyclerItemClickListener(context, holder.recyclerView, new RecyclerItemClickListener.OnItemClickListener() {
                         @Override
@@ -363,15 +370,19 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
                                         courseOfDay.getLayoutManager().scrollToPosition(i);
                                     }
 
-                                    for (int j=0;j<courseDayList.size();j++){
-                                        if (holder.recyclerView.getChildAt(j)!=null){
-                                            holder.recyclerView.getLayoutManager().getChildAt(j).setBackground(ResourcesCompat.getDrawable(context.getResources(),R.drawable.rounded_transparent,null));
-                                        }
-                                    }
-                                    view.setBackground(ResourcesCompat.getDrawable(context.getResources(),R.drawable.rounded_grey,null));
+                                    highlightSelected(view);
                                 }
 
                             }
+                        }
+
+                        private void highlightSelected(View view) {
+                            for (int j=0;j<courseDayList.size();j++){  //reset all items
+                                if (holder.recyclerView.getLayoutManager().getChildAt(j)!=null){
+                                    holder.recyclerView.getLayoutManager().getChildAt(j).setBackground(ResourcesCompat.getDrawable(context.getResources(),R.drawable.rounded_transparent,null));
+                                }
+                            }
+                            view.setBackground(ResourcesCompat.getDrawable(context.getResources(),R.drawable.rounded_grey,null)); //highlight selected item
                         }
 
                         public void onLongItemClick(View view, int position) {
@@ -400,7 +411,6 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
             List<WeekForecast> weekforecasts = database.getWeekForecastsByCityId(currentWeatherDataList.getCity_id());
 
             if (weekforecasts.isEmpty()) {
-                Log.d("devtag", "######## forecastlist empty");
                 return;
             }
 
@@ -545,11 +555,9 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
         //iterate over FCs 5h before and 5h past forecast time of the weekforecast (which should usually be noon)
         for (Forecast fc : forecastList) {
             if ((fc.getForecastTime() >= forecastTimeNoon-18000000) && (fc.getForecastTime() <= forecastTimeNoon+18000000)) {
-//                Log.d("ID",Integer.toString(fc.getWeatherID()));
                 if (fc.getWeatherID() <= IApiToDatabaseConversion.WeatherCategories.BROKEN_CLOUDS.getNumVal()) sun = true;  //if weather better or equal broken clouds in one interval there is at least some sun during day.
             }
         }
- //       Log.d("ID",Boolean.toString(sun));
         return sun;
     }
     //this method fixes the problem that OpenWeatherMap will show a rain symbol for the whole day even if weather during day is great and there are just a few drops of rain during night
@@ -560,7 +568,6 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
         //iterate over FCs 5h before and 5h past forecast time of the weekforecast (which should usually be noon)
         for (Forecast fc : forecastList) {
             if ((fc.getForecastTime() >= forecastTimeNoon - 18000000) && (fc.getForecastTime() <= forecastTimeNoon + 18000000)) {
-                //Log.d("Category",Integer.toString(fc.getWeatherID()));
                 if (fc.getWeatherID() > category) {
                     category = fc.getWeatherID();  //find worst weather
                 }
@@ -569,7 +576,6 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
         //if worst is overcast clouds set category to broken clouds because fix is only used if checkSun=true, i.e. at least one interval with sun
         if (category==IApiToDatabaseConversion.WeatherCategories.OVERCAST_CLOUDS.getNumVal()) category=IApiToDatabaseConversion.WeatherCategories.BROKEN_CLOUDS.getNumVal();
         if (category>IApiToDatabaseConversion.WeatherCategories.BROKEN_CLOUDS.getNumVal()) category=1000;
-        //Log.d("Category",Integer.toString(category));
         return category;
     }
 
