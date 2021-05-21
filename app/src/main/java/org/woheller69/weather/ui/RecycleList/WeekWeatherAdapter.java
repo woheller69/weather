@@ -31,7 +31,9 @@ public class WeekWeatherAdapter extends RecyclerView.Adapter<WeekWeatherAdapter.
     WeekWeatherAdapter(Context context, float[][] forecastData) {
         this.context = context;
         this.forecastData = forecastData;
-        this.courseOfDayHeaderDate=new Date((long) forecastData[0][8]);  //init with date of first weekday
+        if (forecastData.length!=0 && forecastData[0]!=null) {
+            this.courseOfDayHeaderDate = new Date((long) forecastData[0][8]);  //init with date of first weekday
+        } else this.courseOfDayHeaderDate = new Date();  //fallback if no data available
     }
 
     public void setCourseOfDayHeaderDate(Date courseOfDayHeaderDate){

@@ -40,7 +40,9 @@ public class CourseOfDayAdapter extends RecyclerView.Adapter<CourseOfDayAdapter.
         this.courseOfDayList = courseOfDayList;
         this.recyclerViewHeader=recyclerViewHeader;
         this.recyclerView=recyclerView;
-        this.courseOfDayHeaderDate=new Date(courseOfDayList.get(0).getLocalForecastTime(context));
+        if (courseOfDayList.size()!=0 && courseOfDayList.get(0)!=null) {
+            this.courseOfDayHeaderDate = new Date(courseOfDayList.get(0).getLocalForecastTime(context));
+        }else this.courseOfDayHeaderDate=new Date();  //fallback if no data available
     }
 
     public void setWeekRecyclerView(RecyclerView weekRecyclerView){
