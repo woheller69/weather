@@ -47,6 +47,8 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
 
     private Context context;
     private ViewGroup mParent;
+    private RecyclerView mCourseOfDay;
+    private RecyclerView mWeekWeather;
 
     private CurrentWeatherData currentWeatherDataList;
 
@@ -198,6 +200,7 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
         WeekViewHolder(View v) {
             super(v);
             recyclerView = v.findViewById(R.id.recycler_view_week);
+            mWeekWeather=recyclerView;
             recyclerView.setHasFixedSize(true);
         }
     }
@@ -209,6 +212,7 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
         DayViewHolder(View v) {
             super(v);
             recyclerView = v.findViewById(R.id.recycler_view_course_day);
+            mCourseOfDay=recyclerView;
             recyclerView.setHasFixedSize(true);
             recyclerViewHeader=v.findViewById(R.id.recycler_view_header);
         }
@@ -326,10 +330,8 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
             holder.recyclerView.setAdapter(adapter);
             holder.recyclerView.setFocusable(false);
 
-            RecyclerView courseOfDay;
-            courseOfDay = mParent.findViewById(R.id.recycler_view_course_day); //get access to course of day recyclerview
-            if (courseOfDay!=null) {  //otherwise crash if courseOfDay not visible
-                CourseOfDayAdapter dayadapter = (CourseOfDayAdapter) courseOfDay.getAdapter();
+            if (mCourseOfDay!=null) {  //otherwise crash if courseOfDay not visible
+                CourseOfDayAdapter dayadapter = (CourseOfDayAdapter) mCourseOfDay.getAdapter();
                 dayadapter.setWeekRecyclerView(holder.recyclerView);        //provide CourseOfDayAdapter with reference to week recyclerview
                 adapter.setCourseOfDayHeaderDate(dayadapter.getCourseOfDayHeaderDate());  //initialize WeekWeatherAdapter with current HeaderDate from CourseOfDayAdapter
             }
@@ -343,10 +345,8 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
                             long time = weekforecasts.get(position).getForecastTime();  //time of clicked week item
                             time=time-6*3600000;                                       //week item normally midday -> subtract 6h to get morning time
 
-                            RecyclerView courseOfDay;
-                            courseOfDay = mParent.findViewById(R.id.recycler_view_course_day); //get access to course of day recyclerview
-                            if (courseOfDay!=null){  //otherwise crash if courseOfDay not visible
-                                LinearLayoutManager llm = (LinearLayoutManager) courseOfDay.getLayoutManager();
+                            if (mCourseOfDay!=null){  //otherwise crash if courseOfDay not visible
+                                LinearLayoutManager llm = (LinearLayoutManager) mCourseOfDay.getLayoutManager();
 
                                 assert llm != null;
                                 int num = llm.findLastVisibleItemPosition() - llm.findFirstVisibleItemPosition();  //get number of visible elements
@@ -365,9 +365,9 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
                                 if (i < courseDayList.size()) {  //only if element found
                                     if (i > llm.findFirstVisibleItemPosition()) {               //if scroll right
                                         int min = Math.min(i + num, courseDayList.size()-1);      //scroll to i+num so that requested element is on the left. Max scroll to courseDayList.size()
-                                        courseOfDay.getLayoutManager().scrollToPosition(min);
+                                        mCourseOfDay.getLayoutManager().scrollToPosition(min);
                                     } else {                                                    //if scroll left
-                                        courseOfDay.getLayoutManager().scrollToPosition(i);
+                                        mCourseOfDay.getLayoutManager().scrollToPosition(i);
                                     }
 
                                     highlightSelected(view);
@@ -382,7 +382,7 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
                                     holder.recyclerView.getLayoutManager().getChildAt(j).setBackground(ResourcesCompat.getDrawable(context.getResources(),R.drawable.rounded_transparent,null));
                                 }
                             }
-                            view.setBackground(ResourcesCompat.getDrawable(context.getResources(),R.drawable.rounded_grey,null)); //highlight selected item
+                            view.setBackground(ResourcesCompat.getDrawable(context.getResources(),R.drawable.rounded_highlight,null)); //highlight selected item
                         }
 
                         public void onLongItemClick(View view, int position) {
@@ -396,7 +396,7 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
             DayViewHolder holder = (DayViewHolder) viewHolder;
             LinearLayoutManager layoutManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
             holder.recyclerView.setLayoutManager(layoutManager);
-            CourseOfDayAdapter adapter = new CourseOfDayAdapter(courseDayList, context,holder.recyclerViewHeader,holder.recyclerView,mParent);
+            CourseOfDayAdapter adapter = new CourseOfDayAdapter(courseDayList, context,holder.recyclerViewHeader,holder.recyclerView);
             holder.recyclerView.setAdapter(adapter);
             holder.recyclerView.setFocusable(false);
 

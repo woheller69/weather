@@ -87,7 +87,7 @@ public class WeekWeatherAdapter extends RecyclerView.Adapter<WeekWeatherAdapter.
         c.setTimeInMillis(courseOfDayHeaderDate.getTime());
         int dayheader=c.get(Calendar.DAY_OF_MONTH);
         if (dayheader==day) {
-            holder.itemView.setBackground(ResourcesCompat.getDrawable(context.getResources(),R.drawable.rounded_grey,null));
+            holder.itemView.setBackground(ResourcesCompat.getDrawable(context.getResources(),R.drawable.rounded_highlight,null));
         }else{
             holder.itemView.setBackground(ResourcesCompat.getDrawable(context.getResources(),R.drawable.rounded_transparent,null));
         }

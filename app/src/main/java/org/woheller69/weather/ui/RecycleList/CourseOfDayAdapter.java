@@ -34,15 +34,13 @@ public class CourseOfDayAdapter extends RecyclerView.Adapter<CourseOfDayAdapter.
     private RecyclerView recyclerView;
     private RecyclerView weekRecyclerView;
     private Date courseOfDayHeaderDate;
-    private ViewGroup mParent;
 
-    CourseOfDayAdapter(List<Forecast> courseOfDayList, Context context, TextView recyclerViewHeader, RecyclerView recyclerView, ViewGroup mParent) {
+    CourseOfDayAdapter(List<Forecast> courseOfDayList, Context context, TextView recyclerViewHeader, RecyclerView recyclerView) {
         this.context = context;
         this.courseOfDayList = courseOfDayList;
         this.recyclerViewHeader=recyclerViewHeader;
         this.recyclerView=recyclerView;
         this.courseOfDayHeaderDate=new Date(courseOfDayList.get(0).getLocalForecastTime(context));
-        this.mParent=mParent;
     }
 
     public void setWeekRecyclerView(RecyclerView weekRecyclerView){
@@ -112,11 +110,6 @@ public class CourseOfDayAdapter extends RecyclerView.Adapter<CourseOfDayAdapter.
             recyclerViewHeader.setText(context.getResources().getString(headerday));
 
             courseOfDayHeaderDate=HeaderTime.getTime();
-
-            RecyclerView week = mParent.findViewById(R.id.recycler_view_week); //get access to week recyclerview
-            if (weekRecyclerView==null && week!=null){
-                weekRecyclerView=week;      //store it for times when week recyclerview is invisible
-            }
 
             if (weekRecyclerView!=null){
                 WeekWeatherAdapter weekadapter = (WeekWeatherAdapter) weekRecyclerView.getAdapter();
