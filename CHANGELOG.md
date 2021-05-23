@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 3.5 (2021-05-23)
+
+* Highlight selected item in week overview
+* Use local settings for timestamp in RainViewer
+* Bugfixes
+
 Version 3.4 (2021-05-14)
 
 * Add symbols for very light rain (<0.5mm/h) to 60min forecast
