@@ -102,7 +102,7 @@ public class RadiusSearchResultActivity extends AppCompatActivity {
                 lat = resultList.get(i).getLat();
                 lon = resultList.get(i).getLon();
 
-                temp = Math.round(prefManager.convertTemperatureFromCelsius((float) resultList.get(i).getTemperature())*1.0)/1.0;  //round 1 digit
+                temp = Math.round(prefManager.convertTemperatureFromCelsius((float) resultList.get(i).getTemperature())*1.0)/1.0;  //round without digit
                 cat = resultList.get(i).getWeatherCategory();
                  if (prefManager.getTemperatureUnit().equals("°C")) unit=0;
                 else unit=1;
