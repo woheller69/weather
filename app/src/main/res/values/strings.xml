@@ -146,5 +146,5 @@
     <string name="settings_position">Position</string>
     <string name="settings_GPS_summary">Allow usage of current GPS position in first TAB and in current weather widget. Position update is triggered automatically by widget.</string>
     <string name="settings_GPS_position">Allow GPS usage</string>
-
+    <string name="error_no_position">No position available</string>
 </resources>

@@ -135,4 +135,5 @@
     <string name="settings_position">Posición</string>
     <string name="settings_GPS_summary">Permitir el uso de la posición GPS actual en la primera PESTAÑA y en el widget del tiempo actual. Permitir el uso de la posición GPS actual en la primera PESTAÑA y en el widget del tiempo actual. La actualización de la posición se activa automáticamente a través del widget. </string>
     <string name="settings_GPS_position">Permitir el uso de GPS</string>
+    <string name="error_no_position">Posición no disponible </string>
 </resources>

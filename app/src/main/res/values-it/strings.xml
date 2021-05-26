@@ -146,4 +146,5 @@
     <string name="settings_position">Posizione</string>
     <string name="settings_GPS_summary">Consenti l\'uso della posizione GPS corrente nel primo TAB e nel widget meteo corrente. L\'aggiornamento della posizione viene attivato automaticamente tramite il widget.</string>
     <string name="settings_GPS_position">Consenti l\'utilizzo del GPS</string>
+    <string name="error_no_position">Posizione non disponibile</string>
 </resources> 

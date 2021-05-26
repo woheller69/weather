@@ -136,4 +136,5 @@
     <string name="settings_position">Position</string>
     <string name="settings_GPS_summary">Erlaubt die Nutzung der aktuellen GPS Position im ersten TAB und im Widget für das aktuelle Wetter. Das Update der Position wird automatisch vom Widget ausgelöst.</string>
     <string name="settings_GPS_position">GPS Nutzung erlauben</string>
+    <string name="error_no_position">Keine Position verfügbar</string>
 </resources>

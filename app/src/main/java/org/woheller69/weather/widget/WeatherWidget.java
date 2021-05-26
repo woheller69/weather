@@ -100,7 +100,7 @@ public class WeatherWidget extends AppWidgetProvider {
                         break;
                     }
                 }
-            } else Toast.makeText(context.getApplicationContext(),"Position not available",Toast.LENGTH_SHORT).show();
+            } else Toast.makeText(context.getApplicationContext(),R.string.error_no_position,Toast.LENGTH_SHORT).show();
         }
     }
 
