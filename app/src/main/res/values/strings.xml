@@ -143,5 +143,8 @@
     <string name="dialog_add_tv">For better search results please activate online search via photon API in settings</string>
     <string name="settings_temp_decimal">Show temperature with one decimal</string>
     <string name="settings_darkmode">Android 10+ Dark Mode</string>
+    <string name="settings_position">Position</string>
+    <string name="settings_GPS_summary">Allow usage of current GPS position in first TAB and in current weather widget. Position update is triggered automatically by widget.</string>
+    <string name="settings_GPS_position">Allow GPS usage</string>
 
 </resources>

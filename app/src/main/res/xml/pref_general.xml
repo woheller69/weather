@@ -68,4 +68,13 @@
             android:title="@string/settings_search" />
     </PreferenceCategory>
 
+    <PreferenceCategory android:title="@string/settings_position">
+        <SwitchPreference
+            android:key="pref_GPS"
+            android:title="@string/settings_GPS_position"
+            android:summary="@string/settings_GPS_summary"
+            android:defaultValue="false"
+            />
+    </PreferenceCategory>
+
 </PreferenceScreen>

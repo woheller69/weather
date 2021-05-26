@@ -131,5 +131,7 @@
     <string name="dialog_add_tv">Для улучшения результатов поиска активируйте онлайн-поиск через photon API в настройках.</string>
     <string name="settings_temp_decimal">отображение температуры с одним десятичным знаком</string>
     <string name="settings_darkmode">Android 10+ темный режим</string>
-
+    <string name="settings_position">Должность</string>
+    <string name="settings_GPS_summary">Разрешить использование текущего положения GPS в первой ВКЛАДКЕ и в текущем виджете погоды. Обновление позиции активируется автоматически через виджет.</string>
+    <string name="settings_GPS_position">Разрешить использование GPS</string>
 </resources>

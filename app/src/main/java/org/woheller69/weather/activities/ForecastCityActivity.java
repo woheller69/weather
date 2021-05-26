@@ -46,6 +46,21 @@ public class ForecastCityActivity extends NavigationActivity implements IUpdatea
     @Override
     protected void onResume() {
         super.onResume();
+
+        initResources();
+
+        PFASQLiteHelper db = PFASQLiteHelper.getInstance(this);
+        if (db.getAllCitiesToWatch().isEmpty()) {
+            // no cities selected.. don't show the viewPager - rather show a text that tells the user that no city was selected
+            viewPager.setVisibility(View.GONE);
+            noCityText.setVisibility(View.VISIBLE);
+
+        } else {
+            noCityText.setVisibility(View.GONE);
+            viewPager.setVisibility(View.VISIBLE);
+            viewPager.setAdapter(pagerAdapter);
+        }
+
         ViewUpdater.addSubscriber(this);
         ViewUpdater.addSubscriber(pagerAdapter);
 
@@ -95,18 +110,6 @@ public class ForecastCityActivity extends NavigationActivity implements IUpdatea
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(viewPager, true);
 
-
-        PFASQLiteHelper db = PFASQLiteHelper.getInstance(this);
-        if (db.getAllCitiesToWatch().isEmpty()) {
-            // no cities selected.. don't show the viewPager - rather show a text that tells the user that no city was selected
-            viewPager.setVisibility(View.GONE);
-            noCityText.setVisibility(View.VISIBLE);
-
-        } else {
-            noCityText.setVisibility(View.GONE);
-            viewPager.setVisibility(View.VISIBLE);
-            viewPager.setAdapter(pagerAdapter);
-        }
     }
 
     @Override

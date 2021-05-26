@@ -143,5 +143,7 @@
     <string name="dialog_add_tv">Per risultati di ricerca migliori, attiva la ricerca online tramite l\'API photon nelle impostazioni</string>
     <string name="settings_temp_decimal">Mostra la temperatura con una cifra decimale</string>
     <string name="settings_darkmode">Modalità scura di Android 10+</string>
-
+    <string name="settings_position">Posizione</string>
+    <string name="settings_GPS_summary">Consenti l\'uso della posizione GPS corrente nel primo TAB e nel widget meteo corrente. L\'aggiornamento della posizione viene attivato automaticamente tramite il widget.</string>
+    <string name="settings_GPS_position">Consenti l\'utilizzo del GPS</string>
 </resources> 

@@ -1,6 +1,7 @@
 package org.woheller69.weather.widget;
 
 
+import android.Manifest;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
@@ -8,11 +9,19 @@ import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.widget.RemoteViews;
+import android.widget.Toast;
+
+import androidx.core.app.ActivityCompat;
+import androidx.preference.PreferenceManager;
 
 import org.woheller69.weather.R;
-import org.woheller69.weather.database.City;
 import org.woheller69.weather.database.CityToWatch;
 import org.woheller69.weather.database.CurrentWeatherData;
 import org.woheller69.weather.database.PFASQLiteHelper;
@@ -28,17 +37,20 @@ import java.util.TimeZone;
 
 import static androidx.core.app.JobIntentService.enqueueWork;
 
+import static java.lang.Boolean.TRUE;
 import static org.woheller69.weather.services.UpdateDataService.SKIP_UPDATE_INTERVAL;
 
 public class WeatherWidget extends AppWidgetProvider {
+    private LocationListener locationListenerGPS;
+    private LocationManager locationManager;
 
     public void updateAppWidget(Context context, final int appWidgetId) {
-
+        SharedPreferences prefManager = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
         PFASQLiteHelper db = PFASQLiteHelper.getInstance(context);
         if (!db.getAllCitiesToWatch().isEmpty()) {
 
             int cityID = getWidgetCityID(context);
-
+            if(prefManager.getBoolean("pref_GPS", true)==TRUE) updateLocation(context, cityID);
             Intent intent = new Intent(context, UpdateDataService.class);
             //Log.d("debugtag", "widget calls single update: " + cityID + " with widgetID " + appWidgetId);
 
@@ -64,6 +76,35 @@ public class WeatherWidget extends AppWidgetProvider {
          }
         return cityID;
 }
+
+    public static void updateLocation(final Context context, int cityID) {
+        PFASQLiteHelper db = PFASQLiteHelper.getInstance(context);
+        List<CityToWatch> cities = db.getAllCitiesToWatch();
+
+        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ) {
+            LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+            Location locationGPS = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            if (locationGPS != null) {
+                CityToWatch city;
+                double lat = Math.round(locationGPS.getLatitude()*100.0)/100.0;  //round 2 digits
+                double lon = Math.round(locationGPS.getLongitude()*100.0)/100.0; //round 2 digits
+                for (int i=0; i<cities.size();i++){
+                    if (cities.get(i).getCityId()==cityID) {
+                        city = cities.get(i);
+                        city.setLatitude((float) lat);
+                        city.setLongitude((float) lon);
+                        city.setCityName(String.format("%.2f / %.2f", lat, lon));
+                        //Toast.makeText(context.getApplicationContext(), String.format("%.2f / %.2f", lat, lon), Toast.LENGTH_SHORT).show();
+                        db.updateCityToWatch(city);
+
+                        break;
+                    }
+                }
+            } else Toast.makeText(context.getApplicationContext(),"Position not available",Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
 
     public static void updateView(Context context, AppWidgetManager appWidgetManager, RemoteViews views, int appWidgetId, CityToWatch city, CurrentWeatherData weatherData, List<WeekForecast> weekforecasts) {
 
@@ -112,6 +153,35 @@ public class WeatherWidget extends AppWidgetProvider {
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
+        SharedPreferences prefManager = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+
+        if (locationListenerGPS==null) locationListenerGPS=new LocationListener() {
+            @Override
+            public void onLocationChanged(android.location.Location location) {
+            }
+
+            @Deprecated
+            @Override
+            public void onStatusChanged(String provider, int status, Bundle extras) {
+            }
+
+            @Override
+            public void onProviderEnabled(String provider) {
+            }
+
+            @Override
+            public void onProviderDisabled(String provider) {
+            }
+        };
+        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ) {
+            if (locationManager==null) locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+            if(prefManager.getBoolean("pref_GPS", true)==TRUE) {
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
+                        300000,
+                        0, locationListenerGPS);  //Update every 5 min, minimum distance 1000m
+            }else locationManager.removeUpdates(locationListenerGPS);
+        }
+
         // There may be multiple widgets active, so update all of them
         for (int appWidgetId : appWidgetIds) {
             updateAppWidget(context, appWidgetId);
