@@ -76,6 +76,8 @@ public class ProcessOwmForecastOneCallAPIRequest implements IProcessHttpRequest 
  //           Log.d("URL JSON",Float.toString(lat));
  //           Log.d("URL JSON",Float.toString(lon));
 
+            ArrayList<Integer> CityIDList = new ArrayList<Integer>();
+
             int cityId=0;
             //find CityID from lat/lon
             List<CityToWatch> citiesToWatch = dbHelper.getAllCitiesToWatch();
@@ -85,108 +87,109 @@ public class ProcessOwmForecastOneCallAPIRequest implements IProcessHttpRequest 
                 //OpenWeatherMaps rounds to 2 decimal places, so the response lat/lon should differ by <=0.005
                 if ((Math.abs(city.getLatitude() - lat)<=0.005) && (Math.abs(city.getLongitude() - lon)<=0.005)) {
                     cityId=city.getCityId();
- //                   Log.d("URL CITYID", Integer.toString(cityId));
-                    break;
+                    CityIDList.add(cityId);
                 }
             }
 
-            String rain60min=context.getResources().getString(R.string.error_no_rain60min_data);
-            if (json.has("minutely")) {
-                rain60min="";
-                JSONArray listrain = json.getJSONArray("minutely");
-                for (int i = 0; i < listrain.length()/5; i++) {   //evaluate in 5min intervals
-                    String currentItem0 = listrain.get(i*5).toString();
-                    String currentItem1 = listrain.get(i*5+1).toString();
-                    String currentItem2 = listrain.get(i*5+2).toString();
-                    String currentItem3 = listrain.get(i*5+3).toString();
-                    String currentItem4 = listrain.get(i*5+4).toString();
-                    rain60min += extractor.extractRain60min(currentItem0,currentItem1,currentItem2,currentItem3,currentItem4);
-                }
-            }
-
-            CurrentWeatherData weatherData = extractor.extractCurrentWeatherDataOneCall(json.getString("current"));
-
-            if (weatherData == null) {
-                final String ERROR_MSG = context.getResources().getString(R.string.error_convert_to_json);
-                if (NavigationActivity.isVisible) Toast.makeText(context, ERROR_MSG, Toast.LENGTH_LONG).show();
-            } else {
-                weatherData.setCity_id(cityId);
-                weatherData.setRain60min(rain60min);
-                weatherData.setTimeZoneSeconds(json.getInt("timezone_offset"));
-                CurrentWeatherData current = dbHelper.getCurrentWeatherByCityId(cityId);
-                if (current != null && current.getCity_id() == cityId) {
-                    dbHelper.updateCurrentWeather(weatherData);
-                } else {
-                    dbHelper.addCurrentWeather(weatherData);
+            for (int c=0; c<CityIDList.size();c++) {
+                cityId=CityIDList.get(c);
+                String rain60min = context.getResources().getString(R.string.error_no_rain60min_data);
+                if (json.has("minutely")) {
+                    rain60min = "";
+                    JSONArray listrain = json.getJSONArray("minutely");
+                    for (int i = 0; i < listrain.length() / 5; i++) {   //evaluate in 5min intervals
+                        String currentItem0 = listrain.get(i * 5).toString();
+                        String currentItem1 = listrain.get(i * 5 + 1).toString();
+                        String currentItem2 = listrain.get(i * 5 + 2).toString();
+                        String currentItem3 = listrain.get(i * 5 + 3).toString();
+                        String currentItem4 = listrain.get(i * 5 + 4).toString();
+                        rain60min += extractor.extractRain60min(currentItem0, currentItem1, currentItem2, currentItem3, currentItem4);
+                    }
                 }
 
-                ViewUpdater.updateCurrentWeatherData(weatherData);
+                CurrentWeatherData weatherData = extractor.extractCurrentWeatherDataOneCall(json.getString("current"));
 
-            }
-
-
-
-
-            JSONArray listdaily = json.getJSONArray("daily");
-
-            dbHelper.deleteWeekForecastsByCityId(cityId);
-            List<WeekForecast> weekforecasts = new ArrayList<>();
-
-            for (int i = 0; i < listdaily.length(); i++) {
-                String currentItem = listdaily.get(i).toString();
-                WeekForecast forecast = extractor.extractWeekForecast(currentItem);
-                // Data were not well-formed, abort
-                if (forecast == null) {
+                if (weatherData == null) {
                     final String ERROR_MSG = context.getResources().getString(R.string.error_convert_to_json);
-                    if (NavigationActivity.isVisible) Toast.makeText(context, ERROR_MSG, Toast.LENGTH_LONG).show();
-                    return;
+                    if (NavigationActivity.isVisible)
+                        Toast.makeText(context, ERROR_MSG, Toast.LENGTH_LONG).show();
+                } else {
+                    weatherData.setCity_id(cityId);
+                    weatherData.setRain60min(rain60min);
+                    weatherData.setTimeZoneSeconds(json.getInt("timezone_offset"));
+                    CurrentWeatherData current = dbHelper.getCurrentWeatherByCityId(cityId);
+                    if (current != null && current.getCity_id() == cityId) {
+                        dbHelper.updateCurrentWeather(weatherData);
+                    } else {
+                        dbHelper.addCurrentWeather(weatherData);
+                    }
+
+                    ViewUpdater.updateCurrentWeatherData(weatherData);
+
                 }
-                // Could retrieve all data, so proceed
-                else {
-                    forecast.setCity_id(cityId);
-                    // add it to the database
-                    dbHelper.addWeekForecast(forecast);
-                    weekforecasts.add(forecast);
-                }
-            }
 
-            ViewUpdater.updateWeekForecasts(weekforecasts);
-            possiblyUpdateWidgets(cityId, weatherData,weekforecasts);
 
-            //Use hourly data only if forecastChoice 2 (1h) is active
-            SharedPreferences prefManager = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
-            int choice = Integer.parseInt(prefManager.getString("forecastChoice","1"));
-            if (choice==2) {
-                JSONArray listhourly = json.getJSONArray("hourly");
+                JSONArray listdaily = json.getJSONArray("daily");
 
-                dbHelper.deleteForecastsByCityId(cityId);
-                //List<Forecast> hourlyforecasts = new ArrayList<>();
+                dbHelper.deleteWeekForecastsByCityId(cityId);
+                List<WeekForecast> weekforecasts = new ArrayList<>();
 
-                for (int i = 0; i < listhourly.length(); i++) {
-                    String currentItem = listhourly.get(i).toString();
-                    Forecast forecast = extractor.extractHourlyForecast(currentItem);
+                for (int i = 0; i < listdaily.length(); i++) {
+                    String currentItem = listdaily.get(i).toString();
+                    WeekForecast forecast = extractor.extractWeekForecast(currentItem);
                     // Data were not well-formed, abort
                     if (forecast == null) {
                         final String ERROR_MSG = context.getResources().getString(R.string.error_convert_to_json);
-                        if (NavigationActivity.isVisible) Toast.makeText(context, ERROR_MSG, Toast.LENGTH_LONG).show();
+                        if (NavigationActivity.isVisible)
+                            Toast.makeText(context, ERROR_MSG, Toast.LENGTH_LONG).show();
                         return;
                     }
                     // Could retrieve all data, so proceed
                     else {
                         forecast.setCity_id(cityId);
                         // add it to the database
-                        dbHelper.addForecast(forecast);
-                        //hourlyforecasts.add(forecast);
+                        dbHelper.addWeekForecast(forecast);
+                        weekforecasts.add(forecast);
                     }
                 }
 
+                ViewUpdater.updateWeekForecasts(weekforecasts);
+                possiblyUpdateWidgets(cityId, weatherData, weekforecasts);
+
+                //Use hourly data only if forecastChoice 2 (1h) is active
+                SharedPreferences prefManager = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+                int choice = Integer.parseInt(prefManager.getString("forecastChoice", "1"));
+                if (choice == 2) {
+                    JSONArray listhourly = json.getJSONArray("hourly");
+
+                    dbHelper.deleteForecastsByCityId(cityId);
+                    //List<Forecast> hourlyforecasts = new ArrayList<>();
+
+                    for (int i = 0; i < listhourly.length(); i++) {
+                        String currentItem = listhourly.get(i).toString();
+                        Forecast forecast = extractor.extractHourlyForecast(currentItem);
+                        // Data were not well-formed, abort
+                        if (forecast == null) {
+                            final String ERROR_MSG = context.getResources().getString(R.string.error_convert_to_json);
+                            if (NavigationActivity.isVisible)
+                                Toast.makeText(context, ERROR_MSG, Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                        // Could retrieve all data, so proceed
+                        else {
+                            forecast.setCity_id(cityId);
+                            // add it to the database
+                            dbHelper.addForecast(forecast);
+                            //hourlyforecasts.add(forecast);
+                        }
+                    }
+                }
+            }
                 //ViewUpdater.updateForecasts(hourlyforecasts);  //this is not done here anymore. updateForecasts will be called when also the 3h forecast for the time after 48h is retrieved
 
                 //now also request forecasts for the time after 48h from 5day/3h forecast API. These will be appended to the forecasts retrieved above.
                 IHttpRequestForForecast forecastRequest = new OwmHttpRequestForForecast(context);
                 forecastRequest.perform(lat,lon);
-            }
-
         } catch (JSONException e) {
             e.printStackTrace();
         }

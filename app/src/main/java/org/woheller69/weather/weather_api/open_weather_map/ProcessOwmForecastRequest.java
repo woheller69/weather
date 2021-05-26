@@ -74,6 +74,8 @@ public class ProcessOwmForecastRequest implements IProcessHttpRequest {
              //          Log.d("URL JSON",Float.toString(lat));
              //          Log.d("URL JSON",Float.toString(lon));
 
+            ArrayList<Integer> CityIDList = new ArrayList<Integer>();
+
             int cityId=0;
             //find CityID from lat/lon
             List<CityToWatch> citiesToWatch = dbHelper.getAllCitiesToWatch();
@@ -83,57 +85,60 @@ public class ProcessOwmForecastRequest implements IProcessHttpRequest {
                 //OpenWeatherMaps rounds to 2 decimal places, so the response lat/lon should differ by <=0.005
                 if ((Math.abs(city.getLatitude() - lat)<=0.005) && (Math.abs(city.getLongitude() - lon)<=0.005)) {
                     cityId=city.getCityId();
-                     //                  Log.d("URL CITYID", Integer.toString(cityId));
-                    break;
+                    CityIDList.add(cityId);
                 }
             }
+            for (int c=0; c<CityIDList.size();c++) {
+                cityId = CityIDList.get(c);
+                List<Forecast> forecasts = new ArrayList<>();
 
-            List<Forecast> forecasts = new ArrayList<>();
+                SharedPreferences prefManager = PreferenceManager.getDefaultSharedPreferences(context);
+                int choice = Integer.parseInt(prefManager.getString("forecastChoice", "1"));
 
-            SharedPreferences prefManager = PreferenceManager.getDefaultSharedPreferences(context);
-            int choice = Integer.parseInt(prefManager.getString("forecastChoice","1"));
-
-            if (choice==1) {  //5day 3h forecasts
-                dbHelper.deleteForecastsByCityId(cityId); //start with empty forecast list
-            } else{  //load 48 1h forecasts and then append the 3h forecasts
-                forecasts = dbHelper.getForecastsByCityId(cityId);
-                if (forecasts==null || forecasts.size()!=48) { //data from OneCallAPI not available even though it should
-                    return;
-                }
-            }
-
-            // Continue with inserting new records
-
-            for (int i = 0; i < list.length(); i++) {
-                String currentItem = list.get(i).toString();
-                Forecast forecast = extractor.extractForecast(currentItem);
-                // Data were not well-formed, abort
-                if (forecast == null) {
-                    final String ERROR_MSG = context.getResources().getString(R.string.error_convert_to_json);
-                    if (NavigationActivity.isVisible) Toast.makeText(context, ERROR_MSG, Toast.LENGTH_LONG).show();
-                    return;
-                }
-                // Could retrieve all data, so proceed
-                else {
-                    if ((choice==1) || (forecast.getForecastTime()>forecasts.get(47).getForecastTime())) {  //if 5day/3h mode or if ForecastTime > last time from OneCallAPI
-                        if(choice==2){ //at the position where 1h forecast changes to 3h forecast the precipitation shown in 3h forecast could be duplicate (already included in previous 1h forecasts, and therefore needs substraction)
-                            if (forecast.getForecastTime()==(forecasts.get(47).getForecastTime()+60*60*1000)) forecast.setPrecipitation(forecast.getPrecipitation()-forecasts.get(47).getPrecipitation()-forecasts.get(46).getPrecipitation());
-                            if (forecast.getForecastTime()==(forecasts.get(47).getForecastTime()+2*60*60*1000)) forecast.setPrecipitation(forecast.getPrecipitation()-forecasts.get(47).getPrecipitation());
-                        }
-                        forecast.setCity_id(cityId);
-                        // add it to the database
-                        dbHelper.addForecast(forecast);
-                        forecasts.add(forecast);
+                if (choice == 1) {  //5day 3h forecasts
+                    dbHelper.deleteForecastsByCityId(cityId); //start with empty forecast list
+                } else {  //load 48 1h forecasts and then append the 3h forecasts
+                    forecasts = dbHelper.getForecastsByCityId(cityId);
+                    if (forecasts == null || forecasts.size() != 48) { //data from OneCallAPI not available even though it should
+                        return;
                     }
                 }
+
+                // Continue with inserting new records
+
+                for (int i = 0; i < list.length(); i++) {
+                    String currentItem = list.get(i).toString();
+                    Forecast forecast = extractor.extractForecast(currentItem);
+                    // Data were not well-formed, abort
+                    if (forecast == null) {
+                        final String ERROR_MSG = context.getResources().getString(R.string.error_convert_to_json);
+                        if (NavigationActivity.isVisible)
+                            Toast.makeText(context, ERROR_MSG, Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                    // Could retrieve all data, so proceed
+                    else {
+                        if ((choice == 1) || (forecast.getForecastTime() > forecasts.get(47).getForecastTime())) {  //if 5day/3h mode or if ForecastTime > last time from OneCallAPI
+                            if (choice == 2) { //at the position where 1h forecast changes to 3h forecast the precipitation shown in 3h forecast could be duplicate (already included in previous 1h forecasts, and therefore needs substraction)
+                                if (forecast.getForecastTime() == (forecasts.get(47).getForecastTime() + 60 * 60 * 1000))
+                                    forecast.setPrecipitation(forecast.getPrecipitation() - forecasts.get(47).getPrecipitation() - forecasts.get(46).getPrecipitation());
+                                if (forecast.getForecastTime() == (forecasts.get(47).getForecastTime() + 2 * 60 * 60 * 1000))
+                                    forecast.setPrecipitation(forecast.getPrecipitation() - forecasts.get(47).getPrecipitation());
+                            }
+                            forecast.setCity_id(cityId);
+                            // add it to the database
+                            dbHelper.addForecast(forecast);
+                            forecasts.add(forecast);
+                        }
+                    }
+                }
+
+                ViewUpdater.updateForecasts(forecasts);
+                //again update Weekforecasts (new forecasts might change some rain weather symbols, see CityWeatherAdapter checkSun() )
+                List<WeekForecast> weekforecasts = dbHelper.getWeekForecastsByCityId(cityId);
+                ViewUpdater.updateWeekForecasts(weekforecasts);
+                possiblyUpdateWidgets(cityId, forecasts, weekforecasts);
             }
-
-            ViewUpdater.updateForecasts(forecasts);
-            //again update Weekforecasts (new forecasts might change some rain weather symbols, see CityWeatherAdapter checkSun() )
-            List<WeekForecast> weekforecasts=dbHelper.getWeekForecastsByCityId(cityId);
-            ViewUpdater.updateWeekForecasts(weekforecasts);
-            possiblyUpdateWidgets(cityId, forecasts, weekforecasts);
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
