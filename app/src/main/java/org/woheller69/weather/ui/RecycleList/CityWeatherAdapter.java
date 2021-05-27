@@ -29,10 +29,8 @@ import org.woheller69.weather.preferences.AppPreferencesManager;
 import org.woheller69.weather.ui.Help.StringFormatUtils;
 import org.woheller69.weather.ui.UiResourceProvider;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
@@ -292,13 +290,11 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
         if (viewHolder.getItemViewType() == OVERVIEW) {
             OverViewHolder holder = (OverViewHolder) viewHolder;
 
-            SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm",Locale.getDefault());
-            timeFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
             //correct for timezone differences
             int zoneseconds = currentWeatherDataList.getTimeZoneSeconds();
-            Date riseTime = new Date((currentWeatherDataList.getTimeSunrise() + zoneseconds) * 1000L);
-            Date setTime = new Date((currentWeatherDataList.getTimeSunset() + zoneseconds) * 1000L);
-            holder.sun.setText("\u2600\u25b2 " + timeFormat.format(riseTime) + " \u25bc " + timeFormat.format(setTime));
+            long riseTime = (currentWeatherDataList.getTimeSunrise() + zoneseconds) * 1000;
+            long setTime = (currentWeatherDataList.getTimeSunset() + zoneseconds) * 1000;
+            holder.sun.setText("\u2600\u25b2 " + StringFormatUtils.formatTimeWithoutZone(riseTime) + " \u25bc " + StringFormatUtils.formatTimeWithoutZone(setTime));
 
             setImage(currentWeatherDataList.getWeatherID(), holder.weather, isDay);
 
@@ -310,11 +306,9 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
 
             long time = currentWeatherDataList.getTimestamp();
             int zoneseconds = currentWeatherDataList.getTimeZoneSeconds();
-            SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm",Locale.getDefault());
-            dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
-            Date updateTime = new Date((time + zoneseconds) * 1000L);
+            long updateTime = ((time + zoneseconds) * 1000);
 
-            holder.time.setText(String.format("%s (%s)", context.getResources().getString(R.string.card_details_heading), dateFormat.format(updateTime)));
+            holder.time.setText(String.format("%s (%s)", context.getResources().getString(R.string.card_details_heading), StringFormatUtils.formatTimeWithoutZone(updateTime)));
             holder.humidity.setText(StringFormatUtils.formatInt(currentWeatherDataList.getHumidity(), context.getString(R.string.units_rh)));
             holder.pressure.setText(StringFormatUtils.formatDecimal(currentWeatherDataList.getPressure(), context.getString(R.string.units_hPa)));
             holder.windspeed.setText(StringFormatUtils.formatWindSpeed(context, currentWeatherDataList.getWindSpeed()));
@@ -406,9 +400,6 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
 
         } else if (viewHolder.getItemViewType() == CHART) {
             ChartViewHolder holder = (ChartViewHolder) viewHolder;
-
-            SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm",Locale.getDefault());
-            timeFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
 
             PFASQLiteHelper database = PFASQLiteHelper.getInstance(context.getApplicationContext());
             AppPreferencesManager prefManager = new AppPreferencesManager(PreferenceManager.getDefaultSharedPreferences(this.context));

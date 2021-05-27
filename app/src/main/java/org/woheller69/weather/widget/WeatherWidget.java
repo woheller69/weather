@@ -30,11 +30,8 @@ import org.woheller69.weather.services.UpdateDataService;
 import org.woheller69.weather.ui.Help.StringFormatUtils;
 import org.woheller69.weather.ui.UiResourceProvider;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.TimeZone;
 
 import static androidx.core.app.JobIntentService.enqueueWork;
 
@@ -111,16 +108,13 @@ public class WeatherWidget extends AppWidgetProvider {
 
         long time = weatherData.getTimestamp();
         int zoneseconds = weatherData.getTimeZoneSeconds();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm",Locale.getDefault());
-        dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
-        Date updateTime = new Date((time + zoneseconds) * 1000L);
 
-        Date riseTime = new Date((weatherData.getTimeSunrise() + zoneseconds) * 1000L);
-        String sunRise = dateFormat.format(riseTime);
-        Date setTime = new Date((weatherData.getTimeSunset() + zoneseconds) * 1000L);
-        String sunSet = dateFormat.format(setTime);
+        long updateTime = (time + zoneseconds) * 1000;
 
-        views.setTextViewText(R.id.widget_updatetime, String.format("(%s)", dateFormat.format(updateTime)));
+        long riseTime = (weatherData.getTimeSunrise() + zoneseconds) * 1000;
+        long setTime = (weatherData.getTimeSunset() + zoneseconds) * 1000;
+
+        views.setTextViewText(R.id.widget_updatetime, String.format("(%s)", StringFormatUtils.formatTimeWithoutZone(updateTime)));
         views.setTextViewText(R.id.widget_temperature, " "+StringFormatUtils.formatTemperature(context, weatherData.getTemperatureCurrent())+" ");
         views.setViewPadding(R.id.widget_temperature,1,1,1,1);
         views.setTextViewText(R.id.widget_rain60min,"☔  "+weatherData.getRain60min());
@@ -128,7 +122,7 @@ public class WeatherWidget extends AppWidgetProvider {
         views.setTextViewText(R.id.widget_wind, " "+StringFormatUtils.formatWindSpeed(context,weatherData.getWindSpeed())+" ");
         views.setInt(R.id.widget_wind,"setBackgroundResource",StringFormatUtils.widgetColorWindSpeed(context,weatherData.getWindSpeed()));
         views.setViewPadding(R.id.widget_wind,1,1,1,1);
-        views.setTextViewText(R.id.widget_sunrise_sunset,"\u2600\u25b2 " + sunRise + " \u25bc " + sunSet);
+        views.setTextViewText(R.id.widget_sunrise_sunset,"\u2600\u25b2 " + StringFormatUtils.formatTimeWithoutZone(riseTime) + " \u25bc " + StringFormatUtils.formatTimeWithoutZone(setTime));
         views.setTextViewText(R.id.widget_UVindex,"UV");
         views.setInt(R.id.widget_UVindex,"setBackgroundResource",StringFormatUtils.widgetColorUVindex(context,Math.round(weekforecasts.get(0).getUv_index())));
 

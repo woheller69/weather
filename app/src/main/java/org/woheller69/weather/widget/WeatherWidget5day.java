@@ -19,10 +19,8 @@ import org.woheller69.weather.ui.Help.StringFormatUtils;
 import org.woheller69.weather.ui.UiResourceProvider;
 import org.woheller69.weather.weather_api.IApiToDatabaseConversion;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Locale;
 import java.util.TimeZone;
 
 import static androidx.core.app.JobIntentService.enqueueWork;
@@ -67,15 +65,10 @@ public class WeatherWidget5day extends AppWidgetProvider {
 
         int cityId=getWidgetCityID(context);
         PFASQLiteHelper database = PFASQLiteHelper.getInstance(context.getApplicationContext());
-        int zoneseconds = database.getCurrentWeatherByCityId(cityId).getTimeZoneSeconds();
-
-        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
-        dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
-
+        int zonemilliseconds = database.getCurrentWeatherByCityId(cityId).getTimeZoneSeconds()*1000;
 
         Calendar c = Calendar.getInstance();
         c.setTimeZone(TimeZone.getTimeZone("GMT"));
-        int zonemilliseconds = zoneseconds*1000;
 
         int []forecastData = new int[5];
         String []weekday = new String[5];
