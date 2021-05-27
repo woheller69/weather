@@ -33,6 +33,7 @@ import org.woheller69.weather.ui.UiResourceProvider;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.TimeZone;
 
 import static androidx.core.app.JobIntentService.enqueueWork;
@@ -93,7 +94,7 @@ public class WeatherWidget extends AppWidgetProvider {
                         city = cities.get(i);
                         city.setLatitude((float) lat);
                         city.setLongitude((float) lon);
-                        city.setCityName(String.format("%.2f / %.2f", lat, lon));
+                        city.setCityName(String.format(Locale.getDefault(),"%.2f° / %.2f°", lat, lon));
                         //Toast.makeText(context.getApplicationContext(), String.format("%.2f / %.2f", lat, lon), Toast.LENGTH_SHORT).show();
                         db.updateCityToWatch(city);
 
@@ -110,7 +111,7 @@ public class WeatherWidget extends AppWidgetProvider {
 
         long time = weatherData.getTimestamp();
         int zoneseconds = weatherData.getTimeZoneSeconds();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm",Locale.getDefault());
         dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
         Date updateTime = new Date((time + zoneseconds) * 1000L);
 
@@ -178,7 +179,7 @@ public class WeatherWidget extends AppWidgetProvider {
             if(prefManager.getBoolean("pref_GPS", true)==TRUE) {
                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
                         300000,
-                        0, locationListenerGPS);  //Update every 5 min, minimum distance 1000m
+                        0, locationListenerGPS);  //Update every 5 min
             }else locationManager.removeUpdates(locationListenerGPS);
         }
 

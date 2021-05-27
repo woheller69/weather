@@ -1,6 +1,8 @@
 package org.woheller69.weather.database;
 
 
+import java.util.Locale;
+
 /**
  * Created by yonjuni on 04.01.17.
  * data object for city
@@ -53,7 +55,7 @@ public class City {
 
     @Override
     public String toString() {
-        return String.format("%s, %s (%.2f / %.2f)", cityName, countryCode, lat, lon);
+        return String.format(Locale.getDefault(),"%s, %s (%.2f / %.2f)", cityName, countryCode, lat, lon);
     }
 
     public void setLatitude(float latitude) {

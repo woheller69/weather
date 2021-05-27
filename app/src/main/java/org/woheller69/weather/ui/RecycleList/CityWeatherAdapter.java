@@ -34,6 +34,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.TimeZone;
 
 import org.woheller69.weather.weather_api.IApiToDatabaseConversion;
@@ -291,7 +292,7 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
         if (viewHolder.getItemViewType() == OVERVIEW) {
             OverViewHolder holder = (OverViewHolder) viewHolder;
 
-            SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+            SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm",Locale.getDefault());
             timeFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
             //correct for timezone differences
             int zoneseconds = currentWeatherDataList.getTimeZoneSeconds();
@@ -309,7 +310,7 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
 
             long time = currentWeatherDataList.getTimestamp();
             int zoneseconds = currentWeatherDataList.getTimeZoneSeconds();
-            SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm",Locale.getDefault());
             dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
             Date updateTime = new Date((time + zoneseconds) * 1000L);
 
@@ -320,7 +321,7 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
             holder.windspeed.setBackground(StringFormatUtils.colorWindSpeed(context, currentWeatherDataList.getWindSpeed()));
             holder.winddirection.setRotation(currentWeatherDataList.getWindDirection());
             holder.rain60min.setText(currentWeatherDataList.getRain60min());
-            holder.rain60minLegend.setText("( "+context.getResources().getString(R.string.units_mm_h)+": □ 0.0 ▤ <0.5 ▦ <2.5 ■ >=2.5 )");
+            holder.rain60minLegend.setText("( "+context.getResources().getString(R.string.units_mm_h)+String.format(Locale.getDefault(),": □ %.1f ▤ <%.1f ▦ <%.1f ■ >=%.1f )",0.0,0.5,2.5,2.5));
 
         } else if (viewHolder.getItemViewType() == WEEK) {
 
@@ -406,7 +407,7 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
         } else if (viewHolder.getItemViewType() == CHART) {
             ChartViewHolder holder = (ChartViewHolder) viewHolder;
 
-            SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+            SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm",Locale.getDefault());
             timeFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
 
             PFASQLiteHelper database = PFASQLiteHelper.getInstance(context.getApplicationContext());

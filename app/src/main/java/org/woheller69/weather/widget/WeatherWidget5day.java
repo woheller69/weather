@@ -22,6 +22,7 @@ import org.woheller69.weather.weather_api.IApiToDatabaseConversion;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 import java.util.TimeZone;
 
 import static androidx.core.app.JobIntentService.enqueueWork;
@@ -68,7 +69,7 @@ public class WeatherWidget5day extends AppWidgetProvider {
         PFASQLiteHelper database = PFASQLiteHelper.getInstance(context.getApplicationContext());
         int zoneseconds = database.getCurrentWeatherByCityId(cityId).getTimeZoneSeconds();
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
         dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
 
 
