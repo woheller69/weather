@@ -180,6 +180,7 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
         TextView pressure;
         TextView windspeed;
         TextView rain60min;
+        TextView rain60minLegend;
         TextView time;
         ImageView winddirection;
 
@@ -189,6 +190,7 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
             this.pressure = v.findViewById(R.id.card_details_pressure_value);
             this.windspeed = v.findViewById(R.id.card_details_wind_speed_value);
             this.rain60min = v.findViewById(R.id.card_details_rain60min_value);
+            this.rain60minLegend=v.findViewById(R.id.card_details_legend_rain60min);
             this.winddirection =v.findViewById((R.id.card_details_wind_direction_value));
             this.time=v.findViewById(R.id.card_details_title);
         }
@@ -318,6 +320,7 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
             holder.windspeed.setBackground(StringFormatUtils.colorWindSpeed(context, currentWeatherDataList.getWindSpeed()));
             holder.winddirection.setRotation(currentWeatherDataList.getWindDirection());
             holder.rain60min.setText(currentWeatherDataList.getRain60min());
+            holder.rain60minLegend.setText("( "+context.getResources().getString(R.string.units_mm_h)+": □ 0.0 ▤ <0.5 ▦ <2.5 ■ >=2.5 )");
 
         } else if (viewHolder.getItemViewType() == WEEK) {
 
