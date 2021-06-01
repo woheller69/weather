@@ -148,4 +148,6 @@
     <string name="settings_GPS_summary">Consenti l\'uso della posizione GPS corrente nel primo TAB e nel widget meteo corrente. L\'aggiornamento della posizione viene attivato automaticamente tramite il widget.</string>
     <string name="settings_GPS_position">Consenti l\'utilizzo del GPS</string>
     <string name="error_no_position">Posizione non disponibile</string>
+    <string name="settings_time24h">Formato 24 ore</string>
+    <string name="summary_time24h">Sovrascrivere le impostazioni di sistema</string>
 </resources> 

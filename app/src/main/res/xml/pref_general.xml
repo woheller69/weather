@@ -46,6 +46,13 @@
             android:defaultValue="true"
             />
 
+        <SwitchPreference
+            android:key="pref_TimeFormat"
+            android:title="@string/settings_time24h"
+            android:summary="@string/summary_time24h"
+            android:defaultValue="true"
+            />
+
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/settings_intervals">

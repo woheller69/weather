@@ -59,9 +59,16 @@ public final class StringFormatUtils {
         return formatDecimalTemperature(context, prefManager.convertTemperatureFromCelsius(temperature), prefManager.getTemperatureUnit());
     }
 
-    public static String formatTimeWithoutZone(long time) {
-        SimpleDateFormat df = new SimpleDateFormat("HH:mm", Locale.getDefault());
-        df.setTimeZone(TimeZone.getTimeZone("GMT"));
+    public static String formatTimeWithoutZone(Context context, long time) {
+        SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(context);
+        SimpleDateFormat df;
+        if (android.text.format.DateFormat.is24HourFormat(context) || sharedPreferences.getBoolean("pref_TimeFormat", true)==TRUE){
+            df = new SimpleDateFormat("HH:mm", Locale.getDefault());
+            df.setTimeZone(TimeZone.getTimeZone("GMT"));
+        }else {
+            df = new SimpleDateFormat("hh:mm aa", Locale.getDefault());
+            df.setTimeZone(TimeZone.getTimeZone("GMT"));
+        }
         return df.format(time);
     }
 

@@ -294,7 +294,7 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
             int zoneseconds = currentWeatherDataList.getTimeZoneSeconds();
             long riseTime = (currentWeatherDataList.getTimeSunrise() + zoneseconds) * 1000;
             long setTime = (currentWeatherDataList.getTimeSunset() + zoneseconds) * 1000;
-            holder.sun.setText("\u2600\u25b2 " + StringFormatUtils.formatTimeWithoutZone(riseTime) + " \u25bc " + StringFormatUtils.formatTimeWithoutZone(setTime));
+            holder.sun.setText("\u2600\u25b2 " + StringFormatUtils.formatTimeWithoutZone(context, riseTime) + " \u25bc " + StringFormatUtils.formatTimeWithoutZone(context, setTime));
 
             setImage(currentWeatherDataList.getWeatherID(), holder.weather, isDay);
 
@@ -308,7 +308,7 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
             int zoneseconds = currentWeatherDataList.getTimeZoneSeconds();
             long updateTime = ((time + zoneseconds) * 1000);
 
-            holder.time.setText(String.format("%s (%s)", context.getResources().getString(R.string.card_details_heading), StringFormatUtils.formatTimeWithoutZone(updateTime)));
+            holder.time.setText(String.format("%s (%s)", context.getResources().getString(R.string.card_details_heading), StringFormatUtils.formatTimeWithoutZone(context, updateTime)));
             holder.humidity.setText(StringFormatUtils.formatInt(currentWeatherDataList.getHumidity(), context.getString(R.string.units_rh)));
             holder.pressure.setText(StringFormatUtils.formatDecimal(currentWeatherDataList.getPressure(), context.getString(R.string.units_hPa)));
             holder.windspeed.setText(StringFormatUtils.formatWindSpeed(context, currentWeatherDataList.getWindSpeed()));

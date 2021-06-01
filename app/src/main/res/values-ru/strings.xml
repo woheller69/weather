@@ -136,4 +136,6 @@
     <string name="settings_GPS_summary">Разрешить использование текущего положения GPS в первой ВКЛАДКЕ и в текущем виджете погоды. Обновление позиции активируется автоматически через виджет.</string>
     <string name="settings_GPS_position">Разрешить использование GPS</string>
     <string name="error_no_position">Позиция недоступна</string>
+    <string name="settings_time24h">24-часовой формат</string>
+    <string name="summary_time24h">Переопределить системные настройки</string>
 </resources>

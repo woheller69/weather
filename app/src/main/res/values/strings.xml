@@ -148,4 +148,6 @@
     <string name="settings_GPS_summary">Allow usage of current GPS position in first TAB and in current weather widget. Position update is triggered automatically by widget.</string>
     <string name="settings_GPS_position">Allow GPS usage</string>
     <string name="error_no_position">No position available</string>
+    <string name="settings_time24h">24-hour format</string>
+    <string name="summary_time24h">Override system setting</string>
 </resources>

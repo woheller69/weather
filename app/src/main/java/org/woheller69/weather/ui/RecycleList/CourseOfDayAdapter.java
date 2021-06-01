@@ -80,7 +80,7 @@ public class CourseOfDayAdapter extends RecyclerView.Adapter<CourseOfDayAdapter.
 
         boolean isDay = forecastTime.after(sunRiseTime) && forecastTime.before(sunSetTime);
 
-        holder.time.setText(StringFormatUtils.formatTimeWithoutZone(courseOfDayList.get(position).getLocalForecastTime(context)));
+        holder.time.setText(StringFormatUtils.formatTimeWithoutZone(context, courseOfDayList.get(position).getLocalForecastTime(context)));
 
         updateRecyclerViewHeader();  //update header according to date in first visible item on the left
 
