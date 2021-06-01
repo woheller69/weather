@@ -23,6 +23,12 @@
             android:key="distanceUnit"
             android:summary="@string/settings_summary_distance"
             android:title="@string/settings_title_distance" />
+
+        <SwitchPreference
+            android:key="pref_WindFormat"
+            android:title="@string/settings_wind"
+            android:defaultValue="true"
+            />
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/settings_title_forecastChoice">

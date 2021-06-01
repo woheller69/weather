@@ -138,4 +138,5 @@
     <string name="error_no_position">Позиция недоступна</string>
     <string name="settings_time24h">24-часовой формат</string>
     <string name="summary_time24h">Переопределить системные настройки</string>
+    <string name="settings_wind">Используйте Шкала Бофорта</string>
 </resources>

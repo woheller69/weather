@@ -73,32 +73,39 @@ public final class StringFormatUtils {
     }
 
     public static String formatWindSpeed(Context context, float wind_speed) {
-        if (wind_speed < 0.3) {
-            return formatInt(0, context.getString(R.string.units_Bft)); // Calm
-        } else if (wind_speed < 1.5) {
-            return formatInt(1, context.getString(R.string.units_Bft)); // Light air
-        } else if (wind_speed < 3.3) {
-            return formatInt(2, context.getString(R.string.units_Bft)); // Light breeze
-        } else if (wind_speed < 5.5) {
-            return formatInt(3, context.getString(R.string.units_Bft)); // Gentle breeze
-        } else if (wind_speed < 7.9) {
-            return formatInt(4, context.getString(R.string.units_Bft)); // Moderate breeze
-        } else if (wind_speed < 10.7) {
-            return formatInt(5, context.getString(R.string.units_Bft)); // Fresh breeze
-        } else if (wind_speed < 13.8) {
-            return formatInt(6, context.getString(R.string.units_Bft)); // Strong breeze
-        } else if (wind_speed < 17.1) {
-            return formatInt(7, context.getString(R.string.units_Bft)); // High wind
-        } else if (wind_speed < 20.7) {
-            return formatInt(8, context.getString(R.string.units_Bft)); // Gale
-        } else if (wind_speed < 24.4) {
-            return formatInt(9, context.getString(R.string.units_Bft)); // Strong gale
-        } else if (wind_speed < 28.4) {
-            return formatInt(10, context.getString(R.string.units_Bft)); // Storm
-        } else if (wind_speed < 32.6) {
-            return formatInt(11, context.getString(R.string.units_Bft)); // Violent storm
-        } else {
-            return formatInt(12, context.getString(R.string.units_Bft)); // Hurricane
+        SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(context);
+        if (sharedPreferences.getBoolean("pref_WindFormat",true)==TRUE) {
+            if (wind_speed < 0.3) {
+                return formatInt(0, context.getString(R.string.units_Bft)); // Calm
+            } else if (wind_speed < 1.5) {
+                return formatInt(1, context.getString(R.string.units_Bft)); // Light air
+            } else if (wind_speed < 3.3) {
+                return formatInt(2, context.getString(R.string.units_Bft)); // Light breeze
+            } else if (wind_speed < 5.5) {
+                return formatInt(3, context.getString(R.string.units_Bft)); // Gentle breeze
+            } else if (wind_speed < 7.9) {
+                return formatInt(4, context.getString(R.string.units_Bft)); // Moderate breeze
+            } else if (wind_speed < 10.7) {
+                return formatInt(5, context.getString(R.string.units_Bft)); // Fresh breeze
+            } else if (wind_speed < 13.8) {
+                return formatInt(6, context.getString(R.string.units_Bft)); // Strong breeze
+            } else if (wind_speed < 17.1) {
+                return formatInt(7, context.getString(R.string.units_Bft)); // High wind
+            } else if (wind_speed < 20.7) {
+                return formatInt(8, context.getString(R.string.units_Bft)); // Gale
+            } else if (wind_speed < 24.4) {
+                return formatInt(9, context.getString(R.string.units_Bft)); // Strong gale
+            } else if (wind_speed < 28.4) {
+                return formatInt(10, context.getString(R.string.units_Bft)); // Storm
+            } else if (wind_speed < 32.6) {
+                return formatInt(11, context.getString(R.string.units_Bft)); // Violent storm
+            } else {
+                return formatInt(12, context.getString(R.string.units_Bft)); // Hurricane
+            }
+        }else{
+            if (sharedPreferences.getString("distanceUnit", "0").equals("1")) {   //distanceUnit km
+                return formatInt((float) (wind_speed*3.6),"km/h");
+            }else return formatInt((float) (wind_speed*2.236),"mph");
         }
     }
 

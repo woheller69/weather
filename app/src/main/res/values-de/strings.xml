@@ -140,4 +140,5 @@
     <string name="error_no_position">Keine Position verfügbar</string>
     <string name="settings_time24h">24-Stunden-Format</string>
     <string name="summary_time24h">Systemeinstellung überschreiben</string>
+    <string name="settings_wind">Beaufort-Skala benutzen</string>
 </resources>

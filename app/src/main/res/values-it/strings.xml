@@ -150,4 +150,5 @@
     <string name="error_no_position">Posizione non disponibile</string>
     <string name="settings_time24h">Formato 24 ore</string>
     <string name="summary_time24h">Sovrascrivere le impostazioni di sistema</string>
+    <string name="settings_wind">Usa la scala Beaufort</string>
 </resources> 

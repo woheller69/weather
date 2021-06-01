@@ -150,4 +150,5 @@
     <string name="error_no_position">No position available</string>
     <string name="settings_time24h">24-hour format</string>
     <string name="summary_time24h">Override system setting</string>
+    <string name="settings_wind">Use Beaufort scale</string>
 </resources>
