@@ -15,6 +15,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
@@ -39,7 +40,7 @@ import static java.lang.Boolean.TRUE;
 import static org.woheller69.weather.services.UpdateDataService.SKIP_UPDATE_INTERVAL;
 
 public class WeatherWidget extends AppWidgetProvider {
-    private LocationListener locationListenerGPS;
+    private static LocationListener locationListenerGPS;
     private LocationManager locationManager;
 
     public void updateAppWidget(Context context, final int appWidgetId) {
@@ -114,7 +115,7 @@ public class WeatherWidget extends AppWidgetProvider {
         long riseTime = (weatherData.getTimeSunrise() + zoneseconds) * 1000;
         long setTime = (weatherData.getTimeSunset() + zoneseconds) * 1000;
 
-        views.setTextViewText(R.id.widget_updatetime, String.format("(%s)", StringFormatUtils.formatTimeWithoutZone(updateTime)));
+        views.setTextViewText(R.id.widget_updatetime, String.format("(%s)", StringFormatUtils.formatTimeWithoutZone(context, updateTime)));
         views.setTextViewText(R.id.widget_temperature, " "+StringFormatUtils.formatTemperature(context, weatherData.getTemperatureCurrent())+" ");
         views.setViewPadding(R.id.widget_temperature,1,1,1,1);
         views.setTextViewText(R.id.widget_rain60min,"☔  "+weatherData.getRain60min());
@@ -122,7 +123,7 @@ public class WeatherWidget extends AppWidgetProvider {
         views.setTextViewText(R.id.widget_wind, " "+StringFormatUtils.formatWindSpeed(context,weatherData.getWindSpeed())+" ");
         views.setInt(R.id.widget_wind,"setBackgroundResource",StringFormatUtils.widgetColorWindSpeed(context,weatherData.getWindSpeed()));
         views.setViewPadding(R.id.widget_wind,1,1,1,1);
-        views.setTextViewText(R.id.widget_sunrise_sunset,"\u2600\u25b2 " + StringFormatUtils.formatTimeWithoutZone(riseTime) + " \u25bc " + StringFormatUtils.formatTimeWithoutZone(setTime));
+        views.setTextViewText(R.id.widget_sunrise_sunset,"\u2600\u25b2 " + StringFormatUtils.formatTimeWithoutZone(context, riseTime) + " \u25bc " + StringFormatUtils.formatTimeWithoutZone(context, setTime));
         views.setTextViewText(R.id.widget_UVindex,"UV");
         views.setInt(R.id.widget_UVindex,"setBackgroundResource",StringFormatUtils.widgetColorUVindex(context,Math.round(weekforecasts.get(0).getUv_index())));
 
@@ -147,35 +148,45 @@ public class WeatherWidget extends AppWidgetProvider {
     }
 
     @Override
-    public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
+    public void onUpdate(final Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         SharedPreferences prefManager = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+        if (locationManager==null) locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
 
-        if (locationListenerGPS==null) locationListenerGPS=new LocationListener() {
-            @Override
-            public void onLocationChanged(android.location.Location location) {
-            }
+            if(prefManager.getBoolean("pref_GPS", true)==TRUE && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                if (locationListenerGPS==null) {
+                    Log.d("GPS", "Listener null");
+                    locationListenerGPS = new LocationListener() {
+                        @Override
+                        public void onLocationChanged(android.location.Location location) {
+                            // There may be multiple widgets active, so update all of them
+                            Log.d("GPS", "Location changed");
+                            int[] appWidgetIds = AppWidgetManager.getInstance(context).getAppWidgetIds(new ComponentName(context, WeatherWidget.class)); //IDs Might have changed since last call of onUpdate
+                            for (int appWidgetId : appWidgetIds) {
+                                updateAppWidget(context, appWidgetId);
+                            }
+                        }
 
-            @Deprecated
-            @Override
-            public void onStatusChanged(String provider, int status, Bundle extras) {
-            }
+                        @Deprecated
+                        @Override
+                        public void onStatusChanged(String provider, int status, Bundle extras) {
+                        }
 
-            @Override
-            public void onProviderEnabled(String provider) {
-            }
+                        @Override
+                        public void onProviderEnabled(String provider) {
+                        }
 
-            @Override
-            public void onProviderDisabled(String provider) {
+                        @Override
+                        public void onProviderDisabled(String provider) {
+                        }
+                    };
+                    Log.d("GPS", "Request Updates");
+                    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 300000, 10000, locationListenerGPS);  //Update every 5 min, min distance 10km
+                }
+            }else {
+                Log.d("GPS","Remove Updates");
+                if (locationListenerGPS!=null) locationManager.removeUpdates(locationListenerGPS);
+                locationListenerGPS=null;
             }
-        };
-        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ) {
-            if (locationManager==null) locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
-            if(prefManager.getBoolean("pref_GPS", true)==TRUE) {
-                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
-                        300000,
-                        0, locationListenerGPS);  //Update every 5 min
-            }else locationManager.removeUpdates(locationListenerGPS);
-        }
 
         // There may be multiple widgets active, so update all of them
         for (int appWidgetId : appWidgetIds) {
