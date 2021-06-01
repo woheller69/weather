@@ -104,8 +104,8 @@ public final class StringFormatUtils {
             }
         }else{
             if (sharedPreferences.getString("distanceUnit", "0").equals("1")) {   //distanceUnit km
-                return formatInt((float) (wind_speed*3.6),"km/h");
-            }else return formatInt((float) (wind_speed*2.236),"mph");
+                return formatInt((float) (wind_speed*3.6),context.getString(R.string.units_km_h));
+            }else return formatInt((float) (wind_speed*2.236),context.getString(R.string.units_mph));
         }
     }
 

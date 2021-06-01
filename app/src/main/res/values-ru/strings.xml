@@ -116,6 +116,8 @@
     <string name="units_hPa">гПа</string>
     <string name="units_Bft">Бфт</string>
     <string name="units_mm_h">мм/ч</string>
+    <string name="units_km_h">км/ч</string>
+    <string name="units_mph">миль/ч</string>
     <string name="card_details_rain60min">☔ 60 мин:</string>
     <string name="error_no_rain60min_data">нет данных</string>
     <string name="dialog_edit_change_button">Изменить</string>

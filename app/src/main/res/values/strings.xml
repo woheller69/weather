@@ -128,6 +128,8 @@
     <string name="units_hPa">hPa</string>
     <string name="units_Bft">Bft</string>
     <string name="units_mm_h">mm/h</string>
+    <string name="units_km_h">km/h</string>
+    <string name="units_mph">mph</string>
     <string name="card_details_rain60min">☔ 60 min:</string>
     <string name="error_no_rain60min_data">no data</string>
     <string name="dialog_edit_change_button">Modify</string>
