@@ -33,7 +33,7 @@
     <string name="radius_search_btn_search">Search</string>
     <string name="radius_search_result_label">Search Result</string>
     <string name="about_privacy_heading">Privacy Info</string>
-    <string name="about_permission_internet_description">Connecting to the Network: This permission is needed because weather data is retrieved by making requests to servers on the Internet. Without this permission, no weather data can be received.</string>
+    <string name="about_permission_internet_description">Connecting to the Network: This permission is needed because weather data is retrieved by making requests to servers on the Internet. Without this permission, no weather data can be received. Optional: authorization for GPS.</string>
     <string name="about">About</string>
     <string name="version_number" translatable="false">Version</string>
     <string name="about_license">License</string>

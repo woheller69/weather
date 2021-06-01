@@ -14,3 +14,4 @@ Caractéristiques:
 
 Autorisations minimales:
 RadarWeather n'exige que le minimum de permission, à savoir seulement la permission INTERNET. Cette autorisation est nécessaire pour faire des requêtes HTTP à des serveurs distants pour récupérer des données météorologiques.
+En option: autorisation pour GPS.

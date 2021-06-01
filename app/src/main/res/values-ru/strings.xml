@@ -32,7 +32,7 @@
     <string name="radius_search_btn_search">Поиск</string>
     <string name="radius_search_result_label">Результат поиска</string>
     <string name="about_privacy_heading">Информация о конфиденциальности</string>
-    <string name="about_permission_internet_description">Подключение к сети: это разрешение требуется, так как данные о погоде ищутся путём выполнения запросов к серверам в Интернете. Без этого разрешения данные о погоде не могут быть получены.</string>
+    <string name="about_permission_internet_description">Подключение к сети: это разрешение требуется, так как данные о погоде ищутся путём выполнения запросов к серверам в Интернете. Без этого разрешения данные о погоде не могут быть получены. По просьбе: авторизация для GPS.</string>
     <string name="about">О программе</string>
     <string name="about_license">Лицензия</string>
     <string name="about_license_text">Это приложение является ответвлением от Privacy Friendly Weather, разработанным исследовательской группой SECUSO. Исходный код лицензирован под GPLv3. Приложение использует значки от Google Material Design Icons, лицензированные под Apache License Version 2.0, библиотеку Leaflet, которая лицензирована под 2-clause BSD License, подключаемый модуль Leaflet.TileLayer.ColorFilter, лицензированный под лицензией MIT, свободное RainViewer API, библиотеку Android SQLiteAssetHelper (com.readystatesoftware.sqliteasset), которая лицензирована под Apache License Version 2.0, AutoSuggestTextViewAPICall, которая лицензирована под Apache License Version 2.0 и библиотеку WilliamChart (com.db.chart), которая лицензирована под Apache License Version 2.0, </string>

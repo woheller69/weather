@@ -11,6 +11,8 @@ There is also a new widget:
 
 <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/10.png" width="150"/>
 
+If permission for GPS is given the widget will automatically update position on a regular base.
+
 As One Call API only allows 1000 calls per day an own OpenWeatherMap API key is mandatory.
 
 Please register for free account at: https://home.openweathermap.org/users/sign_up

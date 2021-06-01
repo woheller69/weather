@@ -14,3 +14,4 @@ Funzionalità:
 
 Autorizzazioni minime:
 RadarWeather richiede solo la quantità minima di autorizzazioni, vale a dire solo l'autorizzazione INTERNET. Questa autorizzazione è necessaria per effettuare richieste HTTP a server remoti per il recupero dei dati meteorologici.
+Opzionale: autorizzazione per GPS.

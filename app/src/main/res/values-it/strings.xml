@@ -33,7 +33,7 @@
     <string name="radius_search_btn_search">Cerca</string>
     <string name="radius_search_result_label">Risultati di ricerca</string>
     <string name="about_privacy_heading">Informazioni sulla privacy</string>
-    <string name="about_permission_internet_description">Connessione alla rete: questa autorizzazione è necessaria perché i dati meteorologici vengono recuperati effettuando richieste ai server su Internet. Senza questa autorizzazione, non è possibile ricevere dati meteorologici.</string>
+    <string name="about_permission_internet_description">Connessione alla rete: questa autorizzazione è necessaria perché i dati meteorologici vengono recuperati effettuando richieste ai server su Internet. Senza questa autorizzazione, non è possibile ricevere dati meteorologici. Opzionale: autorizzazione per GPS.</string>
     <string name="about">About</string>
     <string name="version_number" translatable="false">Version</string>
     <string name="about_license">Licenza</string>

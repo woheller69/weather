@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 4.0 (2021-06-01)
+
+* Add option to use GPS in widget and first TAB
+* Add option for time format
+* Add option for wind speed format
+
 Version 3.5 (2021-05-23)
 
 * Highlight selected item in week overview

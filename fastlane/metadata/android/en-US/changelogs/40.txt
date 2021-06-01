@@ -1,0 +1,3 @@
+Add option to use GPS in widget and first TAB
+Add option for time format
+Add option for wind speed format

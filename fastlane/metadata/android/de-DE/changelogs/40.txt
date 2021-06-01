@@ -1,0 +1,3 @@
+GPS kann für Position im Widget und ersten TAB benutzt werden
+Option für Zeitformat hinzugefügt
+Option für Format der Windgeschwindigkeit hinzugefügt

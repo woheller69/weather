@@ -14,3 +14,4 @@ Features:
 
 Minimum permissions:
 RadarWeather only requires the minimum amount of permission, namely only the INTERNET permission. This permission is necessary to make HTTP requests to remote servers for retrieving weather data.
+Optional: authorization for GPS.
