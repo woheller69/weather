@@ -196,7 +196,6 @@ public class WeatherWidget extends AppWidgetProvider {
 
     @Override
     public void onDeleted(Context context, int[] appWidgetIds) {
-
     }
 
     @Override
@@ -227,6 +226,10 @@ public class WeatherWidget extends AppWidgetProvider {
     @Override
     public void onDisabled(Context context) {
         // Enter relevant functionality for when the last widget is disabled
+        Log.d("GPS", "Last widget removed");
+        if (locationManager==null) locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+        if (locationListenerGPS!=null) locationManager.removeUpdates(locationListenerGPS);
+        locationListenerGPS=null;
     }
 
 }
