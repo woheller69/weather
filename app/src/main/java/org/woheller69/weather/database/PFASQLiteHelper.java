@@ -192,7 +192,7 @@ public class PFASQLiteHelper extends SQLiteAssetHelper {
 
     private PFASQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        this.context = context;
+        this.context = context.getApplicationContext();
     }
 
 
