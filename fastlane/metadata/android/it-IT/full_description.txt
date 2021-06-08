@@ -10,6 +10,7 @@ Funzionalità:
 - Precipitazioni nei prossimi 60min
 - Radar pioggia
 - Ricerca in un dato raggio
+- Widget con aggiornamento automatico della posizione GPS opzionale
 - Nessuna pubblicità
 
 Autorizzazioni minime:

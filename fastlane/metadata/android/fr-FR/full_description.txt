@@ -10,6 +10,7 @@ Caractéristiques:
 - Précipitations à 60min
 - Radar de pluie
 - Recherche radius
+- Widget avec mise à jour automatique de la position GPS en option
 - Pas de publicité
 
 Autorisations minimales:

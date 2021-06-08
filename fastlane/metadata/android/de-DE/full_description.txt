@@ -10,6 +10,7 @@ Features:
 - Niederschlag in den nächsten 60min
 - Regenradar
 - Umkreissuche
+- Widget mit optionaler automatischer GPS-Positionsaktualisierung
 - Keine Werbung
 
 Minimale Berechtigungen:

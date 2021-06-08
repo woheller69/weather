@@ -10,6 +10,7 @@ Features:
 - Precipitation in next 60min
 - Rain radar
 - Radius search
+- Widget with optional GPS auto position update
 - No advertisement
 
 Minimum permissions:

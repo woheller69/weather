@@ -10,6 +10,7 @@ Características:
 - Precipitación en los próximos 60min
 - Radar de lluvia
 - Búsqueda de radio
+- Widget con actualización automática de posición GPS opcional
 - Sin publicidad
 
 Permisos mínimos:
