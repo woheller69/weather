@@ -73,7 +73,7 @@
 
     <PreferenceCategory android:title="@string/settings_search">
         <ListPreference
-            android:defaultValue="1"
+            android:defaultValue="2"
             android:entries="@array/citySearchArray"
             android:entryValues="@array/citySearchValues"
             android:key="pref_citySearch"
