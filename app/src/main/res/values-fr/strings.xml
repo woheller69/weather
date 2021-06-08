@@ -132,8 +132,8 @@
     <string name="edit_location_hint_latitude">"Latitude "</string>
     <string name="edit_location_hint_longitude">Longitude</string>
     <string name="edit_location_hint_country_code">code du pays</string>
-    <string name="edit_location_range_error">"Valeur hors plage "</string>
-    <string name="settings_search_option_1">"Liste des villes internes "</string>
+    <string name="edit_location_range_error">"Valeur hors plage"</string>
+    <string name="settings_search_option_1">"Liste des villes internes"</string>
     <string name="settings_search_summary">"Rechercher des emplacements via l'API Photon ou la liste interne des villes "</string>
     <string name="settings_search">Chercher</string>
     <string name="dialog_add_tv">"Pour de meilleurs résultats de recherche, veuillez activer la recherche en ligne via l'API photon dans les paramètres "</string>

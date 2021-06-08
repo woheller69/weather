@@ -129,7 +129,7 @@
     <string name="edit_location_hint_country_code">Код страны</string>
     <string name="edit_location_range_error">Значение вне диапазона</string>
     <string name="settings_search_option_1">Внутренний список городов</string>
-    <string name="settings_search_summary">"Поиск местоположений через Photon API или внутренний список городов "</string>
+    <string name="settings_search_summary">"Поиск местоположений через Photon API или внутренний список городов"</string>
     <string name="settings_search">Поиск</string>
     <string name="dialog_add_tv">Для улучшения результатов поиска активируйте онлайн-поиск через photon API в настройках.</string>
     <string name="settings_temp_decimal">отображение температуры с одним десятичным знаком</string>

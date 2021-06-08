@@ -141,6 +141,8 @@
     <string name="edit_location_hint_country_code">Country Code</string>
     <string name="edit_location_hint_ID" translatable="false">ID</string>
     <string name="edit_location_range_error">Value out of range</string>
+    <string name="settings_search_option_1">Internal city list</string>
+    <string name="settings_search_option_2" translatable="false">Photon API</string>
     <string name="settings_search_summary">Search locations via Photon API or internal city list</string>
     <string name="settings_search">Search</string>
     <string name="dialog_add_tv">For better search results please activate online search via photon API in settings</string>
@@ -153,4 +155,5 @@
     <string name="settings_time24h">24-hour format</string>
     <string name="summary_time24h">Override system setting</string>
     <string name="settings_wind">Use Beaufort scale</string>
+
 </resources>

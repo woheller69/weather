@@ -141,6 +141,7 @@
     <string name="edit_location_hint_country_code">Prefisso internazionale</string>
     <string name="edit_location_hint_ID" translatable="false">ID</string>
     <string name="edit_location_range_error">Valore fuori intervallo</string>
+    <string name="settings_search_option_1">"Lista interna della città"</string>
     <string name="settings_search_summary">Cerca le posizioni tramite l\'API Photon o l\'elenco delle città interne</string>
     <string name="settings_search">Cerca</string>
     <string name="dialog_add_tv">Per risultati di ricerca migliori, attiva la ricerca online tramite l\'API photon nelle impostazioni</string>
