@@ -141,20 +141,6 @@
 
     <Space
         android:layout_width="wrap_content"
-        android:layout_height="5dp">
-    </Space>
-
-    <TextView
-        android:id="@+id/githubSecusoURL"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center_horizontal"
-        android:text="@string/about_github_secuso"
-        android:textStyle="bold" />
-
-    <Space
-        android:layout_width="wrap_content"
         android:layout_height="100dp">
     </Space>
 </LinearLayout>

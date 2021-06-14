@@ -40,7 +40,6 @@
     <string name="about_license_text">Questa applicazione è derivata da Privacy Friendly Weather, sviluppata dal gruppo di ricerca SECUSO. Codice sorgente concesso in licenza con GPLv3. L\'app utilizza icone di Google Material Design Icons concesse in licenza con licenza Apache versione 2.0, la libreria Leaflet con licenza 2-clause BSD, il plug-in Leaflet.TileLayer.ColorFilter con licenza MIT, API RainViewer gratuita, Libreria Android SQLiteAssetHelper (com.readystatesoftware.sqliteasset) con licenza Apache License Version 2.0, AutoSuggestTextViewAPICall con licenza Apache License Version 2.0 e libreria WilliamChart (com.db.chart) con licenza Apache License Version 2.0</string>
     <string name="about_more_info">Ulteriori informazioni possono essere trovate su:</string>
     <string name="about_github" translatable="false"><a href="https://github.com/woheller69/weather">Github-Repo</a></string>
-    <string name="about_github_secuso" translatable="false"><a href="https://github.com/SecUSo/privacy-friendly-weather-app">Github-SecUSo-Repo</a></string>
     <string name="activity_settings_title">Impostazioni</string>
     <string name="settings_title_units">Unità</string>
     <string name="settings_summary_temperature">Impostare l\'unità da utilizzare per la visualizzazione delle temperature</string>

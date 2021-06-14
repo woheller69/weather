@@ -29,5 +29,9 @@
             android:id="@+id/nav_about"
             android:icon="@drawable/ic_info_24px"
             android:title="@string/activity_about" />
+        <item
+            android:id="@+id/star_on_github"
+            android:icon="@drawable/baseline_star_rate_24"
+            android:title="Star on GitHub" />
     </group>
 </menu>

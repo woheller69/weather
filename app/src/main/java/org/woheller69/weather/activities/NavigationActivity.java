@@ -2,6 +2,7 @@ package org.woheller69.weather.activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -149,6 +150,9 @@ public class NavigationActivity extends AppCompatActivity implements OnNavigatio
         }else if(itemId==R.id.nav_settings) {
             intent = new Intent(this, SettingsActivity.class);
             createBackStack(intent);
+        }else if (itemId==R.id.star_on_github){
+            startActivity(new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("https://github.com/woheller69/weather")));
         }
     }
 
