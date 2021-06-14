@@ -15,6 +15,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.Toast;
@@ -152,7 +153,9 @@ public class WeatherWidget extends AppWidgetProvider {
         SharedPreferences prefManager = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
         if (locationManager==null) locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
 
-            if(prefManager.getBoolean("pref_GPS", true)==TRUE && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+        PowerManager powerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+        Log.d("GPS", "Widget onUpdate");
+            if(prefManager.getBoolean("pref_GPS", true)==TRUE && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && !powerManager.isPowerSaveMode()) {
                 if (locationListenerGPS==null) {
                     Log.d("GPS", "Listener null");
                     locationListenerGPS = new LocationListener() {
@@ -180,7 +183,7 @@ public class WeatherWidget extends AppWidgetProvider {
                         }
                     };
                     Log.d("GPS", "Request Updates");
-                    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 300000, 10000, locationListenerGPS);  //Update every 5 min, min distance 10km
+                    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 600000, 3000, locationListenerGPS);  //Update every 10 min, min distance 5km
                 }
             }else {
                 Log.d("GPS","Remove Updates");
