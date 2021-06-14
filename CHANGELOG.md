@@ -1,6 +1,13 @@
 Changelog
 ==========
 
+Version 4.1 (2021-06-14)
+
+* Power optimization for GPS functionality
+* Make Photon API default search option
+* Add option to star on GitHub
+* Some code optimizations
+
 Version 4.0 (2021-06-01)
 
 * Add option to use GPS in widget and first TAB

@@ -1,0 +1,4 @@
+Energieoptimierung für die GPS Funktion
+Photon API als Voreinstellung für die Suche
+Menüoption für Star on GitHub
+Code Verbesserungen
