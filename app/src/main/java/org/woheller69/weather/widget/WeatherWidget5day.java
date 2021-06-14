@@ -25,6 +25,8 @@ import java.util.TimeZone;
 
 import static androidx.core.app.JobIntentService.enqueueWork;
 import static org.woheller69.weather.services.UpdateDataService.SKIP_UPDATE_INTERVAL;
+import static org.woheller69.weather.ui.RecycleList.CityWeatherAdapter.checkSun;
+import static org.woheller69.weather.ui.RecycleList.CityWeatherAdapter.getCorrectedWeatherID;
 
 public class WeatherWidget5day extends AppWidgetProvider {
 
@@ -80,24 +82,24 @@ public class WeatherWidget5day extends AppWidgetProvider {
             forecastData[i]=weekforecasts.get(i).getWeatherID();
 
                 if ((forecastData[i] >= IApiToDatabaseConversion.WeatherCategories.LIGHT_RAIN.getNumVal()) && (forecastData[i] <= IApiToDatabaseConversion.WeatherCategories.RAIN.getNumVal())) {
-                    if (checkSun(weekforecasts.get(i).getForecastTime(),forecasts)) {
+                    if (checkSun(context, cityId,weekforecasts.get(i).getForecastTime())) {
                         forecastData[i] = IApiToDatabaseConversion.WeatherCategories.SHOWER_RAIN.getNumVal(); //if at least one interval with sun +/-5 from noon, use shower rain instead of rain
-                        if (getCorrectedWeatherID(weekforecasts.get(i).getForecastTime(),forecasts) < forecastData[i])
-                            forecastData[i] = getCorrectedWeatherID(weekforecasts.get(i).getForecastTime(),forecasts); //if always sun use worst sun category
+                        if (getCorrectedWeatherID(context, cityId,weekforecasts.get(i).getForecastTime()) < forecastData[i])
+                            forecastData[i] = getCorrectedWeatherID(context, cityId,weekforecasts.get(i).getForecastTime()); //if always sun use worst sun category
                     }
                 }
                 if ((forecastData[i] >= IApiToDatabaseConversion.WeatherCategories.LIGHT_SNOW.getNumVal()) && (forecastData[i] <= IApiToDatabaseConversion.WeatherCategories.HEAVY_SNOW.getNumVal())) {
-                    if (checkSun(weekforecasts.get(i).getForecastTime(),forecasts)) {
+                    if (checkSun(context, cityId,weekforecasts.get(i).getForecastTime())) {
                         forecastData[i] = IApiToDatabaseConversion.WeatherCategories.SHOWER_SNOW.getNumVal();
-                        if (getCorrectedWeatherID(weekforecasts.get(i).getForecastTime(),forecasts) < forecastData[i])
-                            forecastData[i] = getCorrectedWeatherID(weekforecasts.get(i).getForecastTime(),forecasts);
+                        if (getCorrectedWeatherID(context, cityId,weekforecasts.get(i).getForecastTime()) < forecastData[i])
+                            forecastData[i] = getCorrectedWeatherID(context, cityId,weekforecasts.get(i).getForecastTime());
                     }
                 }
                 if (forecastData[i] == IApiToDatabaseConversion.WeatherCategories.RAIN_SNOW.getNumVal()) {
-                    if (checkSun(weekforecasts.get(i).getForecastTime(),forecasts)) {
+                    if (checkSun(context, cityId,weekforecasts.get(i).getForecastTime())) {
                         forecastData[i] = IApiToDatabaseConversion.WeatherCategories.SHOWER_RAIN_SNOW.getNumVal();
-                        if (getCorrectedWeatherID(weekforecasts.get(i).getForecastTime(),forecasts) < forecastData[i])
-                            forecastData[i] = getCorrectedWeatherID(weekforecasts.get(i).getForecastTime(),forecasts);
+                        if (getCorrectedWeatherID(context, cityId,weekforecasts.get(i).getForecastTime()) < forecastData[i])
+                            forecastData[i] = getCorrectedWeatherID(context, cityId,weekforecasts.get(i).getForecastTime());
                     }
                 }
 
@@ -183,39 +185,6 @@ public class WeatherWidget5day extends AppWidgetProvider {
     @Override
     public void onDisabled(Context context) {
         // Enter relevant functionality for when the last widget is disabled
-    }
-
-    //this method fixes the problem that OpenWeatherMap will show a rain symbol for the whole day even if weather during day is great and there are just a few drops of rain during night
-    private static boolean checkSun(long forecastTimeNoon, List<Forecast> forecastList ) {
-        boolean sun=false;
-        //iterate over FCs 5h before and 5h past forecast time of the weekforecast (which should usually be noon)
-        for (Forecast fc : forecastList) {
-            if ((fc.getForecastTime() >= forecastTimeNoon-18000000) && (fc.getForecastTime() <= forecastTimeNoon+18000000)) {
-//                Log.d("ID",Integer.toString(fc.getWeatherID()));
-                if (fc.getWeatherID() <= IApiToDatabaseConversion.WeatherCategories.BROKEN_CLOUDS.getNumVal()) sun = true;  //if weather better or equal broken clouds in one interval there is at least some sun during day.
-            }
-        }
-        //       Log.d("ID",Boolean.toString(sun));
-        return sun;
-    }
-    //this method fixes the problem that OpenWeatherMap will show a rain symbol for the whole day even if weather during day is great and there are just a few drops of rain during night
-    private static Integer getCorrectedWeatherID(long forecastTimeNoon, List<Forecast> forecastList ) {
-
-        int category=0;
-        //iterate over FCs 5h before and 5h past forecast time of the weekforecast (which should usually be noon)
-        for (Forecast fc : forecastList) {
-            if ((fc.getForecastTime() >= forecastTimeNoon - 18000000) && (fc.getForecastTime() <= forecastTimeNoon + 18000000)) {
-                //Log.d("Category",Integer.toString(fc.getWeatherID()));
-                if (fc.getWeatherID() > category) {
-                    category = fc.getWeatherID();  //find worst weather
-                }
-            }
-        }
-        //if worst is overcast clouds set category to broken clouds because fix is only used if checkSun=true, i.e. at least one interval with sun
-        if (category==IApiToDatabaseConversion.WeatherCategories.OVERCAST_CLOUDS.getNumVal()) category=IApiToDatabaseConversion.WeatherCategories.BROKEN_CLOUDS.getNumVal();
-        if (category>IApiToDatabaseConversion.WeatherCategories.BROKEN_CLOUDS.getNumVal()) category=1000;
-        //Log.d("Category",Integer.toString(category));
-        return category;
     }
 
 }

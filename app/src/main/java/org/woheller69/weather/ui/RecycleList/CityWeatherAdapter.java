@@ -126,24 +126,24 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
             forecastData[i][9]=forecasts.get(i).getWeatherID();
             if (i<=5) {  //there are only 1h or 3h forecasts for 5 days. Only there a correction of the weatherID is possible
                 if ((forecastData[i][9] >= IApiToDatabaseConversion.WeatherCategories.LIGHT_RAIN.getNumVal()) && (forecastData[i][9] <= IApiToDatabaseConversion.WeatherCategories.RAIN.getNumVal())) {
-                    if (checkSun(cityId, forecasts.get(i).getForecastTime())) {
+                    if (checkSun(context, cityId, forecasts.get(i).getForecastTime())) {
                         forecastData[i][9] = IApiToDatabaseConversion.WeatherCategories.SHOWER_RAIN.getNumVal(); //if at least one interval with sun +/-5 from noon, use shower rain instead of rain
-                        if (getCorrectedWeatherID(cityId, forecasts.get(i).getForecastTime()) < forecastData[i][9])
-                            forecastData[i][9] = getCorrectedWeatherID(cityId, forecasts.get(i).getForecastTime()); //if always sun use worst sun category
+                        if (getCorrectedWeatherID(context, cityId, forecasts.get(i).getForecastTime()) < forecastData[i][9])
+                            forecastData[i][9] = getCorrectedWeatherID(context, cityId, forecasts.get(i).getForecastTime()); //if always sun use worst sun category
                     }
                 }
                 if ((forecastData[i][9] >= IApiToDatabaseConversion.WeatherCategories.LIGHT_SNOW.getNumVal()) && (forecastData[i][9] <= IApiToDatabaseConversion.WeatherCategories.HEAVY_SNOW.getNumVal())) {
-                    if (checkSun(cityId, forecasts.get(i).getForecastTime())) {
+                    if (checkSun(context, cityId, forecasts.get(i).getForecastTime())) {
                         forecastData[i][9] = IApiToDatabaseConversion.WeatherCategories.SHOWER_SNOW.getNumVal();
-                        if (getCorrectedWeatherID(cityId, forecasts.get(i).getForecastTime()) < forecastData[i][9])
-                            forecastData[i][9] = getCorrectedWeatherID(cityId, forecasts.get(i).getForecastTime());
+                        if (getCorrectedWeatherID(context, cityId, forecasts.get(i).getForecastTime()) < forecastData[i][9])
+                            forecastData[i][9] = getCorrectedWeatherID(context, cityId, forecasts.get(i).getForecastTime());
                     }
                 }
                 if (forecastData[i][9] == IApiToDatabaseConversion.WeatherCategories.RAIN_SNOW.getNumVal()) {
-                    if (checkSun(cityId, forecasts.get(i).getForecastTime())) {
+                    if (checkSun(context, cityId, forecasts.get(i).getForecastTime())) {
                         forecastData[i][9] = IApiToDatabaseConversion.WeatherCategories.SHOWER_RAIN_SNOW.getNumVal();
-                        if (getCorrectedWeatherID(cityId, forecasts.get(i).getForecastTime()) < forecastData[i][9])
-                            forecastData[i][9] = getCorrectedWeatherID(cityId, forecasts.get(i).getForecastTime());
+                        if (getCorrectedWeatherID(context, cityId, forecasts.get(i).getForecastTime()) < forecastData[i][9])
+                            forecastData[i][9] = getCorrectedWeatherID(context, cityId, forecasts.get(i).getForecastTime());
                     }
                 }
             }
@@ -543,26 +543,30 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
     }
 
     //this method fixes the problem that OpenWeatherMap will show a rain symbol for the whole day even if weather during day is great and there are just a few drops of rain during night
-    private boolean checkSun(int cityId, long forecastTimeNoon ) {
+    public static boolean checkSun(Context context, int cityId, long forecastTimeNoon) {
         PFASQLiteHelper dbHelper = PFASQLiteHelper.getInstance(context);
         List<Forecast> forecastList = dbHelper.getForecastsByCityId(cityId);
+        long extend=0;
         boolean sun=false;
         //iterate over FCs 5h before and 5h past forecast time of the weekforecast (which should usually be noon)
+        if (!forecastList.isEmpty() && forecastList.get(0).getForecastTime()>forecastTimeNoon) extend = 10800000;  // if it is already afternoon iterate 3h more, this happens on current day only
         for (Forecast fc : forecastList) {
-            if ((fc.getForecastTime() >= forecastTimeNoon-18000000) && (fc.getForecastTime() <= forecastTimeNoon+18000000)) {
+            if ((fc.getForecastTime() >= forecastTimeNoon-18000000) && (fc.getForecastTime() <= forecastTimeNoon+18000000+extend)) {
                 if (fc.getWeatherID() <= IApiToDatabaseConversion.WeatherCategories.BROKEN_CLOUDS.getNumVal()) sun = true;  //if weather better or equal broken clouds in one interval there is at least some sun during day.
             }
         }
         return sun;
     }
     //this method fixes the problem that OpenWeatherMap will show a rain symbol for the whole day even if weather during day is great and there are just a few drops of rain during night
-    private Integer getCorrectedWeatherID(int cityId, long forecastTimeNoon ) {
+    public static Integer getCorrectedWeatherID(Context context, int cityId, long forecastTimeNoon) {
         PFASQLiteHelper dbHelper = PFASQLiteHelper.getInstance(context);
         List<Forecast> forecastList = dbHelper.getForecastsByCityId(cityId);
+        long extend=0;
         int category=0;
         //iterate over FCs 5h before and 5h past forecast time of the weekforecast (which should usually be noon)
+        if (!forecastList.isEmpty() && forecastList.get(0).getForecastTime()>forecastTimeNoon) extend = 10800000;  // if it is already afternoon iterate 3h more, this happens on current day only
         for (Forecast fc : forecastList) {
-            if ((fc.getForecastTime() >= forecastTimeNoon - 18000000) && (fc.getForecastTime() <= forecastTimeNoon + 18000000)) {
+            if ((fc.getForecastTime() >= forecastTimeNoon - 18000000) && (fc.getForecastTime() <= forecastTimeNoon + 18000000+extend)) {
                 if (fc.getWeatherID() > category) {
                     category = fc.getWeatherID();  //find worst weather
                 }
@@ -570,7 +574,7 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
         }
         //if worst is overcast clouds set category to broken clouds because fix is only used if checkSun=true, i.e. at least one interval with sun
         if (category==IApiToDatabaseConversion.WeatherCategories.OVERCAST_CLOUDS.getNumVal()) category=IApiToDatabaseConversion.WeatherCategories.BROKEN_CLOUDS.getNumVal();
-        if (category>IApiToDatabaseConversion.WeatherCategories.BROKEN_CLOUDS.getNumVal()) category=1000;
+        if (category>IApiToDatabaseConversion.WeatherCategories.BROKEN_CLOUDS.getNumVal() || category==0) category=1000; //do not change weather if condition is worse than broken clouds or forecastList empty
         return category;
     }
 
