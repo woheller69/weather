@@ -154,16 +154,17 @@ public class ProcessOwmForecastOneCallAPIRequest implements IProcessHttpRequest 
                 }
 
                 ViewUpdater.updateWeekForecasts(weekforecasts);
-                possiblyUpdateWidgets(cityId, weatherData, weekforecasts);
+
 
                 //Use hourly data only if forecastChoice 2 (1h) is active
                 SharedPreferences prefManager = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+                List<Forecast> hourlyforecasts = new ArrayList<>();
                 int choice = Integer.parseInt(prefManager.getString("forecastChoice", "1"));
                 if (choice == 2) {
                     JSONArray listhourly = json.getJSONArray("hourly");
 
                     dbHelper.deleteForecastsByCityId(cityId);
-                    //List<Forecast> hourlyforecasts = new ArrayList<>();
+
 
                     for (int i = 0; i < listhourly.length(); i++) {
                         String currentItem = listhourly.get(i).toString();
@@ -180,10 +181,11 @@ public class ProcessOwmForecastOneCallAPIRequest implements IProcessHttpRequest 
                             forecast.setCity_id(cityId);
                             // add it to the database
                             dbHelper.addForecast(forecast);
-                            //hourlyforecasts.add(forecast);
+                            hourlyforecasts.add(forecast);
                         }
                     }
                 }
+                possiblyUpdateWidgets(cityId, weatherData, weekforecasts,hourlyforecasts);
             }
                 //ViewUpdater.updateForecasts(hourlyforecasts);  //this is not done here anymore. updateForecasts will be called when also the 3h forecast for the time after 48h is retrieved
 
@@ -211,7 +213,7 @@ public class ProcessOwmForecastOneCallAPIRequest implements IProcessHttpRequest 
         });
     }
 
-    private void possiblyUpdateWidgets(int cityID, CurrentWeatherData currentWeather, List<WeekForecast> weekforecasts) {
+    private void possiblyUpdateWidgets(int cityID, CurrentWeatherData currentWeather, List<WeekForecast> weekforecasts, List<Forecast> hourlyforecasts) {
         //search for widgets with same city ID
         int widgetCityID=WeatherWidget.getWidgetCityID(context);
 
@@ -228,7 +230,7 @@ public class ProcessOwmForecastOneCallAPIRequest implements IProcessHttpRequest 
 
                 CityToWatch city=dbHelper.getCityToWatch(cityID);
 
-                WeatherWidget.updateView(context, appWidgetManager, views, widgetID, city, currentWeather,weekforecasts);
+                WeatherWidget.updateView(context, appWidgetManager, views, widgetID, city, currentWeather,weekforecasts,hourlyforecasts);
                 appWidgetManager.updateAppWidget(widgetID, views);
             }
         }

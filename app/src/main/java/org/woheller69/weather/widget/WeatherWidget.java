@@ -17,6 +17,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.util.Log;
+import android.view.View;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
@@ -26,14 +27,17 @@ import androidx.preference.PreferenceManager;
 import org.woheller69.weather.R;
 import org.woheller69.weather.database.CityToWatch;
 import org.woheller69.weather.database.CurrentWeatherData;
+import org.woheller69.weather.database.Forecast;
 import org.woheller69.weather.database.PFASQLiteHelper;
 import org.woheller69.weather.database.WeekForecast;
 import org.woheller69.weather.services.UpdateDataService;
 import org.woheller69.weather.ui.Help.StringFormatUtils;
 import org.woheller69.weather.ui.UiResourceProvider;
 
+import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
+import java.util.TimeZone;
 
 import static androidx.core.app.JobIntentService.enqueueWork;
 
@@ -106,10 +110,11 @@ public class WeatherWidget extends AppWidgetProvider {
 
 
 
-    public static void updateView(Context context, AppWidgetManager appWidgetManager, RemoteViews views, int appWidgetId, CityToWatch city, CurrentWeatherData weatherData, List<WeekForecast> weekforecasts) {
+    public static void updateView(Context context, AppWidgetManager appWidgetManager, RemoteViews views, int appWidgetId, CityToWatch city, CurrentWeatherData weatherData, List<WeekForecast> weekforecasts, List<Forecast> hourlyforecasts) {
 
         long time = weatherData.getTimestamp();
         int zoneseconds = weatherData.getTimeZoneSeconds();
+        int [] forecastIDs = {0,R.id.widget_1h, R.id.widget_2h,R.id.widget_3h,R.id.widget_4h,R.id.widget_5h,R.id.widget_6h,R.id.widget_7h, R.id.widget_8h};
 
         long updateTime = (time + zoneseconds) * 1000;
 
@@ -131,6 +136,34 @@ public class WeatherWidget extends AppWidgetProvider {
         boolean isDay = weatherData.getTimestamp()  > weatherData.getTimeSunrise() && weatherData.getTimestamp() < weatherData.getTimeSunset();
 
         views.setImageViewResource(R.id.widget_image_view, UiResourceProvider.getIconResourceForWeatherCategory(weatherData.getWeatherID(), isDay));
+
+        if (hourlyforecasts!=null&&!hourlyforecasts.isEmpty())
+        {
+            for (int i=1;i<9;i++){
+                Calendar forecastTime = Calendar.getInstance();
+                forecastTime.setTimeZone(TimeZone.getTimeZone("GMT"));
+                forecastTime.setTimeInMillis(hourlyforecasts.get(i).getLocalForecastTime(context));
+
+                Calendar sunSetTime = Calendar.getInstance();
+                sunSetTime.setTimeZone(TimeZone.getTimeZone("GMT"));
+                sunSetTime.setTimeInMillis(weatherData.getTimeSunset() * 1000 + weatherData.getTimeZoneSeconds() * 1000);
+                sunSetTime.set(Calendar.DAY_OF_YEAR, forecastTime.get(Calendar.DAY_OF_YEAR));
+
+
+                Calendar sunRiseTime = Calendar.getInstance();
+                sunRiseTime.setTimeZone(TimeZone.getTimeZone("GMT"));
+                sunRiseTime.setTimeInMillis(weatherData.getTimeSunrise() * 1000 + weatherData.getTimeZoneSeconds() * 1000);
+                sunRiseTime.set(Calendar.DAY_OF_YEAR, forecastTime.get(Calendar.DAY_OF_YEAR));
+
+                isDay = forecastTime.after(sunRiseTime) && forecastTime.before(sunSetTime);
+                views.setImageViewResource(forecastIDs[i],UiResourceProvider.getIconResourceForWeatherCategory(hourlyforecasts.get(i).getWeatherID(), isDay));
+                views.setViewVisibility(forecastIDs[i], View.VISIBLE);
+            }
+        } else {
+            for (int i=1;i<9;i++){
+                views.setViewVisibility(forecastIDs[i], View.GONE);
+            }
+        }
 
         Intent intentUpdate = new Intent(context, WeatherWidget.class);
         intentUpdate.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
@@ -210,6 +243,7 @@ public class WeatherWidget extends AppWidgetProvider {
 
         CurrentWeatherData currentWeather=dbHelper.getCurrentWeatherByCityId(widgetCityID);
         List<WeekForecast> weekforecasts=dbHelper.getWeekForecastsByCityId(widgetCityID);
+        List<Forecast> hourlyforecasts=dbHelper.getForecastsByCityId(widgetCityID);
 
         int[] widgetIDs = AppWidgetManager.getInstance(context).getAppWidgetIds(new ComponentName(context, WeatherWidget.class));
 
@@ -220,7 +254,7 @@ public class WeatherWidget extends AppWidgetProvider {
 
                 CityToWatch city=dbHelper.getCityToWatch(widgetCityID);
 
-                WeatherWidget.updateView(context, appWidgetManager, views, widgetID, city, currentWeather,weekforecasts);
+                WeatherWidget.updateView(context, appWidgetManager, views, widgetID, city, currentWeather,weekforecasts, hourlyforecasts);
                 appWidgetManager.updateAppWidget(widgetID, views);
 
         }
