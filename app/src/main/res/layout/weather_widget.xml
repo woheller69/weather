@@ -23,7 +23,7 @@
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
         android:layout_marginStart="5dp"
-        android:layout_alignBottom="@+id/widget_sunrise_sunset"
+        android:layout_alignBottom="@+id/widget_temperature"
         android:src="@mipmap/weather_icon_10d" />
 
     <TextView
@@ -100,7 +100,7 @@
         android:textSize="22dp"
         android:textStyle="bold"
         android:background="@drawable/rounded_grey"
-        android:layout_below="@id/widget_updatetime"
+        android:layout_below="@id/widget_sunrise_sunset"
         android:layout_toStartOf="@id/widget_wind"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
@@ -118,8 +118,8 @@
         android:textSize="22dp"
         android:textStyle="bold"
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="1dp"
-        android:layout_below="@id/widget_updatetime"
+        android:layout_marginBottom="5dp"
+        android:layout_below="@id/widget_sunrise_sunset"
         android:background="@drawable/rounded_grey"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="10dp"
@@ -134,9 +134,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15dp"
+        android:letterSpacing="-0.05"
         android:textColor="@color/colorPrimaryDark"
         android:background="@drawable/rounded_grey"
-        android:layout_below="@id/widget_wind"
+        android:layout_below="@id/widget_updatetime"
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="3dp"
         android:layout_marginTop="5dp"
@@ -156,7 +157,7 @@
         android:scaleType="centerCrop"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="10dp"
-        android:layout_below="@id/widget_sunrise_sunset"
+        android:layout_below="@id/widget_wind"
         android:layout_alignParentEnd="true"
         android:src="@mipmap/weather_icon_10d" />
 
@@ -167,8 +168,7 @@
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
         android:layout_marginTop="1dp"
-
-        android:layout_below="@id/widget_sunrise_sunset"
+        android:layout_below="@id/widget_wind"
         android:layout_toStartOf="@id/widget_8h"
         android:src="@mipmap/weather_icon_10d" />
 
@@ -179,8 +179,7 @@
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
         android:layout_marginTop="1dp"
-
-        android:layout_below="@id/widget_sunrise_sunset"
+        android:layout_below="@id/widget_wind"
         android:layout_toStartOf="@id/widget_7h"
         android:src="@mipmap/weather_icon_10d" />
 
@@ -191,8 +190,7 @@
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
         android:layout_marginTop="1dp"
-
-        android:layout_below="@id/widget_sunrise_sunset"
+        android:layout_below="@id/widget_wind"
         android:layout_toStartOf="@id/widget_6h"
         android:src="@mipmap/weather_icon_10d" />
 
@@ -203,8 +201,7 @@
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
         android:layout_marginTop="1dp"
-
-        android:layout_below="@id/widget_sunrise_sunset"
+        android:layout_below="@id/widget_wind"
         android:layout_toStartOf="@id/widget_5h"
         android:src="@mipmap/weather_icon_10d" />
 
@@ -215,8 +212,7 @@
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
         android:layout_marginTop="1dp"
-
-        android:layout_below="@id/widget_sunrise_sunset"
+        android:layout_below="@id/widget_wind"
         android:layout_toStartOf="@id/widget_4h"
         android:src="@mipmap/weather_icon_10d" />
 
@@ -227,7 +223,7 @@
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
         android:layout_marginTop="1dp"
-        android:layout_below="@id/widget_sunrise_sunset"
+        android:layout_below="@id/widget_wind"
         android:layout_toStartOf="@id/widget_3h"
         android:src="@mipmap/weather_icon_10d" />
 
@@ -238,7 +234,7 @@
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
         android:layout_marginTop="1dp"
-        android:layout_below="@id/widget_sunrise_sunset"
+        android:layout_below="@id/widget_wind"
         android:layout_toStartOf="@id/widget_2h"
         android:src="@mipmap/weather_icon_10d" />
 
