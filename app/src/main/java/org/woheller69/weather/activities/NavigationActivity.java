@@ -1,11 +1,13 @@
 package org.woheller69.weather.activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.preference.PreferenceManager;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.navigation.NavigationView.OnNavigationItemSelectedListener;
@@ -20,6 +22,7 @@ import android.view.MenuItem;
 
 
 import org.woheller69.weather.R;
+import org.woheller69.weather.preferences.AppPreferencesManager;
 
 import static java.lang.Boolean.TRUE;
 
@@ -39,6 +42,7 @@ public class NavigationActivity extends AppCompatActivity implements OnNavigatio
     // Helper
     private Handler mHandler;
     protected SharedPreferences mSharedPreferences;
+    protected AppPreferencesManager prefManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +50,31 @@ public class NavigationActivity extends AppCompatActivity implements OnNavigatio
 
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mHandler = new Handler();
+        prefManager = new AppPreferencesManager(PreferenceManager.getDefaultSharedPreferences(this));
+        if (prefManager.showStarDialog()) {
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+            alertDialogBuilder.setMessage(R.string.dialog_StarOnGitHub);
+            alertDialogBuilder.setPositiveButton(getString(R.string.dialog_OK_button), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/woheller69/weather")));
+                    prefManager = new AppPreferencesManager(PreferenceManager.getDefaultSharedPreferences(getApplicationContext()));
+                    prefManager.setAskForStar(false);
+                }
+            });
+            alertDialogBuilder.setNegativeButton(getString(R.string.dialog_NO_button), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    prefManager = new AppPreferencesManager(PreferenceManager.getDefaultSharedPreferences(getApplicationContext()));
+                    prefManager.setAskForStar(false);
+                }
+            });
+            alertDialogBuilder.setNeutralButton(getString(R.string.dialog_Later_button), null);
 
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+
+        }
 
         overridePendingTransition(0, 0);
     }

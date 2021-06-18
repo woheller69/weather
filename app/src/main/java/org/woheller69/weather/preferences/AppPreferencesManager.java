@@ -2,6 +2,7 @@ package org.woheller69.weather.preferences;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import org.woheller69.weather.BuildConfig;
 import org.woheller69.weather.R;
@@ -136,5 +137,28 @@ public class AppPreferencesManager {
         } else {
             return prefValue;
         }
+    }
+
+    public boolean showStarDialog() {
+        int versionCode = preferences.getInt("versionCode",0);
+        boolean askForStar=preferences.getBoolean("askForStar",true);
+
+        if (versionCode!=0 && BuildConfig.VERSION_CODE>versionCode && askForStar){ //not at first start, only after upgrade and only if use has not yet given a star or has declined
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putInt("versionCode", BuildConfig.VERSION_CODE);
+            editor.apply();
+         return true;
+        } else {
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putInt("versionCode", BuildConfig.VERSION_CODE);
+            editor.apply();
+          return false;
+        }
+    }
+
+    public void setAskForStar(boolean askForStar){
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean("askForStar", askForStar);
+        editor.apply();
     }
 }

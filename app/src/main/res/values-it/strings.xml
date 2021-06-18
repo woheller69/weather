@@ -153,4 +153,8 @@
     <string name="settings_time24h">Formato 24 ore</string>
     <string name="summary_time24h">Sovrascrivere le impostazioni di sistema</string>
     <string name="settings_wind">Usa la scala Beaufort</string>
+    <string name="dialog_OK_button">OK</string>
+    <string name="dialog_NO_button">No</string>
+    <string name="dialog_Later_button">Forse più tardi</string>
+    <string name="dialog_StarOnGitHub">Ti piace questa app? Assegna una stella su GitHub.</string>
 </resources> 
