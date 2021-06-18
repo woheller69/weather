@@ -143,7 +143,7 @@ public class AppPreferencesManager {
         int versionCode = preferences.getInt("versionCode",0);
         boolean askForStar=preferences.getBoolean("askForStar",true);
 
-        if (versionCode!=0 && BuildConfig.VERSION_CODE>versionCode && askForStar){ //not at first start, only after upgrade and only if use has not yet given a star or has declined
+        if (!isFirstTimeLaunch() && BuildConfig.VERSION_CODE>versionCode && askForStar){ //not at first start, only after upgrade and only if use has not yet given a star or has declined
             SharedPreferences.Editor editor = preferences.edit();
             editor.putInt("versionCode", BuildConfig.VERSION_CODE);
             editor.apply();

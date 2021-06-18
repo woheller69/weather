@@ -156,8 +156,8 @@ public class NavigationActivity extends AppCompatActivity implements OnNavigatio
     private void callDrawerItem(final int itemId) {
 
         Intent intent;
-        SharedPreferences prefManager = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        if(prefManager.getBoolean("pref_DarkMode", false)==TRUE) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        if(sharedPreferences.getBoolean("pref_DarkMode", false)==TRUE) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
         }else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
@@ -181,6 +181,8 @@ public class NavigationActivity extends AppCompatActivity implements OnNavigatio
         }else if (itemId==R.id.star_on_github){
             startActivity(new Intent(Intent.ACTION_VIEW,
                     Uri.parse("https://github.com/woheller69/weather")));
+            prefManager = new AppPreferencesManager(PreferenceManager.getDefaultSharedPreferences(getApplicationContext()));
+            prefManager.setAskForStar(false);
         }
     }
 
