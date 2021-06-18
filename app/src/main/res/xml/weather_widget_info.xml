@@ -2,7 +2,7 @@
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
     android:initialKeyguardLayout="@layout/weather_widget"
     android:initialLayout="@layout/weather_widget"
-    android:minHeight="100dp"
+    android:minHeight="120dp"
     android:minWidth="200dp"
     android:minResizeWidth="100dp"
     android:minResizeHeight="60dp"
