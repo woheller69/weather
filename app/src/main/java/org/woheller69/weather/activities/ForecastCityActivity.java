@@ -65,8 +65,8 @@ public class ForecastCityActivity extends NavigationActivity implements IUpdatea
         ViewUpdater.addSubscriber(pagerAdapter);
 
         if (pagerAdapter.getCount()>0) {  //only if at least one city is watched
-            // if Intent contains cityId use this city, otherwise go to previous position
-            cityId = getIntent().getIntExtra("cityId", pagerAdapter.getCityIDForPos(viewPager.getCurrentItem()));
+             //if pagerAdapter has item with current cityId go there, otherwise use cityId from current item
+            if (pagerAdapter.getPosForCityID(cityId)==0) cityId=pagerAdapter.getCityIDForPos(viewPager.getCurrentItem());
             pagerAdapter.refreshSingleData(false, cityId);  //only update current tab at start
         }
         viewPager.setCurrentItem(pagerAdapter.getPosForCityID(cityId));
@@ -101,6 +101,7 @@ public class ForecastCityActivity extends NavigationActivity implements IUpdatea
                     pagerAdapter.refreshSingleData(false, pagerAdapter.getCityIDForPos(position));
                 }
                 viewPager.setNextFocusRightId(position);
+                cityId=pagerAdapter.getCityIDForPos(viewPager.getCurrentItem());  //save current cityId for next resume
             }
 
             @Override
