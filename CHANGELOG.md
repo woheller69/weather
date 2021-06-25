@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 4.2 (2021-06-25)
+
+* Add course of day to widget
+* Bugfixes
+
+
 Version 4.1 (2021-06-14)
 
 * Power optimization for GPS functionality
