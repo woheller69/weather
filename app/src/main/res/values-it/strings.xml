@@ -26,10 +26,10 @@
     <string name="card_day_heading">Corso della giornata</string>
     <string name="card_error_heading">Errore durante il recupero dei dati meteo</string>
     <string name="card_error_content">Per favore prova ad aggiornare!</string>
-    <string name="radius_search_heading">Trova il tempo migliore nei dintorni</string>
-    <string name="radius_search_tv_heading">Posizione (centro dell'area di ricerca)</string>
-    <string name="radius_search_tv_edge_length">Area di ricerca</string>
-    <string name="radius_search_tv_num_returns">Numero di località da recuperare</string>
+    <string name="radius_search_heading">Trova il tempo migliore in una località</string>
+    <string name="radius_search_tv_heading">Posizione (centro della casella di ricerca)</string>
+    <string name="radius_search_tv_edge_length">Lunghezza del bordo del quadrato di ricerca</string>
+    <string name="radius_search_tv_num_returns">Numero di posizioni da recuperare</string>
     <string name="radius_search_btn_search">Cerca</string>
     <string name="radius_search_result_label">Risultati di ricerca</string>
     <string name="about_privacy_heading">Informazioni sulla privacy</string>
@@ -55,13 +55,13 @@
     <string name="settings_description_API">RadarWeather riceve i dati dal servizio gratuito di openweathermap.org. Questo servizio è limitato a 1000 chiamate al giorno. Inserisci la tua chiave API</string>
     <string name="settings_title_API_key">Inserisci chiave API</string>
     <string name="settings__API_key_default" translatable="false" />
-    <string name="abbreviation_monday">Lun</string>
-    <string name="abbreviation_tuesday">Mar</string>
-    <string name="abbreviation_wednesday">Mer</string>
-    <string name="abbreviation_thursday">Gio</string>
-    <string name="abbreviation_friday">Ven</string>
-    <string name="abbreviation_saturday">Sab</string>
-    <string name="abbreviation_sunday">Dom</string>
+    <string name="abbreviation_monday">Lun.</string>
+    <string name="abbreviation_tuesday">Mar.</string>
+    <string name="abbreviation_wednesday">Mer.</string>
+    <string name="abbreviation_thursday">Gio.</string>
+    <string name="abbreviation_friday">Ven.</string>
+    <string name="abbreviation_saturday">Sab.</string>
+    <string name="abbreviation_sunday">Dom.</string>
     <string name="dialog_add_label">Inserisci la posizione da aggiungere:</string>
     <string name="dialog_add_no_city_found">Non è stata trovata alcuna posizione che corrisponde al tuo input. Si consiglia di selezionare uno degli elementi dall'elenco a discesa.  </string>
     <string name="dialog_add_close_button">Chiudi</string>
