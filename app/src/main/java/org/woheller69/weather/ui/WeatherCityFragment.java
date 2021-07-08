@@ -1,26 +1,40 @@
 package org.woheller69.weather.ui;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
 import org.woheller69.weather.R;
+import org.woheller69.weather.activities.ForecastCityActivity;
 import org.woheller69.weather.database.CurrentWeatherData;
 import org.woheller69.weather.database.Forecast;
 import org.woheller69.weather.database.PFASQLiteHelper;
 import org.woheller69.weather.database.WeekForecast;
+import org.woheller69.weather.services.UpdateDataService;
 import org.woheller69.weather.ui.RecycleList.CityWeatherAdapter;
+import org.woheller69.weather.ui.RecycleList.OnSwipeDownListener;
 import org.woheller69.weather.ui.updater.IUpdateableCityUI;
 import org.woheller69.weather.ui.updater.ViewUpdater;
+import org.woheller69.weather.ui.viewPager.WeatherPagerAdapter;
 
 import java.util.List;
+
+import static androidx.core.app.JobIntentService.enqueueWork;
+import static org.woheller69.weather.services.UpdateDataService.SKIP_UPDATE_INTERVAL;
 
 public class WeatherCityFragment extends Fragment implements IUpdateableCityUI {
 
@@ -61,7 +75,7 @@ public class WeatherCityFragment extends Fragment implements IUpdateableCityUI {
 
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
 
         ViewUpdater.addSubscriber(this);
@@ -74,12 +88,21 @@ public class WeatherCityFragment extends Fragment implements IUpdateableCityUI {
         super.onDetach();
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_weather_forecast_city_overview, container, false);
+        final View v = inflater.inflate(R.layout.fragment_weather_forecast_city_overview, container, false);
 
         recyclerView = v.findViewById(R.id.weatherForecastRecyclerView);
         recyclerView.setLayoutManager(getLayoutManager(getContext()));
+        recyclerView.setOnTouchListener(new OnSwipeDownListener(getContext()) {
+            public void onSwipeDown() {
+                if (v.getScrollY()==0) { //Reload on swipeDown if scrolled to top
+                    WeatherPagerAdapter.refreshSingleData(getContext(),true,mCityId);
+                    ForecastCityActivity.startRefreshAnimation();
+                }
+            }
+        });
 
         Bundle args = getArguments();
         mCityId = args.getInt("city_id");

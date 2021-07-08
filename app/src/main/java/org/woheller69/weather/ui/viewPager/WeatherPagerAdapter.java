@@ -90,12 +90,12 @@ public class WeatherPagerAdapter extends FragmentStatePagerAdapter implements IU
         return cities.get(position).getCityName();
     }
 
-    public void refreshSingleData(Boolean asap, int cityId) {
-        Intent intent = new Intent(mContext, UpdateDataService.class);
+    public static void refreshSingleData(Context context, Boolean asap, int cityId) {
+        Intent intent = new Intent(context, UpdateDataService.class);
         intent.setAction(UpdateDataService.UPDATE_SINGLE_ACTION);
         intent.putExtra(SKIP_UPDATE_INTERVAL, asap);
         intent.putExtra("cityId",cityId);
-        enqueueWork(mContext, UpdateDataService.class, 0, intent);
+        enqueueWork(context, UpdateDataService.class, 0, intent);
     }
 
     private CurrentWeatherData findWeatherFromID(List<CurrentWeatherData> currentWeathers, int ID) {
