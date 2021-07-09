@@ -2,7 +2,6 @@ package org.woheller69.weather.ui;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,19 +11,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
+
 import android.view.View;
 import android.view.ViewGroup;
 
 import org.woheller69.weather.R;
-import org.woheller69.weather.activities.ForecastCityActivity;
 import org.woheller69.weather.database.CurrentWeatherData;
 import org.woheller69.weather.database.Forecast;
 import org.woheller69.weather.database.PFASQLiteHelper;
 import org.woheller69.weather.database.WeekForecast;
-import org.woheller69.weather.services.UpdateDataService;
 import org.woheller69.weather.ui.RecycleList.CityWeatherAdapter;
 import org.woheller69.weather.ui.RecycleList.OnSwipeDownListener;
 import org.woheller69.weather.ui.updater.IUpdateableCityUI;
@@ -32,9 +28,6 @@ import org.woheller69.weather.ui.updater.ViewUpdater;
 import org.woheller69.weather.ui.viewPager.WeatherPagerAdapter;
 
 import java.util.List;
-
-import static androidx.core.app.JobIntentService.enqueueWork;
-import static org.woheller69.weather.services.UpdateDataService.SKIP_UPDATE_INTERVAL;
 
 public class WeatherCityFragment extends Fragment implements IUpdateableCityUI {
 
@@ -99,7 +92,6 @@ public class WeatherCityFragment extends Fragment implements IUpdateableCityUI {
             public void onSwipeDown() {
                 if (recyclerView.getScrollY()==0) { //Reload on swipeDown if scrolled to top
                     WeatherPagerAdapter.refreshSingleData(getContext(),true,mCityId);
-                    ForecastCityActivity.startRefreshAnimation();
                 }
             }
         });

@@ -10,6 +10,7 @@ import androidx.core.app.JobIntentService;
 import android.widget.Toast;
 
 import org.woheller69.weather.R;
+import org.woheller69.weather.activities.ForecastCityActivity;
 import org.woheller69.weather.activities.NavigationActivity;
 import org.woheller69.weather.database.CityToWatch;
 import org.woheller69.weather.database.Forecast;
@@ -116,6 +117,7 @@ public class UpdateDataService extends JobIntentService {
 
         // Update if update forced or if a certain time has passed
         if (skipUpdateInterval || timestamp + updateInterval - systemTime <= 0) {
+            ForecastCityActivity.startRefreshAnimation();
             //if forecastChoice = 1 (3h) perform both else only one call API
             int choice = Integer.parseInt(prefManager.getString("forecastChoice","1"));
             if (choice==1) {

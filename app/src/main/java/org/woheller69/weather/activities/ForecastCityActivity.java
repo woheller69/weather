@@ -68,7 +68,6 @@ public class ForecastCityActivity extends NavigationActivity implements IUpdatea
              //if pagerAdapter has item with current cityId go there, otherwise use cityId from current item
             if (pagerAdapter.getPosForCityID(cityId)==0) cityId=pagerAdapter.getCityIDForPos(viewPager.getCurrentItem());
             WeatherPagerAdapter.refreshSingleData(getApplicationContext(),false, cityId);  //only update current tab at start
-            startRefreshAnimation();
         }
         viewPager.setCurrentItem(pagerAdapter.getPosForCityID(cityId));
     }
@@ -98,7 +97,6 @@ public class ForecastCityActivity extends NavigationActivity implements IUpdatea
                 long updateInterval = (long) (Float.parseFloat(prefManager.getString("pref_updateInterval", "2")) * 60 * 60);
 
                 if (timestamp + updateInterval - systemTime <= 0) {
-                    startRefreshAnimation();
                     WeatherPagerAdapter.refreshSingleData(getApplicationContext(),false, pagerAdapter.getCityIDForPos(position));
                 }
                 viewPager.setNextFocusRightId(position);
@@ -175,7 +173,6 @@ public class ForecastCityActivity extends NavigationActivity implements IUpdatea
         }else if (id==R.id.menu_refresh){
             if (!db.getAllCitiesToWatch().isEmpty()) {  //only if at least one city is watched, otherwise crash
                 WeatherPagerAdapter.refreshSingleData(getApplicationContext(),true, pagerAdapter.getCityIDForPos(viewPager.getCurrentItem()));
-                startRefreshAnimation();
             }
         }
 
