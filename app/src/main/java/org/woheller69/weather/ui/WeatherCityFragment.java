@@ -97,7 +97,7 @@ public class WeatherCityFragment extends Fragment implements IUpdateableCityUI {
         recyclerView.setLayoutManager(getLayoutManager(getContext()));
         recyclerView.setOnTouchListener(new OnSwipeDownListener(getContext()) {
             public void onSwipeDown() {
-                if (v.getScrollY()==0) { //Reload on swipeDown if scrolled to top
+                if (recyclerView.getScrollY()==0) { //Reload on swipeDown if scrolled to top
                     WeatherPagerAdapter.refreshSingleData(getContext(),true,mCityId);
                     ForecastCityActivity.startRefreshAnimation();
                 }
