@@ -42,6 +42,7 @@ public class WeatherWidget5day extends AppWidgetProvider {
 
             intent.setAction(UpdateDataService.UPDATE_SINGLE_ACTION);
             intent.putExtra("cityId", cityID);
+            intent.putExtra("Widget",true);
             intent.putExtra(SKIP_UPDATE_INTERVAL, true);
             enqueueWork(context, UpdateDataService.class, 0, intent);
         }
