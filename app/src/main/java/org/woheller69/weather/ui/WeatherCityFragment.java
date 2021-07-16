@@ -30,7 +30,7 @@ import org.woheller69.weather.ui.viewPager.WeatherPagerAdapter;
 import java.util.List;
 
 public class WeatherCityFragment extends Fragment implements IUpdateableCityUI {
-
+    private static final int MINGRIDWIDTH = 500;
     private int mCityId = -1;
     private int[] mDataSetTypes = new int[]{};
 
@@ -90,7 +90,17 @@ public class WeatherCityFragment extends Fragment implements IUpdateableCityUI {
         recyclerView.setLayoutManager(getLayoutManager(getContext()));
         recyclerView.setOnTouchListener(new OnSwipeDownListener(getContext()) {
             public void onSwipeDown() {
-                if (recyclerView.getScrollY()==0) { //Reload on swipeDown if scrolled to top
+                int widthPixels = getContext().getResources().getDisplayMetrics().widthPixels;
+                float density = getContext().getResources().getDisplayMetrics().density;
+                float width = widthPixels / density;
+                int visiblePosition;
+                if (width <=MINGRIDWIDTH){  //view has LinearLayoutManager -> find first visible position
+                    RecyclerView.LayoutManager manager = recyclerView.getLayoutManager();
+                    LinearLayoutManager llm = (LinearLayoutManager) manager;
+                    assert llm != null;
+                    visiblePosition = llm.findFirstVisibleItemPosition();
+                } else visiblePosition=0;  //detection of first visible item not possible for StaggeredGridLayout
+                if (visiblePosition==0) { //Reload on swipeDown if scrolled to top
                     WeatherPagerAdapter.refreshSingleData(getContext(),true,mCityId);
                 }
             }
@@ -110,7 +120,7 @@ public class WeatherCityFragment extends Fragment implements IUpdateableCityUI {
         float density = context.getResources().getDisplayMetrics().density;
         float width = widthPixels / density;
 
-        if (width > 500) {
+        if (width > MINGRIDWIDTH) {
             return new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         } else {
             return new LinearLayoutManager(context);
