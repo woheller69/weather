@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import org.woheller69.weather.R;
+import org.woheller69.weather.activities.ForecastCityActivity;
 import org.woheller69.weather.database.CurrentWeatherData;
 import org.woheller69.weather.database.Forecast;
 import org.woheller69.weather.database.PFASQLiteHelper;
@@ -93,15 +94,22 @@ public class WeatherCityFragment extends Fragment implements IUpdateableCityUI {
                 int widthPixels = getContext().getResources().getDisplayMetrics().widthPixels;
                 float density = getContext().getResources().getDisplayMetrics().density;
                 float width = widthPixels / density;
-                int visiblePosition;
+                int firstVisiblePosition;
+                RecyclerView.LayoutManager manager = recyclerView.getLayoutManager();
                 if (width <=MINGRIDWIDTH){  //view has LinearLayoutManager -> find first visible position
-                    RecyclerView.LayoutManager manager = recyclerView.getLayoutManager();
                     LinearLayoutManager llm = (LinearLayoutManager) manager;
                     assert llm != null;
-                    visiblePosition = llm.findFirstVisibleItemPosition();
-                } else visiblePosition=0;  //detection of first visible item not possible for StaggeredGridLayout
-                if (visiblePosition==0) { //Reload on swipeDown if scrolled to top
+                    firstVisiblePosition = llm.findFirstVisibleItemPosition();
+                } else {
+                    StaggeredGridLayoutManager glm = (StaggeredGridLayoutManager) manager;
+                    assert glm != null;
+                    int[] into = new int[2]; //span count 2
+                    glm.findFirstVisibleItemPositions(into);
+                    firstVisiblePosition =into[0];
+                }
+                if (firstVisiblePosition ==0) { //Reload on swipeDown if scrolled to top
                     WeatherPagerAdapter.refreshSingleData(getContext(),true,mCityId);
+                    ForecastCityActivity.startRefreshAnimation();
                 }
             }
         });

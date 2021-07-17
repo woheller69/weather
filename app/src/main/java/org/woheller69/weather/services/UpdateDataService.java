@@ -117,8 +117,7 @@ public class UpdateDataService extends JobIntentService {
 
         // Update if update forced or if a certain time has passed
         if (skipUpdateInterval || timestamp + updateInterval - systemTime <= 0) {
-            if (!intent.getBooleanExtra("Widget",false)) ForecastCityActivity.startRefreshAnimation();
-            //if forecastChoice = 1 (3h) perform both else only one call API
+             //if forecastChoice = 1 (3h) perform both else only one call API
             int choice = Integer.parseInt(prefManager.getString("forecastChoice","1"));
             if (choice==1) {
                 IHttpRequestForForecast forecastRequest = new OwmHttpRequestForForecast(getApplicationContext());
