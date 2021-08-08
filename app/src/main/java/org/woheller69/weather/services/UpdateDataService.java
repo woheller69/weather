@@ -10,7 +10,6 @@ import androidx.core.app.JobIntentService;
 import android.widget.Toast;
 
 import org.woheller69.weather.R;
-import org.woheller69.weather.activities.ForecastCityActivity;
 import org.woheller69.weather.activities.NavigationActivity;
 import org.woheller69.weather.database.CityToWatch;
 import org.woheller69.weather.database.Forecast;
@@ -36,6 +35,7 @@ public class UpdateDataService extends JobIntentService {
 
     public static final String CITY_ID = "cityId";
     public static final String SKIP_UPDATE_INTERVAL = "skipUpdateInterval";
+    private static final long MIN_UPDATE_INTERVAL=20;
 
     private PFASQLiteHelper dbHelper;
     private SharedPreferences prefManager;
@@ -107,12 +107,14 @@ public class UpdateDataService extends JobIntentService {
         long systemTime = System.currentTimeMillis() / 1000;
         long updateInterval = (long) (Float.parseFloat(prefManager.getString("pref_updateInterval", "2")) * 60 * 60);
 
-        if (!skipUpdateInterval) {
+        List<Forecast> forecasts = dbHelper.getForecastsByCityId(cityId);
+        if (forecasts.size() > 0) {             // check timestamp of the current forecasts
+            timestamp = forecasts.get(0).getTimestamp();
+        }
+
+        if (skipUpdateInterval) {
             // check timestamp of the current forecasts
-            List<Forecast> forecasts = dbHelper.getForecastsByCityId(cityId);
-            if (forecasts.size() > 0) {
-                timestamp = forecasts.get(0).getTimestamp();
-            }
+                if ((timestamp+MIN_UPDATE_INTERVAL-systemTime)>0) skipUpdateInterval=false;  //even if skipUpdateInterval is true, never update if less than MIN_UPDATE_INTERVAL s
         }
 
         // Update if update forced or if a certain time has passed

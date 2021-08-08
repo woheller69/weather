@@ -99,15 +99,15 @@ public class WeatherCityFragment extends Fragment implements IUpdateableCityUI {
                 if (width <=MINGRIDWIDTH){  //view has LinearLayoutManager -> find first visible position
                     LinearLayoutManager llm = (LinearLayoutManager) manager;
                     assert llm != null;
-                    firstVisiblePosition = llm.findFirstVisibleItemPosition();
+                    firstVisiblePosition = llm.findFirstCompletelyVisibleItemPosition();
                 } else {
                     StaggeredGridLayoutManager glm = (StaggeredGridLayoutManager) manager;
                     assert glm != null;
                     int[] into = new int[2]; //span count 2
-                    glm.findFirstVisibleItemPositions(into);
+                    glm.findFirstCompletelyVisibleItemPositions(into);
                     firstVisiblePosition =into[0];
                 }
-                if (firstVisiblePosition ==0) { //Reload on swipeDown if scrolled to top
+                if (firstVisiblePosition == 0) { //Reload on swipeDown if scrolled to top
                     WeatherPagerAdapter.refreshSingleData(getContext(),true,mCityId);
                     ForecastCityActivity.startRefreshAnimation();
                 }
