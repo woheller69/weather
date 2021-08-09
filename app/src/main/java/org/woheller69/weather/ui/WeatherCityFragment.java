@@ -6,11 +6,13 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 
 import android.view.View;
@@ -89,28 +91,19 @@ public class WeatherCityFragment extends Fragment implements IUpdateableCityUI {
 
         recyclerView = v.findViewById(R.id.weatherForecastRecyclerView);
         recyclerView.setLayoutManager(getLayoutManager(getContext()));
-        recyclerView.setOnTouchListener(new OnSwipeDownListener(getContext()) {
-            public void onSwipeDown() {
-                int widthPixels = getContext().getResources().getDisplayMetrics().widthPixels;
-                float density = getContext().getResources().getDisplayMetrics().density;
-                float width = widthPixels / density;
-                int firstVisiblePosition;
-                RecyclerView.LayoutManager manager = recyclerView.getLayoutManager();
-                if (width <=MINGRIDWIDTH){  //view has LinearLayoutManager -> find first visible position
-                    LinearLayoutManager llm = (LinearLayoutManager) manager;
-                    assert llm != null;
-                    firstVisiblePosition = llm.findFirstCompletelyVisibleItemPosition();
-                } else {
-                    StaggeredGridLayoutManager glm = (StaggeredGridLayoutManager) manager;
-                    assert glm != null;
-                    int[] into = new int[2]; //span count 2
-                    glm.findFirstCompletelyVisibleItemPositions(into);
-                    firstVisiblePosition =into[0];
-                }
-                if (firstVisiblePosition == 0) { //Reload on swipeDown if scrolled to top
-                    WeatherPagerAdapter.refreshSingleData(getContext(),true,mCityId);
-                    ForecastCityActivity.startRefreshAnimation();
-                }
+
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener(){
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (!recyclerView.canScrollVertically(-1)){
+                    recyclerView.setOnTouchListener(new OnSwipeDownListener(getContext()) {
+                        public void onSwipeDown() {
+                                WeatherPagerAdapter.refreshSingleData(getContext(),true,mCityId);
+                                ForecastCityActivity.startRefreshAnimation();
+                        }
+                    });
+                }else recyclerView.setOnTouchListener(null);
             }
         });
 
