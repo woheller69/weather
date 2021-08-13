@@ -1,0 +1,2 @@
+Swipe down to reload
+Bugfixes

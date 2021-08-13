@@ -1,6 +1,11 @@
 Changelog
 ==========
 
+Version 4.3 (2021-08-13)
+
+* Swipe down to reload
+* Bugfixes
+
 Version 4.2 (2021-06-25)
 
 * Add course of day to widget
