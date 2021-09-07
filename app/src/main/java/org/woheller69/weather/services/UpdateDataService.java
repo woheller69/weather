@@ -1,7 +1,5 @@
 package org.woheller69.weather.services;
 
-import android.app.IntentService;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Handler;
@@ -47,9 +45,6 @@ public class UpdateDataService extends JobIntentService {
         super();
     }
 
-    /**
-     * @see IntentService#onCreate()
-     */
     @Override
     public void onCreate() {
         super.onCreate();
@@ -57,9 +52,6 @@ public class UpdateDataService extends JobIntentService {
         prefManager = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
     }
 
-    /**
-     *
-     */
     @Override
     protected void onHandleWork(Intent intent) {
         if (!isOnline()) {

@@ -18,6 +18,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import android.os.Looper;
 import android.view.MenuItem;
 
 
@@ -49,7 +51,7 @@ public class NavigationActivity extends AppCompatActivity implements OnNavigatio
         super.onCreate(savedInstanceState);
 
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        mHandler = new Handler();
+        mHandler = new Handler(Looper.getMainLooper());
         prefManager = new AppPreferencesManager(PreferenceManager.getDefaultSharedPreferences(this));
         if (prefManager.showStarDialog()) {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);

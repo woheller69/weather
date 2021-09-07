@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -149,7 +150,7 @@ public class AddLocationDialogPhotonAPI extends DialogFragment {
             }
         });
 
-        handler = new Handler(new Handler.Callback() {
+        handler = new Handler(Looper.getMainLooper(), new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 if (msg.what == TRIGGER_AUTO_COMPLETE) {

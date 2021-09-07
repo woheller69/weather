@@ -108,7 +108,7 @@ public class ManageLocationsActivity extends NavigationActivity {
                         AddLocationDialog addLocationDialog = new AddLocationDialog();
                         addLocationDialog.show(fragmentManager, "AddLocationDialog");
                         getSupportFragmentManager().executePendingTransactions();
-                        addLocationDialog.getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+                        addLocationDialog.getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
                     }
                 });
             }
@@ -122,7 +122,7 @@ public class ManageLocationsActivity extends NavigationActivity {
                         EditLocationDialog editLocationDialog = new EditLocationDialog();
                         editLocationDialog.show(fragmentManager, "EditLocationDialog");
                         getSupportFragmentManager().executePendingTransactions();
-                        editLocationDialog.getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+                        editLocationDialog.getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
                     }
                 });
 
@@ -138,7 +138,7 @@ public class ManageLocationsActivity extends NavigationActivity {
                         AddLocationDialogPhotonAPI addLocationDialog = new AddLocationDialogPhotonAPI();
                         addLocationDialog.show(fragmentManager, "AddLocationDialog");
                         getSupportFragmentManager().executePendingTransactions();
-                        addLocationDialog.getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+                        addLocationDialog.getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
                     }
                 });
             }

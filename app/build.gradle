@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
 
-    compileSdkVersion 29
+    compileSdkVersion 30
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -12,6 +12,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         applicationId "org.woheller69.weather"
         minSdkVersion 21
+        // do not increase targetSdkVersion beyond 29, this will make permission requests for GPS much more complex
         targetSdkVersion 29
         versionCode 43
         versionName "4.3"

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import androidx.preference.PreferenceManager;
 import android.text.Editable;
@@ -180,7 +181,7 @@ public class RadiusSearchActivity extends NavigationActivity {
                 }
             });
 
-            handler = new Handler(new Handler.Callback() {
+            handler = new Handler(Looper.getMainLooper(), new Handler.Callback() {
                 @Override
                 public boolean handleMessage(Message msg) {
                     if (msg.what == TRIGGER_AUTO_COMPLETE) {
