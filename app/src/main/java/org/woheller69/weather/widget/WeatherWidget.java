@@ -122,6 +122,8 @@ public class WeatherWidget extends AppWidgetProvider {
         long riseTime = (weatherData.getTimeSunrise() + zoneseconds) * 1000;
         long setTime = (weatherData.getTimeSunset() + zoneseconds) * 1000;
 
+        SharedPreferences prefManager = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+        if(prefManager.getBoolean("pref_GPS", true)==TRUE) views.setViewVisibility(R.id.location_on,View.VISIBLE); else views.setViewVisibility(R.id.location_on,View.GONE);
         views.setTextViewText(R.id.widget_updatetime, String.format("(%s)", StringFormatUtils.formatTimeWithoutZone(context, updateTime)));
         views.setTextViewText(R.id.widget_temperature, " "+StringFormatUtils.formatTemperature(context, weatherData.getTemperatureCurrent())+" ");
         views.setViewPadding(R.id.widget_temperature,1,1,1,1);

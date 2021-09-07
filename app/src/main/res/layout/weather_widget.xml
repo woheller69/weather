@@ -77,8 +77,20 @@
         android:scaleType="fitCenter"
         android:paddingTop="7dp"
         android:layout_marginEnd="10dp"
+        android:background="@drawable/transparent_no_margin"
         android:layout_alignParentEnd="true"
         android:src="@drawable/ic_refresh_24px"
+        />
+
+    <ImageView
+        android:id="@+id/location_on"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="fitCenter"
+        android:paddingTop="7dp"
+        android:background="@drawable/transparent_no_margin"
+        android:layout_toStartOf="@id/widget_update"
+        android:src="@drawable/ic_location_on_white_24dp"
         />
 
     <TextView
