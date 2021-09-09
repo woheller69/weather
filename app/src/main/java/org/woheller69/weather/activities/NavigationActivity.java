@@ -213,6 +213,12 @@ public class NavigationActivity extends AppCompatActivity implements OnNavigatio
     protected void onResume() {
         super.onResume();
         isVisible=true;
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        if(sharedPreferences.getBoolean("pref_DarkMode", false)==TRUE) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+        }else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
     }
 
     @Override
