@@ -1,6 +1,14 @@
 Changelog
 ==========
 
+Version 4.4 (2021-09-13)
+
+* Improved GPS permission request  on Android 11+
+* Show GPS icon in widget when activated
+* Replace deprecated APIs
+* Bugfixes
+
+
 Version 4.3 (2021-08-13)
 
 * Swipe down to reload

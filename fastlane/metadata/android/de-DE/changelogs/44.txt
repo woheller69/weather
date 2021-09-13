@@ -1,0 +1,4 @@
+Verbesserte Anfrage der GPS Berechtigung für Android 11+
+GPS Icon im Widget wenn GPS aktiviert
+Ersetzen veralteter APIs
+Bugfix für den Dark Mode
