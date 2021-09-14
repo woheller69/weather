@@ -13,7 +13,7 @@ android {
         applicationId "org.woheller69.weather"
         minSdkVersion 21
         // do not increase targetSdkVersion beyond 29, this will make permission requests for GPS much more complex
-        targetSdkVersion 29
+        targetSdkVersion 31
         versionCode 44
         versionName "4.4"
 
@@ -44,4 +44,7 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'com.readystatesoftware.sqliteasset:sqliteassethelper:2.0.1'
+
+    testImplementation 'org.mockito:mockito-all:1.10.19'
+    testImplementation 'com.google.truth:truth:1.1.3'
 }
