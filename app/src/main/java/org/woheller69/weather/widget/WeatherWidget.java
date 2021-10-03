@@ -54,7 +54,7 @@ public class WeatherWidget extends AppWidgetProvider {
         if (!db.getAllCitiesToWatch().isEmpty()) {
 
             int cityID = getWidgetCityID(context);
-            if(prefManager.getBoolean("pref_GPS", true)==TRUE) updateLocation(context, cityID);
+            if(prefManager.getBoolean("pref_GPS", true)==TRUE) updateLocation(context, cityID,false);
             Intent intent = new Intent(context, UpdateDataService.class);
             //Log.d("debugtag", "widget calls single update: " + cityID + " with widgetID " + appWidgetId);
 
@@ -82,7 +82,7 @@ public class WeatherWidget extends AppWidgetProvider {
         return cityID;
 }
 
-    public static void updateLocation(final Context context, int cityID) {
+    public static void updateLocation(final Context context, int cityID, boolean manual) {
         PFASQLiteHelper db = PFASQLiteHelper.getInstance(context);
         List<CityToWatch> cities = db.getAllCitiesToWatch();
 
@@ -105,7 +105,10 @@ public class WeatherWidget extends AppWidgetProvider {
                         break;
                     }
                 }
-            } else Toast.makeText(context.getApplicationContext(),R.string.error_no_position,Toast.LENGTH_SHORT).show();
+            } else {
+                if (manual) Toast.makeText(context.getApplicationContext(),R.string.error_no_position,Toast.LENGTH_SHORT).show(); //show toast only if manual update by refresh button
+            }
+
         }
     }
 
@@ -172,6 +175,7 @@ public class WeatherWidget extends AppWidgetProvider {
         intentUpdate.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
         int[] idArray = new int[]{appWidgetId};
         intentUpdate.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, idArray);
+        intentUpdate.putExtra("Manual",true);
         PendingIntent pendingUpdate = PendingIntent.getBroadcast(context, appWidgetId, intentUpdate, PendingIntent.FLAG_UPDATE_CURRENT);
         views.setOnClickPendingIntent(R.id.widget_update, pendingUpdate);
 
@@ -272,5 +276,14 @@ public class WeatherWidget extends AppWidgetProvider {
         locationListenerGPS=null;
     }
 
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        if (intent.getBooleanExtra("Manual", false)) {
+            int cityID = getWidgetCityID(context);
+            SharedPreferences prefManager = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+            if(prefManager.getBoolean("pref_GPS", true)==TRUE) updateLocation(context, cityID,true);
+        }
+        super.onReceive(context,intent);
+    }
 }
 
