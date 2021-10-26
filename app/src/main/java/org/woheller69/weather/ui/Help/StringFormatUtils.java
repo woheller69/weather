@@ -25,32 +25,28 @@ public final class StringFormatUtils {
 
     public static String formatDecimal(float decimal) {
         decimalFormat.setRoundingMode(RoundingMode.HALF_UP);
-        return decimalFormat.format(decimal);
+        return removeMinusIfZerosOnly(decimalFormat.format(decimal));
     }
 
     public static String formatInt(float decimal) {
         intFormat.setRoundingMode(RoundingMode.HALF_UP);
-        return intFormat.format(decimal);
+        return removeMinusIfZerosOnly(intFormat.format(decimal));
     }
 
     public static String formatInt(float decimal, String appendix) {
-        return String.format("%s\u200a%s", formatInt(decimal), appendix); //\u200a adds tiny space
+        return String.format("%s\u200a%s", removeMinusIfZerosOnly(formatInt(decimal)), appendix); //\u200a adds tiny space
     }
 
     public static String formatDecimal(float decimal, String appendix) {
-        return String.format("%s\u200a%s", formatDecimal(decimal), appendix);
+        return String.format("%s\u200a%s", removeMinusIfZerosOnly(formatDecimal(decimal)), appendix);
     }
 
     public static String formatDecimalTemperature(Context context, float decimal, String appendix) {
         SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(context);
         if(sharedPreferences.getBoolean("pref_TempDecimals", true)==TRUE){
-            if (appendix.equals("")){
-                return formatDecimal(decimal);
-            } else return String.format("%s\u200a%s", formatDecimal(decimal), appendix);
+            return String.format("%s\u200a%s", formatDecimal(decimal), appendix);
         }else{
-            if (appendix.equals("")){
-                return formatInt(decimal);
-            } else return String.format("%s\u200a%s", formatInt(decimal), appendix);
+            return String.format("%s\u200a%s", formatInt(decimal), appendix);
         }
     }
 
@@ -285,5 +281,12 @@ public final class StringFormatUtils {
                 day = R.string.monday;
         }
         return day;
+    }
+
+    public static String removeMinusIfZerosOnly(String string){
+        // It removes (replaces with "") the minus sign if it's followed by 0-n characters of "0.00000...",
+        // so this will work for any similar result such as "-0", "-0." or "-0.000000000"
+        // https://newbedev.com/negative-sign-in-case-of-zero-in-java
+        return string.replaceAll("^-(?=0(\\.0*)?$)", "");
     }
 }
