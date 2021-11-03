@@ -62,13 +62,12 @@ var map = L.map('mapid', {
 let myFilterClouds = [
     'contrast:1000%',
     'invert:100%',
-    'opacity:10%'
+    'opacity:50%'
 ];
 
-let myFilterCloudsLight = [
-    'brightness:1000%',
-    'invert:100%',
-    'opacity:20%'
+let myFilterCloudsNight = [
+    'contrast:1000%',
+    'opacity:40%'
 ];
 
 let myFilterMap = [
@@ -82,24 +81,22 @@ let myFilterMapNight = [
 ];
 
 if (getUrlParameter('nightmode')==0){
-    L.tileLayer.colorFilter('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        filter: myFilterMap,
-        attribution: 'Map data ©<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors <br> Weather data <a href="https://www.rainviewer.com/api.html"> RainViewer </a>& <a href="https://openweathermap.org/api"> OpenWeatherMap </a>'
-    }).addTo(map);
+        L.tileLayer.colorFilter('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            filter: myFilterMap,
+            attribution: 'Map data ©<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors <br> Weather data <a href="https://www.rainviewer.com/api.html"> RainViewer </a>& <a href="https://openweathermap.org/api"> OpenWeatherMap </a>'
+        }).addTo(map);
+            L.tileLayer.colorFilter('https://tile.openweathermap.org/map/clouds_new/{z}/{x}/{y}.png?appid=' + getUrlParameter('appid'),{
+            filter: myFilterClouds
+        }).addTo(map);
     }else{
         L.tileLayer.colorFilter('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        filter: myFilterMapNight,
-        attribution: 'Map data ©<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors <br> Weather data <a href="https://www.rainviewer.com/api.html"> RainViewer </a>& <a href="https://openweathermap.org/api"> OpenWeatherMap </a>'
-    }).addTo(map);
+            filter: myFilterMapNight,
+            attribution: 'Map data ©<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors <br> Weather data <a href="https://www.rainviewer.com/api.html"> RainViewer </a>& <a href="https://openweathermap.org/api"> OpenWeatherMap </a>'
+        }).addTo(map);
+            L.tileLayer.colorFilter('https://tile.openweathermap.org/map/clouds_new/{z}/{x}/{y}.png?appid=' + getUrlParameter('appid'),{
+            filter: myFilterCloudsNight
+        }).addTo(map);
     }
-
-    L.tileLayer.colorFilter('https://tile.openweathermap.org/map/clouds_cls/{z}/{x}/{y}.png?appid=' + getUrlParameter('appid'),{
-        filter: myFilterClouds
-    }).addTo(map);
-
-    L.tileLayer.colorFilter('https://tile.openweathermap.org/map/clouds_cls/{z}/{x}/{y}.png?appid=' + getUrlParameter('appid'),{
-        filter: myFilterCloudsLight
-    }).addTo(map);
 
 var marker = L.marker([getUrlParameter('lat'), getUrlParameter('lon')]).addTo(map);
 
