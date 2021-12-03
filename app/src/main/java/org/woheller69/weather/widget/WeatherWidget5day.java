@@ -1,6 +1,7 @@
 package org.woheller69.weather.widget;
 
 
+import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.widget.RemoteViews;
 
 import org.woheller69.weather.R;
+import org.woheller69.weather.activities.ForecastCityActivity;
 import org.woheller69.weather.database.CityToWatch;
 import org.woheller69.weather.database.Forecast;
 import org.woheller69.weather.database.PFASQLiteHelper;
@@ -135,6 +137,11 @@ public class WeatherWidget5day extends AppWidgetProvider {
         views.setImageViewResource(R.id.widget_5day_wind3,StringFormatUtils.colorWindSpeedWidget(weekforecasts.get(2).getWind_speed()));
         views.setImageViewResource(R.id.widget_5day_wind4,StringFormatUtils.colorWindSpeedWidget(weekforecasts.get(3).getWind_speed()));
         views.setImageViewResource(R.id.widget_5day_wind5,StringFormatUtils.colorWindSpeedWidget(weekforecasts.get(4).getWind_speed()));
+
+        Intent intent2 = new Intent(context, ForecastCityActivity.class);
+        intent2.putExtra("cityId", getWidgetCityID(context));
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, appWidgetId, intent2, 0);
+        views.setOnClickPendingIntent(R.id.widget5day_layout, pendingIntent);
 
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views);

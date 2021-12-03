@@ -127,6 +127,7 @@ public class ForecastCityActivity extends NavigationActivity implements IUpdatea
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         setIntent(intent);
+        if (intent.hasExtra("cityId")) cityId = intent.getIntExtra("cityId",-1);
     }
 
     private void initResources() {

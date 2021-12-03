@@ -25,6 +25,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.preference.PreferenceManager;
 
 import org.woheller69.weather.R;
+import org.woheller69.weather.activities.ForecastCityActivity;
 import org.woheller69.weather.database.CityToWatch;
 import org.woheller69.weather.database.CurrentWeatherData;
 import org.woheller69.weather.database.Forecast;
@@ -178,6 +179,11 @@ public class WeatherWidget extends AppWidgetProvider {
         intentUpdate.putExtra("Manual",true);
         PendingIntent pendingUpdate = PendingIntent.getBroadcast(context, appWidgetId, intentUpdate, PendingIntent.FLAG_UPDATE_CURRENT);
         views.setOnClickPendingIntent(R.id.widget_update, pendingUpdate);
+
+        Intent intent2 = new Intent(context, ForecastCityActivity.class);
+        intent2.putExtra("cityId", getWidgetCityID(context));
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, appWidgetId, intent2, 0);
+        views.setOnClickPendingIntent(R.id.widget_layout, pendingIntent);
 
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views);
