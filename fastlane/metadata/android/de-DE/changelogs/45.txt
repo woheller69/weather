@@ -1,0 +1,3 @@
+Click auf Widget öffnet die App
+Wolken-Layer geändert
+Bugfixes

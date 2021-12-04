@@ -1,0 +1,3 @@
+Click on widget opens app
+Clouds layer changed
+Bugfixes

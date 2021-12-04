@@ -1,6 +1,12 @@
 Changelog
 ==========
 
+Version 4.5 (2021-12-04)
+
+* Click on widget opens app
+* Clouds layer changed
+* Bugfixes
+
 Version 4.4 (2021-09-13)
 
 * Improved GPS permission request  on Android 11+
