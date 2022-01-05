@@ -85,8 +85,12 @@ public class OwmDataExtractor implements IDataExtractor {
             weatherData.setWindSpeed((float) jsonData.getDouble("wind_speed"));
             weatherData.setWindDirection((float) jsonData.getDouble("wind_deg"));
             weatherData.setCloudiness((float) jsonData.getDouble("clouds"));
-            weatherData.setTimeSunrise(jsonData.getLong("sunrise"));
-            weatherData.setTimeSunset(jsonData.getLong("sunset"));
+            if (jsonData.has("sunrise")) {
+                weatherData.setTimeSunrise(jsonData.getLong("sunrise"));
+            } else weatherData.setTimeSunrise(0L);
+            if (jsonData.has("sunset")) {
+                weatherData.setTimeSunset(jsonData.getLong("sunset"));
+            } else weatherData.setTimeSunset(0L);
             return weatherData;
         } catch (JSONException e) {
             e.printStackTrace();

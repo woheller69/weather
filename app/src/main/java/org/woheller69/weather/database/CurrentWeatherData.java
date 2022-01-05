@@ -1,5 +1,10 @@
 package org.woheller69.weather.database;
 
+import android.content.Context;
+
+import java.util.Calendar;
+import java.util.TimeZone;
+
 /**
  * This class represents the database model for current weather data of cities.
  */
@@ -123,9 +128,23 @@ public class CurrentWeatherData {
         this.cloudiness = cloudiness;
     }
 
-    public long getTimeSunrise() {
-        return timeSunrise;
+    public boolean isDay(Context context){
+        Calendar timeStamp = Calendar.getInstance();
+        timeStamp.setTimeZone(TimeZone.getTimeZone("GMT"));
+        timeStamp.setTimeInMillis((timestamp+timeZoneSeconds)*1000);
+        PFASQLiteHelper dbHelper = PFASQLiteHelper.getInstance(context);
+        if (timeSunrise==0 || timeSunset==0){
+            if ((dbHelper.getCityToWatch(city_id).getLatitude())>0){  //northern hemisphere
+                return timeStamp.get(Calendar.MONTH) >= 3 && timeStamp.get(Calendar.MONTH) <= 8;  //January = 0!
+            }else{ //southern hemisphere
+                return timeStamp.get(Calendar.MONTH) < 3 || timeStamp.get(Calendar.MONTH) > 8;
+            }
+        }else {
+            return timestamp > timeSunrise && timestamp < timeSunset;
+        }
     }
+
+    public long getTimeSunrise() { return timeSunrise; }
 
     public void setTimeSunrise(long timeSunrise) {
         this.timeSunrise = timeSunrise;

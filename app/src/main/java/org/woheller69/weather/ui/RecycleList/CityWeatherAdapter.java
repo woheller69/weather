@@ -285,7 +285,7 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
 
-        boolean isDay = currentWeatherDataList.getTimestamp() >currentWeatherDataList.getTimeSunrise() && currentWeatherDataList.getTimestamp() < currentWeatherDataList.getTimeSunset();
+        boolean isDay = currentWeatherDataList.isDay(context);
 
         if (viewHolder.getItemViewType() == OVERVIEW) {
             OverViewHolder holder = (OverViewHolder) viewHolder;
@@ -294,7 +294,10 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
             int zoneseconds = currentWeatherDataList.getTimeZoneSeconds();
             long riseTime = (currentWeatherDataList.getTimeSunrise() + zoneseconds) * 1000;
             long setTime = (currentWeatherDataList.getTimeSunset() + zoneseconds) * 1000;
-            holder.sun.setText("\u2600\u25b2 " + StringFormatUtils.formatTimeWithoutZone(context, riseTime) + " \u25bc " + StringFormatUtils.formatTimeWithoutZone(context, setTime));
+            if (riseTime==zoneseconds*1000 || setTime==zoneseconds*1000) holder.sun.setText("\u2600\u25b2 --:--" + " \u25bc --:--" );
+            else  {
+                holder.sun.setText("\u2600\u25b2 " + StringFormatUtils.formatTimeWithoutZone(context, riseTime) + " \u25bc " + StringFormatUtils.formatTimeWithoutZone(context, setTime));
+            }
 
             setImage(currentWeatherDataList.getWeatherID(), holder.weather, isDay);
 

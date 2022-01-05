@@ -67,19 +67,27 @@ public class CourseOfDayAdapter extends RecyclerView.Adapter<CourseOfDayAdapter.
         forecastTime.setTimeZone(TimeZone.getTimeZone("GMT"));
         forecastTime.setTimeInMillis(courseOfDayList.get(position).getLocalForecastTime(context));
 
-        Calendar sunSetTime = Calendar.getInstance();
-        sunSetTime.setTimeZone(TimeZone.getTimeZone("GMT"));
-        sunSetTime.setTimeInMillis(currentWeather.getTimeSunset() * 1000 + currentWeather.getTimeZoneSeconds() * 1000);
-        sunSetTime.set(Calendar.DAY_OF_YEAR, forecastTime.get(Calendar.DAY_OF_YEAR));
+        boolean isDay;
+        if (currentWeather.getTimeSunrise()==0 || currentWeather.getTimeSunset()==0){
+            if ((dbHelper.getCityToWatch(courseOfDayList.get(position).getCity_id()).getLatitude())>0){  //northern hemisphere
+                isDay= forecastTime.get(Calendar.MONTH) >= 3 && forecastTime.get(Calendar.MONTH) <= 8;  //January = 0!
+            }else{ //southern hemisphere
+                isDay= forecastTime.get(Calendar.MONTH) < 3 || forecastTime.get(Calendar.MONTH) > 8;
+            }
+        }else {
+            Calendar sunSetTime = Calendar.getInstance();
+            sunSetTime.setTimeZone(TimeZone.getTimeZone("GMT"));
+            sunSetTime.setTimeInMillis(currentWeather.getTimeSunset() * 1000 + currentWeather.getTimeZoneSeconds() * 1000);
+            sunSetTime.set(Calendar.DAY_OF_YEAR, forecastTime.get(Calendar.DAY_OF_YEAR));
 
 
-        Calendar sunRiseTime = Calendar.getInstance();
-        sunRiseTime.setTimeZone(TimeZone.getTimeZone("GMT"));
-        sunRiseTime.setTimeInMillis(currentWeather.getTimeSunrise() * 1000 + currentWeather.getTimeZoneSeconds() * 1000);
-        sunRiseTime.set(Calendar.DAY_OF_YEAR, forecastTime.get(Calendar.DAY_OF_YEAR));
+            Calendar sunRiseTime = Calendar.getInstance();
+            sunRiseTime.setTimeZone(TimeZone.getTimeZone("GMT"));
+            sunRiseTime.setTimeInMillis(currentWeather.getTimeSunrise() * 1000 + currentWeather.getTimeZoneSeconds() * 1000);
+            sunRiseTime.set(Calendar.DAY_OF_YEAR, forecastTime.get(Calendar.DAY_OF_YEAR));
 
-        boolean isDay = forecastTime.after(sunRiseTime) && forecastTime.before(sunSetTime);
-
+            isDay = forecastTime.after(sunRiseTime) && forecastTime.before(sunSetTime);
+        }
         holder.time.setText(StringFormatUtils.formatTimeWithoutZone(context, courseOfDayList.get(position).getLocalForecastTime(context)));
 
         updateRecyclerViewHeader();  //update header according to date in first visible item on the left
