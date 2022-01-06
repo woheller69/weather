@@ -3,7 +3,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:id="@+id/widget5day_layout"
-    android:background="@drawable/rounded_transparent"
+    android:background="@drawable/widget_background"
     android:previewImage="@drawable/weather_widget5day_preview"
     android:minHeight="40dp"
     android:minWidth="250dp">

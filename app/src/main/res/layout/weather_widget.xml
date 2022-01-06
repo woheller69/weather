@@ -14,7 +14,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignEnd="@id/widget_update"
-        android:src="@drawable/rounded_transparent" />
+        android:src="@drawable/widget_background" />
 
     <ImageView
         android:id="@+id/widget_image_view"

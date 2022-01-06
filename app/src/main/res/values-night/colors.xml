@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorStatusBar">#000000</color>
-    <color name="colorPrimary">#000000</color>
+    <color name="colorStatusBar">#181818</color>
+    <color name="colorPrimary">#181818</color>
     <color name="colorPrimaryDark">#666666</color>
     <color name="colorAccent">#707070</color>
     <color name="colorListItem">#FFFFFF</color>
@@ -16,6 +16,7 @@
     <color name="blue">#0274b2</color>
     <color name="lightblue">#1382d4</color>
     <color name="midblue">#1b5cd9</color>
-    <color name="backgroundBlue">#101010</color>
+    <color name="backgroundBlue">#181818</color>
+    <color name="widgetBackground">#DD181818</color>
 </resources>
 
