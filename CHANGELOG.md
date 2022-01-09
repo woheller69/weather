@@ -1,6 +1,10 @@
 Changelog
 ==========
 
+Version 4.5 (2022-01-09)
+* Some colors changed, made widget slightly transparent
+* Bugfix for polar day / night
+
 Version 4.5 (2021-12-04)
 
 * Click on widget opens app
