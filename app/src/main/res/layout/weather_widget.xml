@@ -1,8 +1,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_gravity="top|center_horizontal"
+    android:paddingStart="10dp"
+    android:paddingEnd="10dp"
     android:id="@+id/widget_layout"
-
     android:previewImage="@drawable/weather_widget_preview">
 
     <ImageView
@@ -33,7 +35,7 @@
         android:text="CityName"
         android:textSize="18dp"
         android:textStyle="bold"
-        android:paddingTop="7dp"
+        android:paddingTop="4dp"
         android:layout_marginStart="7dp"
         android:textColor="@color/colorPrimaryDark" />
 
@@ -47,11 +49,11 @@
         android:text="@string/error_no_rain60min_data"
         android:letterSpacing="-0.1"
         android:layout_marginEnd="3dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="-3dp"
         android:layout_below="@id/widget_8h"
         android:layout_alignParentEnd="true"
         android:paddingEnd="7dp"
-        android:paddingBottom="7dp"
+        android:paddingBottom="4dp"
         android:textColor="@color/colorPrimaryDark" />
 
     <TextView
@@ -75,7 +77,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="fitCenter"
-        android:paddingTop="7dp"
+        android:paddingTop="4dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/transparent_no_margin"
         android:layout_alignParentEnd="true"
@@ -87,7 +89,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="fitCenter"
-        android:paddingTop="7dp"
+        android:paddingTop="4dp"
         android:background="@drawable/transparent_no_margin"
         android:layout_toStartOf="@id/widget_update"
         android:src="@drawable/ic_location_on_white_24dp"
@@ -114,7 +116,7 @@
         android:background="@drawable/rounded_grey"
         android:layout_below="@id/widget_sunrise_sunset"
         android:layout_toStartOf="@id/widget_wind"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="3dp"
         android:layout_marginEnd="5dp"
         android:paddingTop="1dp"
         android:paddingBottom="1dp"
@@ -129,8 +131,8 @@
         android:text="3 Bft"
         android:textSize="22dp"
         android:textStyle="bold"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
         android:layout_below="@id/widget_sunrise_sunset"
         android:background="@drawable/rounded_grey"
         android:layout_alignParentEnd="true"
@@ -152,7 +154,7 @@
         android:layout_below="@id/widget_updatetime"
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="3dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="3dp"
         android:layout_marginEnd="10dp"
         android:paddingTop="1dp"
         android:paddingBottom="1dp"
