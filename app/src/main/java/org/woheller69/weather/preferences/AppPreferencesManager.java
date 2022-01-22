@@ -2,7 +2,10 @@ package org.woheller69.weather.preferences;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
+import android.widget.Toast;
 
 import org.woheller69.weather.BuildConfig;
 import org.woheller69.weather.R;
@@ -133,6 +136,7 @@ public class AppPreferencesManager {
     public String getOWMApiKey(Context context){
         String prefValue = preferences.getString("API_key_value", BuildConfig.DEFAULT_API_KEY);
         if (prefValue.equals(context.getString(R.string.settings__API_key_default))) {
+            new Handler(Looper.getMainLooper()).post(() -> Toast.makeText(context, context.getResources().getString(R.string.settings_title_API_key), Toast.LENGTH_LONG).show());
             return BuildConfig.DEFAULT_API_KEY;
         } else {
             return prefValue;
