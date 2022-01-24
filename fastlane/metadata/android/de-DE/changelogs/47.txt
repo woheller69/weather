@@ -1,0 +1,2 @@
+Widgetlayout leicht geändert
+Fehlermeldung wenn kein API Key gesetzt
