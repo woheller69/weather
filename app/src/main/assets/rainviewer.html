@@ -183,7 +183,11 @@ var marker = L.marker([getUrlParameter('lat'), getUrlParameter('lon')]).addTo(ma
         }
         radarLayers[nextFrame.path].setOpacity(0.4);
 
-        document.getElementById("timestamp").innerHTML = (new Date(nextFrame.time * 1000)).toLocaleString();
+        if (getUrlParameter('hour12')==0){
+            document.getElementById("timestamp").innerHTML = (new Date(nextFrame.time * 1000)).toLocaleString(navigator.language, { hour12: false });
+        } else {
+             document.getElementById("timestamp").innerHTML = (new Date(nextFrame.time * 1000)).toLocaleString(navigator.language, { hour12: true });
+        }
 
         //change color of forecasts from black to red
         if (animationPosition > lastPastFramePosition){
@@ -222,9 +226,9 @@ var marker = L.marker([getUrlParameter('lat'), getUrlParameter('lon')]).addTo(ma
     function play() {
         showFrame(animationPosition + 1);
 
-        // Main animation driver. Run this function every 500 ms, latest position shown for 1500ms
+        // Main animation driver. Run this function every 500 ms, latest position shown for 3000ms
         if (animationPosition == (mapFrames.length-1)) {
-            animationTimer = setTimeout(play, 1500);
+            animationTimer = setTimeout(play, 3000);
             }
         else if (animationPosition == lastPastFramePosition){
             animationTimer = setTimeout(play, 1000);

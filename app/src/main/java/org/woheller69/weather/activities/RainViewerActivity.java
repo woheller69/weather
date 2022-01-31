@@ -51,9 +51,14 @@ public class RainViewerActivity extends AppCompatActivity {
             if (nightModeFlags==Configuration.UI_MODE_NIGHT_YES) nightmode=1;
         }
 
+        int hour12=1;
+        if (android.text.format.DateFormat.is24HourFormat(this) || sharedPreferences.getBoolean("pref_TimeFormat", true)==TRUE){
+            hour12=0;
+        }
+
         webView = findViewById(R.id.webView);
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.loadUrl("file:///android_asset/rainviewer.html?lat=" + latitude + "&lon=" + longitude + "&appid=" + API_KEY + "&nightmode=" + nightmode);
+        webView.loadUrl("file:///android_asset/rainviewer.html?lat=" + latitude + "&lon=" + longitude + "&appid=" + API_KEY + "&nightmode=" + nightmode + "&hour12=" + hour12);
 
         webView.setWebViewClient(new WebViewClient() {
             @Override
