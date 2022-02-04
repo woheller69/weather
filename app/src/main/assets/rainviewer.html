@@ -184,7 +184,7 @@ var marker = L.marker([getUrlParameter('lat'), getUrlParameter('lon')]).addTo(ma
         radarLayers[nextFrame.path].setOpacity(0.4);
 
         if (getUrlParameter('hour12')==0){
-            document.getElementById("timestamp").innerHTML = (new Date(nextFrame.time * 1000)).toLocaleString(navigator.language, { hour12: false });
+            document.getElementById("timestamp").innerHTML = (new Date(nextFrame.time * 1000)).toLocaleString(navigator.language, { hourCycle: 'h23' });
         } else {
              document.getElementById("timestamp").innerHTML = (new Date(nextFrame.time * 1000)).toLocaleString(navigator.language, { hour12: true });
         }
