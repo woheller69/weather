@@ -43,6 +43,7 @@ public class RainViewerActivity extends AppCompatActivity {
         String API_KEY = prefManager.getOWMApiKey(getApplicationContext());
         float latitude = getIntent().getFloatExtra("latitude", -1);
         float longitude = getIntent().getFloatExtra("longitude", -1);
+        int timezoneseconds = getIntent().getIntExtra("timezoneseconds",0);
 
         int nightmode=0;
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
@@ -58,7 +59,7 @@ public class RainViewerActivity extends AppCompatActivity {
 
         webView = findViewById(R.id.webView);
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.loadUrl("file:///android_asset/rainviewer.html?lat=" + latitude + "&lon=" + longitude + "&appid=" + API_KEY + "&nightmode=" + nightmode + "&hour12=" + hour12);
+        webView.loadUrl("file:///android_asset/rainviewer.html?lat=" + latitude + "&lon=" + longitude + "&appid=" + API_KEY + "&nightmode=" + nightmode + "&hour12=" + hour12 + "&tz="+timezoneseconds);
 
         webView.setWebViewClient(new WebViewClient() {
             @Override

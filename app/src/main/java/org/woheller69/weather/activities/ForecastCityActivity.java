@@ -13,6 +13,7 @@ import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.woheller69.weather.R;
 import org.woheller69.weather.database.CurrentWeatherData;
@@ -180,6 +181,8 @@ public class ForecastCityActivity extends NavigationActivity implements IUpdatea
                 Intent intent = new Intent(this, RainViewerActivity.class);
                 intent.putExtra("latitude", pagerAdapter.getLatForPos((viewPager.getCurrentItem())));
                 intent.putExtra("longitude", pagerAdapter.getLonForPos((viewPager.getCurrentItem())));
+                CurrentWeatherData currentWeather = db.getCurrentWeatherByCityId(pagerAdapter.getCityIDForPos(viewPager.getCurrentItem()));
+                intent.putExtra("timezoneseconds",currentWeather.getTimeZoneSeconds());
                 startActivity(intent);
             }
         }else if (id==R.id.menu_refresh){
