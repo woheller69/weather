@@ -13,7 +13,6 @@ import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.woheller69.weather.R;
 import org.woheller69.weather.database.CurrentWeatherData;
