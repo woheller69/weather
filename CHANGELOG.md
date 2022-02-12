@@ -1,5 +1,12 @@
 Changelog
 ==========
+Version 4.8 (2022-02-12)
+* Local time in rain radar
+* Bugfixes
+
+Version 4.7 (2022-01-24)
+* Slight modification of widget layout
+* Show error message if no API key set
 
 Version 4.6 (2022-01-09)
 * Some colors changed, made widget slightly transparent
