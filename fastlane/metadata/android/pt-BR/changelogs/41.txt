@@ -1,0 +1,4 @@
+Power optimization for GPS functionality
+Make Photon API default search option
+Add menu option to star on GitHub
+Some code optimizations

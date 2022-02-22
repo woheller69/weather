@@ -1,0 +1,2 @@
+Translation for Italian
+Bugfixes

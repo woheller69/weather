@@ -1,0 +1,2 @@
+Slight modification of widget layout
+Show error message if no API key set

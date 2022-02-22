@@ -1,0 +1,2 @@
+Some colors changed, made widget slightly transparent
+Bugfix for polar day / night

@@ -1,0 +1,2 @@
+ Added Spanish translation
+ Minor internal changes and bugfixes

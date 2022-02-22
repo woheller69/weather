@@ -1,0 +1,18 @@
+O RadarWeather permite que você verifique as condições do tempo nas cidades e locais interessados.
+
+Os dados do tempo são disponibilizados através da API gratuita do OpenWeatherMap. Como a nova API New One Call somente permite 1000 chamadas por dia, todos os usuários devem digitar sua própria chave gratuita do OpenWeatherMap (https://home.openweathermap.org/users/sign_up).
+Os dados do radar de chuva são recuperados através da API gratuita RainViewer.
+
+Características:
+- Tempo atual
+- Previsões de hora em hora para 48h / previsões de 3h para 5 dias
+- Previsões para 8 dias
+- Precipitação nos próximos 60 minutos
+- Radar de chuva
+- Pesquisa Radius
+- Widget com atualização de local automática por GPS
+- Sem anúncios
+
+Permissões mínimas:
+O RadarWeather somente requer uma quantidade mínima de permissões, ou seja, apenas a permissão de INTERNET. Esta permissão é necessária para para que as requisições HTTP recuperem as informações com dados do tempo junto aos servidores remotos.
+Opcional: autorização para uso do GPS.

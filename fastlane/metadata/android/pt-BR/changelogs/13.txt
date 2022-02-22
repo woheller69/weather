@@ -1,0 +1,3 @@
+Bugfix for rare crash
+Minor GUI modifications
+Changed clouds layer on maps
