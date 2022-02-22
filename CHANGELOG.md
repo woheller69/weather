@@ -1,5 +1,9 @@
 Changelog
 ==========
+
+Version 4.9 (2022-02-22)
+* Translation for Brazilian Portuguese
+
 Version 4.8 (2022-02-12)
 * Local time in rain radar
 * Bugfixes
