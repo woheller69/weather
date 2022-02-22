@@ -1,2 +1,0 @@
-GUI optimization
-Code optimization, removal of deprecated APIs

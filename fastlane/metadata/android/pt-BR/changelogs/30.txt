@@ -1,5 +1,0 @@
-Online location search by photon API (new settings option)
-Database modified
-Improved Russian translation
-Show temperature without decimals (new settings option)
-Bugfixes

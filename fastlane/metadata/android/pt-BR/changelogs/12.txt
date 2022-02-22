@@ -1,3 +1,0 @@
-Fixed display bug #1
-Rain radar now has forecast for 30min
-Migration to AndroidX, Target SDK 29

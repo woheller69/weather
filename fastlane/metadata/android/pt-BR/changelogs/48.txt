@@ -1,2 +1,0 @@
-Local time in rain radar
-Bugfixes

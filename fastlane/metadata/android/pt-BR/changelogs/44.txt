@@ -1,4 +1,0 @@
-Improved GPS permission request on Android 11+
-Show GPS icon in widget when activated
-Replace deprecated APIs
-Bugfix for Dark Mode

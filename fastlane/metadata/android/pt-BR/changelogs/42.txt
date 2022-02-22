@@ -1,2 +1,0 @@
-Add course of day to widget
-Bugfixes

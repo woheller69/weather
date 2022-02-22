@@ -1,2 +1,0 @@
-Added colored background for wind scale and UV index
-Minor bugfixes

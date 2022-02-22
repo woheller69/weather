@@ -1,4 +1,0 @@
-Added widget
-Added 15min and 30min update intervals
-Some code cleanup
-Minor bugfixes

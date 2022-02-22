@@ -1,3 +1,0 @@
-Add symbols for very light rain (<0.5mm/h) to 60min forecast
-Replace deprecated APIs
-Bugfixes
