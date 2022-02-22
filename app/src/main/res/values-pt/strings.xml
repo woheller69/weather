@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">RadarWeather</string>
-    <string name="app_name_long">RadarWeather: weather and radar</string>
-    <string name="activity_about">About</string>
+    <string name="app_name_long">RadarWeather: tempo e radar</string>
+    <string name="activity_about">Sobre</string>
     <string name="activity_settings">Configurações</string>
     <string name="activity_weather">Tempo</string>
     <string name="activity_manage">Gerenciar locais</string>
@@ -13,9 +13,9 @@
     <string name="next">Próximo</string>
     <string name="okay">OK</string>
     <string name="slide1_heading">Bem-vindo!</string>
-    <string name="slide1_text">RadarWeather é um App para a verificação das condições do Tempo e as Previsões para suas localizações.</string>
+    <string name="slide1_text">RadarWeather é um App para a verificação das condições do Tempo e as Previsões para seus locais.</string>
     <string name="slide2_heading">Como Fazer</string>
-    <string name="slide2_text">Você pode escolher suas próprias localizações e obter informações detalhadas sobre o tempo na hora. Um radar de chuvas também está disponível.</string>
+    <string name="slide2_text">Você pode escolher seus próprios locais e obter informações detalhadas sobre o tempo na hora. Um radar de chuvas também está disponível.</string>
     <string name="slide3_heading" translatable="false">Github</string>
     <string name="slide3_text">O código-fonte deste app está disponível no Gitub. Para obter informações adicionais, veja a página Sobre.</string>
     <string name="card_details_heading">Agora</string>
@@ -49,9 +49,9 @@
     <string name="settings_summary_distance">Defina a unidade para usar ao mostrar distâncias</string>
     <string name="settings_title_distance">Distâncias</string>
     <string name="settings_kilometers">Quilômetros</string>
-    <string name="settings_miles">Milhass</string>
+    <string name="settings_miles">Milhas</string>
     <string name="settings_title_API">Chave da API</string>
-    <string name="settings_description_API">O RadarWeather recebe dados do serviço gratuito provido pelo openweathermap.org. Este serviço é limitado a 1000 chamadas por dia. Por favor, digite ou cole a sua própria chave da API</string>
+    <string name="settings_description_API">O RadarWeather recebe dados do serviço gratuito provido pelo openweathermap.org. Este serviço é limitado a 1000 chamadas por dia. Por favor, digite ou cole a sua própria chave da API.</string>
     <string name="settings_title_API_key">Digite a chave da API</string>
     <string name="settings__API_key_default" translatable="false" />
     <string name="abbreviation_monday">Seg</string>
@@ -62,7 +62,7 @@
     <string name="abbreviation_saturday">Sáb</string>
     <string name="abbreviation_sunday">Dom</string>
     <string name="dialog_add_label">Digite a localização a ser adicionada:</string>
-    <string name="dialog_add_no_city_found">Nenhuma correspondência foi encontrada com o que você digitou. Recomendamos selecionar um dos itens da lista suspensa.  </string>
+    <string name="dialog_add_no_city_found">Nenhuma correspondência foi encontrada com o que você digitou. Recomendamos selecionar um dos itens da lista suspensa.</string>
     <string name="dialog_add_close_button">Fechar</string>
     <string name="dialog_add_add_button">Adicionar</string>
     <string name="weather_category_clear_sky">Céu limpo</string>
@@ -80,7 +80,7 @@
     <string name="weather_category_showerrain">Aguaceiro</string>
     <string name="weather_category_showersnow">Chuva de neve</string>
     <string name="weather_category_light_snow">Neve leve</string>
-    <string name="weather_category_heavy_snow">Neve pesada</string>
+    <string name="weather_category_heavy_snow">Neve forte</string>
     <string name="weather_category_rainsnow">Chuva e neve</string>
     <string name="error_convert_to_json">A recuperação dos dados do tempo não foram bem-sucedidas.</string>
     <string name="error_no_internet">Seu dispositivo não está conectado à Internet</string>
@@ -101,7 +101,7 @@
     <string name="settings_interval_summary">Defina o intervalo para atualizações automáticas</string>
     <string name="about_privacy_answer">O RadarWeather somente usa a permissão \"Internet\" para recuperar dados do tempo. Além disso, ele não inclui quaisquer mecanismos de rastreamento e de anúncios.</string>
     <string name="about_where_from">De onde as informações do tempo vêm?</string>
-    <string name="about_where_from_answer">As informações do tempo são recuperadas do serviço OpenWeatherMap. Os dados do radar de chuvas são recebidos do RainViewer. </string>
+    <string name="about_where_from_answer">As informações do tempo são recuperadas do serviço OpenWeatherMap. Os dados do radar de chuvas são recebidos do RainViewer.</string>
     <string name="about_permissions">Permissões</string>
     <string name="RainViewer">Radar de Chuvas</string>
     <string name="long_press_text">Segure e arraste para ordenar.</string>
