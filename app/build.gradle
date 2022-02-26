@@ -15,8 +15,8 @@ android {
         // do not increase targetSdkVersion beyond 29, this will make permission requests for GPS much more complex
         //noinspection ExpiredTargetSdkVersion
         targetSdkVersion 29
-        versionCode 49
-        versionName "4.9"
+        versionCode 50
+        versionName "5.0"
 
         buildConfigField "String", "DEFAULT_API_KEY", "\"00000000000000000000000000000000\""
         buildConfigField "String", "BASE_URL", "\"https://api.openweathermap.org/data/2.5/\""

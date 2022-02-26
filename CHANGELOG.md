@@ -1,6 +1,9 @@
 Changelog
 ==========
 
+Version 5.0 (2022-02-26)
+* Revert minify due to crash on Android 12
+
 Version 4.9 (2022-02-22)
 * Translation for Brazilian Portuguese
 
