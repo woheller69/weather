@@ -103,5 +103,15 @@ public class RecyclerOverviewListAdapter extends RecyclerView.Adapter<ItemViewHo
 
     }
 
+    public String getCityName(int position){
+        CityToWatch cityToWatch = cities.get(position);
+        return cityToWatch.getCityName();
+    }
 
+    public void renameCity(int position, String s) {
+        CityToWatch cityToWatch = cities.get(position);
+        cityToWatch.setCityName(s);
+        database.updateCityToWatch(cityToWatch);
+        notifyItemChanged(position);
+    }
 }

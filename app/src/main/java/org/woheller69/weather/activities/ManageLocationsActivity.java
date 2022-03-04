@@ -1,17 +1,20 @@
 package org.woheller69.weather.activities;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.ItemTouchHelper;
 
 import androidx.preference.PreferenceManager;
-import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import org.woheller69.weather.R;
@@ -39,13 +42,14 @@ public class ManageLocationsActivity extends NavigationActivity {
     private ItemTouchHelper touchHelper;
     RecyclerOverviewListAdapter adapter;
     List<CityToWatch> cities;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manage_locations);
         overridePendingTransition(0, 0);
-
+        context=this;
         database = PFASQLiteHelper.getInstance(getApplicationContext());
 
         //cities = new ArrayList<>();
@@ -75,7 +79,19 @@ public class ManageLocationsActivity extends NavigationActivity {
                 new RecyclerItemClickListener(getBaseContext(), recyclerView, new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
+                        AlertDialog.Builder alert = new AlertDialog.Builder(context);
+                        final EditText edittext = new EditText(context);
+                        edittext.setText(adapter.getCityName(position));
+                        edittext.setTextSize(18);
+                        edittext.setGravity(Gravity.CENTER);
+                        alert.setTitle(getString(R.string.edit_location_hint_name));
+                        alert.setView(edittext);
 
+                        alert.setPositiveButton(getString(R.string.dialog_edit_change_button), (dialog, whichButton) -> adapter.renameCity(position, String.valueOf(edittext.getText())));
+                        alert.setNegativeButton(getString(R.string.dialog_add_close_button), (dialog, whichButton) -> {
+                        });
+
+                        alert.show();
                     }
 
                     public void onLongItemClick(View view, int position) {
