@@ -18,7 +18,6 @@ public class ItemViewHolder extends RecyclerView.ViewHolder {
      * Member variables
      */
     private TextView tvInformation;
-    private TextView tvCountry;
 
 
     /**
@@ -29,8 +28,6 @@ public class ItemViewHolder extends RecyclerView.ViewHolder {
     public ItemViewHolder(View itemView) {
         super(itemView);
         tvInformation = (TextView) itemView.findViewById(R.id.city_overview_list_item_text);
-        tvCountry=(TextView) itemView.findViewById(R.id.city_country_code);
-
     }
 
     /**
@@ -38,9 +35,6 @@ public class ItemViewHolder extends RecyclerView.ViewHolder {
      */
     public TextView getTvInformation() {
         return tvInformation;
-    }
-    public TextView getTvCountryCode() {
-        return tvCountry;
     }
 
 

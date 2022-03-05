@@ -58,8 +58,6 @@ public class RecyclerOverviewListAdapter extends RecyclerView.Adapter<ItemViewHo
     @Override
     public void onBindViewHolder(ItemViewHolder holder, int position) {
         holder.getTvInformation().setText(cities.get(position).getCityName());
-        holder.getTvCountryCode().setText(database.getCityById(cities.get(position).getCityId()).getCountryCode());
-
     }
 
     /**

@@ -29,15 +29,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 tools:visibility="visible" />
-
-            <TextView
-                android:id="@+id/city_country_code"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="2dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
         </LinearLayout>
 
