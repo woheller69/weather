@@ -7,7 +7,6 @@ import android.content.SharedPreferences;
 import android.os.Handler;
 import androidx.preference.PreferenceManager;
 
-import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
@@ -18,7 +17,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.woheller69.weather.R;
 import org.woheller69.weather.activities.NavigationActivity;
-import org.woheller69.weather.database.City;
 import org.woheller69.weather.database.CityToWatch;
 import org.woheller69.weather.database.CurrentWeatherData;
 import org.woheller69.weather.database.Forecast;
@@ -29,6 +27,7 @@ import org.woheller69.weather.weather_api.IDataExtractor;
 import org.woheller69.weather.weather_api.IHttpRequestForForecast;
 import org.woheller69.weather.weather_api.IProcessHttpRequest;
 import org.woheller69.weather.widget.WeatherWidget;
+import org.woheller69.weather.widget.WeatherWidget5day;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -223,7 +222,6 @@ public class ProcessOwmForecastOneCallAPIRequest implements IProcessHttpRequest 
             //check if city ID is same
             if (cityID == widgetCityID) {
                 //perform update for the widget
-                //Log.d("debugtag", "found 1 day widget to update with data: " + cityID + " with widgetID " + widgetID);
 
                 RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.weather_widget);
                 AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
@@ -234,5 +232,25 @@ public class ProcessOwmForecastOneCallAPIRequest implements IProcessHttpRequest 
                 appWidgetManager.updateAppWidget(widgetID, views);
             }
         }
+
+        //search for 5day widgets with same city ID
+        int widget5dayCityID= WeatherWidget5day.getWidgetCityID(context);
+        int[] widget5dayIDs = AppWidgetManager.getInstance(context).getAppWidgetIds(new ComponentName(context, WeatherWidget5day.class));
+
+        for (int widgetID : widget5dayIDs) {
+            //check if city ID is same
+            if (cityID == widget5dayCityID) {
+                //perform update for the widget
+
+                RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.weather_widget_5day);
+                AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
+
+                CityToWatch city=dbHelper.getCityToWatch(cityID);
+
+                WeatherWidget5day.updateView(context, appWidgetManager, views, widgetID, city, weekforecasts);
+                appWidgetManager.updateAppWidget(widgetID, views);
+            }
+        }
+
     }
 }

@@ -327,7 +327,7 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
             holder.recyclerView.setLayoutManager(layoutManager);
 
 
-            final WeekWeatherAdapter adapter = new WeekWeatherAdapter(context, forecastData);
+            final WeekWeatherAdapter adapter = new WeekWeatherAdapter(context, forecastData,currentWeatherDataList.getCity_id());
             holder.recyclerView.setAdapter(adapter);
             holder.recyclerView.setFocusable(false);
 

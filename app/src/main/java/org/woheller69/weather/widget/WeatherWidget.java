@@ -116,11 +116,11 @@ public class WeatherWidget extends AppWidgetProvider {
 
 
     public static void updateView(Context context, AppWidgetManager appWidgetManager, RemoteViews views, int appWidgetId, CityToWatch city, CurrentWeatherData weatherData, List<WeekForecast> weekforecasts, List<Forecast> hourlyforecasts) {
-
+        PFASQLiteHelper dbHelper = PFASQLiteHelper.getInstance(context);
         long time = weatherData.getTimestamp();
         int zoneseconds = weatherData.getTimeZoneSeconds();
-        int [] forecastIDs = {0,R.id.widget_1h, R.id.widget_2h,R.id.widget_3h,R.id.widget_4h,R.id.widget_5h,R.id.widget_6h,R.id.widget_7h, R.id.widget_8h};
-
+        int [] forecastIDs = {R.id.widget_hour12,R.id.widget_hour1, R.id.widget_hour2,R.id.widget_hour3,R.id.widget_hour4,R.id.widget_hour5,R.id.widget_hour6,R.id.widget_hour7, R.id.widget_hour8,R.id.widget_hour9,R.id.widget_hour10,R.id.widget_hour11};
+        int [] windIDs = {R.id.widget_windicon_hour12,R.id.widget_windicon_hour1,R.id.widget_windicon_hour2,R.id.widget_windicon_hour3,R.id.widget_windicon_hour4,R.id.widget_windicon_hour5,R.id.widget_windicon_hour6,R.id.widget_windicon_hour7,R.id.widget_windicon_hour8,R.id.widget_windicon_hour9,R.id.widget_windicon_hour10,R.id.widget_windicon_hour11};
         long updateTime = (time + zoneseconds) * 1000;
 
         long riseTime = (weatherData.getTimeSunrise() + zoneseconds) * 1000;
@@ -131,11 +131,15 @@ public class WeatherWidget extends AppWidgetProvider {
         views.setTextViewText(R.id.widget_updatetime, String.format("(%s)", StringFormatUtils.formatTimeWithoutZone(context, updateTime)));
         views.setTextViewText(R.id.widget_temperature, " "+StringFormatUtils.formatTemperature(context, weatherData.getTemperatureCurrent())+" ");
         views.setViewPadding(R.id.widget_temperature,1,1,1,1);
-        views.setTextViewText(R.id.widget_rain60min,"☔  "+weatherData.getRain60min());
+        views.setTextViewText(R.id.widget_max_Temp,StringFormatUtils.formatTemperature(context, weekforecasts.get(0).getMaxTemperature()));
+        views.setTextViewText(R.id.widget_min_Temp,StringFormatUtils.formatTemperature(context, weekforecasts.get(0).getMinTemperature()));
+        String rain60 = weatherData.getRain60min();
+        if (!rain60.equals(context.getString(R.string.error_no_rain60min_data))) {
+            rain60="0\u2009"+rain60.substring(0,6)+"\u200930\u2009"+rain60.substring(6)+"\u200960";
+        }
+        views.setTextViewText(R.id.widget_rain60min,"☔  "+rain60);
         views.setTextViewText(R.id.widget_city_name, city.getCityName());
-        views.setTextViewText(R.id.widget_wind, " "+StringFormatUtils.formatWindSpeed(context,weatherData.getWindSpeed())+" ");
-        views.setInt(R.id.widget_wind,"setBackgroundResource",StringFormatUtils.widgetColorWindSpeed(context,weatherData.getWindSpeed()));
-        views.setViewPadding(R.id.widget_wind,1,1,1,1);
+        views.setImageViewResource(R.id.widget_windicon,StringFormatUtils.colorWindSpeedWidget(weatherData.getWindSpeed()));
         views.setTextViewText(R.id.widget_sunrise_sunset,"\u2600\u25b2 " + StringFormatUtils.formatTimeWithoutZone(context, riseTime) + " \u25bc " + StringFormatUtils.formatTimeWithoutZone(context, setTime));
         views.setTextViewText(R.id.widget_UVindex,"UV");
         views.setInt(R.id.widget_UVindex,"setBackgroundResource",StringFormatUtils.widgetColorUVindex(context,Math.round(weekforecasts.get(0).getUv_index())));
@@ -144,31 +148,39 @@ public class WeatherWidget extends AppWidgetProvider {
 
         views.setImageViewResource(R.id.widget_image_view, UiResourceProvider.getIconResourceForWeatherCategory(weatherData.getWeatherID(), isDay));
 
+        for (int i=0;i<forecastIDs.length;i++){
+            views.setImageViewBitmap(forecastIDs[i],null);
+            views.setImageViewBitmap(windIDs[i],null);
+        }
+
         if (hourlyforecasts!=null&&!hourlyforecasts.isEmpty())
         {
-            for (int i=1;i<9;i++){
+            for (int i=1;i<forecastIDs.length;i++){
                 Calendar forecastTime = Calendar.getInstance();
                 forecastTime.setTimeZone(TimeZone.getTimeZone("GMT"));
                 forecastTime.setTimeInMillis(hourlyforecasts.get(i).getLocalForecastTime(context));
+                int hour = forecastTime.get(Calendar.HOUR) % 12;
+                if (weatherData.getTimeSunrise()==0 || weatherData.getTimeSunset()==0){
+                    if ((dbHelper.getCityToWatch(hourlyforecasts.get(i).getCity_id()).getLatitude())>0){  //northern hemisphere
+                        isDay= forecastTime.get(Calendar.MONTH) >= 3 && forecastTime.get(Calendar.MONTH) <= 8;  //January = 0!
+                    }else{ //southern hemisphere
+                        isDay= forecastTime.get(Calendar.MONTH) < 3 || forecastTime.get(Calendar.MONTH) > 8;
+                    }
+                }else {
+                    Calendar sunSetTime = Calendar.getInstance();
+                    sunSetTime.setTimeZone(TimeZone.getTimeZone("GMT"));
+                    sunSetTime.setTimeInMillis(weatherData.getTimeSunset() * 1000 + weatherData.getTimeZoneSeconds() * 1000L);
+                    sunSetTime.set(Calendar.DAY_OF_YEAR, forecastTime.get(Calendar.DAY_OF_YEAR));
 
-                Calendar sunSetTime = Calendar.getInstance();
-                sunSetTime.setTimeZone(TimeZone.getTimeZone("GMT"));
-                sunSetTime.setTimeInMillis(weatherData.getTimeSunset() * 1000 + weatherData.getTimeZoneSeconds() * 1000);
-                sunSetTime.set(Calendar.DAY_OF_YEAR, forecastTime.get(Calendar.DAY_OF_YEAR));
+                    Calendar sunRiseTime = Calendar.getInstance();
+                    sunRiseTime.setTimeZone(TimeZone.getTimeZone("GMT"));
+                    sunRiseTime.setTimeInMillis(weatherData.getTimeSunrise() * 1000 + weatherData.getTimeZoneSeconds() * 1000L);
+                    sunRiseTime.set(Calendar.DAY_OF_YEAR, forecastTime.get(Calendar.DAY_OF_YEAR));
 
-
-                Calendar sunRiseTime = Calendar.getInstance();
-                sunRiseTime.setTimeZone(TimeZone.getTimeZone("GMT"));
-                sunRiseTime.setTimeInMillis(weatherData.getTimeSunrise() * 1000 + weatherData.getTimeZoneSeconds() * 1000);
-                sunRiseTime.set(Calendar.DAY_OF_YEAR, forecastTime.get(Calendar.DAY_OF_YEAR));
-
-                isDay = forecastTime.after(sunRiseTime) && forecastTime.before(sunSetTime);
-                views.setImageViewResource(forecastIDs[i],UiResourceProvider.getIconResourceForWeatherCategory(hourlyforecasts.get(i).getWeatherID(), isDay));
-                views.setViewVisibility(forecastIDs[i], View.VISIBLE);
-            }
-        } else {
-            for (int i=1;i<9;i++){
-                views.setViewVisibility(forecastIDs[i], View.GONE);
+                    isDay = forecastTime.after(sunRiseTime) && forecastTime.before(sunSetTime);
+                }
+                views.setImageViewResource(forecastIDs[hour],UiResourceProvider.getIconResourceForWeatherCategory(hourlyforecasts.get(i).getWeatherID(), isDay));
+                views.setImageViewResource(windIDs[hour],StringFormatUtils.colorWindSpeedWidget(hourlyforecasts.get(i).getWindSpeed()));
             }
         }
 
@@ -182,7 +194,7 @@ public class WeatherWidget extends AppWidgetProvider {
 
         Intent intent2 = new Intent(context, ForecastCityActivity.class);
         intent2.putExtra("cityId", getWidgetCityID(context));
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, appWidgetId, intent2, 0);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, appWidgetId, intent2, PendingIntent.FLAG_UPDATE_CURRENT);
         views.setOnClickPendingIntent(R.id.widget_layout, pendingIntent);
 
         // Instruct the widget manager to update the widget

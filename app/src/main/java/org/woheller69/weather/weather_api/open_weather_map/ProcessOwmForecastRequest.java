@@ -1,12 +1,9 @@
 package org.woheller69.weather.weather_api.open_weather_map;
 
-import android.appwidget.AppWidgetManager;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Handler;
 import androidx.preference.PreferenceManager;
-import android.widget.RemoteViews;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
@@ -23,7 +20,6 @@ import org.woheller69.weather.database.WeekForecast;
 import org.woheller69.weather.ui.updater.ViewUpdater;
 import org.woheller69.weather.weather_api.IDataExtractor;
 import org.woheller69.weather.weather_api.IProcessHttpRequest;
-import org.woheller69.weather.widget.WeatherWidget5day;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -145,7 +141,6 @@ public class ProcessOwmForecastRequest implements IProcessHttpRequest {
                 //again update Weekforecasts (new forecasts might change some rain weather symbols, see CityWeatherAdapter checkSun() )
                 List<WeekForecast> weekforecasts = dbHelper.getWeekForecastsByCityId(cityId);
                 ViewUpdater.updateWeekForecasts(weekforecasts);
-                possiblyUpdateWidgets(cityId, forecasts, weekforecasts);
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -166,30 +161,6 @@ public class ProcessOwmForecastRequest implements IProcessHttpRequest {
                 if (NavigationActivity.isVisible) Toast.makeText(context, context.getResources().getString(R.string.error_fetch_forecast), Toast.LENGTH_LONG).show();
             }
         });
-    }
-
-    private void possiblyUpdateWidgets(int cityID, List<Forecast> forecast, List<WeekForecast> weekforecasts) {
-        //search for widgets with same city ID
-
-        int widget5dayCityID= WeatherWidget5day.getWidgetCityID(context);
-        int[] widget5dayIDs = AppWidgetManager.getInstance(context).getAppWidgetIds(new ComponentName(context, WeatherWidget5day.class));
-
-        for (int widgetID : widget5dayIDs) {
-            //check if city ID is same
-            if (cityID == widget5dayCityID) {
-                //perform update for the widget
-                //Log.d("debugtag", "found 1 day widget to update with data: " + cityID + " with widgetID " + widgetID);
-
-                RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.weather_widget_5day);
-                AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
-
-                CityToWatch city=dbHelper.getCityToWatch(cityID);
-
-                WeatherWidget5day.updateView(context, appWidgetManager, views, widgetID, city, forecast ,weekforecasts);
-                appWidgetManager.updateAppWidget(widgetID, views);
-            }
-        }
-
     }
 
 }

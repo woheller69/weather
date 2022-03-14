@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.woheller69.weather.R;
+import org.woheller69.weather.database.CurrentWeatherData;
+import org.woheller69.weather.database.PFASQLiteHelper;
 import org.woheller69.weather.ui.Help.StringFormatUtils;
 import org.woheller69.weather.ui.UiResourceProvider;
 
@@ -26,10 +28,12 @@ public class WeekWeatherAdapter extends RecyclerView.Adapter<WeekWeatherAdapter.
 
     private Context context;
     private float[][] forecastData;
+    private int cityID;
     private Date courseOfDayHeaderDate;
 
-    WeekWeatherAdapter(Context context, float[][] forecastData) {
+    WeekWeatherAdapter(Context context, float[][] forecastData, int cityID) {
         this.context = context;
+        this.cityID = cityID;
         this.forecastData = forecastData;
         if (forecastData.length!=0 && forecastData[0]!=null) {
             this.courseOfDayHeaderDate = new Date((long) forecastData[0][8]);  //init with date of first weekday
@@ -63,7 +67,26 @@ public class WeekWeatherAdapter extends RecyclerView.Adapter<WeekWeatherAdapter.
         float[] dayValues = forecastData[position];
         if (dayValues.length!=11) return;  //Fixes app crash if forecastData not yet ready.
 
-        setIcon((int) dayValues[9], holder.weather);
+        PFASQLiteHelper dbHelper = PFASQLiteHelper.getInstance(context);
+        CurrentWeatherData currentWeather = dbHelper.getCurrentWeatherByCityId(cityID);
+
+        Calendar forecastTime = Calendar.getInstance();
+        forecastTime.setTimeZone(TimeZone.getTimeZone("GMT"));
+        forecastTime.setTimeInMillis((long) dayValues[8]);
+
+        boolean isDay;
+
+        if (currentWeather.getTimeSunrise()==0 || currentWeather.getTimeSunset()==0) {
+            if ((dbHelper.getCityToWatch(cityID).getLatitude()) > 0) {  //northern hemisphere
+                isDay = forecastTime.get(Calendar.MONTH) >= 3 && forecastTime.get(Calendar.MONTH) <= 8;  //January = 0!
+            } else { //southern hemisphere
+                isDay = forecastTime.get(Calendar.MONTH) < 3 || forecastTime.get(Calendar.MONTH) > 8;
+            }
+        } else {
+            isDay = true;
+        }
+
+        setIcon((int) dayValues[9], holder.weather, isDay);
         holder.humidity.setText(StringFormatUtils.formatInt(dayValues[2],context.getString(R.string.units_rh)));
 
         if (dayValues[4] == 0)
@@ -133,8 +156,8 @@ public class WeekWeatherAdapter extends RecyclerView.Adapter<WeekWeatherAdapter.
         super.onAttachedToRecyclerView(recyclerView);
     }
 
-    public void setIcon(int value, ImageView imageView) {
-        imageView.setImageResource(UiResourceProvider.getIconResourceForWeatherCategory(value, true));
+    public void setIcon(int value, ImageView imageView, boolean isDay) {
+        imageView.setImageResource(UiResourceProvider.getIconResourceForWeatherCategory(value, isDay));
     }
 
 }

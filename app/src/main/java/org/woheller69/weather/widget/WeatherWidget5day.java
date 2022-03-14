@@ -13,6 +13,7 @@ import android.widget.RemoteViews;
 import org.woheller69.weather.R;
 import org.woheller69.weather.activities.ForecastCityActivity;
 import org.woheller69.weather.database.CityToWatch;
+import org.woheller69.weather.database.CurrentWeatherData;
 import org.woheller69.weather.database.Forecast;
 import org.woheller69.weather.database.PFASQLiteHelper;
 import org.woheller69.weather.database.WeekForecast;
@@ -66,19 +67,32 @@ public class WeatherWidget5day extends AppWidgetProvider {
         return cityID;
 }
 
-    public static void updateView(Context context, AppWidgetManager appWidgetManager, RemoteViews views, int appWidgetId, CityToWatch city, List<Forecast> forecasts, List<WeekForecast> weekforecasts) {
+    public static void updateView(Context context, AppWidgetManager appWidgetManager, RemoteViews views, int appWidgetId, CityToWatch city, List<WeekForecast> weekforecasts) {
 
         int cityId=getWidgetCityID(context);
         PFASQLiteHelper database = PFASQLiteHelper.getInstance(context.getApplicationContext());
         int zonemilliseconds = database.getCurrentWeatherByCityId(cityId).getTimeZoneSeconds()*1000;
+        CurrentWeatherData currentWeather = database.getCurrentWeatherByCityId(cityId);
 
         Calendar c = Calendar.getInstance();
         c.setTimeZone(TimeZone.getTimeZone("GMT"));
 
         int []forecastData = new int[5];
+        boolean[] isDay = new boolean[5];
         String []weekday = new String[5];
         for (int i=0;i<5;i++){
             c.setTimeInMillis(weekforecasts.get(i).getForecastTime()+zonemilliseconds);
+
+            if (currentWeather.getTimeSunrise()==0 || currentWeather.getTimeSunset()==0) {
+                if ((database.getCityToWatch(cityId).getLatitude()) > 0) {  //northern hemisphere
+                    isDay[i] = c.get(Calendar.MONTH) >= 3 && c.get(Calendar.MONTH) <= 8;  //January = 0!
+                } else { //southern hemisphere
+                    isDay[i] = c.get(Calendar.MONTH) < 3 || c.get(Calendar.MONTH) > 8;
+                }
+            } else {
+                isDay[i] = true;
+            }
+
             int day = c.get(Calendar.DAY_OF_WEEK);
             weekday[i]=context.getResources().getString(StringFormatUtils.getDayShort(day));
 
@@ -105,14 +119,13 @@ public class WeatherWidget5day extends AppWidgetProvider {
                             forecastData[i] = getCorrectedWeatherID(context, cityId,weekforecasts.get(i).getForecastTime());
                     }
                 }
-
         }
 
-        views.setImageViewResource(R.id.widget_5day_image1, UiResourceProvider.getIconResourceForWeatherCategory(forecastData[0], true));
-        views.setImageViewResource(R.id.widget_5day_image2, UiResourceProvider.getIconResourceForWeatherCategory(forecastData[1], true));
-        views.setImageViewResource(R.id.widget_5day_image3, UiResourceProvider.getIconResourceForWeatherCategory(forecastData[2], true));
-        views.setImageViewResource(R.id.widget_5day_image4, UiResourceProvider.getIconResourceForWeatherCategory(forecastData[3], true));
-        views.setImageViewResource(R.id.widget_5day_image5, UiResourceProvider.getIconResourceForWeatherCategory(forecastData[4], true));
+        views.setImageViewResource(R.id.widget_5day_image1, UiResourceProvider.getIconResourceForWeatherCategory(forecastData[0], isDay[0]));
+        views.setImageViewResource(R.id.widget_5day_image2, UiResourceProvider.getIconResourceForWeatherCategory(forecastData[1], isDay[1]));
+        views.setImageViewResource(R.id.widget_5day_image3, UiResourceProvider.getIconResourceForWeatherCategory(forecastData[2], isDay[2]));
+        views.setImageViewResource(R.id.widget_5day_image4, UiResourceProvider.getIconResourceForWeatherCategory(forecastData[3], isDay[3]));
+        views.setImageViewResource(R.id.widget_5day_image5, UiResourceProvider.getIconResourceForWeatherCategory(forecastData[4], isDay[4]));
 
         views.setTextViewText(R.id.widget_5day_day1,weekday[0]);
         views.setTextViewText(R.id.widget_5day_day2,weekday[1]);
@@ -140,7 +153,7 @@ public class WeatherWidget5day extends AppWidgetProvider {
 
         Intent intent2 = new Intent(context, ForecastCityActivity.class);
         intent2.putExtra("cityId", getWidgetCityID(context));
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, appWidgetId, intent2, 0);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, appWidgetId, intent2, PendingIntent.FLAG_UPDATE_CURRENT);
         views.setOnClickPendingIntent(R.id.widget5day_layout, pendingIntent);
 
         // Instruct the widget manager to update the widget
@@ -184,7 +197,7 @@ public class WeatherWidget5day extends AppWidgetProvider {
 
             CityToWatch city=dbHelper.getCityToWatch(widgetCityID);
 
-            WeatherWidget5day.updateView(context, appWidgetManager, views, widgetID, city, forecasts,weekforecasts);
+            WeatherWidget5day.updateView(context, appWidgetManager, views, widgetID, city, weekforecasts);
             appWidgetManager.updateAppWidget(widgetID, views);
 
         }
