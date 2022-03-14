@@ -135,9 +135,9 @@ public class CurrentWeatherData {
         PFASQLiteHelper dbHelper = PFASQLiteHelper.getInstance(context);
         if (timeSunrise==0 || timeSunset==0){
             if ((dbHelper.getCityToWatch(city_id).getLatitude())>0){  //northern hemisphere
-                return timeStamp.get(Calendar.MONTH) >= 3 && timeStamp.get(Calendar.MONTH) <= 8;  //January = 0!
+                return timeStamp.get(Calendar.DAY_OF_YEAR) >= 80 && timeStamp.get(Calendar.DAY_OF_YEAR) <= 265;  //from March 21 to September 22 (incl)
             }else{ //southern hemisphere
-                return timeStamp.get(Calendar.MONTH) < 3 || timeStamp.get(Calendar.MONTH) > 8;
+                return timeStamp.get(Calendar.DAY_OF_YEAR) < 80 || timeStamp.get(Calendar.DAY_OF_YEAR) > 265;
             }
         }else {
             return timestamp > timeSunrise && timestamp < timeSunset;
