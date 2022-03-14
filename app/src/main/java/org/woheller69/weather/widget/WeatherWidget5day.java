@@ -85,9 +85,9 @@ public class WeatherWidget5day extends AppWidgetProvider {
 
             if (currentWeather.getTimeSunrise()==0 || currentWeather.getTimeSunset()==0) {
                 if ((database.getCityToWatch(cityId).getLatitude()) > 0) {  //northern hemisphere
-                    isDay[i] = c.get(Calendar.MONTH) >= 3 && c.get(Calendar.MONTH) <= 8;  //January = 0!
+                    isDay[i] = c.get(Calendar.DAY_OF_YEAR) >= 80 && c.get(Calendar.DAY_OF_YEAR) <= 265;  //from March 21 to September 22 (incl)
                 } else { //southern hemisphere
-                    isDay[i] = c.get(Calendar.MONTH) < 3 || c.get(Calendar.MONTH) > 8;
+                    isDay[i] = c.get(Calendar.DAY_OF_YEAR) < 80 || c.get(Calendar.DAY_OF_YEAR) > 265;
                 }
             } else {
                 isDay[i] = true;

@@ -78,9 +78,9 @@ public class WeekWeatherAdapter extends RecyclerView.Adapter<WeekWeatherAdapter.
 
         if (currentWeather.getTimeSunrise()==0 || currentWeather.getTimeSunset()==0) {
             if ((dbHelper.getCityToWatch(cityID).getLatitude()) > 0) {  //northern hemisphere
-                isDay = forecastTime.get(Calendar.MONTH) >= 3 && forecastTime.get(Calendar.MONTH) <= 8;  //January = 0!
+                isDay = forecastTime.get(Calendar.DAY_OF_YEAR) >= 80 && forecastTime.get(Calendar.DAY_OF_YEAR) <= 265;  //from March 21 to September 22 (incl)
             } else { //southern hemisphere
-                isDay = forecastTime.get(Calendar.MONTH) < 3 || forecastTime.get(Calendar.MONTH) > 8;
+                isDay = forecastTime.get(Calendar.DAY_OF_YEAR) < 80 || forecastTime.get(Calendar.DAY_OF_YEAR) > 265;
             }
         } else {
             isDay = true;
