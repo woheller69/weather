@@ -140,7 +140,7 @@ public class WeatherWidget extends AppWidgetProvider {
         views.setTextViewText(R.id.widget_rain60min,"☔  "+rain60);
         views.setTextViewText(R.id.widget_city_name, city.getCityName());
         views.setImageViewResource(R.id.widget_windicon,StringFormatUtils.colorWindSpeedWidget(weatherData.getWindSpeed()));
-        views.setTextViewText(R.id.widget_sunrise_sunset,"\u2600\u25b2 " + StringFormatUtils.formatTimeWithoutZone(context, riseTime) + " \u25bc " + StringFormatUtils.formatTimeWithoutZone(context, setTime));
+        views.setTextViewText(R.id.widget_sunrise_sunset,"\u2600\u25b2\u2009" + StringFormatUtils.formatTimeWithoutZone(context, riseTime) + " \u25bc\u2009" + StringFormatUtils.formatTimeWithoutZone(context, setTime));
         views.setTextViewText(R.id.widget_UVindex,"UV");
         views.setInt(R.id.widget_UVindex,"setBackgroundResource",StringFormatUtils.widgetColorUVindex(context,Math.round(weekforecasts.get(0).getUv_index())));
 

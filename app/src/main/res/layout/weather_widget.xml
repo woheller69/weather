@@ -58,7 +58,7 @@
         android:layout_height="24dp"
         android:layout_below="@id/widget_hour11"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="15dp"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
         android:src="@mipmap/weather_icon_85n"
@@ -70,11 +70,11 @@
         android:layout_height="24dp"
         android:layout_below="@id/widget_hour10"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="10dp"
-        android:translationX="-5dp"
+        android:layout_marginStart="15dp"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
-        android:src="@mipmap/weather_icon_85n" />
+        android:src="@mipmap/weather_icon_85n"
+        android:translationX="-5dp" />
 
     <ImageView
         android:id="@+id/widget_hour8"
@@ -82,7 +82,7 @@
         android:layout_height="24dp"
         android:layout_below="@id/widget_hour9"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="15dp"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
         android:src="@mipmap/weather_icon_85n"
@@ -197,16 +197,16 @@
         android:id="@+id/widget_UVindex"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@id/widget_image_view"
         android:layout_alignStart="@id/widget_image_view"
+        android:layout_alignTop="@id/widget_image_view"
         android:layout_marginStart="5dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginTop="2dp"
         android:background="@drawable/rounded_green"
         android:paddingStart="2dp"
         android:paddingEnd="2dp"
         android:text="UV"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="16dp"
+        android:textSize="14dp"
         android:textStyle="bold" />
 
     <ImageView
@@ -215,11 +215,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:background="@drawable/transparent_no_margin"
-        android:paddingTop="4dp"
         android:paddingStart="10dp"
+        android:paddingTop="4dp"
         android:scaleType="fitCenter"
         android:src="@drawable/ic_refresh_24px"
-        android:translationX="-10dp" />
+        android:translationX="-12dp" />
 
     <ImageView
         android:id="@+id/location_on"
@@ -241,7 +241,7 @@
         android:text="(19:15)"
         android:textColor="#FFFFFF"
         android:textSize="14dp"
-        android:translationX="-10dp" />
+        android:translationX="-12dp" />
 
 
     <TextView
@@ -260,7 +260,7 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="32dp"
         android:textStyle="bold"
-        android:translationX="-10dp" />
+        android:translationX="-12dp" />
 
     <TextView
         android:id="@+id/widget_max_Temp"
@@ -278,7 +278,7 @@
         android:paddingBottom="1dp"
         android:textColor="@color/red"
         android:textSize="15dp"
-        android:translationX="-10dp" />
+        android:translationX="-12dp" />
     <TextView
         android:id="@+id/widget_min_Temp"
         android:layout_width="wrap_content"
@@ -313,7 +313,7 @@
         android:paddingBottom="1dp"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="15dp"
-        android:translationX="-10dp" />
+        android:translationX="-12dp" />
 
     <ImageView
         android:id="@+id/widget_windicon"
