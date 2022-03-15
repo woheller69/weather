@@ -12,6 +12,7 @@ import android.webkit.WebViewClient;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import org.woheller69.weather.BuildConfig;
 import org.woheller69.weather.R;
 import org.woheller69.weather.preferences.AppPreferencesManager;
 import org.woheller69.weather.radius_search.RadiusSearchItem;
@@ -64,6 +65,7 @@ public class RadiusSearchResultActivity extends AppCompatActivity {
 
         webView = findViewById(R.id.webViewRadiussearch);
         webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setUserAgentString(BuildConfig.APPLICATION_ID+"/"+BuildConfig.VERSION_NAME);
         webView.loadUrl("file:///android_asset/radiussearch.html?appid=" + API_KEY + "&nightmode=" + nightmode);
         webView.setWebViewClient(new CustomWebViewClient(resultList));
 

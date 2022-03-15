@@ -16,10 +16,10 @@ import android.webkit.WebView;
 import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
 
+import org.woheller69.weather.BuildConfig;
 import org.woheller69.weather.R;
 import org.woheller69.weather.activities.ManageLocationsActivity;
 import org.woheller69.weather.database.City;
-import org.woheller69.weather.database.CityToWatch;
 import org.woheller69.weather.database.PFASQLiteHelper;
 import org.woheller69.weather.ui.util.AutoCompleteCityTextViewGenerator;
 import org.woheller69.weather.ui.util.MyConsumer;
@@ -67,6 +67,7 @@ public class AddLocationDialog extends DialogFragment {
         this.database = PFASQLiteHelper.getInstance(getActivity());
         final WebView webview= rootView.findViewById(R.id.webViewAddLocation);
         webview.getSettings().setJavaScriptEnabled(true);
+        webview.getSettings().setUserAgentString(BuildConfig.APPLICATION_ID+"/"+BuildConfig.VERSION_NAME);
         webview.setBackgroundColor(0x00000000);
         webview.setBackgroundResource(R.drawable.map_back);
         cityTextViewGenerator = new AutoCompleteCityTextViewGenerator(getContext(), database);

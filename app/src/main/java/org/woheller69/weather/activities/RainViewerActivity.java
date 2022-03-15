@@ -13,6 +13,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageButton;
 
+import org.woheller69.weather.BuildConfig;
 import org.woheller69.weather.preferences.AppPreferencesManager;
 
 import org.woheller69.weather.R;
@@ -59,6 +60,7 @@ public class RainViewerActivity extends AppCompatActivity {
 
         webView = findViewById(R.id.webView);
         webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setUserAgentString(BuildConfig.APPLICATION_ID+"/"+BuildConfig.VERSION_NAME);
         webView.loadUrl("file:///android_asset/rainviewer.html?lat=" + latitude + "&lon=" + longitude + "&appid=" + API_KEY + "&nightmode=" + nightmode + "&hour12=" + hour12 + "&tz="+timezoneseconds);
 
         webView.setWebViewClient(new WebViewClient() {

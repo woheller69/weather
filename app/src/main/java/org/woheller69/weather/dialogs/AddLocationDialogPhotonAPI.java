@@ -32,20 +32,17 @@ import com.android.volley.VolleyError;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.woheller69.weather.BuildConfig;
 import org.woheller69.weather.R;
 import org.woheller69.weather.activities.ManageLocationsActivity;
 import org.woheller69.weather.database.City;
-import org.woheller69.weather.database.CityToWatch;
 import org.woheller69.weather.database.PFASQLiteHelper;
 import org.woheller69.weather.ui.util.photonApiCall;
-import org.woheller69.weather.ui.util.AutoCompleteCityTextViewGenerator;
 import org.woheller69.weather.ui.util.AutoSuggestAdapter;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.Objects;
 
 
 public class AddLocationDialogPhotonAPI extends DialogFragment {
@@ -101,6 +98,7 @@ public class AddLocationDialogPhotonAPI extends DialogFragment {
 
         final WebView webview= rootView.findViewById(R.id.webViewAddLocation);
         webview.getSettings().setJavaScriptEnabled(true);
+        webview.getSettings().setUserAgentString(BuildConfig.APPLICATION_ID+"/"+BuildConfig.VERSION_NAME);
         webview.setBackgroundColor(0x00000000);
         webview.setBackgroundResource(R.drawable.photon);
 
