@@ -1,5 +1,11 @@
 Changelog
 ==========
+Version 5.2 (2022-03-16)
+* new widget layout
+* bugfix for OpenStreetMap
+
+Version 5.1 (2022-03-9)
+* Location names can be changed
 
 Version 5.0 (2022-02-26)
 * Revert minify due to crash on Android 12
