@@ -317,7 +317,12 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
             holder.windspeed.setText(StringFormatUtils.formatWindSpeed(context, currentWeatherDataList.getWindSpeed()));
             holder.windspeed.setBackground(StringFormatUtils.colorWindSpeed(context, currentWeatherDataList.getWindSpeed()));
             holder.winddirection.setRotation(currentWeatherDataList.getWindDirection());
-            holder.rain60min.setText(currentWeatherDataList.getRain60min());
+
+            if (currentWeatherDataList.getRain60min()!=null && !currentWeatherDataList.getRain60min().equals(context.getString(R.string.error_no_rain60min_data))){
+                holder.rain60min.setText(currentWeatherDataList.getRain60min().substring(0,3)+"\u2009"+currentWeatherDataList.getRain60min().substring(3,6)+"\u2009"+currentWeatherDataList.getRain60min().substring(6,9)+"\u2009"+currentWeatherDataList.getRain60min().substring(9));
+            } else {
+                holder.rain60min.setText(R.string.error_no_rain60min_data);
+            }
             holder.rain60minLegend.setText("( "+context.getResources().getString(R.string.units_mm_h)+String.format(Locale.getDefault(),": □ %.1f ▤ <%.1f ▦ <%.1f ■ >=%.1f )",0.0,0.5,2.5,2.5));
 
         } else if (viewHolder.getItemViewType() == WEEK) {

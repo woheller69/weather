@@ -134,7 +134,7 @@ public class WeatherWidget extends AppWidgetProvider {
         views.setTextViewText(R.id.widget_max_Temp,StringFormatUtils.formatTemperature(context, weekforecasts.get(0).getMaxTemperature()));
         views.setTextViewText(R.id.widget_min_Temp,StringFormatUtils.formatTemperature(context, weekforecasts.get(0).getMinTemperature()));
         String rain60 = weatherData.getRain60min();
-        if (!rain60.equals(context.getString(R.string.error_no_rain60min_data))) {
+        if (rain60!=null && !rain60.equals(context.getString(R.string.error_no_rain60min_data))) {
             rain60="0\u2009"+rain60.substring(0,6)+"\u200930\u2009"+rain60.substring(6)+"\u200960";
         }
         views.setTextViewText(R.id.widget_rain60min,"☔  "+rain60);
