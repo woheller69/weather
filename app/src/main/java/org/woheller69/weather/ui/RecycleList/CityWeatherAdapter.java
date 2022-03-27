@@ -318,7 +318,7 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
             holder.windspeed.setBackground(StringFormatUtils.colorWindSpeed(context, currentWeatherDataList.getWindSpeed()));
             holder.winddirection.setRotation(currentWeatherDataList.getWindDirection());
 
-            if (currentWeatherDataList.getRain60min()!=null && !currentWeatherDataList.getRain60min().equals(context.getString(R.string.error_no_rain60min_data))){
+            if (currentWeatherDataList.getRain60min()!=null && currentWeatherDataList.getRain60min().length()==12){
                 holder.rain60min.setText(currentWeatherDataList.getRain60min().substring(0,3)+"\u2009"+currentWeatherDataList.getRain60min().substring(3,6)+"\u2009"+currentWeatherDataList.getRain60min().substring(6,9)+"\u2009"+currentWeatherDataList.getRain60min().substring(9));
             } else {
                 holder.rain60min.setText(R.string.error_no_rain60min_data);

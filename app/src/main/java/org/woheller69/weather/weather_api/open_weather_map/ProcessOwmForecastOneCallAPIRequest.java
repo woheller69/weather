@@ -92,7 +92,7 @@ public class ProcessOwmForecastOneCallAPIRequest implements IProcessHttpRequest 
 
             for (int c=0; c<CityIDList.size();c++) {
                 cityId=CityIDList.get(c);
-                String rain60min = context.getResources().getString(R.string.error_no_rain60min_data);
+                String rain60min=null;
                 if (json.has("minutely")) {
                     rain60min = "";
                     JSONArray listrain = json.getJSONArray("minutely");
