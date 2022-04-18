@@ -1,0 +1,3 @@
+Übersetzung für Holländisch, Dänisch, Schwedisch, Ungarisch
+Option für ungefähre Postion (nur Android 12)
+Bessere Darstellung für Regen innerhalb 60min

@@ -1,0 +1,3 @@
+Translation for Dutch, Danish, Swedish, Hungarian
+Coarse location option (Android 12 only)
+Improved indicator for rain within 60min
