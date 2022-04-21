@@ -1,6 +1,10 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory android:title="@string/settings_title_API">
         <PreferenceScreen android:summary="@string/settings_description_API" />
+        <Preference
+            android:key="register"
+            android:title="@string/registerOWMbutton"
+            />
         <EditTextPreference
             android:key="API_key_value"
             android:title="@string/settings_title_API_key"

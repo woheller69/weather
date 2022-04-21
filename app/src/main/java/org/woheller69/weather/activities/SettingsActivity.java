@@ -2,14 +2,17 @@ package org.woheller69.weather.activities;
 
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
+import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 
@@ -84,6 +87,14 @@ public class SettingsActivity extends NavigationActivity implements SharedPrefer
         @Override
             public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
                 setPreferencesFromResource(R.xml.pref_general, rootKey);
+            Preference button = getPreferenceManager().findPreference("register");
+            if (button != null){
+                button.setOnPreferenceClickListener(preference -> {
+                    startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("https://home.openweathermap.org/users/sign_up/")));
+                    return true;
+                });
             }
+        }
     }
 }
