@@ -27,7 +27,7 @@
     <string name="card_week_heading">Woche</string>
     <string name="error_convert_to_json">Die erhaltenen Wetterdaten entsprachen nicht dem erwarteten Format.</string>
     <string name="error_no_internet">Das Gerät ist nicht mit dem Internet verbunden!</string>
-    <string name="error_fetch_forecast">Es ist ein Fehler Abrufen der Wettervorhersage aufgetreten, bitte versuchen Sie es erneut!</string>
+    <string name="error_fetch_forecast">Es ist ein Fehler beim Abrufen der Wettervorhersage aufgetreten, bitte versuchen Sie es erneut!</string>
     <string name="error_radius_search">Es ist ein Fehler beim Abfragen der Umkreissuche aufgetreten, bitte versuchen Sie es erneut!</string>
     <string name="error_no_city_selected">Sie haben keine Stadt ausgewählt. Wählen Sie \"Orte verwalten\" in der Navigation um eine Stadt auszuwählen.</string>
     <string name="error_dialog_add_city_too_close">Der Ort liegt zu nahe an einem bereits beobachteten Ort</string>
