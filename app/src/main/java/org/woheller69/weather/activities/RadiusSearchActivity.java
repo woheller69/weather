@@ -130,7 +130,7 @@ public class RadiusSearchActivity extends NavigationActivity {
                     if (dropdownSelectedCity != null) {
                         //Hide keyboard to have more space
                         final InputMethodManager imm = (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+                        imm.showSoftInput(edtLocation,0);
                     }
                     enableOkButton(city != null);
                 }
@@ -156,7 +156,7 @@ public class RadiusSearchActivity extends NavigationActivity {
                             enableOkButton(Boolean.TRUE);
                             //Hide keyboard to have more space
                             final InputMethodManager imm = (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                            imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+                            imm.showSoftInput(edtLocation,0);
                         }
                     });
 

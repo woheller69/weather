@@ -56,7 +56,7 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
      */
     @Override
     public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
-        adapter.onItemMove(viewHolder.getAdapterPosition(), target.getAdapterPosition());
+        adapter.onItemMove(viewHolder.getBindingAdapterPosition(), target.getBindingAdapterPosition());
         return true;
     }
 
@@ -66,7 +66,7 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
      */
     @Override
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-        adapter.onItemDismiss(viewHolder.getAdapterPosition());
+        adapter.onItemDismiss(viewHolder.getBindingAdapterPosition());
     }
 
 }
