@@ -64,6 +64,8 @@ public class ForecastCityActivity extends NavigationActivity implements IUpdatea
             noCityText.setVisibility(View.GONE);
             viewPager2.setVisibility(View.VISIBLE);
             viewPager2.setAdapter(pagerAdapter);
+            TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(tabLayout, viewPager2,false,false, (tab, position) -> tab.setText(pagerAdapter.getPageTitle(position)));
+            tabLayoutMediator.attach();
         }
 
         ViewUpdater.addSubscriber(this);
@@ -84,8 +86,6 @@ public class ForecastCityActivity extends NavigationActivity implements IUpdatea
                 ForecastCityActivity.startRefreshAnimation();
             }
             viewPager2.setCurrentItem(pagerAdapter.getPosForCityID(cityId));
-            TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(tabLayout, viewPager2,false,false, (tab, position) -> tab.setText(pagerAdapter.getPageTitle(position)));
-            tabLayoutMediator.attach();
         }
     }
 
