@@ -83,10 +83,10 @@ public class ForecastCityActivity extends NavigationActivity implements IUpdatea
                 WeatherPagerAdapter.refreshSingleData(getApplicationContext(),true, cityId); //only update current tab at start
                 ForecastCityActivity.startRefreshAnimation();
             }
+            viewPager2.setCurrentItem(pagerAdapter.getPosForCityID(cityId));
+            TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(tabLayout, viewPager2,false,false, (tab, position) -> tab.setText(pagerAdapter.getPageTitle(position)));
+            tabLayoutMediator.attach();
         }
-        viewPager2.setCurrentItem(pagerAdapter.getPosForCityID(cityId));
-        TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(tabLayout, viewPager2,false,false, (tab, position) -> tab.setText(pagerAdapter.getPageTitle(position)));
-        tabLayoutMediator.attach();
     }
 
     @Override
@@ -130,7 +130,7 @@ public class ForecastCityActivity extends NavigationActivity implements IUpdatea
     }
 
     private void initResources() {
-        viewPager2 = findViewById(R.id.viewPager);
+        viewPager2 = findViewById(R.id.viewPager2);
         reduceViewpager2DragSensitivity(viewPager2,3);
         tabLayout = findViewById(R.id.tab_layout);
         pagerAdapter = new WeatherPagerAdapter(this, getSupportFragmentManager(),getLifecycle());

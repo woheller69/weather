@@ -41,11 +41,8 @@ public class WeatherWidget5day extends AppWidgetProvider {
             int cityID = getWidgetCityID(context);
 
             Intent intent = new Intent(context, UpdateDataService.class);
-            //Log.d("debugtag", "widget calls single update: " + cityID + " with widgetID " + appWidgetId);
-
             intent.setAction(UpdateDataService.UPDATE_SINGLE_ACTION);
             intent.putExtra("cityId", cityID);
-            intent.putExtra("Widget",true);
             intent.putExtra(SKIP_UPDATE_INTERVAL, true);
             enqueueWork(context, UpdateDataService.class, 0, intent);
         }
