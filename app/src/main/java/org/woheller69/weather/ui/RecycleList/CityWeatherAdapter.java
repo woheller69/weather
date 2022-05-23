@@ -202,7 +202,6 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
             super(v);
             recyclerView = v.findViewById(R.id.recycler_view_week);
             mWeekWeather=recyclerView;
-            recyclerView.setHasFixedSize(true);
         }
     }
 
@@ -214,7 +213,6 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
             super(v);
             recyclerView = v.findViewById(R.id.recycler_view_course_day);
             mCourseOfDay=recyclerView;
-            recyclerView.setHasFixedSize(true);
             recyclerViewHeader=v.findViewById(R.id.recycler_view_header);
         }
     }
