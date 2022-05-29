@@ -150,4 +150,5 @@
     <string name="dialog_NO_button">Non</string>
     <string name="dialog_Later_button">Peut-être plus tard</string>
     <string name="dialog_StarOnGitHub">Aimez-vous cette application? Veuillez attribuer une étoile sur GitHub.</string>
+    <string name="settings_show_pressure">Afficher la pression atmosphérique</string>
 </resources>

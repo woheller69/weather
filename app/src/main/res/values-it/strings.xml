@@ -157,4 +157,5 @@
     <string name="dialog_NO_button">No</string>
     <string name="dialog_Later_button">Forse più tardi</string>
     <string name="dialog_StarOnGitHub">Ti piace questa app? Assegna una stella su GitHub.</string>
+    <string name="settings_show_pressure">Mostra la pressione dell\'aria</string>
 </resources> 

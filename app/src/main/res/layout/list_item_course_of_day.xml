@@ -21,7 +21,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center" />
-    <Space
+
+    <androidx.legacy.widget.Space
         android:layout_width="match_parent"
         android:layout_height="10dp" />
 
@@ -42,6 +43,16 @@
         android:layout_gravity="center"
         android:layout_marginBottom="3dp"
         android:text="xy %"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/colorPrimaryDark" />
+
+    <TextView
+        android:id="@+id/course_of_day_pressure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="3dp"
+        android:text="xy hpa"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/colorPrimaryDark" />
 

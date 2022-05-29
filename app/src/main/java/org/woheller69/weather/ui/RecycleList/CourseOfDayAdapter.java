@@ -1,8 +1,10 @@
 package org.woheller69.weather.ui.RecycleList;
 
 import android.content.Context;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -94,6 +96,13 @@ public class CourseOfDayAdapter extends RecyclerView.Adapter<CourseOfDayAdapter.
 
         setIcon(courseOfDayList.get(position).getWeatherID(), holder.weather, isDay);
         holder.humidity.setText(StringFormatUtils.formatInt(courseOfDayList.get(position).getHumidity(), context.getString(R.string.units_rh)));
+
+        SharedPreferences prefManager = PreferenceManager.getDefaultSharedPreferences(context);
+        if (prefManager.getBoolean("pref_showPressure", false)){
+            holder.pressure.setText(StringFormatUtils.formatInt(courseOfDayList.get(position).getPressure(),context.getString(R.string.units_hPa)));
+            holder.pressure.setVisibility(View.VISIBLE);
+        } else holder.pressure.setVisibility(View.GONE);
+
         holder.temperature.setText(StringFormatUtils.formatTemperature(context, courseOfDayList.get(position).getTemperature()));
         holder.wind_speed.setText(StringFormatUtils.formatWindSpeed(context, courseOfDayList.get(position).getWindSpeed()));
         holder.wind_speed.setBackground(StringFormatUtils.colorWindSpeed(context, courseOfDayList.get(position).getWindSpeed()));
@@ -138,6 +147,7 @@ public class CourseOfDayAdapter extends RecyclerView.Adapter<CourseOfDayAdapter.
         ImageView weather;
         TextView temperature;
         TextView humidity;
+        TextView pressure;
         TextView precipitation;
         TextView wind_speed;
         ImageView wind_direction;
@@ -149,6 +159,7 @@ public class CourseOfDayAdapter extends RecyclerView.Adapter<CourseOfDayAdapter.
             weather = itemView.findViewById(R.id.course_of_day_weather);
             temperature = itemView.findViewById(R.id.course_of_day_temperature);
             humidity = itemView.findViewById(R.id.course_of_day_humidity);
+            pressure = itemView.findViewById(R.id.course_of_day_pressure);
             precipitation = itemView.findViewById(R.id.course_of_day_precipitation);
             wind_speed = itemView.findViewById(R.id.course_of_day_wind_speed);
             wind_direction = itemView.findViewById(R.id.course_of_day_wind_direction);

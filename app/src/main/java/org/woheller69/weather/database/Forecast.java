@@ -158,7 +158,7 @@ public class Forecast {
     /**
      * @return Returns the air pressure value in hectopascal (hPa).
      */
-    float getPressure() {
+    public float getPressure() {
         return pressure;
     }
 

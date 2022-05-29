@@ -57,6 +57,12 @@
             />
 
         <SwitchPreference
+            android:key="pref_showPressure"
+            android:title="@string/settings_show_pressure"
+            android:defaultValue="false"
+            />
+
+        <SwitchPreference
             android:key="pref_TimeFormat"
             android:title="@string/settings_time24h"
             android:summary="@string/summary_time24h"

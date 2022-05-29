@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center" />
 
-    <Space
+    <androidx.legacy.widget.Space
         android:layout_width="match_parent"
         android:layout_height="10dp" />
 
@@ -54,7 +54,15 @@
         android:text="xy %rh"
         android:textColor="@color/colorPrimaryDark"
         android:textAppearance="?android:attr/textAppearanceMedium" />
-
+    <TextView
+        android:id="@+id/week_forecast_pressure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="3dp"
+        android:text="xy hPa"
+        android:textColor="@color/colorPrimaryDark"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
     <TextView
         android:id="@+id/week_forecast_precipitation"
         android:layout_width="wrap_content"

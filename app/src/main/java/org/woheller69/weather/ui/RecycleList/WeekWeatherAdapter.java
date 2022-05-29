@@ -3,7 +3,9 @@ package org.woheller69.weather.ui.RecycleList;
 import android.content.Context;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.RecyclerView;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -89,6 +91,12 @@ public class WeekWeatherAdapter extends RecyclerView.Adapter<WeekWeatherAdapter.
         setIcon((int) dayValues[9], holder.weather, isDay);
         holder.humidity.setText(StringFormatUtils.formatInt(dayValues[2],context.getString(R.string.units_rh)));
 
+        SharedPreferences prefManager = PreferenceManager.getDefaultSharedPreferences(context);
+        if (prefManager.getBoolean("pref_showPressure", false)){
+            holder.pressure.setText(StringFormatUtils.formatInt(dayValues[3],context.getString(R.string.units_hPa)));
+            holder.pressure.setVisibility(View.VISIBLE);
+        } else holder.pressure.setVisibility(View.GONE);
+
         if (dayValues[4] == 0)
             holder.precipitation.setText("-");
         else
@@ -131,6 +139,7 @@ public class WeekWeatherAdapter extends RecyclerView.Adapter<WeekWeatherAdapter.
         TextView temperature_max;
         TextView temperature_min;
         TextView humidity;
+        TextView pressure;
         TextView wind_speed;
         TextView precipitation;
         TextView uv_index;
@@ -145,6 +154,7 @@ public class WeekWeatherAdapter extends RecyclerView.Adapter<WeekWeatherAdapter.
             temperature_min = itemView.findViewById(R.id.week_forecast_temperature_min);
             temperature_min.setTextColor(ContextCompat.getColor(context,R.color.midblue));
             humidity = itemView.findViewById(R.id.week_forecast_humidity);
+            pressure = itemView.findViewById(R.id.week_forecast_pressure);
             wind_speed = itemView.findViewById(R.id.week_forecast_wind_speed);
             precipitation = itemView.findViewById(R.id.week_forecast_precipitation);
             uv_index = itemView.findViewById(R.id.week_forecast_uv_index);
