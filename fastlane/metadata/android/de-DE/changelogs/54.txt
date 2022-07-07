@@ -1,0 +1,3 @@
+Option für Luftdruck im Tages- und Wochenverlauf
+Bibliotheken geändert
+Bugfixes
