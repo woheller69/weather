@@ -1,23 +1,36 @@
 package org.woheller69.weather.activities;
 
+import static java.lang.Boolean.TRUE;
+
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
+
+import androidx.core.app.ActivityCompat;
 import androidx.preference.PreferenceManager;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
+
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.TextView;
 
 import org.woheller69.weather.R;
+import org.woheller69.weather.database.CityToWatch;
 import org.woheller69.weather.database.CurrentWeatherData;
 import org.woheller69.weather.database.Forecast;
 import org.woheller69.weather.database.PFASQLiteHelper;
@@ -25,13 +38,17 @@ import org.woheller69.weather.database.WeekForecast;
 import org.woheller69.weather.ui.updater.IUpdateableCityUI;
 import org.woheller69.weather.ui.updater.ViewUpdater;
 import org.woheller69.weather.ui.viewPager.WeatherPagerAdapter;
+import org.woheller69.weather.widget.WeatherWidget;
 
 import java.lang.reflect.Field;
 import java.util.List;
+import java.util.Locale;
 
 public class ForecastCityActivity extends NavigationActivity implements IUpdateableCityUI {
     private WeatherPagerAdapter pagerAdapter;
-
+    private static LocationListener locationListenerGPS;
+    private LocationManager locationManager;
+    private static MenuItem updateLocationButton;
     private static MenuItem refreshActionButton;
     private MenuItem rainviewerButton;
 
@@ -39,6 +56,7 @@ public class ForecastCityActivity extends NavigationActivity implements IUpdatea
     private ViewPager2 viewPager2;
     private TabLayout tabLayout;
     private TextView noCityText;
+    Context context;
 
     @Override
     protected void onPause() {
@@ -85,13 +103,14 @@ public class ForecastCityActivity extends NavigationActivity implements IUpdatea
                 WeatherPagerAdapter.refreshSingleData(getApplicationContext(),true, cityId); //only update current tab at start
                 ForecastCityActivity.startRefreshAnimation();
             }
-            viewPager2.setCurrentItem(pagerAdapter.getPosForCityID(cityId));
+            if (viewPager2.getCurrentItem()!=pagerAdapter.getPosForCityID(cityId)) viewPager2.setCurrentItem(pagerAdapter.getPosForCityID(cityId),false);
         }
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        context=this;
         setContentView(R.layout.activity_forecast_city);
         overridePendingTransition(0, 0);
 
@@ -131,7 +150,7 @@ public class ForecastCityActivity extends NavigationActivity implements IUpdatea
 
     private void initResources() {
         viewPager2 = findViewById(R.id.viewPager2);
-        reduceViewpager2DragSensitivity(viewPager2,3);
+        reduceViewpager2DragSensitivity(viewPager2,2);
         tabLayout = findViewById(R.id.tab_layout);
         pagerAdapter = new WeatherPagerAdapter(this, getSupportFragmentManager(),getLifecycle());
         noCityText = findViewById(R.id.noCitySelectedText);
@@ -148,23 +167,37 @@ public class ForecastCityActivity extends NavigationActivity implements IUpdatea
         getMenuInflater().inflate(R.menu.activity_forecast_city, menu);
 
         final Menu m = menu;
+        SharedPreferences prefManager = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        updateLocationButton = menu.findItem(R.id.menu_update_location);
+        PFASQLiteHelper db = PFASQLiteHelper.getInstance(this);
+        if(prefManager.getBoolean("pref_GPS", true)==TRUE && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED && !db.getAllCitiesToWatch().isEmpty()) {
+            updateLocationButton.setVisible(true);
+            updateLocationButton.setActionView(R.layout.menu_update_location_view);
+            updateLocationButton.getActionView().clearAnimation();
+            if (locationListenerGPS!=null) {  //GPS still trying to get new location
+                if (updateLocationButton != null && updateLocationButton.getActionView() != null) {
+                    startUpdateLocatationAnimation();
+                }
+            }
+            updateLocationButton.getActionView().setOnClickListener(v -> m.performIdentifierAction(updateLocationButton.getItemId(), 0));
+        }else{
+            if (locationListenerGPS!=null) {
+                locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+                if (locationListenerGPS!=null) locationManager.removeUpdates(locationListenerGPS);
+            }
+            locationListenerGPS=null;
+            if (updateLocationButton != null && updateLocationButton.getActionView() != null) {
+                updateLocationButton.getActionView().clearAnimation();
+            }
+        }
 
         refreshActionButton = menu.findItem(R.id.menu_refresh);
         refreshActionButton.setActionView(R.layout.menu_refresh_action_view);
-        refreshActionButton.getActionView().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                m.performIdentifierAction(refreshActionButton.getItemId(), 0);
-            }
-        });
+        refreshActionButton.getActionView().setOnClickListener(v -> m.performIdentifierAction(refreshActionButton.getItemId(), 0));
+
         rainviewerButton = menu.findItem(R.id.menu_rainviewer);
         rainviewerButton.setActionView(R.layout.menu_rainviewer_view);
-        rainviewerButton.getActionView().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                m.performIdentifierAction(rainviewerButton.getItemId(), 0);
-            }
-        });
+        rainviewerButton.getActionView().setOnClickListener(v -> m.performIdentifierAction(rainviewerButton.getItemId(), 0));
 
         return true;
     }
@@ -189,6 +222,54 @@ public class ForecastCityActivity extends NavigationActivity implements IUpdatea
             if (!db.getAllCitiesToWatch().isEmpty()) {  //only if at least one city is watched, otherwise crash
                 WeatherPagerAdapter.refreshSingleData(getApplicationContext(),true, pagerAdapter.getCityIDForPos(viewPager2.getCurrentItem()));
                 ForecastCityActivity.startRefreshAnimation();
+            }
+        } else if (id==R.id.menu_update_location) {
+            if (!db.getAllCitiesToWatch().isEmpty()) {  //only if at least one city is watched, otherwise crash
+                locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+                SharedPreferences prefManager = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                if (prefManager.getBoolean("pref_GPS", true) == TRUE && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                    if (locationListenerGPS == null) {
+                        Log.d("GPS", "Listener null");
+                        locationListenerGPS = new LocationListener() {
+                            @Override
+                            public void onLocationChanged(android.location.Location location) {
+                                Log.d("GPS", "Location changed");
+                                PFASQLiteHelper db = PFASQLiteHelper.getInstance(context);
+                                CityToWatch city = db.getCityToWatch(WeatherWidget.getWidgetCityID(context));
+                                city.setLatitude((float) location.getLatitude());
+                                city.setLongitude((float) location.getLongitude());
+                                city.setCityName(String.format(Locale.getDefault(), "%.2f° / %.2f°", location.getLatitude(), location.getLongitude()));
+                                db.updateCityToWatch(city);
+                                db.deleteForecastsByCityId(WeatherWidget.getWidgetCityID(context));
+                                tabLayout.getTabAt(0).setText(city.getCityName());
+                                WeatherPagerAdapter.refreshSingleData(getApplicationContext(), true, WeatherWidget.getWidgetCityID(context));
+                                ForecastCityActivity.startRefreshAnimation();
+                                if (locationListenerGPS != null)
+                                    locationManager.removeUpdates(locationListenerGPS);
+                                locationListenerGPS = null;
+                                if (updateLocationButton != null && updateLocationButton.getActionView() != null) {
+                                    updateLocationButton.getActionView().clearAnimation();
+                                }
+                            }
+
+                            @Deprecated
+                            @Override
+                            public void onStatusChanged(String provider, int status, Bundle extras) {
+                            }
+
+                            @Override
+                            public void onProviderEnabled(String provider) {
+                            }
+
+                            @Override
+                            public void onProviderDisabled(String provider) {
+                            }
+                        };
+                        Log.d("GPS", "Request Updates");
+                        ForecastCityActivity.startUpdateLocatationAnimation();
+                        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 0, locationListenerGPS);
+                    }
+                }
             }
         }
 
@@ -249,6 +330,38 @@ public class ForecastCityActivity extends NavigationActivity implements IUpdatea
                     }
                 });
                 refreshActionButton.getActionView().startAnimation(rotate);
+            }
+        }
+    }
+
+    public static void startUpdateLocatationAnimation(){
+        {
+            if(updateLocationButton !=null && updateLocationButton.getActionView() != null) {
+                Animation blink = new AlphaAnimation(1, 0); // Change alpha from fully visible to invisible
+                blink.setDuration(1000);
+                blink.setRepeatCount(Animation.INFINITE);
+                blink.setInterpolator(new LinearInterpolator());
+                blink.setRepeatMode(Animation.REVERSE);
+                blink.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+                        updateLocationButton.getActionView().setActivated(false);
+                        updateLocationButton.getActionView().setEnabled(false);
+                        updateLocationButton.getActionView().setClickable(false);
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        updateLocationButton.getActionView().setActivated(true);
+                        updateLocationButton.getActionView().setEnabled(true);
+                        updateLocationButton.getActionView().setClickable(true);
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+                    }
+                });
+                updateLocationButton.getActionView().startAnimation(blink);
             }
         }
     }

@@ -159,5 +159,6 @@
     <string name="dialog_Later_button">Maybe later</string>
     <string name="dialog_StarOnGitHub">Do you like this app? Please star it on GitHub.</string>
     <string name="settings_show_pressure">Show air pressure</string>
+    <string name="action_position" translatable="false">Update Location</string>
 
 </resources>
