@@ -37,6 +37,7 @@ import javax.net.ssl.TrustManagerFactory;
 public class VolleyHttpRequest implements IHttpRequest {
 
     private Context context;
+    private int cityId;
 
     /**
      * Constructor.
@@ -44,8 +45,10 @@ public class VolleyHttpRequest implements IHttpRequest {
      * @param context Volley needs a context "for creating the cache dir".
      * @see Volley#newRequestQueue(Context)
      */
-    public VolleyHttpRequest(Context context) {
+    public VolleyHttpRequest(Context context, int cityId) {
+
         this.context = context;
+        this.cityId = cityId;
     }
 
     /**
@@ -79,7 +82,7 @@ public class VolleyHttpRequest implements IHttpRequest {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        requestProcessor.processSuccessScenario(response);
+                        requestProcessor.processSuccessScenario(response,cityId);
                     }
                 },
                 new Response.ErrorListener() {

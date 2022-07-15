@@ -13,7 +13,7 @@ public interface IProcessHttpRequest {
      *
      * @param response The response of the HTTP request.
      */
-    void processSuccessScenario(String response);
+    void processSuccessScenario(String response, int cityId);
 
     /**
      * This method will be executed in case any error arose while executing the HTTP request.

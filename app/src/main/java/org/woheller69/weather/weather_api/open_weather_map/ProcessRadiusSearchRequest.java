@@ -49,10 +49,10 @@ public class ProcessRadiusSearchRequest implements IProcessHttpRequest {
     }
 
     /**
-     * @see IProcessHttpRequest#processSuccessScenario(String)
+     * @see IProcessHttpRequest#processSuccessScenario(String,int)
      */
     @Override
-    public void processSuccessScenario(String response) {
+    public void processSuccessScenario(String response, int cityId) {
         // The following value is the fifth parameter for the bounding box and represents the
         // map zoom, as explained here as of 2016-08-12:
         // https://github.com/renkun-ken/rlist-tutorial/blob/master/Examples/Weather-API.Rmd
@@ -131,10 +131,10 @@ public class ProcessRadiusSearchRequest implements IProcessHttpRequest {
         }
 
         /**
-         * @see IProcessHttpRequest#processSuccessScenario(String)
+         * @see IProcessHttpRequest#processSuccessScenario(String,int)
          */
         @Override
-        public void processSuccessScenario(String response) {
+        public void processSuccessScenario(String response, int cityId) {
             // Retrieve all weather information
             List<RadiusSearchItem> radiusItems = new ArrayList<>();
             IDataExtractor extractor = new OwmDataExtractor();

@@ -66,7 +66,7 @@ public class ProcessOwmForecastOneCallAPIRequest implements IProcessHttpRequest 
      * @param response The response of the HTTP request.
      */
     @Override
-    public void processSuccessScenario(String response) {
+    public void processSuccessScenario(String response, int cityId) {
         IDataExtractor extractor = new OwmDataExtractor();
         try {
             JSONObject json = new JSONObject(response);
@@ -75,23 +75,7 @@ public class ProcessOwmForecastOneCallAPIRequest implements IProcessHttpRequest 
  //           Log.d("URL JSON",Float.toString(lat));
  //           Log.d("URL JSON",Float.toString(lon));
 
-            ArrayList<Integer> CityIDList = new ArrayList<Integer>();
 
-            int cityId=0;
-            //find CityID from lat/lon
-            List<CityToWatch> citiesToWatch = dbHelper.getAllCitiesToWatch();
-            for (int i = 0; i < citiesToWatch.size(); i++) {
-                CityToWatch city = citiesToWatch.get(i);
-                //if lat/lon of json response very close to lat/lon in citytowatch
-                //OpenWeatherMaps rounds to 2 decimal places, so the response lat/lon should differ by <=0.005
-                if ((Math.abs(city.getLatitude() - lat)<=0.005) && (Math.abs(city.getLongitude() - lon)<=0.005)) {
-                    cityId=city.getCityId();
-                    CityIDList.add(cityId);
-                }
-            }
-
-            for (int c=0; c<CityIDList.size();c++) {
-                cityId=CityIDList.get(c);
                 String rain60min=null;
                 if (json.has("minutely")) {
                     rain60min = "";
@@ -185,12 +169,12 @@ public class ProcessOwmForecastOneCallAPIRequest implements IProcessHttpRequest 
                     }
                 }
                 possiblyUpdateWidgets(cityId, weatherData, weekforecasts,hourlyforecasts);
-            }
+
                 //ViewUpdater.updateForecasts(hourlyforecasts);  //this is not done here anymore. updateForecasts will be called when also the 3h forecast for the time after 48h is retrieved
 
                 //now also request forecasts for the time after 48h from 5day/3h forecast API. These will be appended to the forecasts retrieved above.
                 IHttpRequestForForecast forecastRequest = new OwmHttpRequestForForecast(context);
-                forecastRequest.perform(lat,lon);
+                forecastRequest.perform(lat,lon,cityId);
         } catch (JSONException e) {
             e.printStackTrace();
         }

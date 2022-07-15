@@ -28,8 +28,8 @@ public class OwmHttpRequestForOneCallAPI extends OwmHttpRequest implements IHttp
 
 
     @Override
-    public void perform(float lat, float lon) {
-        IHttpRequest httpRequest = new VolleyHttpRequest(context);
+    public void perform(float lat, float lon, int cityId) {
+        IHttpRequest httpRequest = new VolleyHttpRequest(context, cityId);
         final String URL = getUrlForQueryingOneCallAPI(context, lat, lon);
         httpRequest.make(URL, HttpRequestType.GET, new ProcessOwmForecastOneCallAPIRequest(context));
     }

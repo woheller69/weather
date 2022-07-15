@@ -10,6 +10,6 @@ public interface IHttpRequestForForecast {
      * @param lat The latitude of the city to get the data for.
      * @param lon The longitude of the city to get the data for.
      */
-    void perform(float lat, float lon);
+    void perform(float lat, float lon, int cityId);
 
 }

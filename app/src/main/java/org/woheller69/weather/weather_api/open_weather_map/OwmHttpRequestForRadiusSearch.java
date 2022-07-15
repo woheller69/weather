@@ -28,7 +28,7 @@ public class OwmHttpRequestForRadiusSearch extends OwmHttpRequest implements IHt
 
     @Override
     public void perform(float lat, float lon, int edgeLength, int resultCount) {
-        IHttpRequest httpRequest = new VolleyHttpRequest(context);
+        IHttpRequest httpRequest = new VolleyHttpRequest(context, -1);
         final String URL = getUrlForQueryingSingleCity(context, lat, lon, false);
         httpRequest.make(URL, HttpRequestType.GET, new ProcessRadiusSearchRequest(context, edgeLength, resultCount));
     }
@@ -65,7 +65,7 @@ public class OwmHttpRequestForRadiusSearch extends OwmHttpRequest implements IHt
         @Override
         public void perform() {
             // In the second step the actual weather data are fetched and processed
-            IHttpRequest httpRequest = new VolleyHttpRequest(context);
+            IHttpRequest httpRequest = new VolleyHttpRequest(context, -1);
             final String URL = getUrlForQueryingRadiusSearch(context, boundingBox, mapZoom);
             httpRequest.make(
                     URL,

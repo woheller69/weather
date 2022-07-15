@@ -115,10 +115,10 @@ public class UpdateDataService extends JobIntentService {
             int choice = Integer.parseInt(prefManager.getString("forecastChoice","1"));
             if (choice==1) {
                 IHttpRequestForForecast forecastRequest = new OwmHttpRequestForForecast(getApplicationContext());
-                forecastRequest.perform(lat, lon);
+                forecastRequest.perform(lat, lon, cityId);
             }
             IHttpRequestForOneCallAPI forecastOneCallRequest = new OwmHttpRequestForOneCallAPI(getApplicationContext());
-            forecastOneCallRequest.perform(lat,lon);
+            forecastOneCallRequest.perform(lat,lon, cityId);
         }
     }
 
