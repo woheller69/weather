@@ -133,7 +133,7 @@ public class ForecastCityActivity extends NavigationActivity implements IUpdatea
                     WeatherPagerAdapter.refreshSingleData(getApplicationContext(),true, pagerAdapter.getCityIDForPos(position));
                     ForecastCityActivity.startRefreshAnimation();
                 }
-                viewPager2.setNextFocusRightId(position);
+                pagerAdapter.notifyItemChanged(position);  //fix crash with StaggeredGridLayoutManager when moving back and forth between items
                 cityId=pagerAdapter.getCityIDForPos(viewPager2.getCurrentItem());  //save current cityId for next resume
             }
 
