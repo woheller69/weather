@@ -504,9 +504,10 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
 
             holder.lineChartView.show();
 
+            step = (int) Math.ceil((Math.max(10,pmax*2))/4);
             holder.barChartView.addData(precipitation);
             holder.barChartView.setBarSpacing(0);
-            holder.barChartView.setAxisBorderValues(0,(int) Math.max(10,pmax*2));  //scale down in case of high precipitation, limit to lower half of chart
+            holder.barChartView.setAxisBorderValues(0, step*4);  //scale down in case of high precipitation, limit to lower half of chart
             holder.barChartView.setXAxis(false);
             holder.barChartView.setYAxis(false);
             holder.barChartView.setYLabels(AxisController.LabelPosition.NONE); //no labels for precipitation
@@ -527,8 +528,8 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
 
             holder.barChartViewAxis.addData(precipitationAxis);
             holder.barChartViewAxis.setBarSpacing(0);
-            holder.barChartViewAxis.setAxisBorderValues(0,(int) Math.max(10,pmax*2));  //scale down in case of high precipitation, limit to lower half of chart
-            holder.barChartViewAxis.setStep(Math.max(1, (int) Math.ceil(Math.max(10,pmax*2))/4));
+            holder.barChartViewAxis.setAxisBorderValues(0, step*4);  //scale down in case of high precipitation, limit to lower half of chart
+            holder.barChartViewAxis.setStep(step);
             holder.barChartViewAxis.setXAxis(false);
             holder.barChartViewAxis.setYAxis(false);
             holder.barChartViewAxis.setYLabels(AxisController.LabelPosition.OUTSIDE); // labels for precipitation at the right
