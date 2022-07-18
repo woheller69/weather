@@ -147,4 +147,5 @@
     <string name="dialog_Later_button">Quizas mas tarde</string>
     <string name="dialog_StarOnGitHub">¿Te gusta esta app? Asigne una estrella en GitHub.</string>
     <string name="settings_show_pressure">Mostrar presión de aire</string>
+    <string name="settings_GPS_manual">Solo actualización manual</string>
 </resources>

@@ -146,4 +146,5 @@
     <string name="dialog_Later_button">Может быть позже</string>
     <string name="dialog_StarOnGitHub">Вам нравится это приложение? Добавить звездочку в GitHub.</string>
     <string name="settings_show_pressure">Показать давление воздуха</string>
+    <string name="settings_GPS_manual">Только ручное обновление</string>
 </resources>

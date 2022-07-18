@@ -98,6 +98,11 @@
             android:summary="@string/settings_GPS_summary"
             android:defaultValue="false"
             />
+        <SwitchPreference
+            android:key="pref_GPS_manual"
+            android:title="@string/settings_GPS_manual"
+            android:defaultValue="false"
+            />
     </PreferenceCategory>
 
 </PreferenceScreen>
