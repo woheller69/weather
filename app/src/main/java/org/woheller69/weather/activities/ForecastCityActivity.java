@@ -70,8 +70,6 @@ public class ForecastCityActivity extends NavigationActivity implements IUpdatea
     protected void onResume() {
         super.onResume();
 
-        initResources();
-
         PFASQLiteHelper db = PFASQLiteHelper.getInstance(this);
         if (db.getAllCitiesToWatch().isEmpty()) {
             // no cities selected.. don't show the viewPager - rather show a text that tells the user that no city was selected
@@ -91,7 +89,7 @@ public class ForecastCityActivity extends NavigationActivity implements IUpdatea
 
         if (pagerAdapter.getItemCount()>0) {  //only if at least one city is watched
              //if pagerAdapter has item with current cityId go there, otherwise use cityId from current item
-            if (pagerAdapter.getPosForCityID(cityId)==0) cityId=pagerAdapter.getCityIDForPos(viewPager2.getCurrentItem());
+            if (pagerAdapter.getPosForCityID(cityId)==-1) cityId=pagerAdapter.getCityIDForPos(viewPager2.getCurrentItem());
             CurrentWeatherData currentWeather = db.getCurrentWeatherByCityId(cityId);
 
             long timestamp = currentWeather.getTimestamp();
@@ -133,7 +131,10 @@ public class ForecastCityActivity extends NavigationActivity implements IUpdatea
                     WeatherPagerAdapter.refreshSingleData(getApplicationContext(),true, pagerAdapter.getCityIDForPos(position));
                     ForecastCityActivity.startRefreshAnimation();
                 }
-                pagerAdapter.notifyItemChanged(position);  //fix crash with StaggeredGridLayoutManager when moving back and forth between items
+                //post method needed to avoid Illegal State Exception: Cannot call this method in a scroll callback.
+                viewPager2.post(() -> {
+                    pagerAdapter.notifyItemChanged(position);  //fix crash with StaggeredGridLayoutManager when moving back and forth between items
+                });
                 cityId=pagerAdapter.getCityIDForPos(viewPager2.getCurrentItem());  //save current cityId for next resume
             }
 
@@ -145,7 +146,10 @@ public class ForecastCityActivity extends NavigationActivity implements IUpdatea
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         setIntent(intent);
-        if (intent.hasExtra("cityId")) cityId = intent.getIntExtra("cityId",-1);
+        if (intent.hasExtra("cityId")) {
+            cityId = intent.getIntExtra("cityId",-1);
+            if (pagerAdapter.getItemCount()>0) viewPager2.setCurrentItem(pagerAdapter.getPosForCityID(cityId),false);
+        }
     }
 
     private void initResources() {
@@ -241,6 +245,7 @@ public class ForecastCityActivity extends NavigationActivity implements IUpdatea
                                 city.setCityName(String.format(Locale.getDefault(), "%.2f° / %.2f°", location.getLatitude(), location.getLongitude()));
                                 db.updateCityToWatch(city);
                                 db.deleteForecastsByCityId(WeatherWidget.getWidgetCityID(context));
+                                pagerAdapter.loadCities();
                                 tabLayout.getTabAt(0).setText(city.getCityName());
                                 WeatherPagerAdapter.refreshSingleData(getApplicationContext(), true, WeatherWidget.getWidgetCityID(context));
                                 ForecastCityActivity.startRefreshAnimation();

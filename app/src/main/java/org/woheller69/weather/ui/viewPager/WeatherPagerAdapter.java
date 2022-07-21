@@ -19,7 +19,6 @@ import org.woheller69.weather.ui.WeatherCityFragment;
 import org.woheller69.weather.ui.updater.IUpdateableCityUI;
 
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import static androidx.core.app.JobIntentService.enqueueWork;
@@ -53,19 +52,12 @@ public class WeatherPagerAdapter extends FragmentStateAdapter implements IUpdate
         this.mContext = context;
         this.database = PFASQLiteHelper.getInstance(context);
         this.currentWeathers = database.getAllCurrentWeathers();
-        this.cities = database.getAllCitiesToWatch();
-        try {
-            cities = database.getAllCitiesToWatch();
-            Collections.sort(cities, new Comparator<CityToWatch>() {
-                @Override
-                public int compare(CityToWatch o1, CityToWatch o2) {
-                    return o1.getRank() - o2.getRank();
-                }
+        loadCities();
+    }
 
-            });
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-        }
+    public void loadCities() {
+        this.cities = database.getAllCitiesToWatch();
+        Collections.sort(cities, (o1, o2) -> o1.getRank() - o2.getRank());
     }
 
     @NonNull
@@ -137,7 +129,7 @@ public class WeatherPagerAdapter extends FragmentStateAdapter implements IUpdate
                 return i;
             }
         }
-        return 0;
+        return -1;  //item not found
     }
 
     public float getLatForPos(int pos) {
