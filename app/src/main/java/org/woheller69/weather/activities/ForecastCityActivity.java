@@ -244,11 +244,12 @@ public class ForecastCityActivity extends NavigationActivity implements IUpdatea
                                 city.setLongitude((float) location.getLongitude());
                                 city.setCityName(String.format(Locale.getDefault(), "%.2f° / %.2f°", location.getLatitude(), location.getLongitude()));
                                 db.updateCityToWatch(city);
+                                db.deleteWeekForecastsByCityId(WeatherWidget.getWidgetCityID(context));
+                                db.deleteCurrentWeatherByCityId(WeatherWidget.getWidgetCityID(context));
                                 db.deleteForecastsByCityId(WeatherWidget.getWidgetCityID(context));
                                 pagerAdapter.loadCities();
+                                viewPager2.setAdapter(pagerAdapter);
                                 tabLayout.getTabAt(0).setText(city.getCityName());
-                                WeatherPagerAdapter.refreshSingleData(getApplicationContext(), true, WeatherWidget.getWidgetCityID(context));
-                                ForecastCityActivity.startRefreshAnimation();
                                 if (locationListenerGPS != null)
                                     locationManager.removeUpdates(locationListenerGPS);
                                 locationListenerGPS = null;
