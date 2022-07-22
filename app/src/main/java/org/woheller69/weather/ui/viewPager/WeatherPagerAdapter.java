@@ -39,10 +39,9 @@ public class WeatherPagerAdapter extends FragmentStateAdapter implements IUpdate
     private Context mContext;
 
     private PFASQLiteHelper database;
-    long lastUpdateTime;
 
     private List<CityToWatch> cities;
-    private List<CurrentWeatherData> currentWeathers;
+
 
     private static int[] mDataSetTypes = {OVERVIEW, DETAILS, DAY, WEEK, CHART}; //TODO Make dynamic from Settings
     private static int[] errorDataSetTypes = {ERROR};
@@ -51,7 +50,7 @@ public class WeatherPagerAdapter extends FragmentStateAdapter implements IUpdate
         super(supportFragmentManager,lifecycle);
         this.mContext = context;
         this.database = PFASQLiteHelper.getInstance(context);
-        this.currentWeathers = database.getAllCurrentWeathers();
+
         loadCities();
     }
 
@@ -90,21 +89,10 @@ public class WeatherPagerAdapter extends FragmentStateAdapter implements IUpdate
         enqueueWork(context, UpdateDataService.class, 0, intent);
     }
 
-    private CurrentWeatherData findWeatherFromID(List<CurrentWeatherData> currentWeathers, int ID) {
-        for (CurrentWeatherData weather : currentWeathers) {
-            if (weather.getCity_id() == ID) return weather;
-        }
-        return null;
-    }
 
     @Override
     public void processNewCurrentWeatherData(CurrentWeatherData data) {
-        lastUpdateTime = data.getTimestamp();
-        int id = data.getCity_id();
-        CurrentWeatherData old = findWeatherFromID(currentWeathers, id);
-        if (old != null) currentWeathers.remove(old);
-        currentWeathers.add(data);
-        notifyDataSetChanged();
+
     }
 
     @Override
