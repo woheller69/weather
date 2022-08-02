@@ -1,0 +1,2 @@
+Aktualisieren der GPS Position direkt in der App (ohne Widget)
+Bugfixes

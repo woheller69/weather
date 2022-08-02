@@ -1,0 +1,2 @@
+Added option to update GPS location in app (without widget)
+Bugfixes
