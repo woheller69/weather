@@ -21,6 +21,7 @@ import org.woheller69.weather.services.UpdateDataService;
 import org.woheller69.weather.ui.Help.StringFormatUtils;
 import org.woheller69.weather.ui.UiResourceProvider;
 import org.woheller69.weather.weather_api.IApiToDatabaseConversion;
+import static org.woheller69.weather.database.PFASQLiteHelper.getWidgetCityID;
 
 import java.util.Calendar;
 import java.util.List;
@@ -48,21 +49,6 @@ public class WeatherWidget5day extends AppWidgetProvider {
         }
     }
 
-    public static int getWidgetCityID(Context context) {
-        PFASQLiteHelper db = PFASQLiteHelper.getInstance(context);
-        int cityID=0;
-        List<CityToWatch> cities = db.getAllCitiesToWatch();
-        int rank=cities.get(0).getRank();
-        for (int i = 0; i < cities.size(); i++) {   //find cityID for first city to watch = lowest Rank
-            CityToWatch city = cities.get(i);
-            //Log.d("debugtag",Integer.toString(city.getRank()));
-            if (city.getRank() <= rank ){
-                rank=city.getRank();
-                cityID = city.getCityId();
-            }
-         }
-        return cityID;
-}
 
     public static void updateView(Context context, AppWidgetManager appWidgetManager, RemoteViews views, int appWidgetId, CityToWatch city, List<WeekForecast> weekforecasts) {
 
@@ -180,7 +166,7 @@ public class WeatherWidget5day extends AppWidgetProvider {
         // Enter relevant functionality for when the first widget is created
         PFASQLiteHelper dbHelper = PFASQLiteHelper.getInstance(context);
 
-        int widgetCityID=WeatherWidget.getWidgetCityID(context);
+        int widgetCityID=getWidgetCityID(context);
 
         List<Forecast> forecasts=dbHelper.getForecastsByCityId(widgetCityID);
         List<WeekForecast> weekforecasts=dbHelper.getWeekForecastsByCityId(widgetCityID);

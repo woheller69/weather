@@ -940,4 +940,21 @@ public class PFASQLiteHelper extends SQLiteAssetHelper {
                 new String[]{Integer.toString(cityId)});
         database.close();
     }
+
+    public static int getWidgetCityID(Context context) {
+        PFASQLiteHelper db = PFASQLiteHelper.getInstance(context);
+        int cityID=0;
+        List<CityToWatch> cities = db.getAllCitiesToWatch();
+        int rank=cities.get(0).getRank();
+        for (int i = 0; i < cities.size(); i++) {   //find cityID for first city to watch = lowest Rank
+            CityToWatch city = cities.get(i);
+            //Log.d("debugtag",Integer.toString(city.getRank()));
+            if (city.getRank() <= rank ){
+                rank=city.getRank();
+                cityID = city.getCityId();
+            }
+        }
+        return cityID;
+    }
+
 }

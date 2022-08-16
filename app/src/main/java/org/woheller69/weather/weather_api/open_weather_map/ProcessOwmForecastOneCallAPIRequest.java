@@ -28,6 +28,7 @@ import org.woheller69.weather.weather_api.IHttpRequestForForecast;
 import org.woheller69.weather.weather_api.IProcessHttpRequest;
 import org.woheller69.weather.widget.WeatherWidget;
 import org.woheller69.weather.widget.WeatherWidget5day;
+import static org.woheller69.weather.database.PFASQLiteHelper.getWidgetCityID;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -198,7 +199,7 @@ public class ProcessOwmForecastOneCallAPIRequest implements IProcessHttpRequest 
 
     private void possiblyUpdateWidgets(int cityID, CurrentWeatherData currentWeather, List<WeekForecast> weekforecasts, List<Forecast> hourlyforecasts) {
         //search for widgets with same city ID
-        int widgetCityID=WeatherWidget.getWidgetCityID(context);
+        int widgetCityID=getWidgetCityID(context);
 
         int[] widgetIDs = AppWidgetManager.getInstance(context).getAppWidgetIds(new ComponentName(context, WeatherWidget.class));
 
@@ -218,7 +219,7 @@ public class ProcessOwmForecastOneCallAPIRequest implements IProcessHttpRequest 
         }
 
         //search for 5day widgets with same city ID
-        int widget5dayCityID= WeatherWidget5day.getWidgetCityID(context);
+        int widget5dayCityID= getWidgetCityID(context);
         int[] widget5dayIDs = AppWidgetManager.getInstance(context).getAppWidgetIds(new ComponentName(context, WeatherWidget5day.class));
 
         for (int widgetID : widget5dayIDs) {

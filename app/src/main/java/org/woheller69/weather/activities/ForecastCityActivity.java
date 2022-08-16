@@ -38,7 +38,7 @@ import org.woheller69.weather.database.WeekForecast;
 import org.woheller69.weather.ui.updater.IUpdateableCityUI;
 import org.woheller69.weather.ui.updater.ViewUpdater;
 import org.woheller69.weather.ui.viewPager.WeatherPagerAdapter;
-import org.woheller69.weather.widget.WeatherWidget;
+import static org.woheller69.weather.database.PFASQLiteHelper.getWidgetCityID;
 
 import java.lang.reflect.Field;
 import java.util.List;
@@ -239,14 +239,14 @@ public class ForecastCityActivity extends NavigationActivity implements IUpdatea
                             public void onLocationChanged(android.location.Location location) {
                                 Log.d("GPS", "Location changed");
                                 PFASQLiteHelper db = PFASQLiteHelper.getInstance(context);
-                                CityToWatch city = db.getCityToWatch(WeatherWidget.getWidgetCityID(context));
+                                CityToWatch city = db.getCityToWatch(getWidgetCityID(context));
                                 city.setLatitude((float) location.getLatitude());
                                 city.setLongitude((float) location.getLongitude());
                                 city.setCityName(String.format(Locale.getDefault(), "%.2f° / %.2f°", location.getLatitude(), location.getLongitude()));
                                 db.updateCityToWatch(city);
-                                db.deleteWeekForecastsByCityId(WeatherWidget.getWidgetCityID(context));
-                                db.deleteCurrentWeatherByCityId(WeatherWidget.getWidgetCityID(context));
-                                db.deleteForecastsByCityId(WeatherWidget.getWidgetCityID(context));
+                                db.deleteWeekForecastsByCityId(getWidgetCityID(context));
+                                db.deleteCurrentWeatherByCityId(getWidgetCityID(context));
+                                db.deleteForecastsByCityId(getWidgetCityID(context));
                                 pagerAdapter.loadCities();
                                 viewPager2.setAdapter(pagerAdapter);
                                 tabLayout.getTabAt(0).setText(city.getCityName());
