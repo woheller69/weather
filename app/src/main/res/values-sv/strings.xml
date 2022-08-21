@@ -9,7 +9,6 @@
     <string name="activity_manage">Hantera platser</string>
     <string name="activity_radius_search">Radiussökning</string>
     <string name="action_refresh">Uppdatera</string>
-    <string name="action_rainviewer" translatable="false">Rain Viewer</string>
     <string name="navigation_drawer_open">Öppna navigeringslådan</string>
     <string name="navigation_drawer_close">Stäng navigeringslådan</string>
     <string name="next">Nästa</string>
@@ -18,7 +17,6 @@
     <string name="slide1_text">RadarWeather är en app för att kontrollera det aktuella vädret och prognoserna för dina platser.</string>
     <string name="slide2_heading">Hur</string>
     <string name="slide2_text">Du kan välja dina egna platser och få detaljerad information om det aktuella vädret. En regnradar finns också.</string>
-    <string name="slide3_heading" translatable="false">Github</string>
     <string name="slide3_text">Källkoden för denna app är tillgänglig på GitHub. För ytterligare förklaringar ta en titt på sidan Om.</string>
     <string name="card_details_heading">Nu</string>
     <string name="card_details_humidity">Fuktighet:</string>
@@ -37,11 +35,9 @@
     <string name="about_privacy_heading">Sekretessinformation</string>
     <string name="about_permission_internet_description">Ansluta till nätverket: Denna behörighet behövs eftersom väderdata hämtas genom att göra förfrågningar till servrar på Internet. Utan detta tillstånd kan ingen väderdata tas emot. Valfritt: auktorisering för GPS.</string>
     <string name="about">Handla om</string>
-    <string name="version_number" translatable="false">Version</string>
     <string name="about_license">Licens</string>
     <string name="about_license_text">Denna applikation kommer från Privacy Friendly Weather, utvecklad av forskargruppen SECUSO. Källkod licensierad under GPLv3. Appen använder ikoner från Google Material Design Icons licensierade under Apache License Version 2.0, Leaflet-biblioteket som är licensierat under 2-klausul BSD License, Leaflet.TileLayer.ColorFilter-plugin som är licensierad under MIT License, RainViewer API som är gratis, Android SQLiteAssetHelper-biblioteket (com.readystatesoftware.sqliteasset) som är licensierat under Apache License Version 2.0, AutoSuggestTextViewAPICall som är licensierat under Apache License Version 2.0 och WilliamChart library (com.db.chart) som är licensierat under Apache License version 2.0</string>
     <string name="about_more_info">Mer information finns på:</string>
-    <string name="about_github" translatable="false"><a href="https://github.com/woheller69/weather">Github-Repo</a></string>
     <string name="activity_settings_title">inställningar</string>
     <string name="settings_title_units">Enheter</string>
     <string name="settings_summary_temperature">Ställ in enheten att använda för att visa temperaturer</string>
@@ -55,7 +51,6 @@
     <string name="settings_title_API">API-nyckel</string>
     <string name="settings_description_API">RadarWeather tar emot data från den kostnadsfria tjänsten openweathermap.org. Denna tjänst är begränsad till 1000 samtal per dag. Ange din egen API-nyckel</string>
     <string name="settings_title_API_key">Ange API-nyckel</string>
-    <string name="settings__API_key_default" translatable="false"/>
     <string name="abbreviation_monday">Må.</string>
     <string name="abbreviation_tuesday">Ti.</string>
     <string name="abbreviation_wednesday">On.</string>
@@ -113,7 +108,7 @@
     <string name="settings_forecast_option_1">5 dagar /3h</string>
     <string name="settings_forecast_option_2">2 dagar /1h 3 dagar /3h</string>
     <string name="settings_forecastChoice">Prognos</string>
-    <string name="registerOWM">Väderinformation hämtas från OpenWeatherMap. Ange din API-nyckel i inställningarna. Om du ännu inte har en API-nyckel, tryck på knappen nedan för gratis registrering:</string>
+    <string name="registerOWM">Väderinformation hämtas från OpenWeatherMap. Ange din API-nyckel i inställningarna. Om du ännu inte har en API-nyckel, tryck på knappen nedan för gratis registrering.</string>
     <string name="registerOWMbutton">Registrera gratis</string>
     <string name="monday">Måndag</string>
     <string name="tuesday">Tisdag</string>
@@ -140,10 +135,8 @@
     <string name="edit_location_hint_latitude">Latitud</string>
     <string name="edit_location_hint_longitude">Longitud</string>
     <string name="edit_location_hint_country_code">Landskod</string>
-    <string name="edit_location_hint_ID" translatable="false">ID</string>
     <string name="edit_location_range_error">Värde utanför intervallet</string>
     <string name="settings_search_option_1">Intern stadslista</string>
-    <string name="settings_search_option_2" translatable="false">Photon API</string>
     <string name="settings_search_summary">Sök platser via Photon API eller intern stadslista</string>
     <string name="settings_search">Sök</string>
     <string name="dialog_add_tv">För bättre sökresultat, aktivera onlinesökning via photon API i inställningarna</string>
@@ -162,7 +155,8 @@
     <string name="dialog_StarOnGitHub">Gillar du den här appen? Vänligen stjärna den på GitHub.</string>
     <string name="settings_show_pressure">Visa lufttrycket</string>
     <string name="settings_GPS_manual">Endast manuell uppdatering</string>
+    <string name="settings_register_summary">Du behöver ett gratisabonnemang och OneCallAPI 3.0 med en gräns på 1000 (gratis) samtal per dag.</string>
 
-<!-- Generated by Automatic String Resource Translation -->
+    <!-- Generated by Automatic String Resource Translation -->
 <!--          https://asrt.gluege.boerde.de             -->
 </resources>

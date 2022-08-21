@@ -99,10 +99,7 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
 
     // function for week forecast list
     public void updateWeekForecastData(List<WeekForecast> forecasts) {
-        if (forecasts.isEmpty()) {
-            forecastData = new float[][]{new float[]{0,0,0,0,0,0,0,0,0,0,0}};  //initialize array with one empty row which will not be displayed
-            return;
-        }
+        if (forecasts.isEmpty()) return;
 
         int cityId = forecasts.get(0).getCity_id();
 
@@ -111,9 +108,9 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
 
         //temp max 0, temp min 1, humidity 2, pressure 3, precipitation 4, wind 5, wind direction 6, uv_index 7, forecast time 8, weather ID 9, number of FCs for day 10
 
-        forecastData = new float[9][11];  //must be [9], otherwise last day not displayed
+        forecastData = new float[forecasts.size()][11];
 
-        for (int i=0;i<=7;i++){
+        for (int i=0;i<forecasts.size();i++){
             forecastData[i][0]=forecasts.get(i).getMaxTemperature();
             forecastData[i][1]=forecasts.get(i).getMinTemperature();
             forecastData[i][2]=forecasts.get(i).getHumidity();

@@ -17,6 +17,8 @@ If permission for GPS is given the widget will automatically update position on 
 
 As One Call API only allows 1000 calls per day an own OpenWeatherMap API key is mandatory.
 
+For subscriptions later than Aug 15, 2022 you need a free subscription and OneCallAPI 3.0 with a limit of 1000 (free) calls per day.
+
 Please register for free account at: https://home.openweathermap.org/users/sign_up
 
 [<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" height="75">](https://f-droid.org/de/packages/org.woheller69.weather/)

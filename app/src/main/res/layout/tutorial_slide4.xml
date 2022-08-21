@@ -20,7 +20,7 @@
             android:layout_width="@dimen/img_width_height"
             android:layout_height="@dimen/img_width_height"
             android:background="@drawable/splash_icon" />
-        <Space
+        <androidx.legacy.widget.Space
             android:layout_width="1dp"
             android:layout_height="20dp"/>
 
@@ -35,8 +35,18 @@
             android:textAlignment="center"
             android:textColor="@android:color/white"
             android:textSize="@dimen/slide_desc" />
-
-        <Space
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:paddingLeft="@dimen/desc_padding"
+            android:paddingRight="@dimen/desc_padding"
+            android:text="@string/settings_register_summary"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/slide_desc" />
+        <androidx.legacy.widget.Space
             android:layout_width="1dp"
             android:layout_height="60dp"/>
 

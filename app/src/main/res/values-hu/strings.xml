@@ -9,7 +9,6 @@
     <string name="activity_manage">Helyek kezelése</string>
     <string name="activity_radius_search">Sugár keresés</string>
     <string name="action_refresh">Frissítés</string>
-    <string name="action_rainviewer" translatable="false">Rain Viewer</string>
     <string name="navigation_drawer_open">Nyissa meg a navigációs fiókot</string>
     <string name="navigation_drawer_close">Zárja be a navigációs fiókot</string>
     <string name="next">Következő</string>
@@ -18,7 +17,6 @@
     <string name="slide1_text">A RadarWeather egy olyan alkalmazás, amellyel ellenőrizheti az aktuális időjárást és előrejelzéseket a helyszínekre vonatkozóan.</string>
     <string name="slide2_heading">Hogyan kell</string>
     <string name="slide2_text">Kiválaszthatja saját helyszíneit, és részletes információkat kaphat az aktuális időjárásról. Esőradar is rendelkezésre áll.</string>
-    <string name="slide3_heading" translatable="false">Github</string>
     <string name="slide3_text">Az alkalmazás forráskódja elérhető a GitHub. További magyarázatokért tekintse meg a Névjegy oldalt.</string>
     <string name="card_details_heading">Most</string>
     <string name="card_details_humidity">Páratartalom:</string>
@@ -37,11 +35,9 @@
     <string name="about_privacy_heading">Adatvédelmi információk</string>
     <string name="about_permission_internet_description">Csatlakozás a hálózathoz: Erre az engedélyre azért van szükség, mert az időjárási adatok lekérése az interneten lévő szerverekhez intézett kérések útján történik. Ezen engedély nélkül nem fogadhatók időjárási adatok. Opcionális: GPS engedélyezése.</string>
     <string name="about">Ról ről</string>
-    <string name="version_number" translatable="false">Version</string>
     <string name="about_license">Engedély</string>
     <string name="about_license_text">Ez az alkalmazás a SECUSO kutatócsoport által kifejlesztett Privacy Friendly Weather alkalmazásból származik. A forráskód GPLv3 licenc alatt van. Az alkalmazás az Apache License Version 2.0 licenccel rendelkező Google Material Design Icons ikonjait használja, a Leaflet könyvtárat, amely a 2-clause BSD License alatt, a Leaflet.TileLayer.ColorFilter beépülő modult, amely MIT licenc alatt van licencelve, RainViewer API, amely ingyenes, Android SQLiteAssetHelper könyvtár (com.readystatesoftware.sqliteasset), amely az Apache License Version 2.0, AutoSuggestTextViewAPICall, amely az Apache License Version 2.0 és WilliamChart könyvtár (com.db.chart), amely az Apache License Version 2.0 licenc alatt van.</string>
     <string name="about_more_info">Bővebb információ a következő oldalon található:</string>
-    <string name="about_github" translatable="false"><a href="https://github.com/woheller69/weather">Github-Repo</a></string>
     <string name="activity_settings_title">Beállítások</string>
     <string name="settings_title_units">Egységek</string>
     <string name="settings_summary_temperature">Állítsa be az egységet a hőmérséklet kijelzésére</string>
@@ -55,7 +51,6 @@
     <string name="settings_title_API">API kulcs</string>
     <string name="settings_description_API">A RadarWeather az openweathermap.org ingyenes szolgáltatásától kapja az adatokat. Ez a szolgáltatás napi 1000 hívásra korlátozódik. Kérjük, adja meg saját API-kulcsát</string>
     <string name="settings_title_API_key">Írja be az API kulcsot</string>
-    <string name="settings__API_key_default" translatable="false"/>
     <string name="abbreviation_monday">Hé.</string>
     <string name="abbreviation_tuesday">Ke.</string>
     <string name="abbreviation_wednesday">Sz.</string>
@@ -113,7 +108,7 @@
     <string name="settings_forecast_option_1">5 nap /3 óra</string>
     <string name="settings_forecast_option_2">2 nap /1 óra 3 nap /3 óra</string>
     <string name="settings_forecastChoice">Előrejelzés</string>
-    <string name="registerOWM">Az időjárási információk az OpenWeatherMap származnak. Kérjük, adja meg API-kulcsát a beállításokban. Ha még nem rendelkezik API-kulccsal, kérjük, kattintson az alábbi gombra az ingyenes regisztrációhoz:</string>
+    <string name="registerOWM">Az időjárási információk az OpenWeatherMap származnak. Kérjük, adja meg API-kulcsát a beállításokban. Ha még nem rendelkezik API-kulccsal, kérjük, kattintson az alábbi gombra az ingyenes regisztrációhoz.</string>
     <string name="registerOWMbutton">Ingyenes regisztráció</string>
     <string name="monday">Hétfő</string>
     <string name="tuesday">Kedd</string>
@@ -140,10 +135,8 @@
     <string name="edit_location_hint_latitude">Szélességi kör</string>
     <string name="edit_location_hint_longitude">Hosszúság</string>
     <string name="edit_location_hint_country_code">Ország kód</string>
-    <string name="edit_location_hint_ID" translatable="false">ID</string>
     <string name="edit_location_range_error">Az érték kívül esik a tartományon</string>
     <string name="settings_search_option_1">Belső városlista</string>
-    <string name="settings_search_option_2" translatable="false">Photon API</string>
     <string name="settings_search_summary">Keressen helyeket a Photon API-n vagy a belső városlistán keresztül</string>
     <string name="settings_search">Keresés</string>
     <string name="dialog_add_tv">A jobb keresési eredmények érdekében aktiválja az online keresést a Photon API-n keresztül a beállításokban</string>
@@ -162,7 +155,8 @@
     <string name="dialog_StarOnGitHub">Tetszik ez az alkalmazás? Kérjük, csillagozza meg a GitHub.</string>
     <string name="settings_show_pressure">Mutasd a légnyomást</string>
     <string name="settings_GPS_manual">Csak manuális frissítés</string>
+    <string name="settings_register_summary">Ingyenes előfizetésre és OneCallAPI 3.0-ra van szüksége, napi 1000 (ingyenes) hívás korlátozásával.</string>
 
-<!-- Generated by Automatic String Resource Translation -->
+    <!-- Generated by Automatic String Resource Translation -->
 <!--          https://asrt.gluege.boerde.de             -->
 </resources>

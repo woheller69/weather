@@ -168,7 +168,6 @@ public class WeatherWidget5day extends AppWidgetProvider {
 
         int widgetCityID=getWidgetCityID(context);
 
-        List<Forecast> forecasts=dbHelper.getForecastsByCityId(widgetCityID);
         List<WeekForecast> weekforecasts=dbHelper.getWeekForecastsByCityId(widgetCityID);
 
         int[] widgetIDs = AppWidgetManager.getInstance(context).getAppWidgetIds(new ComponentName(context, WeatherWidget5day.class));

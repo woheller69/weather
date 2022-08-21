@@ -101,7 +101,7 @@
     <string name="settings_forecast_option_1">5 días /3h</string>
     <string name="settings_forecast_option_2">2 días /1h + 3 días /3h</string>
     <string name="settings_forecastChoice">Previsión del tiempo</string>
-    <string name="registerOWM">La información meteorológica se obtiene de OpenWeatherMap. Ingrese su clave API en la configuración. Si aún no tiene una clave API, presione el botón a continuación para registrarse gratis:</string>
+    <string name="registerOWM">La información meteorológica se obtiene de OpenWeatherMap. Ingrese su clave API en la configuración. Si aún no tiene una clave API, presione el botón a continuación para registrarse gratis.</string>
     <string name="registerOWMbutton">Registrate gratis</string>
     <string name="monday">lunes</string>
     <string name="tuesday">martes</string>
@@ -148,4 +148,12 @@
     <string name="dialog_StarOnGitHub">¿Te gusta esta app? Asigne una estrella en GitHub.</string>
     <string name="settings_show_pressure">Mostrar presión de aire</string>
     <string name="settings_GPS_manual">Solo actualización manual</string>
+    <string name="settings_interval_quarter">15 min</string>
+    <string name="settings_interval_half">30 min</string>
+    <string name="settings_interval_one">1 h</string>
+    <string name="settings_interval_two">2 h</string>
+    <string name="settings_interval_six">6 h</string>
+    <string name="settings_interval_twelve">12 h</string>
+    <string name="settings_interval_twentyfour">24 h</string>
+    <string name="settings_register_summary">Necesita una suscripción gratuita y OneCallAPI 3.0 con un límite de 1000 llamadas (gratuitas) por día.</string>
 </resources>

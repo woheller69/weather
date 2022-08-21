@@ -7,7 +7,6 @@
     <string name="activity_manage">Gestisci Località</string>
     <string name="activity_radius_search">Raggio di Ricerca</string>
     <string name="action_refresh">Ricarica</string>
-    <string name="action_rainviewer" translatable="false">Rain Viewer</string>
     <string name="navigation_drawer_open">Apri il drawer di navigazione</string>
     <string name="navigation_drawer_close">Chiudi il drawer di navigazione</string>
     <string name="next">Prossimo</string>
@@ -16,7 +15,6 @@
     <string name="slide1_text">RadarWeather è un\'app per controllare il meteo e le previsioni correnti per le tue posizioni.</string>
     <string name="slide2_heading">Come</string>
     <string name="slide2_text">Puoi scegliere le tue posizioni e ottenere informazioni dettagliate sul tempo corrente. È disponibile anche un radar per la pioggia.</string>
-    <string name="slide3_heading" translatable="false">Github</string>
     <string name="slide3_text">Il codice sorgente di questa app è disponibile su GitHub. Per ulteriori informazioni dai un\'occhiata alla pagina Informazioni.</string>
     <string name="card_details_heading">Ora</string>
     <string name="card_details_humidity">Umidità:</string>
@@ -35,11 +33,9 @@
     <string name="about_privacy_heading">Informazioni sulla privacy</string>
     <string name="about_permission_internet_description">Connessione alla rete: questa autorizzazione è necessaria perché i dati meteorologici vengono recuperati effettuando richieste ai server su Internet. Senza questa autorizzazione, non è possibile ricevere dati meteorologici. Opzionale: autorizzazione per GPS.</string>
     <string name="about">About</string>
-    <string name="version_number" translatable="false">Version</string>
     <string name="about_license">Licenza</string>
     <string name="about_license_text">Questa applicazione è derivata da Privacy Friendly Weather, sviluppata dal gruppo di ricerca SECUSO. Codice sorgente concesso in licenza con GPLv3. L\'app utilizza icone di Google Material Design Icons concesse in licenza con licenza Apache versione 2.0, la libreria Leaflet con licenza 2-clause BSD, il plug-in Leaflet.TileLayer.ColorFilter con licenza MIT, API RainViewer gratuita, Libreria Android SQLiteAssetHelper (com.readystatesoftware.sqliteasset) con licenza Apache License Version 2.0, AutoSuggestTextViewAPICall con licenza Apache License Version 2.0 e libreria WilliamChart (com.db.chart) con licenza Apache License Version 2.0</string>
     <string name="about_more_info">Ulteriori informazioni possono essere trovate su:</string>
-    <string name="about_github" translatable="false"><a href="https://github.com/woheller69/weather">Github-Repo</a></string>
     <string name="activity_settings_title">Impostazioni</string>
     <string name="settings_title_units">Unità</string>
     <string name="settings_summary_temperature">Impostare l\'unità da utilizzare per la visualizzazione delle temperature</string>
@@ -53,7 +49,6 @@
     <string name="settings_title_API">Chiave API</string>
     <string name="settings_description_API">RadarWeather riceve i dati dal servizio gratuito di openweathermap.org. Questo servizio è limitato a 1000 chiamate al giorno. Inserisci la tua chiave API</string>
     <string name="settings_title_API_key">Inserisci chiave API</string>
-    <string name="settings__API_key_default" translatable="false" />
     <string name="abbreviation_monday">Lun.</string>
     <string name="abbreviation_tuesday">Mar.</string>
     <string name="abbreviation_wednesday">Mer.</string>
@@ -111,7 +106,7 @@
     <string name="settings_forecast_option_1">5 giorni / 3h</string>
     <string name="settings_forecast_option_2">2 giorni / 1h + 3 giorni / 3h</string>
     <string name="settings_forecastChoice">Previsioni</string>
-    <string name="registerOWM">Le informazioni meteorologiche vengono recuperate da OpenWeatherMap. Inserisci la tua chiave API nelle impostazioni. Se non disponi ancora di una chiave API, premi il pulsante sottostante per la registrazione gratuita:</string>
+    <string name="registerOWM">Le informazioni meteorologiche vengono recuperate da OpenWeatherMap. Inserisci la tua chiave API nelle impostazioni. Se non disponi ancora di una chiave API, premi il pulsante sottostante per la registrazione gratuita.</string>
     <string name="registerOWMbutton">Registrati gratis</string>
     <string name="monday">Lunedì</string>
     <string name="tuesday">Martedì</string>
@@ -138,7 +133,6 @@
     <string name="edit_location_hint_latitude">Latitudine</string>
     <string name="edit_location_hint_longitude">Longitudine</string>
     <string name="edit_location_hint_country_code">Prefisso internazionale</string>
-    <string name="edit_location_hint_ID" translatable="false">ID</string>
     <string name="edit_location_range_error">Valore fuori intervallo</string>
     <string name="settings_search_option_1">"Lista interna della città"</string>
     <string name="settings_search_summary">Cerca le posizioni tramite l\'API Photon o l\'elenco delle città interne</string>
@@ -159,4 +153,5 @@
     <string name="dialog_StarOnGitHub">Ti piace questa app? Assegna una stella su GitHub.</string>
     <string name="settings_show_pressure">Mostra la pressione dell\'aria</string>
     <string name="settings_GPS_manual">Solo aggiornamento manuale</string>
+    <string name="settings_register_summary">È necessario un abbonamento gratuito e OneCallAPI 3.0 con un limite di 1000 chiamate (gratuite) al giorno.</string>
 </resources> 

@@ -7,7 +7,6 @@
     <string name="activity_manage">Gerenciar locais</string>
     <string name="activity_radius_search">Pesquisar no Radius</string>
     <string name="action_refresh">Atualizar</string>
-    <string name="action_rainviewer" translatable="false">Rain Viewer</string>
     <string name="navigation_drawer_open">Abrir a gaveta de navegação</string>
     <string name="navigation_drawer_close">Fechar a gaveta de navegação</string>
     <string name="next">Próximo</string>
@@ -16,7 +15,6 @@
     <string name="slide1_text">RadarWeather é um App para a verificação das condições do Tempo e as Previsões para seus locais.</string>
     <string name="slide2_heading">Como Fazer</string>
     <string name="slide2_text">Você pode escolher seus próprios locais e obter informações detalhadas sobre o tempo na hora. Um radar de chuvas também está disponível.</string>
-    <string name="slide3_heading" translatable="false">Github</string>
     <string name="slide3_text">O código-fonte deste app está disponível no Gitub. Para obter informações adicionais, veja a página Sobre.</string>
     <string name="card_details_heading">Agora</string>
     <string name="card_details_humidity">Umidade:</string>
@@ -35,11 +33,9 @@
     <string name="about_privacy_heading">Informação de Privacidade</string>
     <string name="about_permission_internet_description">Conectando à rede: Esta permissão é necessária porque os dados do tempo são recuperados através de requisições a servidores na Internet. Sem esta permissão, nenhum dado pode ser recebido. Opcional: autorização ao GPS.</string>
     <string name="about">Sobre</string>
-    <string name="version_number" translatable="false">Version</string>
     <string name="about_license">Licença</string>
     <string name="about_license_text">Esta aplicação é derivada da Privacy Friendly Weather, desenvolvida pelo grupo de pesquisa SECUSO. Código-fonte licenciado sob a licença GPLv3. O app usa ícones do  Google Material Design Icons, licenciados através da Apache License Version 2.0, a biblioteca Leaflet que é licenciada através da cláusula 2 da Licença BSD, o plug-in Leaflet.TileLayer.ColorFilter que é licenciado através da Licença MIT, a API RainViewer que é livre, a biblioteca Android SQLiteAssetHelper (com.readystatesoftware.sqliteasset) que é licenciada através da Licença Apache Versão 2.0, a AutoSuggestTextViewAPICall que é licenciada através da Licença Apache Versão 2.0 e a biblioteca WilliamChart (com.db.chart) que é licenciada através da Licença Apache Versão 2.0</string>
     <string name="about_more_info">Mais informações podem ser encontradas em:</string>
-    <string name="about_github" translatable="false"><a href="https://github.com/woheller69/weather">Github-Repo</a></string>
     <string name="activity_settings_title">Configurações</string>
     <string name="settings_title_units">Unidades</string>
     <string name="settings_summary_temperature">Defina a unidade para usar ao mostrar temperaturas</string>
@@ -53,7 +49,6 @@
     <string name="settings_title_API">Chave da API</string>
     <string name="settings_description_API">O RadarWeather recebe dados do serviço gratuito provido pelo openweathermap.org. Este serviço é limitado a 1000 chamadas por dia. Por favor, digite ou cole a sua própria chave da API.</string>
     <string name="settings_title_API_key">Digite a chave da API</string>
-    <string name="settings__API_key_default" translatable="false" />
     <string name="abbreviation_monday">Seg</string>
     <string name="abbreviation_tuesday">Ter</string>
     <string name="abbreviation_wednesday">Qua</string>
@@ -111,7 +106,7 @@
     <string name="settings_forecast_option_1">5 day / 3h</string>
     <string name="settings_forecast_option_2">2 day / 1h + 3 day / 3h</string>
     <string name="settings_forecastChoice">Previsão</string>
-    <string name="registerOWM">As informações do tempo são recuperadas do OpenWeatherMap. Por favor, digite sua chave da API nas configurações. Se você ainda não tem uma chave da API, pressione o botão abaixo para registrar sua chave gratuitamente:</string>
+    <string name="registerOWM">As informações do tempo são recuperadas do OpenWeatherMap. Por favor, digite sua chave da API nas configurações. Se você ainda não tem uma chave da API, pressione o botão abaixo para registrar sua chave gratuitamente.</string>
     <string name="registerOWMbutton">Registrar gratuitamente</string>
     <string name="monday">Segunda</string>
     <string name="tuesday">Terça</string>
@@ -138,10 +133,8 @@
     <string name="edit_location_hint_latitude">Latitude</string>
     <string name="edit_location_hint_longitude">Longitude</string>
     <string name="edit_location_hint_country_code">Código de país</string>
-    <string name="edit_location_hint_ID" translatable="false">ID</string>
     <string name="edit_location_range_error">Valor fora da faixa</string>
     <string name="settings_search_option_1">Lista interna de cidades</string>
-    <string name="settings_search_option_2" translatable="false">Photon API</string>
     <string name="settings_search_summary">Pesquisar locais via Photon API ou lista interna de cidades</string>
     <string name="settings_search">Pesquisar</string>
     <string name="dialog_add_tv">Por favor, ative a pesquisa online para obter melhores resultados na pesquisa via photon API nas configurações</string>
@@ -160,5 +153,6 @@
     <string name="dialog_StarOnGitHub">Gostou deste app? Dê uma estrela para ele no GitHub.</string>
     <string name="settings_show_pressure">Mostrar pressão do ar</string>
     <string name="settings_GPS_manual">Somente atualização manual</string>
+    <string name="settings_register_summary">Você precisa de uma assinatura gratuita e OneCallAPI 3.0 com um limite de 1.000 chamadas (gratuitas) por dia.</string>
 
 </resources>

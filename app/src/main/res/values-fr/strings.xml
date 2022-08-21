@@ -104,7 +104,7 @@
     <string name="long_press_text">Maintenez et faites glisser pour trier les villes.</string>
     <string name="swipe_to_delete">Balayez pour effacer</string>
     <string name="RainViewer">Radar de pluie</string>
-    <string name="registerOWM">Les informations météorologiques proviennent du OpenWeatherMap. Veuillez saisir votre clé API dans les paramètres. Si vous n\'avez pas encore de clé API, appuyez sur le bouton ci-dessous pour vous inscrire gratuitement:</string>
+    <string name="registerOWM">Les informations météorologiques proviennent du OpenWeatherMap. Veuillez saisir votre clé API dans les paramètres. Si vous n\'avez pas encore de clé API, appuyez sur le bouton ci-dessous pour vous inscrire gratuitement.</string>
     <string name="registerOWMbutton">Inscription gratuite</string>
 
     <string name="monday">Lundi</string>
@@ -152,4 +152,12 @@
     <string name="dialog_StarOnGitHub">Aimez-vous cette application? Veuillez attribuer une étoile sur GitHub.</string>
     <string name="settings_show_pressure">Afficher la pression atmosphérique</string>
     <string name="settings_GPS_manual">Mise à jour manuelle uniquement</string>
+    <string name="settings_interval_quarter">15 min</string>
+    <string name="settings_interval_half">30 min</string>
+    <string name="settings_interval_one">1 h</string>
+    <string name="settings_interval_two">2 h</string>
+    <string name="settings_interval_six">6 h</string>
+    <string name="settings_interval_twelve">12 h</string>
+    <string name="settings_interval_twentyfour">24 h</string>
+    <string name="settings_register_summary">Vous avez besoin d\'un abonnement gratuit et de OneCallAPI 3.0 avec une limite de 1000 appels (gratuits) par jour.</string>
 </resources>

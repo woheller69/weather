@@ -9,7 +9,6 @@
     <string name="activity_manage">Locaties beheren</string>
     <string name="activity_radius_search">Straal zoeken</string>
     <string name="action_refresh">Vernieuwen</string>
-    <string name="action_rainviewer" translatable="false">Rain Viewer</string>
     <string name="navigation_drawer_open">Navigatielade openen</string>
     <string name="navigation_drawer_close">Navigatielade sluiten</string>
     <string name="next">Volgende</string>
@@ -18,7 +17,6 @@
     <string name="slide1_text">RadarWeather is een app om het huidige weer en de voorspellingen voor uw locaties te controleren.</string>
     <string name="slide2_heading">Hoe</string>
     <string name="slide2_text">U kunt uw eigen locaties kiezen en gedetailleerde informatie krijgen over het huidige weer. Er is ook een regenradar beschikbaar.</string>
-    <string name="slide3_heading" translatable="false">Github</string>
     <string name="slide3_text">De broncode van deze app is beschikbaar op GitHub. Kijk voor meer uitleg op de Over-pagina.</string>
     <string name="card_details_heading">nutsvoorzieningen</string>
     <string name="card_details_humidity">Vochtigheid:</string>
@@ -37,11 +35,9 @@
     <string name="about_privacy_heading">Privacy-informatie</string>
     <string name="about_permission_internet_description">Verbinding maken met het netwerk: deze toestemming is nodig omdat weergegevens worden opgehaald door verzoeken te doen aan servers op internet. Zonder deze toestemming kunnen geen weergegevens worden ontvangen. Optioneel: autorisatie voor GPS.</string>
     <string name="about">Over</string>
-    <string name="version_number" translatable="false">Version</string>
     <string name="about_license">Vergunning</string>
     <string name="about_license_text">Deze applicatie is afgeleid van Privacy Friendly Weather, ontwikkeld door de onderzoeksgroep SECUSO. Broncode gelicentieerd onder GPLv3. De app maakt gebruik van pictogrammen van Google Material Design Icons die zijn gelicentieerd onder Apache-licentieversie 2.0, de Leaflet-bibliotheek die is gelicentieerd onder de 2-clausule BSD-licentie, de Leaflet.TileLayer.ColorFilter-plug-in die is gelicentieerd onder de MIT-licentie, RainViewer API die gratis is, Android SQLiteAssetHelper-bibliotheek (com.readystatesoftware.sqliteasset) die is gelicentieerd onder Apache-licentie versie 2.0, AutoSuggestTextViewAPICall die is gelicentieerd onder Apache-licentie versie 2.0 en WilliamChart-bibliotheek (com.db.chart) die is gelicentieerd onder Apache-licentie versie 2.0</string>
     <string name="about_more_info">Meer informatie is te vinden op:</string>
-    <string name="about_github" translatable="false"><a href="https://github.com/woheller69/weather">Github-Repo</a></string>
     <string name="activity_settings_title">Instellingen</string>
     <string name="settings_title_units">Eenheden</string>
     <string name="settings_summary_temperature">Stel het apparaat in dat moet worden gebruikt voor het weergeven van temperaturen</string>
@@ -55,7 +51,6 @@
     <string name="settings_title_API">API sleutel</string>
     <string name="settings_description_API">RadarWeather ontvangt gegevens van de gratis service van openweathermap.org. Deze dienst is beperkt tot 1000 oproepen per dag. Voer uw eigen API-sleutel in</string>
     <string name="settings_title_API_key">API-sleutel invoeren</string>
-    <string name="settings__API_key_default" translatable="false"/>
     <string name="abbreviation_monday">Ma.</string>
     <string name="abbreviation_tuesday">Di.</string>
     <string name="abbreviation_wednesday">Wo.</string>
@@ -113,7 +108,7 @@
     <string name="settings_forecast_option_1">5 dagen /3u</string>
     <string name="settings_forecast_option_2">2 dagen /1 uur 3 dagen /3 uur</string>
     <string name="settings_forecastChoice">Voorspelling</string>
-    <string name="registerOWM">Weerinformatie wordt opgehaald uit OpenWeatherMap. Voer uw API-sleutel in bij instellingen. Als u nog geen API-sleutel heeft, drukt u op onderstaande knop voor gratis registratie:</string>
+    <string name="registerOWM">Weerinformatie wordt opgehaald uit OpenWeatherMap. Voer uw API-sleutel in bij instellingen. Als u nog geen API-sleutel heeft, drukt u op onderstaande knop voor gratis registratie.</string>
     <string name="registerOWMbutton">Registreer gratis</string>
     <string name="monday">Maandag</string>
     <string name="tuesday">Dinsdag</string>
@@ -140,10 +135,8 @@
     <string name="edit_location_hint_latitude">Breedtegraad</string>
     <string name="edit_location_hint_longitude">Lengtegraad</string>
     <string name="edit_location_hint_country_code">Landcode</string>
-    <string name="edit_location_hint_ID" translatable="false">ID</string>
     <string name="edit_location_range_error">Waarde buiten bereik</string>
     <string name="settings_search_option_1">Lijst met interne steden</string>
-    <string name="settings_search_option_2" translatable="false">Photon API</string>
     <string name="settings_search_summary">Zoek locaties via Photon API of interne stedenlijst</string>
     <string name="settings_search">Zoekopdracht</string>
     <string name="dialog_add_tv">Activeer voor betere zoekresultaten online zoeken via photon API in instellingen</string>
@@ -162,7 +155,8 @@
     <string name="dialog_StarOnGitHub">Vind je deze app leuk? Geef het een ster op GitHub.</string>
     <string name="settings_show_pressure">Toon luchtdruk</string>
     <string name="settings_GPS_manual">Alleen handmatige update</string>
+    <string name="settings_register_summary">Je hebt een gratis abonnement en OneCallAPI 3.0 nodig met een limiet van 1000 (gratis) bellen per dag.</string>
 
-<!-- Generated by Automatic String Resource Translation -->
+    <!-- Generated by Automatic String Resource Translation -->
 <!--          https://asrt.gluege.boerde.de             -->
 </resources>

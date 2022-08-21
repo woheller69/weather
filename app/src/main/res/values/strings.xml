@@ -53,7 +53,7 @@
     <string name="settings_title_API">API Key</string>
     <string name="settings_description_API">RadarWeather receives data from the free service of openweathermap.org. This service is limited to 1000 calls per day. Please enter your own API key</string>
     <string name="settings_title_API_key">Enter API Key</string>
-    <string name="settings__API_key_default" translatable="false" />
+    <string name="settings_API_key_default" translatable="false" />
     <string name="abbreviation_monday">Mo.</string>
     <string name="abbreviation_tuesday">Tu.</string>
     <string name="abbreviation_wednesday">We.</string>
@@ -89,13 +89,13 @@
     <string name="error_no_city_selected">There is no city selected. To select a city go to \"Manage locations\".</string>
     <string name="error_dialog_add_city_too_close">City too close to other watched city</string>
     <string name="error_no_radius_search_result">No city found. Increase search radius</string>
-    <string name="settings_interval_quarter" translatable="false">15 min</string>
-    <string name="settings_interval_half" translatable="false">30 min</string>
-    <string name="settings_interval_one" translatable="false">1 h</string>
-    <string name="settings_interval_two" translatable="false">2 h</string>
-    <string name="settings_interval_six" translatable="false">6 h</string>
-    <string name="settings_interval_twelve" translatable="false">12 h</string>
-    <string name="settings_interval_twentyfour" translatable="false">24 h</string>
+    <string name="settings_interval_quarter">15 min</string>
+    <string name="settings_interval_half">30 min</string>
+    <string name="settings_interval_one">1 h</string>
+    <string name="settings_interval_two">2 h</string>
+    <string name="settings_interval_six">6 h</string>
+    <string name="settings_interval_twelve">12 h</string>
+    <string name="settings_interval_twentyfour">24 h</string>
     <string name="settings_intervals">Intervals</string>
     <string name="settings_update_interval">Update interval</string>
     <string name="settings_interval_summary">Set the interval of automatic updates</string>
@@ -111,7 +111,7 @@
     <string name="settings_forecast_option_1">5 day / 3h</string>
     <string name="settings_forecast_option_2">2 day / 1h + 3 day / 3h</string>
     <string name="settings_forecastChoice">Forecast</string>
-    <string name="registerOWM">Weather information is fetched from OpenWeatherMap. Please enter your API key in settings. If you do not yet have an API key, please press the button below for free registration:</string>
+    <string name="registerOWM">Weather information is fetched from OpenWeatherMap. Please enter your API key in settings. If you do not yet have an API key, please press the button below for free registration.</string>
     <string name="registerOWMbutton">Register for free</string>
     <string name="monday">Monday</string>
     <string name="tuesday">Tuesday</string>
@@ -161,5 +161,6 @@
     <string name="settings_show_pressure">Show air pressure</string>
     <string name="action_position" translatable="false">Update Location</string>
     <string name="settings_GPS_manual">Manual update only</string>
+    <string name="settings_register_summary">You need a free subscription and OneCallAPI 3.0 with a limit of 1000 (free) calls per day.</string>
 
 </resources>

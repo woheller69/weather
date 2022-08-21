@@ -100,7 +100,7 @@
     <string name="settings_forecast_option_1">5 дней / 3 часа</string>
     <string name="settings_forecast_option_2">2 дня / 1 час + 3 дня / 3 часа</string>
     <string name="settings_forecastChoice">Прогноз погоды</string>
-    <string name="registerOWM">Информация о погоде получается от сервиса OpenWeatherMap. Пожалуйста, введите личный ключ API в настройках. Если у вас ещё нет ключа API, нажмите кнопку ниже для бесплатной регистрации:</string>
+    <string name="registerOWM">Информация о погоде получается от сервиса OpenWeatherMap. Пожалуйста, введите личный ключ API в настройках. Если у вас ещё нет ключа API, нажмите кнопку ниже для бесплатной регистрации.</string>
     <string name="registerOWMbutton">Бесплатная регистрация</string>
     <string name="monday">Понедельник</string>
     <string name="tuesday">Вторник</string>
@@ -147,4 +147,12 @@
     <string name="dialog_StarOnGitHub">Вам нравится это приложение? Добавить звездочку в GitHub.</string>
     <string name="settings_show_pressure">Показать давление воздуха</string>
     <string name="settings_GPS_manual">Только ручное обновление</string>
+    <string name="settings_interval_quarter">15 мин</string>
+    <string name="settings_interval_half">30 мин</string>
+    <string name="settings_interval_one">1 час</string>
+    <string name="settings_interval_two">2 часа</string>
+    <string name="settings_interval_six">6 часа</string>
+    <string name="settings_interval_twelve">12 часа</string>
+    <string name="settings_interval_twentyfour">24 часа</string>
+    <string name="settings_register_summary">Вам нужна бесплатная подписка и OneCallAPI 3.0 с лимитом 1000 (бесплатных) звонков в день.</string>
 </resources>

@@ -4,11 +4,16 @@
         <Preference
             android:key="register"
             android:title="@string/registerOWMbutton"
+            android:summary="@string/settings_register_summary"
             />
         <EditTextPreference
             android:key="API_key_value"
             android:title="@string/settings_title_API_key"
-            android:defaultValue="@string/settings__API_key_default" />
+            android:defaultValue="@string/settings_API_key_default" />
+        <CheckBoxPreference
+            android:key="oneCall3"
+            android:title="OneCallAPI 3.0"
+            android:defaultValue="false"/>
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/settings_title_units">

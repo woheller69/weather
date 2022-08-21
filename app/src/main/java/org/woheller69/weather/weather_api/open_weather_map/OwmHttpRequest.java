@@ -2,6 +2,8 @@ package org.woheller69.weather.weather_api.open_weather_map;
 
 import android.content.Context;
 import androidx.preference.PreferenceManager;
+
+import android.content.SharedPreferences;
 import android.text.TextUtils;
 
 import org.woheller69.weather.BuildConfig;
@@ -87,9 +89,10 @@ public class OwmHttpRequest {
     protected String getUrlForQueryingOneCallAPI(Context context, float lat, float lon) {
         AppPreferencesManager prefManager =
                 new AppPreferencesManager(PreferenceManager.getDefaultSharedPreferences(context));
+        SharedPreferences sharedPreferences=PreferenceManager.getDefaultSharedPreferences(context);
         return String.format(
                 "%sonecall?lat=%s&lon=%s&units=metric&exclude=alerts&appid=%s",
-                BuildConfig.BASE_URL,
+                sharedPreferences.getBoolean("oneCall3",false) ? BuildConfig.BASE_URL_3 : BuildConfig.BASE_URL,
                 lat,
                 lon,
                 prefManager.getOWMApiKey(context)
