@@ -1,0 +1,1 @@
+Unterstützung für OneCallAPI 3.0 (erforderlich für neue Benutzer aufgrund von Richtlinienänderungen bei OpenWeatherMap)

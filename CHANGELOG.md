@@ -1,5 +1,23 @@
 Changelog
 ==========
+
+Version 5.6
+* Support OneCallAPI 3.0 (Required for new users due to change of policy at OpenWeatherMap)
+
+Version 5.5
+* Added option to update GPS location in app (without widget)
+* Bugfixes
+
+Version 5.4
+* Option for air pressure in course of day and week forecasts
+* Library changes
+* Bugfixes
+
+Version 5.3
+* Translation for Dutch, Danish, Swedish, Hungarian
+* Coarse location option (Android 12 only)
+* Improved indicator for rain within 60min
+
 Version 5.2 (2022-03-16)
 * new widget layout
 * bugfix for OpenStreetMap
