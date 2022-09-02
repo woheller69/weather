@@ -1,4 +1,5 @@
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <PreferenceCategory android:title="@string/settings_title_API">
         <PreferenceScreen android:summary="@string/settings_description_API" />
         <Preference
@@ -18,6 +19,7 @@
 
     <PreferenceCategory android:title="@string/settings_title_units">
         <ListPreference
+            app:useSimpleSummaryProvider="true"
             android:defaultValue="1"
             android:entries="@array/temperatureUnitsArray"
             android:entryValues="@array/temperatureUnitsValues"
@@ -26,6 +28,7 @@
             android:title="@string/settings_title_temperature" />
 
         <ListPreference
+            app:useSimpleSummaryProvider="true"
             android:defaultValue="1"
             android:entries="@array/distanceUnitsArray"
             android:entryValues="@array/distanceUnitsValues"
@@ -42,6 +45,7 @@
 
     <PreferenceCategory android:title="@string/settings_title_forecastChoice">
         <ListPreference
+            app:useSimpleSummaryProvider="true"
             android:defaultValue="2"
             android:entries="@array/forecastChoiceArray"
             android:entryValues="@array/forecastChoiceValues"
@@ -78,6 +82,7 @@
 
     <PreferenceCategory android:title="@string/settings_intervals">
         <ListPreference
+            app:useSimpleSummaryProvider="true"
             android:defaultValue="1"
             android:entries="@array/refreshIntervalArray"
             android:entryValues="@array/refreshIntervalValues"
@@ -88,6 +93,7 @@
 
     <PreferenceCategory android:title="@string/settings_search">
         <ListPreference
+            app:useSimpleSummaryProvider="true"
             android:defaultValue="2"
             android:entries="@array/citySearchArray"
             android:entryValues="@array/citySearchValues"
