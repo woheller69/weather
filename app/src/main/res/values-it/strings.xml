@@ -47,7 +47,7 @@
     <string name="settings_kilometers">Chilometri</string>
     <string name="settings_miles">Miglia</string>
     <string name="settings_title_API">Chiave API</string>
-    <string name="settings_description_API">RadarWeather riceve i dati dal servizio gratuito di openweathermap.org. Questo servizio è limitato a 1000 chiamate al giorno. Inserisci la tua chiave API</string>
+    <string name="settings_description_API">RadarWeather riceve i dati dal servizio gratuito di OpenWeatherMap. Questo servizio è limitato a 1000 chiamate al giorno. Inserisci la tua chiave API</string>
     <string name="settings_title_API_key">Inserisci chiave API</string>
     <string name="abbreviation_monday">Lun.</string>
     <string name="abbreviation_tuesday">Mar.</string>

@@ -233,7 +233,13 @@ public class AddLocationDialogPhotonAPI extends DialogFragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                Handler h = new Handler(activity.getMainLooper());
+                h.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(activity, error.toString(), Toast.LENGTH_LONG).show();
+                    }
+                });
             }
         });
     }

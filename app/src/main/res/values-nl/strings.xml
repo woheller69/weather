@@ -49,7 +49,7 @@
     <string name="settings_kilometers">Kilometers</string>
     <string name="settings_miles">Mijlen</string>
     <string name="settings_title_API">API sleutel</string>
-    <string name="settings_description_API">RadarWeather ontvangt gegevens van de gratis service van openweathermap.org. Deze dienst is beperkt tot 1000 oproepen per dag. Voer uw eigen API-sleutel in</string>
+    <string name="settings_description_API">RadarWeather ontvangt gegevens van de gratis service van OpenWeatherMap. Deze dienst is beperkt tot 1000 oproepen per dag. Voer uw eigen API-sleutel in</string>
     <string name="settings_title_API_key">API-sleutel invoeren</string>
     <string name="abbreviation_monday">Ma.</string>
     <string name="abbreviation_tuesday">Di.</string>

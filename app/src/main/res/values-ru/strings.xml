@@ -48,7 +48,7 @@
     <string name="settings_kilometers">Километры</string>
     <string name="settings_miles">Мили</string>
     <string name="settings_title_API">Ключ API</string>
-    <string name="settings_description_API">RadarWeather получает данные от свободного сервиса openweathermap.org. Этот сервис ограничен 1000 запросами в день. Введите ваш личный ключ API.</string>
+    <string name="settings_description_API">RadarWeather получает данные от свободного сервиса OpenWeatherMap. Этот сервис ограничен 1000 запросами в день. Введите ваш личный ключ API.</string>
     <string name="settings_title_API_key">Введите ключ API</string>
     <string name="abbreviation_monday">Пн.</string>
     <string name="abbreviation_tuesday">Вт.</string>

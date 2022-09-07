@@ -49,7 +49,7 @@
     <string name="settings_kilometers">Kilometer</string>
     <string name="settings_miles">Miles</string>
     <string name="settings_title_API">API nøgle</string>
-    <string name="settings_description_API">RadarWeather modtager data fra den gratis tjeneste på openweathermap.org. Denne service er begrænset til 1000 opkald pr. dag. Indtast venligst din egen API-nøgle</string>
+    <string name="settings_description_API">RadarWeather modtager data fra den gratis tjeneste på OpenWeatherMap. Denne service er begrænset til 1000 opkald pr. dag. Indtast venligst din egen API-nøgle</string>
     <string name="settings_title_API_key">Indtast API-nøgle</string>
     <string name="abbreviation_monday">Ma.</string>
     <string name="abbreviation_tuesday">Ti.</string>

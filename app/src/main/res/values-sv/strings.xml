@@ -49,7 +49,7 @@
     <string name="settings_kilometers">Kilometer</string>
     <string name="settings_miles">Miles</string>
     <string name="settings_title_API">API-nyckel</string>
-    <string name="settings_description_API">RadarWeather tar emot data från den kostnadsfria tjänsten openweathermap.org. Denna tjänst är begränsad till 1000 samtal per dag. Ange din egen API-nyckel</string>
+    <string name="settings_description_API">RadarWeather tar emot data från den kostnadsfria tjänsten OpenWeatherMap. Denna tjänst är begränsad till 1000 samtal per dag. Ange din egen API-nyckel</string>
     <string name="settings_title_API_key">Ange API-nyckel</string>
     <string name="abbreviation_monday">Må.</string>
     <string name="abbreviation_tuesday">Ti.</string>

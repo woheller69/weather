@@ -71,7 +71,7 @@
     <string name="settings_miles">Miles</string>
     <string name="settings_summary_distance">L\'unité utilisée pour afficher les distances.</string>
     <string name="settings_summary_temperature">L\'unité utilisée pour afficher les températures.</string>
-    <string name="settings_description_API">RadarWeather reçoit les données météorologiques du service gratuit openweathermap.org. Ce service est limité à 1000 demandes par jour. Veuillez enregistrer votre propre clé API.</string>
+    <string name="settings_description_API">RadarWeather reçoit les données météorologiques du service gratuit OpenWeatherMap. Ce service est limité à 1000 demandes par jour. Veuillez enregistrer votre propre clé API.</string>
     <string name="settings_interval_summary">Définir l\'intervalle des mises à jour automatiques</string>
     <string name="settings_intervals">Intervalle</string>
     <string name="settings_title_API">Clé API</string>

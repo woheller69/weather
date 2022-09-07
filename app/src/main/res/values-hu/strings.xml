@@ -49,7 +49,7 @@
     <string name="settings_kilometers">Kilométer</string>
     <string name="settings_miles">Mérföld</string>
     <string name="settings_title_API">API kulcs</string>
-    <string name="settings_description_API">A RadarWeather az openweathermap.org ingyenes szolgáltatásától kapja az adatokat. Ez a szolgáltatás napi 1000 hívásra korlátozódik. Kérjük, adja meg saját API-kulcsát</string>
+    <string name="settings_description_API">A RadarWeather az OpenWeatherMap ingyenes szolgáltatásától kapja az adatokat. Ez a szolgáltatás napi 1000 hívásra korlátozódik. Kérjük, adja meg saját API-kulcsát</string>
     <string name="settings_title_API_key">Írja be az API kulcsot</string>
     <string name="abbreviation_monday">Hé.</string>
     <string name="abbreviation_tuesday">Ke.</string>

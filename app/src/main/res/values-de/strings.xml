@@ -29,7 +29,7 @@
     <string name="error_no_internet">Das Gerät ist nicht mit dem Internet verbunden!</string>
     <string name="error_fetch_forecast">Es ist ein Fehler beim Abrufen der Wettervorhersage aufgetreten, bitte versuchen Sie es erneut!</string>
     <string name="error_radius_search">Es ist ein Fehler beim Abfragen der Umkreissuche aufgetreten, bitte versuchen Sie es erneut!</string>
-    <string name="error_no_city_selected">Sie haben keine Stadt ausgewählt. Wählen Sie \"Orte verwalten\" in der Navigation um eine Stadt auszuwählen.</string>
+    <string name="error_no_city_selected">Sie haben keine Stadt ausgewählt. Wählen Sie \"Orte verwalten\" in der Navigation, um eine Stadt auszuwählen.</string>
     <string name="error_dialog_add_city_too_close">Der Ort liegt zu nahe an einem bereits beobachteten Ort</string>
     <string name="error_no_radius_search_result">Kein Ort gefunden. Suchradius vergrößern</string>
     <string name="dialog_add_add_button">Hinzufügen</string>
@@ -69,7 +69,7 @@
     <string name="settings_miles">Meilen</string>
     <string name="settings_summary_distance">Die Einheit, die zur Anzeige von Entfernungen verwendet wird.</string>
     <string name="settings_summary_temperature">Die Einheit, die zur Anzeige von Temperaturen verwendet wird.</string>
-    <string name="settings_description_API">RadarWeather erhält die Wetterdaten von dem freien Service openweathermap.org. Dieser Service ist auf 1000 Anfragen pro Tag beschränkt. Bitte registrieren Sie ihren eigenen API Key.</string>
+    <string name="settings_description_API">RadarWeather erhält die Wetterdaten von dem freien Service OpenWeatherMap. Dieser Service ist auf 1000 Anfragen pro Tag beschränkt. Bitte registrieren Sie ihren eigenen API Key.</string>
     <string name="settings_interval_summary">Setzen Sie das Interval der automatischen Updates</string>
     <string name="settings_intervals">Intervalle</string>
     <string name="settings_title_API">API Key</string>
