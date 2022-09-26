@@ -28,9 +28,6 @@ public class CityToWatch {
         this.cityName = cityName;
     }
 
-    public CityToWatch(int i, String s, String de, int i1, int i2, String darmstadt) {
-    }
-
     public int getId() {
         return id;
     }
