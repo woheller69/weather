@@ -8,7 +8,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import org.woheller69.weather.R;
 import org.woheller69.weather.database.CityToWatch;
 import org.woheller69.weather.database.CurrentWeatherData;
 import org.woheller69.weather.database.Forecast;
@@ -26,7 +25,7 @@ import static org.woheller69.weather.services.UpdateDataService.SKIP_UPDATE_INTE
 import static org.woheller69.weather.ui.RecycleList.CityWeatherAdapter.CHART;
 import static org.woheller69.weather.ui.RecycleList.CityWeatherAdapter.DAY;
 import static org.woheller69.weather.ui.RecycleList.CityWeatherAdapter.DETAILS;
-import static org.woheller69.weather.ui.RecycleList.CityWeatherAdapter.ERROR;
+import static org.woheller69.weather.ui.RecycleList.CityWeatherAdapter.EMPTY;
 import static org.woheller69.weather.ui.RecycleList.CityWeatherAdapter.OVERVIEW;
 import static org.woheller69.weather.ui.RecycleList.CityWeatherAdapter.WEEK;
 
@@ -42,9 +41,6 @@ public class WeatherPagerAdapter extends FragmentStateAdapter implements IUpdate
 
     private List<CityToWatch> cities;
 
-
-    private static int[] mDataSetTypes = {OVERVIEW, DETAILS, DAY, WEEK, CHART}; //TODO Make dynamic from Settings
-    private static int[] errorDataSetTypes = {ERROR};
 
     public WeatherPagerAdapter(Context context, @NonNull FragmentManager supportFragmentManager, @NonNull Lifecycle lifecycle) {
         super(supportFragmentManager,lifecycle);
@@ -64,7 +60,6 @@ public class WeatherPagerAdapter extends FragmentStateAdapter implements IUpdate
     public WeatherCityFragment createFragment(int position) {
         Bundle args = new Bundle();
         args.putInt("city_id", cities.get(position).getCityId());
-        args.putIntArray("dataSetTypes", mDataSetTypes);
 
         return WeatherCityFragment.newInstance(args);
     }
@@ -75,10 +70,7 @@ public class WeatherPagerAdapter extends FragmentStateAdapter implements IUpdate
     }
 
     public CharSequence getPageTitle(int position) {
-        if (cities.size() == 0) {
-            return mContext.getString(R.string.app_name);
-        }
-        return cities.get(position).getCityName();
+         return cities.get(position).getCityName();
     }
 
     public static void refreshSingleData(Context context, Boolean asap, int cityId) {
@@ -129,6 +121,5 @@ public class WeatherPagerAdapter extends FragmentStateAdapter implements IUpdate
         CityToWatch city = cities.get(pos);
         return city.getLongitude();
     }
-
 
 }

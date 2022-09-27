@@ -1,5 +1,12 @@
 package org.woheller69.weather.ui;
 
+import static org.woheller69.weather.ui.RecycleList.CityWeatherAdapter.CHART;
+import static org.woheller69.weather.ui.RecycleList.CityWeatherAdapter.DAY;
+import static org.woheller69.weather.ui.RecycleList.CityWeatherAdapter.DETAILS;
+import static org.woheller69.weather.ui.RecycleList.CityWeatherAdapter.EMPTY;
+import static org.woheller69.weather.ui.RecycleList.CityWeatherAdapter.OVERVIEW;
+import static org.woheller69.weather.ui.RecycleList.CityWeatherAdapter.WEEK;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
@@ -34,7 +41,8 @@ public class WeatherCityFragment extends Fragment implements IUpdateableCityUI {
     private static final int MINGRIDWIDTH = 500;
     private int mCityId = -1;
     private int[] mDataSetTypes = new int[]{};
-
+    private static int[] mFull = {OVERVIEW, DETAILS, DAY, WEEK, CHART}; //TODO Make dynamic from Settings
+    private static int[] mEmpty = {EMPTY};
     private CityWeatherAdapter mAdapter;
 
     private RecyclerView recyclerView;
@@ -58,7 +66,8 @@ public class WeatherCityFragment extends Fragment implements IUpdateableCityUI {
 
     public void loadData() {
                 CurrentWeatherData currentWeatherData = PFASQLiteHelper.getInstance(getContext()).getCurrentWeatherByCityId(mCityId);
-
+                if (currentWeatherData.getTimestamp()==0) mDataSetTypes=mEmpty;  //show empty view if no data available yet
+                else mDataSetTypes=mFull;
                 mAdapter = new CityWeatherAdapter(currentWeatherData, mDataSetTypes, getContext());
                 setAdapter(mAdapter);
             }
@@ -103,7 +112,6 @@ public class WeatherCityFragment extends Fragment implements IUpdateableCityUI {
 
         Bundle args = getArguments();
         mCityId = args.getInt("city_id");
-        mDataSetTypes = args.getIntArray("dataSetTypes");
 
         loadData();
 
@@ -125,6 +133,7 @@ public class WeatherCityFragment extends Fragment implements IUpdateableCityUI {
     @Override
     public void processNewCurrentWeatherData(CurrentWeatherData data) {
         if (data != null && data.getCity_id() == mCityId) {
+            mDataSetTypes= mFull;
             setAdapter(new CityWeatherAdapter(data, mDataSetTypes, getContext()));
         }
     }

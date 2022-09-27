@@ -56,7 +56,7 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
     public static final int WEEK = 2;
     public static final int DAY = 3;
     public static final int CHART = 4;
-    public static final int ERROR = 5;
+    public static final int EMPTY = 5;
 
     public CityWeatherAdapter(CurrentWeatherData currentWeatherDataList, int[] dataSetTypes, Context context) {
         this.currentWeatherDataList = currentWeatherDataList;
@@ -231,12 +231,6 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
         }
     }
 
-    public class ErrorViewHolder extends ViewHolder {
-        ErrorViewHolder(View v) {
-            super(v);
-        }
-    }
-
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         View v;
@@ -272,8 +266,8 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
             return new ChartViewHolder(v);
         } else {
             v = LayoutInflater.from(viewGroup.getContext())
-                    .inflate(R.layout.card_error, viewGroup, false);
-            return new ErrorViewHolder(v);
+                    .inflate(R.layout.card_empty, viewGroup, false);
+            return new ViewHolder(v);
         }
     }
 
@@ -585,7 +579,7 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
 
     @Override
     public int getItemCount() {
-        return 5;
+        return dataSetTypes.length;
     }
 
     @Override
