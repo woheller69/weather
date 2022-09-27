@@ -23,6 +23,7 @@ import android.os.Looper;
 import android.view.MenuItem;
 
 
+import org.woheller69.weather.BuildConfig;
 import org.woheller69.weather.R;
 import org.woheller69.weather.preferences.AppPreferencesManager;
 
@@ -59,7 +60,7 @@ public class NavigationActivity extends AppCompatActivity implements OnNavigatio
             alertDialogBuilder.setPositiveButton(getString(R.string.dialog_OK_button), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/woheller69/weather")));
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(BuildConfig.GITHUB_URL)));
                     prefManager = new AppPreferencesManager(PreferenceManager.getDefaultSharedPreferences(getApplicationContext()));
                     prefManager.setAskForStar(false);
                 }
@@ -182,7 +183,7 @@ public class NavigationActivity extends AppCompatActivity implements OnNavigatio
             createBackStack(intent);
         }else if (itemId==R.id.star_on_github){
             startActivity(new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("https://github.com/woheller69/weather")));
+                    Uri.parse(BuildConfig.GITHUB_URL)));
             prefManager = new AppPreferencesManager(PreferenceManager.getDefaultSharedPreferences(getApplicationContext()));
             prefManager.setAskForStar(false);
         }

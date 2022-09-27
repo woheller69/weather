@@ -21,6 +21,7 @@ android {
         buildConfigField "String", "DEFAULT_API_KEY", "\"00000000000000000000000000000000\""
         buildConfigField "String", "BASE_URL", "\"https://api.openweathermap.org/data/2.5/\""
         buildConfigField "String", "BASE_URL_3", "\"https://api.openweathermap.org/data/3.0/\""
+        buildConfigField "String", "GITHUB_URL","\"https://github.com/woheller69/weather/\""
     }
 
     buildTypes {
