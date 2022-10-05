@@ -14,6 +14,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.util.Log;
@@ -177,12 +178,24 @@ public class WeatherWidget extends AppWidgetProvider {
         int[] idArray = new int[]{appWidgetId};
         intentUpdate.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, idArray);
         intentUpdate.putExtra("Manual",true);
-        PendingIntent pendingUpdate = PendingIntent.getBroadcast(context, appWidgetId, intentUpdate, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        PendingIntent pendingUpdate;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            pendingUpdate = PendingIntent.getBroadcast(context, appWidgetId, intentUpdate, PendingIntent.FLAG_UPDATE_CURRENT|PendingIntent.FLAG_IMMUTABLE);
+        } else {
+            pendingUpdate = PendingIntent.getBroadcast(context, appWidgetId, intentUpdate, PendingIntent.FLAG_UPDATE_CURRENT);
+        }
+
         views.setOnClickPendingIntent(R.id.widget_update, pendingUpdate);
 
         Intent intent2 = new Intent(context, ForecastCityActivity.class);
         intent2.putExtra("cityId", getWidgetCityID(context));
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, appWidgetId, intent2, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntent;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            pendingIntent = PendingIntent.getActivity(context, appWidgetId, intent2, PendingIntent.FLAG_UPDATE_CURRENT|PendingIntent.FLAG_IMMUTABLE);
+        } else {
+            pendingIntent = PendingIntent.getActivity(context, appWidgetId, intent2, PendingIntent.FLAG_UPDATE_CURRENT);
+        }
         views.setOnClickPendingIntent(R.id.widget_layout, pendingIntent);
 
         // Instruct the widget manager to update the widget

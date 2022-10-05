@@ -160,4 +160,5 @@
     <string name="settings_interval_twelve">12 h</string>
     <string name="settings_interval_twentyfour">24 h</string>
     <string name="settings_register_summary">Vous avez besoin d\'un abonnement gratuit et de OneCallAPI 3.0 avec une limite de 1000 appels (gratuits) par jour.</string>
+    <string name="rationale_background_location">Autoriser également l\'utilisation du GPS en arrière-plan dans le widget</string>
 </resources>

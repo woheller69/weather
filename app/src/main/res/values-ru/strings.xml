@@ -155,4 +155,5 @@
     <string name="settings_interval_twelve">12 часа</string>
     <string name="settings_interval_twentyfour">24 часа</string>
     <string name="settings_register_summary">Вам нужна бесплатная подписка и OneCallAPI 3.0 с лимитом 1000 (бесплатных) звонков в день.</string>
+    <string name="rationale_background_location">Также разрешите использование GPS в фоновом режиме для использования в виджете</string>
 </resources>

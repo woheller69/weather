@@ -11,6 +11,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
@@ -37,11 +38,30 @@ public class SettingsActivity extends NavigationActivity implements SharedPrefer
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 if ((ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) && (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q)) {
                     if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_BACKGROUND_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_BACKGROUND_LOCATION}, 1);
+
+                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+                        String message = getString(R.string.rationale_background_location);
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                            message = message + ": \n\n >> " + getPackageManager().getBackgroundPermissionOptionLabel().toString() +" <<";
+                        }
+
+                        alertDialogBuilder.setMessage(message);
+                        alertDialogBuilder.setPositiveButton(getString(R.string.dialog_OK_button), (dialog, which) -> requestBackgroundLocation());
+                        alertDialogBuilder.setNegativeButton(getString(R.string.dialog_NO_button), (dialog, which) -> {
+                        });
+
+                        AlertDialog alertDialog = alertDialogBuilder.create();
+                        alertDialog.show();
+
                     }
                 }
             }
         }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.Q)
+    private void requestBackgroundLocation() {
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_BACKGROUND_LOCATION}, 2);
     }
 
     @Override
@@ -72,9 +92,14 @@ public class SettingsActivity extends NavigationActivity implements SharedPrefer
         if (s.equals("pref_GPS")) {
             if (sharedPreferences.getBoolean("pref_GPS", true) == TRUE) {
                 if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(this,
-                            new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION,
-                                    Manifest.permission.ACCESS_BACKGROUND_LOCATION}, 1);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                        ActivityCompat.requestPermissions(this,
+                                new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+                    } else {
+                        ActivityCompat.requestPermissions(this,
+                                new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_BACKGROUND_LOCATION}, 1);
+                    }
+
                 }
             }
         }

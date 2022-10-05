@@ -154,4 +154,5 @@
     <string name="settings_show_pressure">Mostra la pressione dell\'aria</string>
     <string name="settings_GPS_manual">Solo aggiornamento manuale</string>
     <string name="settings_register_summary">È necessario un abbonamento gratuito e OneCallAPI 3.0 con un limite di 1000 chiamate (gratuite) al giorno.</string>
-</resources> 
+    <string name="rationale_background_location">Consenti anche l\'uso del GPS in background nel widget</string>
+</resources>

@@ -157,4 +157,5 @@
     <string name="settings_interval_twelve">12 h</string>
     <string name="settings_interval_twentyfour">24 h</string>
     <string name="settings_register_summary">Sie benötigen ein kostenloses Abonnement und OneCallAPI 3.0 mit einem Limit von 1000 (kostenlosen) Anrufen pro Tag.</string>
+    <string name="rationale_background_location">Bitte erlauben Sie auch die GPS Nutzung im Hintergrund für die Verwendung im Widget</string>
 </resources>
