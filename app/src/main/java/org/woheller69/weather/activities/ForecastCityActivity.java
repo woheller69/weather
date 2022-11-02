@@ -28,6 +28,7 @@ import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.woheller69.weather.R;
 import org.woheller69.weather.database.CityToWatch;
@@ -234,24 +235,28 @@ public class ForecastCityActivity extends NavigationActivity implements IUpdatea
                 ForecastCityActivity.startRefreshAnimation();
             }
         } else if (id==R.id.menu_update_location) {
-            if (db.getAllCitiesToWatch().isEmpty())  {
-                CityToWatch newCity = new CityToWatch(db.getMaxRank() + 1,"--", -1, -1, 0, 0, "--°/--°");
-                cityId = (int) db.addCityToWatch(newCity);
-                initResources();
-                noCityText.setVisibility(View.GONE);
-                viewPager2.setVisibility(View.VISIBLE);
-                viewPager2.setAdapter(pagerAdapter);
-                TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(tabLayout, viewPager2,false,false, (tab, position) -> tab.setText(pagerAdapter.getPageTitle(position)));
-                tabLayoutMediator.attach();
-            }
             locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
-            SharedPreferences prefManager = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-            if (prefManager.getBoolean("pref_GPS", true) == TRUE && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                if (locationListenerGPS == null) {
-                    Log.d("GPS", "Listener null");
-                    locationListenerGPS = getNewLocationListener();
-                    ForecastCityActivity.startUpdateLocatationAnimation();
-                    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 0, locationListenerGPS);
+            if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+                Toast.makeText(this,R.string.error_no_gps,Toast.LENGTH_LONG).show();
+            } else {
+                if (db.getAllCitiesToWatch().isEmpty()) {
+                    CityToWatch newCity = new CityToWatch(db.getMaxRank() + 1, "--", -1, -1, 0, 0, "--°/--°");
+                    cityId = (int) db.addCityToWatch(newCity);
+                    initResources();
+                    noCityText.setVisibility(View.GONE);
+                    viewPager2.setVisibility(View.VISIBLE);
+                    viewPager2.setAdapter(pagerAdapter);
+                    TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(tabLayout, viewPager2, false, false, (tab, position) -> tab.setText(pagerAdapter.getPageTitle(position)));
+                    tabLayoutMediator.attach();
+                }
+                SharedPreferences prefManager = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                if (prefManager.getBoolean("pref_GPS", true) == TRUE && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                    if (locationListenerGPS == null) {
+                        Log.d("GPS", "Listener null");
+                        locationListenerGPS = getNewLocationListener();
+                        ForecastCityActivity.startUpdateLocatationAnimation();
+                        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 0, locationListenerGPS);
+                    }
                 }
             }
         }

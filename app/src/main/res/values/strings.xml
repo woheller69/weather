@@ -163,4 +163,5 @@
     <string name="settings_GPS_manual">Manual update only</string>
     <string name="settings_register_summary">You need a free subscription and OneCallAPI 3.0 with a limit of 1000 (free) calls per day.</string>
     <string name="rationale_background_location">Please also allow GPS usage in the background for use in the widget</string>
+    <string name="error_no_gps">Please turn on GPS</string>
 </resources>

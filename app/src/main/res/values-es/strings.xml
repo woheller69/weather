@@ -157,4 +157,5 @@
     <string name="settings_interval_twentyfour">24 h</string>
     <string name="settings_register_summary">Necesita una suscripción gratuita y OneCallAPI 3.0 con un límite de 1000 llamadas (gratuitas) por día.</string>
     <string name="rationale_background_location">También permitir el uso de fondo de GPS en el widget</string>
+    <string name="error_no_gps">Por favor, encienda el GPS</string>
 </resources>
