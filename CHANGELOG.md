@@ -1,6 +1,10 @@
 Changelog
 ==========
 
+Version 5.7
+* Upgrade to SDK 32
+* Bugfixes
+
 Version 5.6
 * Support OneCallAPI 3.0 (Required for new users due to change of policy at OpenWeatherMap)
 
