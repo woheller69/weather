@@ -57,7 +57,7 @@ If you know the solution to a bug please report it in the corresponding issue an
 
 ## Try my other apps
 
-| RadarWeather | Gas Prices | Smart Eggtimer | 
+| **RadarWeather** | **Gas Prices** | **Smart Eggtimer** | 
 |:---:|:---:|:---:|
 | [<img src="https://github.com/woheller69/weather/blob/main/fastlane/metadata/android/en-US/images/icon.png" width="50">](https://f-droid.org/packages/org.woheller69.weather/)| [<img src="https://github.com/woheller69/spritpreise/blob/main/fastlane/metadata/android/en-US/images/icon.png" width="50">](https://f-droid.org/packages/org.woheller69.spritpreise/) | [<img src="https://github.com/woheller69/eggtimer/blob/main/fastlane/metadata/android/en-US/images/icon.png" width="50">](https://f-droid.org/packages/org.woheller69.eggtimer/) |
 | **Level** | **hEARtest** | **GPS Cockpit** |
