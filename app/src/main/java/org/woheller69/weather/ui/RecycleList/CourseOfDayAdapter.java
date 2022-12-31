@@ -81,12 +81,14 @@ public class CourseOfDayAdapter extends RecyclerView.Adapter<CourseOfDayAdapter.
             sunSetTime.setTimeZone(TimeZone.getTimeZone("GMT"));
             sunSetTime.setTimeInMillis(currentWeather.getTimeSunset() * 1000 + currentWeather.getTimeZoneSeconds() * 1000L);
             sunSetTime.set(Calendar.DAY_OF_YEAR, forecastTime.get(Calendar.DAY_OF_YEAR));
+            sunSetTime.set(Calendar.YEAR, forecastTime.get(Calendar.YEAR));
 
 
             Calendar sunRiseTime = Calendar.getInstance();
             sunRiseTime.setTimeZone(TimeZone.getTimeZone("GMT"));
             sunRiseTime.setTimeInMillis(currentWeather.getTimeSunrise() * 1000 + currentWeather.getTimeZoneSeconds() * 1000L);
             sunRiseTime.set(Calendar.DAY_OF_YEAR, forecastTime.get(Calendar.DAY_OF_YEAR));
+            sunRiseTime.set(Calendar.YEAR, forecastTime.get(Calendar.YEAR));
 
             isDay = forecastTime.after(sunRiseTime) && forecastTime.before(sunSetTime);
         }
