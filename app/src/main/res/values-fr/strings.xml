@@ -149,7 +149,7 @@
     <string name="dialog_OK_button">D\'accord</string>
     <string name="dialog_NO_button">Non</string>
     <string name="dialog_Later_button">Peut-être plus tard</string>
-    <string name="dialog_StarOnGitHub">Aimez-vous cette application? Veuillez attribuer une étoile sur GitHub.</string>
+    <string name="dialog_StarOnGitHub">Aimez-vous cette application? Veuillez donner une étoile sur GitHub ou acheter un café au développeur via PayPal.</string>
     <string name="settings_show_pressure">Afficher la pression atmosphérique</string>
     <string name="settings_GPS_manual">Mise à jour manuelle uniquement</string>
     <string name="settings_interval_quarter">15 min</string>

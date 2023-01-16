@@ -198,7 +198,7 @@ public class PFASQLiteHelper extends SQLiteAssetHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        /**
+        /*
          // on upgrade drop older tables
          db.execSQL(String.format("DROP TABLE IF EXISTS %s", CREATE_TABLE_CITIES));
          db.execSQL(String.format("DROP TABLE IF EXISTS %s", CREATE_TABLE_FORECASTS));
@@ -207,7 +207,7 @@ public class PFASQLiteHelper extends SQLiteAssetHelper {
 
          // create new tables
          onCreate(db);
-         **/
+         */
 
         if (oldVersion==1 && newVersion==2) {
 
@@ -359,7 +359,7 @@ public class PFASQLiteHelper extends SQLiteAssetHelper {
         }
     }
 
-    public synchronized int updateCity(City city) {
+    public synchronized void updateCity(City city) {
         SQLiteDatabase database = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -369,8 +369,9 @@ public class PFASQLiteHelper extends SQLiteAssetHelper {
         values.put(CITIES_LONGITUDE, city.getLongitude());
         values.put(CITIES_LATITUDE, city.getLatitude());
 
-        return database.update(TABLE_CITIES, values, CITIES_ID + " = ?",
+        database.update(TABLE_CITIES, values, CITIES_ID + " = ?",
                 new String[]{String.valueOf(city.getCityId())});
+        database.close();
     }
 
     public synchronized City getCityById(Integer id) {
@@ -399,7 +400,7 @@ public class PFASQLiteHelper extends SQLiteAssetHelper {
 
             cursor.close();
         }
-
+        database.close();
         return city;
     }
 
@@ -419,7 +420,6 @@ public class PFASQLiteHelper extends SQLiteAssetHelper {
                 " ORDER BY " + CITIES_NAME +
                 " LIMIT " + dropdownListLimit;
 
-//        Log.d("devtag", "searchphrase: " + String.format("%s", cityNameLetters));
         String[] args = {String.format("%s%%", cityNameLetters)};
         Cursor cursor = database.rawQuery(query, args);
 
@@ -448,7 +448,7 @@ public class PFASQLiteHelper extends SQLiteAssetHelper {
         }
 
         cursor.close();
-
+        database.close();
         return cities;
 
     }
@@ -508,7 +508,7 @@ public class PFASQLiteHelper extends SQLiteAssetHelper {
 
             cursor.close();
         }
-
+        database.close();
         return cityToWatch;
 
     }
@@ -548,6 +548,7 @@ public class PFASQLiteHelper extends SQLiteAssetHelper {
         }
 
         cursor.close();
+        database.close();
         return cityToWatchList;
     }
 
@@ -564,9 +565,10 @@ public class PFASQLiteHelper extends SQLiteAssetHelper {
 
         database.update(TABLE_CITIES_TO_WATCH, values, CITIES_TO_WATCH_ID + " = ?",
                 new String[]{String.valueOf(cityToWatch.getId())});
+        database.close();
     }
 
-    public void deleteCityToWatch(CityToWatch cityToWatch) {
+    public synchronized void deleteCityToWatch(CityToWatch cityToWatch) {
 
         //First delete all weather data for city which is deleted
         deleteCurrentWeatherByCityId(cityToWatch.getCityId());
@@ -580,7 +582,7 @@ public class PFASQLiteHelper extends SQLiteAssetHelper {
         database.close();
     }
 
-    public int getWatchedCitiesCount() {
+    public synchronized int getWatchedCitiesCount() {
         SQLiteDatabase database = this.getWritableDatabase();
         long count = DatabaseUtils.queryNumEntries(database, TABLE_CITIES_TO_WATCH);
         database.close();
@@ -670,47 +672,6 @@ public class PFASQLiteHelper extends SQLiteAssetHelper {
         return list;
     }
 
-
-
-    public synchronized List<Forecast> getAllForecasts() {
-        List<Forecast> forecastList = new ArrayList<>();
-
-        String selectQuery = "SELECT  * FROM " + TABLE_FORECAST;
-
-        SQLiteDatabase database = this.getWritableDatabase();
-        Cursor cursor = database.rawQuery(selectQuery, null);
-
-        Forecast forecast;
-
-        if (cursor.moveToFirst()) {
-            do {
-                forecast = new Forecast();
-                forecast.setId(Integer.parseInt(cursor.getString(0)));
-                forecast.setCity_id(Integer.parseInt(cursor.getString(1)));
-                forecast.setTimestamp(Long.parseLong(cursor.getString(2)));
-                forecast.setForecastTime(Long.parseLong(cursor.getString(3)));
-                forecast.setWeatherID(Integer.parseInt(cursor.getString(4)));
-                forecast.setTemperature(Float.parseFloat(cursor.getString(5)));
-                forecast.setHumidity(Float.parseFloat(cursor.getString(6)));
-                forecast.setPressure(Float.parseFloat(cursor.getString(7)));
-                forecast.setPrecipitation(Float.parseFloat(cursor.getString(8)));
-                forecast.setWindSpeed(Float.parseFloat(cursor.getString(9)));
-                forecast.setWindDirection(Float.parseFloat(cursor.getString(10)));
-                forecastList.add(forecast);
-            } while (cursor.moveToNext());
-        }
-
-        cursor.close();
-        return forecastList;
-    }
-
-
-    public synchronized void deleteForecast(Forecast forecast) {
-        SQLiteDatabase database = this.getWritableDatabase();
-        database.delete(TABLE_FORECAST, FORECAST_ID + " = ?",
-                new String[]{Integer.toString(forecast.getId())});
-        database.close();
-    }
 
     /**
      * Methods for TABLE_WEEKFORECAST
@@ -867,42 +828,6 @@ public class PFASQLiteHelper extends SQLiteAssetHelper {
         }
 
         return currentWeather;
-    }
-
-    public synchronized List<CurrentWeatherData> getAllCurrentWeathers() {
-        List<CurrentWeatherData> currentWeatherList = new ArrayList<>();
-
-        String selectQuery = "SELECT * FROM " + TABLE_CURRENT_WEATHER;
-
-        SQLiteDatabase database = this.getWritableDatabase();
-        Cursor cursor = database.rawQuery(selectQuery, null);
-
-        CurrentWeatherData currentWeather;
-
-        if (cursor.moveToFirst()) {
-            do {
-                currentWeather = new CurrentWeatherData();
-                currentWeather.setId(Integer.parseInt(cursor.getString(0)));
-                currentWeather.setCity_id(Integer.parseInt(cursor.getString(1)));
-                currentWeather.setTimestamp(Long.parseLong(cursor.getString(2)));
-                currentWeather.setWeatherID(Integer.parseInt(cursor.getString(3)));
-                currentWeather.setTemperatureCurrent(Float.parseFloat(cursor.getString(4)));
-                currentWeather.setHumidity(Float.parseFloat(cursor.getString(5)));
-                currentWeather.setPressure(Float.parseFloat(cursor.getString(6)));
-                currentWeather.setWindSpeed(Float.parseFloat(cursor.getString(7)));
-                currentWeather.setWindDirection(Float.parseFloat(cursor.getString(8)));
-                currentWeather.setCloudiness(Float.parseFloat(cursor.getString(9)));
-                currentWeather.setTimeSunrise(Long.parseLong(cursor.getString(10)));
-                currentWeather.setTimeSunset(Long.parseLong(cursor.getString(11)));
-                currentWeather.setTimeZoneSeconds(Integer.parseInt(cursor.getString(12)));
-                currentWeather.setRain60min(cursor.getString(13));
-
-                currentWeatherList.add(currentWeather);
-            } while (cursor.moveToNext());
-        }
-
-        cursor.close();
-        return currentWeatherList;
     }
 
     public synchronized void updateCurrentWeather(CurrentWeatherData currentWeather) {

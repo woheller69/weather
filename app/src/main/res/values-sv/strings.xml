@@ -152,7 +152,7 @@
     <string name="dialog_OK_button">OK</string>
     <string name="dialog_NO_button">Nej</string>
     <string name="dialog_Later_button">Kanske senare</string>
-    <string name="dialog_StarOnGitHub">Gillar du den här appen? Vänligen stjärna den på GitHub.</string>
+    <string name="dialog_StarOnGitHub">Gillar du den här appen? Vänligen ge en stjärna på GitHub eller köp utvecklaren en kaffe via PayPal.</string>
     <string name="settings_show_pressure">Visa lufttrycket</string>
     <string name="settings_GPS_manual">Endast manuell uppdatering</string>
     <string name="settings_register_summary">Du behöver ett gratisabonnemang och OneCallAPI 3.0 med en gräns på 1000 (gratis) samtal per dag.</string>

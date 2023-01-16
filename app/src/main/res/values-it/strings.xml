@@ -150,7 +150,7 @@
     <string name="dialog_OK_button">OK</string>
     <string name="dialog_NO_button">No</string>
     <string name="dialog_Later_button">Forse più tardi</string>
-    <string name="dialog_StarOnGitHub">Ti piace questa app? Assegna una stella su GitHub.</string>
+    <string name="dialog_StarOnGitHub">Ti piace questa app? Assegna una stella su GitHub o offri un caffè allo sviluppatore tramite PayPal.</string>
     <string name="settings_show_pressure">Mostra la pressione dell\'aria</string>
     <string name="settings_GPS_manual">Solo aggiornamento manuale</string>
     <string name="settings_register_summary">È necessario un abbonamento gratuito e OneCallAPI 3.0 con un limite di 1000 chiamate (gratuite) al giorno.</string>

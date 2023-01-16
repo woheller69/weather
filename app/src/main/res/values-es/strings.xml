@@ -144,8 +144,8 @@
     <string name="settings_wind">Usar escala de Beaufort</string>
     <string name="dialog_OK_button">OK</string>
     <string name="dialog_NO_button">No</string>
-    <string name="dialog_Later_button">Quizas mas tarde</string>
-    <string name="dialog_StarOnGitHub">¿Te gusta esta app? Asigne una estrella en GitHub.</string>
+    <string name="dialog_Later_button">Quizás mas tarde</string>
+    <string name="dialog_StarOnGitHub">¿Te gusta esta app? Dale una estrella en GitHub o cómprale un café al desarrollador a través de PayPal.</string>
     <string name="settings_show_pressure">Mostrar presión de aire</string>
     <string name="settings_GPS_manual">Solo actualización manual</string>
     <string name="settings_interval_quarter">15 min</string>

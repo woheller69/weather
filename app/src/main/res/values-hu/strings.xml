@@ -152,7 +152,7 @@
     <string name="dialog_OK_button">rendben</string>
     <string name="dialog_NO_button">Nem</string>
     <string name="dialog_Later_button">Talán később</string>
-    <string name="dialog_StarOnGitHub">Tetszik ez az alkalmazás? Kérjük, csillagozza meg a GitHub.</string>
+    <string name="dialog_StarOnGitHub">Tetszik ez az alkalmazás? Kérjük, adjon csillagot a GitHub, vagy vásároljon a fejlesztőnek egy kávét a PayPalon keresztül.</string>
     <string name="settings_show_pressure">Mutasd a légnyomást</string>
     <string name="settings_GPS_manual">Csak manuális frissítés</string>
     <string name="settings_register_summary">Ingyenes előfizetésre és OneCallAPI 3.0-ra van szüksége, napi 1000 (ingyenes) hívás korlátozásával.</string>

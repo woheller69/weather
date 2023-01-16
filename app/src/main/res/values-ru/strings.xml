@@ -144,7 +144,7 @@
     <string name="dialog_OK_button">OK</string>
     <string name="dialog_NO_button">Нет</string>
     <string name="dialog_Later_button">Может быть позже</string>
-    <string name="dialog_StarOnGitHub">Вам нравится это приложение? Добавить звездочку в GitHub.</string>
+    <string name="dialog_StarOnGitHub">Вам нравится это приложение? Пожалуйста, поставьте звезду на GitHub или купите разработчику кофе через PayPal.</string>
     <string name="settings_show_pressure">Показать давление воздуха</string>
     <string name="settings_GPS_manual">Только ручное обновление</string>
     <string name="settings_interval_quarter">15 мин</string>

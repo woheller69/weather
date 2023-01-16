@@ -152,7 +152,7 @@
     <string name="dialog_OK_button">Oke</string>
     <string name="dialog_NO_button">Nee</string>
     <string name="dialog_Later_button">Misschien later</string>
-    <string name="dialog_StarOnGitHub">Vind je deze app leuk? Geef het een ster op GitHub.</string>
+    <string name="dialog_StarOnGitHub">Vind je deze app leuk? Geef een ster op GitHub of koop de ontwikkelaar een kopje koffie via PayPal.</string>
     <string name="settings_show_pressure">Toon luchtdruk</string>
     <string name="settings_GPS_manual">Alleen handmatige update</string>
     <string name="settings_register_summary">Je hebt een gratis abonnement en OneCallAPI 3.0 nodig met een limiet van 1000 (gratis) bellen per dag.</string>
