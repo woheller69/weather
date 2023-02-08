@@ -153,7 +153,7 @@ public class AddLocationDialogPhotonAPI extends DialogFragment {
             public boolean handleMessage(Message msg) {
                 if (msg.what == TRIGGER_AUTO_COMPLETE) {
                     if (!TextUtils.isEmpty(autoCompleteTextView.getText())) {
-                        makeApiCall(autoCompleteTextView.getText().toString());
+                        makeApiCall(autoCompleteTextView.getText().toString().replaceAll("\\s", "%20"));
                     }
                 }
                 return false;
