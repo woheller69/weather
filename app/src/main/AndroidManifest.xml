@@ -19,6 +19,8 @@
         android:fontFamily = "sans-serif-light"
         android:theme="@style/AppTheme">
 
+        <meta-data android:name="android.webkit.WebView.MetricsOptOut"
+            android:value="true" />
 
         <activity android:name="org.woheller69.weather.activities.RainViewerActivity"
             android:label="@string/RainViewer"/>
