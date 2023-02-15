@@ -1,6 +1,9 @@
 Changelog
 ==========
 
+Version 5.8
+* Bugfixes
+
 Version 5.7
 * Upgrade to SDK 32
 * Bugfixes
