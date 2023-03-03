@@ -86,13 +86,13 @@
     <string name="error_no_city_selected">Ingen stad har valts. För att välja en stad gå till \"Hantera platser\".</string>
     <string name="error_dialog_add_city_too_close">Staden är för nära annan bevakad stad</string>
     <string name="error_no_radius_search_result">Ingen stad hittades. Öka sökradien</string>
-    <string name="settings_interval_quarter" translatable="false">15 min</string>
-    <string name="settings_interval_half" translatable="false">30 min</string>
-    <string name="settings_interval_one" translatable="false">1 h</string>
-    <string name="settings_interval_two" translatable="false">2 h</string>
-    <string name="settings_interval_six" translatable="false">6 h</string>
-    <string name="settings_interval_twelve" translatable="false">12 h</string>
-    <string name="settings_interval_twentyfour" translatable="false">24 h</string>
+    <string name="settings_interval_quarter">15 min</string>
+    <string name="settings_interval_half">30 min</string>
+    <string name="settings_interval_one">1 h</string>
+    <string name="settings_interval_two">2 h</string>
+    <string name="settings_interval_six">6 h</string>
+    <string name="settings_interval_twelve">12 h</string>
+    <string name="settings_interval_twentyfour">24 h</string>
     <string name="settings_intervals">Intervaller</string>
     <string name="settings_update_interval">Uppdateringsintervall</string>
     <string name="settings_interval_summary">Ställ in intervallet för automatiska uppdateringar</string>
@@ -103,7 +103,7 @@
     <string name="RainViewer">Regnradar</string>
     <string name="long_press_text">Håll och dra för att sortera.</string>
     <string name="swipe_to_delete">Svep för att radera</string>
-    <string name="settings_title_forecastChoice">Skärmalternativ</string>
+    <string name="settings_title_display_options">Skärmalternativ</string>
     <string name="settings_summary_forecastChoice">Välj mellan 5 dagar /3 timmar och 2 dagar /1 timmar 3 dagar /3 timmar prognoser</string>
     <string name="settings_forecast_option_1">5 dagar /3h</string>
     <string name="settings_forecast_option_2">2 dagar /1h 3 dagar /3h</string>

@@ -35,7 +35,7 @@
 <div id="mapid" style="position: absolute; top: 45px; left: 0; bottom: 0; right: 0;"></div>
 
 <script>
-//call: rainviewer.html?lat={latitude}&lon={longitude}&appid={API_KEY}&nightmode={mode} Takes latitude/longitude and OWM API_Key from request and shows rainviewer rain radar and OWM clouds layer on openstreetmap for requested position and zoom
+//call: rainviewer.html?lat={latitude}&lon={longitude}&nightmode={mode} Takes latitude/longitude and nightmode from request and shows rainviewer rain radar and clouds on openstreetmap for requested position and zoom
 
 
 var getUrlParameter = function getUrlParameter(sParam) {
@@ -60,18 +60,18 @@ var map = L.map('mapid', {
         }).setView([getUrlParameter('lat'), getUrlParameter('lon')], 8);  //zoom factor 8
 
 let myFilterClouds = [
-    'contrast:1000%',
+    'contrast:200%',
     'invert:100%',
-    'opacity:60%'
+    'opacity:40%'
 ];
 
 let myFilterCloudsNight = [
-    'contrast:1000%',
+    'contrast:200%',
     'opacity:60%'
 ];
 
 let myFilterMap = [
-    'saturate:200%'
+    'saturate:300%'
 ];
 
 let myFilterMapNight = [
@@ -83,18 +83,12 @@ let myFilterMapNight = [
 if (getUrlParameter('nightmode')==0){
         L.tileLayer.colorFilter('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             filter: myFilterMap,
-            attribution: 'Map data ©<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors <br> Weather data <a href="https://www.rainviewer.com/api.html"> RainViewer </a>& <a href="https://openweathermap.org/api"> OpenWeatherMap </a>'
-        }).addTo(map);
-            L.tileLayer.colorFilter('https://tile.openweathermap.org/map/clouds_new/{z}/{x}/{y}.png?appid=' + getUrlParameter('appid'),{
-            filter: myFilterClouds
+            attribution: 'Map data ©<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors <br> Weather data <a href="https://www.rainviewer.com/api.html"> RainViewer </a>'
         }).addTo(map);
     }else{
         L.tileLayer.colorFilter('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             filter: myFilterMapNight,
-            attribution: 'Map data ©<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors <br> Weather data <a href="https://www.rainviewer.com/api.html"> RainViewer </a>& <a href="https://openweathermap.org/api"> OpenWeatherMap </a>'
-        }).addTo(map);
-            L.tileLayer.colorFilter('https://tile.openweathermap.org/map/clouds_new/{z}/{x}/{y}.png?appid=' + getUrlParameter('appid'),{
-            filter: myFilterCloudsNight
+            attribution: 'Map data ©<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors <br> Weather data <a href="https://www.rainviewer.com/api.html"> RainViewer </a>'
         }).addTo(map);
     }
 
@@ -108,6 +102,7 @@ var marker = L.marker([getUrlParameter('lat'), getUrlParameter('lon')]).addTo(ma
     var mapFrames = [];
     var lastPastFramePosition = -1;
     var radarLayers = [];
+    var infraredLayer;
 
     var animationPosition = 0;
     var animationTimer = false;
@@ -121,15 +116,22 @@ var marker = L.marker([getUrlParameter('lat'), getUrlParameter('lon')]).addTo(ma
 
         // Save the API response
         apiData = JSON.parse(apiRequest.response);
-
-        // Rebuild frames to show
+        
+        //add current infrared frame
+        if (apiData.satellite && apiData.satellite.infrared) {
+            mapFrames = apiData.satellite.infrared;
+            lastPastFramePosition = apiData.satellite.infrared.length - 1;
+            addInfraredLayer(mapFrames[lastPastFramePosition]);
+        }
+        
+        //Rebuild frames to show
         if (apiData && apiData.radar && apiData.radar.past) {
             mapFrames = apiData.radar.past;
             if (apiData.radar.nowcast) {
                 mapFrames = mapFrames.concat(apiData.radar.nowcast);
             }
 
-            // show the last "past" frame
+              //show the last "past" frame
             lastPastFramePosition = apiData.radar.past.length - 1;
             showFrame(lastPastFramePosition);
         }
@@ -151,6 +153,20 @@ var marker = L.marker([getUrlParameter('lat'), getUrlParameter('lon')]).addTo(ma
         if (!map.hasLayer(radarLayers[frame.path])) {
             map.addLayer(radarLayers[frame.path]);
         }
+    }
+    
+    function addInfraredLayer(frame) {
+    
+    if (getUrlParameter('nightmode')==0){
+            L.tileLayer.colorFilter(apiData.host + frame.path + '/256/{z}/{x}/{y}/0/0_0.png', {
+            filter: myFilterClouds
+        }).addTo(map);
+        } else {
+            L.tileLayer.colorFilter(apiData.host + frame.path + '/256/{z}/{x}/{y}/0/0_0.png', {
+            filter: myFilterCloudsNight
+        }).addTo(map);
+        }
+        console.log(apiData.host + frame.path + '/256/{z}/{x}/{y}/0/0_0.png');
     }
 
     /**

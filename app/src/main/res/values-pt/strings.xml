@@ -84,13 +84,13 @@
     <string name="error_no_city_selected">Nenhuma cidade selecionada. Para selecionar uma cidade, vá para \"Gerenciar Locais\".</string>
     <string name="error_dialog_add_city_too_close">Cidade muito perto de outra cidade sendo visualizada</string>
     <string name="error_no_radius_search_result">Nenhuma cidade encontrada. Aumente o raio de pesquisa.</string>
-    <string name="settings_interval_quarter" translatable="false">15 min</string>
-    <string name="settings_interval_half" translatable="false">30 min</string>
-    <string name="settings_interval_one" translatable="false">1 h</string>
-    <string name="settings_interval_two" translatable="false">2 h</string>
-    <string name="settings_interval_six" translatable="false">6 h</string>
-    <string name="settings_interval_twelve" translatable="false">12 h</string>
-    <string name="settings_interval_twentyfour" translatable="false">24 h</string>
+    <string name="settings_interval_quarter">15 min</string>
+    <string name="settings_interval_half">30 min</string>
+    <string name="settings_interval_one">1 h</string>
+    <string name="settings_interval_two">2 h</string>
+    <string name="settings_interval_six">6 h</string>
+    <string name="settings_interval_twelve">12 h</string>
+    <string name="settings_interval_twentyfour">24 h</string>
     <string name="settings_intervals">Intervalos</string>
     <string name="settings_update_interval">Intervalos de atualização</string>
     <string name="settings_interval_summary">Defina o intervalo para atualizações automáticas</string>
@@ -101,7 +101,7 @@
     <string name="RainViewer">Radar de Chuvas</string>
     <string name="long_press_text">Segure e arraste para ordenar.</string>
     <string name="swipe_to_delete">Deslize para remover</string>
-    <string name="settings_title_forecastChoice">Opções de Visualização</string>
+    <string name="settings_title_display_options">Opções de Visualização</string>
     <string name="settings_summary_forecastChoice">Selecione entre previsões de 5 dias / 3h e 2 dias / 1h + 3 dias / 3h</string>
     <string name="settings_forecast_option_1">5 day / 3h</string>
     <string name="settings_forecast_option_2">2 day / 1h + 3 day / 3h</string>

@@ -126,7 +126,7 @@ public class PFASQLiteHelper extends SQLiteAssetHelper {
             COLUMN_TIME_SUNRISE + "  VARCHAR(50) NOT NULL," +
             COLUMN_TIME_SUNSET + "  VARCHAR(50) NOT NULL," +
             COLUMN_TIMEZONE_SECONDS + " INTEGER," +
-            COLUMN_RAIN60MIN + " VARCHAR(25 NOT NULL)," +
+            COLUMN_RAIN60MIN + " VARCHAR(25) NOT NULL," +
             " FOREIGN KEY (" + CURRENT_WEATHER_CITY_ID + ") REFERENCES " + TABLE_CITIES + "(" + CITIES_ID + "));";
 
     private static final String CREATE_TABLE_CITIES = "CREATE TABLE " + TABLE_CITIES +
@@ -487,10 +487,10 @@ public class PFASQLiteHelper extends SQLiteAssetHelper {
         Cursor cursor = database.rawQuery(
                 "SELECT " + CITIES_TO_WATCH_ID +
                         ", " + CITIES_TO_WATCH_CITY_ID +
-                        ", " + CITIES_NAME +
-                        ", " + CITIES_COUNTRY_CODE +
-                        ", " + CITIES_LONGITUDE +
-                        ", " + CITIES_LATITUDE +
+                        ", " + CITIES_TO_WATCH_NAME +
+                        ", " + CITIES_TO_WATCH_COUNTRY_CODE +
+                        ", " + CITIES_TO_WATCH_LONGITUDE +
+                        ", " + CITIES_TO_WATCH_LATITUDE +
                         ", " + CITIES_TO_WATCH_COLUMN_RANK +
                         " FROM " + TABLE_CITIES_TO_WATCH +
                         " WHERE " + CITIES_TO_WATCH_CITY_ID + " = ?", arguments);
@@ -522,10 +522,10 @@ public class PFASQLiteHelper extends SQLiteAssetHelper {
         Cursor cursor = database.rawQuery(
                 "SELECT " + CITIES_TO_WATCH_ID +
                         ", " + CITIES_TO_WATCH_CITY_ID +
-                        ", " + CITIES_NAME +
-                        ", " + CITIES_COUNTRY_CODE +
-                        ", " + CITIES_LONGITUDE +
-                        ", " + CITIES_LATITUDE +
+                        ", " + CITIES_TO_WATCH_NAME +
+                        ", " + CITIES_TO_WATCH_COUNTRY_CODE +
+                        ", " + CITIES_TO_WATCH_LONGITUDE +
+                        ", " + CITIES_TO_WATCH_LATITUDE +
                         ", " + CITIES_TO_WATCH_COLUMN_RANK +
                         " FROM " + TABLE_CITIES_TO_WATCH
                 , new String[]{});

@@ -84,13 +84,13 @@
     <string name="error_no_city_selected">Nessuna città selezionata. Per selezionare una città vai a \"Gestisci località\".</string>
     <string name="error_dialog_add_city_too_close">Città troppo vicina ad altre città osservate</string>
     <string name="error_no_radius_search_result">Nessuna città trovata. Aumenta il raggio di ricerca</string>
-    <string name="settings_interval_quarter" translatable="false">15 min</string>
-    <string name="settings_interval_half" translatable="false">30 min</string>
-    <string name="settings_interval_one" translatable="false">1 h</string>
-    <string name="settings_interval_two" translatable="false">2 h</string>
-    <string name="settings_interval_six" translatable="false">6 h</string>
-    <string name="settings_interval_twelve" translatable="false">12 h</string>
-    <string name="settings_interval_twentyfour" translatable="false">24 h</string>
+    <string name="settings_interval_quarter">15 min</string>
+    <string name="settings_interval_half">30 min</string>
+    <string name="settings_interval_one">1 h</string>
+    <string name="settings_interval_two">2 h</string>
+    <string name="settings_interval_six">6 h</string>
+    <string name="settings_interval_twelve">12 h</string>
+    <string name="settings_interval_twentyfour">24 h</string>
     <string name="settings_intervals">Intervalli</string>
     <string name="settings_update_interval">Intervallo di aggiornamento</string>
     <string name="settings_interval_summary">Imposta l\'intervallo degli aggiornamenti automatici</string>
@@ -101,7 +101,7 @@
     <string name="RainViewer">Radar Pioggia</string>
     <string name="long_press_text">Tieni premuto e trascina per ordinare.</string>
     <string name="swipe_to_delete">Scorri per eliminare</string>
-    <string name="settings_title_forecastChoice">Opzioni di visualizzazione</string>
+    <string name="settings_title_display_options">Opzioni di visualizzazione</string>
     <string name="settings_summary_forecastChoice">Selezionare tra previsioni di 5 giorni / 3 ore e 2 giorni / 1 ora + 3 giorni / 3 ore</string>
     <string name="settings_forecast_option_1">5 giorni / 3h</string>
     <string name="settings_forecast_option_2">2 giorni / 1h + 3 giorni / 3h</string>

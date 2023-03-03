@@ -95,7 +95,7 @@
     <string name="RainViewer">Карта осадков</string>
     <string name="long_press_text">Удерживайте и тащите для сортировки.</string>
     <string name="swipe_to_delete">Проведите, чтобы удалить</string>
-    <string name="settings_title_forecastChoice">Предпочтения отображения</string>
+    <string name="settings_title_display_options">Предпочтения отображения</string>
     <string name="settings_summary_forecastChoice">Выбор форматов отображения прогноза погоды: 5 дней / 3 часа + 2 дня / 1 час + 3 дня / 3 часа</string>
     <string name="settings_forecast_option_1">5 дней / 3 часа</string>
     <string name="settings_forecast_option_2">2 дня / 1 час + 3 дня / 3 часа</string>

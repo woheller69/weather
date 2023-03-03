@@ -96,7 +96,7 @@
     <string name="RainViewer">Radar de lluvia</string>
     <string name="long_press_text">Mantenga presionado y arrastre para ordenar.</string>
     <string name="swipe_to_delete">Deslizar para eliminar</string>
-    <string name="settings_title_forecastChoice">opciones de pantalla</string>
+    <string name="settings_title_display_options">opciones de pantalla</string>
     <string name="settings_summary_forecastChoice">Seleccione entre pronósticos de 5 días /3h y 2 días /1h + 3 días /3h</string>
     <string name="settings_forecast_option_1">5 días /3h</string>
     <string name="settings_forecast_option_2">2 días /1h + 3 días /3h</string>

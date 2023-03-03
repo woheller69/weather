@@ -86,13 +86,13 @@
     <string name="error_no_city_selected">Nincs kiválasztott város. A város kiválasztásához lépjen a \"Helyek kezelése\" oldalra.</string>
     <string name="error_dialog_add_city_too_close">A város túl közel van a többi megfigyelt városhoz</string>
     <string name="error_no_radius_search_result">Nem található város. Növelje a keresési sugarat</string>
-    <string name="settings_interval_quarter" translatable="false">15 min</string>
-    <string name="settings_interval_half" translatable="false">30 min</string>
-    <string name="settings_interval_one" translatable="false">1 h</string>
-    <string name="settings_interval_two" translatable="false">2 h</string>
-    <string name="settings_interval_six" translatable="false">6 h</string>
-    <string name="settings_interval_twelve" translatable="false">12 h</string>
-    <string name="settings_interval_twentyfour" translatable="false">24 h</string>
+    <string name="settings_interval_quarter">15 min</string>
+    <string name="settings_interval_half">30 min</string>
+    <string name="settings_interval_one">1 h</string>
+    <string name="settings_interval_two">2 h</string>
+    <string name="settings_interval_six">6 h</string>
+    <string name="settings_interval_twelve">12 h</string>
+    <string name="settings_interval_twentyfour">24 h</string>
     <string name="settings_intervals">Intervallumok</string>
     <string name="settings_update_interval">Frissítési időköz</string>
     <string name="settings_interval_summary">Állítsa be az automatikus frissítések időközét</string>
@@ -103,7 +103,7 @@
     <string name="RainViewer">Eső Radar</string>
     <string name="long_press_text">Tartsa lenyomva és húzza a rendezéshez.</string>
     <string name="swipe_to_delete">Csúsztassa az ujját a törléshez</string>
-    <string name="settings_title_forecastChoice">megjelenítési lehetőségek</string>
+    <string name="settings_title_display_options">megjelenítési lehetőségek</string>
     <string name="settings_summary_forecastChoice">Válasszon az 5 napos /3 órás és a 2 napos /1 óra 3 napos /3 órás előrejelzések közül</string>
     <string name="settings_forecast_option_1">5 nap /3 óra</string>
     <string name="settings_forecast_option_2">2 nap /1 óra 3 nap /3 óra</string>

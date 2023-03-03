@@ -43,7 +43,7 @@
             />
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/settings_title_forecastChoice">
+    <PreferenceCategory android:title="@string/settings_title_display_options">
         <ListPreference
             app:useSimpleSummaryProvider="true"
             android:defaultValue="2"

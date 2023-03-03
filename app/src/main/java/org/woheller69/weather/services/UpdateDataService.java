@@ -113,12 +113,12 @@ public class UpdateDataService extends JobIntentService {
 
         // Update if update forced or if a certain time has passed
         if (skipUpdateInterval || timestamp + updateInterval - systemTime <= 0) {
-             //if forecastChoice = 1 (3h) perform both else only one call API
-            int choice = Integer.parseInt(prefManager.getString("forecastChoice","1"));
-            if (choice==1) {
-                IHttpRequestForForecast forecastRequest = new OwmHttpRequestForForecast(getApplicationContext());
-                forecastRequest.perform(lat, lon, cityId);
-            }
+           //if forecastChoice = 1 (3h) perform both else only one call API
+           // int choice = Integer.parseInt(prefManager.getString("forecastChoice","1"));
+           // if (choice==1) {
+           //     IHttpRequestForForecast forecastRequest = new OwmHttpRequestForForecast(getApplicationContext());
+           //     forecastRequest.perform(lat, lon, cityId);
+           // }
             IHttpRequestForOneCallAPI forecastOneCallRequest = new OwmHttpRequestForOneCallAPI(getApplicationContext());
             forecastOneCallRequest.perform(lat,lon, cityId);
         }

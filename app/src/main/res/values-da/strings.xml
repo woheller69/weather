@@ -86,13 +86,13 @@
     <string name="error_no_city_selected">Der er ikke valgt nogen by. For at vælge en by skal du gå til \"Administrer lokationer\".</string>
     <string name="error_dialog_add_city_too_close">By for tæt på en anden overvåget by</string>
     <string name="error_no_radius_search_result">Ingen by fundet. Forøg søgeradius</string>
-    <string name="settings_interval_quarter" translatable="false">15 min</string>
-    <string name="settings_interval_half" translatable="false">30 min</string>
-    <string name="settings_interval_one" translatable="false">1 h</string>
-    <string name="settings_interval_two" translatable="false">2 h</string>
-    <string name="settings_interval_six" translatable="false">6 h</string>
-    <string name="settings_interval_twelve" translatable="false">12 h</string>
-    <string name="settings_interval_twentyfour" translatable="false">24 h</string>
+    <string name="settings_interval_quarter">15 min</string>
+    <string name="settings_interval_half">30 min</string>
+    <string name="settings_interval_one">1 h</string>
+    <string name="settings_interval_two">2 h</string>
+    <string name="settings_interval_six">6 h</string>
+    <string name="settings_interval_twelve">12 h</string>
+    <string name="settings_interval_twentyfour">24 h</string>
     <string name="settings_intervals">Intervaller</string>
     <string name="settings_update_interval">Opdateringsinterval</string>
     <string name="settings_interval_summary">Indstil intervallet for automatiske opdateringer</string>
@@ -103,7 +103,7 @@
     <string name="RainViewer">Regn radar</string>
     <string name="long_press_text">Hold og træk for at sortere.</string>
     <string name="swipe_to_delete">Stryg for at slette</string>
-    <string name="settings_title_forecastChoice">Visningsmuligheder</string>
+    <string name="settings_title_display_options">Visningsmuligheder</string>
     <string name="settings_summary_forecastChoice">Vælg mellem 5 dage /3 timer og 2 dage /1 timer 3 dage /3 timer prognoser</string>
     <string name="settings_forecast_option_1">5 dage /3 timer</string>
     <string name="settings_forecast_option_2">2 dage /1 t 3 dag /3 timer</string>

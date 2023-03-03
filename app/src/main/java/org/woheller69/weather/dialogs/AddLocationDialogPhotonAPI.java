@@ -12,6 +12,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -114,6 +115,7 @@ public class AddLocationDialogPhotonAPI extends DialogFragment {
         autoSuggestAdapter = new AutoSuggestAdapter(requireContext(),
                 R.layout.list_item_autocomplete);
         autoCompleteTextView.setThreshold(2);
+        autoCompleteTextView.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
         autoCompleteTextView.setAdapter(autoSuggestAdapter);
 
         autoCompleteTextView.setOnItemClickListener(

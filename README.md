@@ -24,6 +24,8 @@ For subscriptions later than Aug 15, 2022 you need a free subscription and OneCa
 
 Please register for free account at: https://home.openweathermap.org/users/sign_up
 
+Use [omWeather](https://github.com/woheller69/omweather) instead if you do not yet have an API key.
+
 [<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" height="75">](https://f-droid.org/de/packages/org.woheller69.weather/)
 
 

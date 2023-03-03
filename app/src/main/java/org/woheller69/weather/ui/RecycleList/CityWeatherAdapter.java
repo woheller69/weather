@@ -6,6 +6,8 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -162,12 +164,14 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
         TextView temperature;
         ImageView weather;
         TextView sun;
+        ImageView windicon;
 
         OverViewHolder(View v) {
             super(v);
             this.temperature = v.findViewById(R.id.card_overview_temperature);
             this.weather = v.findViewById(R.id.card_overview_weather_image);
-            this.sun=v.findViewById(R.id.card_overview_sunrise_sunset);
+            this.sun = v.findViewById(R.id.card_overview_sunrise_sunset);
+            this.windicon = v.findViewById(R.id.card_overview_windicon);
         }
     }
 
@@ -289,7 +293,7 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
             }
 
             setImage(currentWeatherDataList.getWeatherID(), holder.weather, isDay);
-
+            holder.windicon.setImageResource(StringFormatUtils.colorWindSpeedWidget(currentWeatherDataList.getWindSpeed()));
             holder.temperature.setText(StringFormatUtils.formatTemperature(context, currentWeatherDataList.getTemperatureCurrent()));
 
         } else if (viewHolder.getItemViewType() == DETAILS) {

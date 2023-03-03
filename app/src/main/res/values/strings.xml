@@ -106,7 +106,7 @@
     <string name="RainViewer">Rain Radar</string>
     <string name="long_press_text">Hold and drag to sort.</string>
     <string name="swipe_to_delete">Swipe to delete</string>
-    <string name="settings_title_forecastChoice">Display options</string>
+    <string name="settings_title_display_options">Display options</string>
     <string name="settings_summary_forecastChoice">Select between 5 day / 3h and 2 day / 1h + 3 day / 3h forecasts</string>
     <string name="settings_forecast_option_1">5 day / 3h</string>
     <string name="settings_forecast_option_2">2 day / 1h + 3 day / 3h</string>

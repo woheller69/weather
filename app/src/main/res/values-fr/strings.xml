@@ -77,7 +77,7 @@
     <string name="settings_title_API">Clé API</string>
     <string name="settings_title_API_key">Entrez la clé API</string>
     <string name="settings_update_interval">Intervalle de mise à jour</string>
-    <string name="settings_title_forecastChoice">Option d\'affichage</string>
+    <string name="settings_title_display_options">Option d\'affichage</string>
     <string name="settings_summary_forecastChoice">Choisissez entre 5 jours /3h et 2 jours /1h + 3 jours /3h de prévision</string>
     <string name="settings_forecast_option_1">5 jours /3h</string>
     <string name="settings_forecast_option_2">2 jours /1h + 3 jours /3h</string>

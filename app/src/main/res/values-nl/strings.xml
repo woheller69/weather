@@ -86,13 +86,13 @@
     <string name="error_no_city_selected">Er is geen stad geselecteerd. Ga naar \"Locaties beheren\" om een ​​stad te selecteren.</string>
     <string name="error_dialog_add_city_too_close">Stad te dicht bij andere bekeken stad</string>
     <string name="error_no_radius_search_result">Geen stad gevonden. Zoekradius vergroten</string>
-    <string name="settings_interval_quarter" translatable="false">15 min</string>
-    <string name="settings_interval_half" translatable="false">30 min</string>
-    <string name="settings_interval_one" translatable="false">1 h</string>
-    <string name="settings_interval_two" translatable="false">2 h</string>
-    <string name="settings_interval_six" translatable="false">6 h</string>
-    <string name="settings_interval_twelve" translatable="false">12 h</string>
-    <string name="settings_interval_twentyfour" translatable="false">24 h</string>
+    <string name="settings_interval_quarter">15 min</string>
+    <string name="settings_interval_half">30 min</string>
+    <string name="settings_interval_one">1 h</string>
+    <string name="settings_interval_two">2 h</string>
+    <string name="settings_interval_six">6 h</string>
+    <string name="settings_interval_twelve">12 h</string>
+    <string name="settings_interval_twentyfour">24 h</string>
     <string name="settings_intervals">Intervallen</string>
     <string name="settings_update_interval">Bijwerkingsonderbreking</string>
     <string name="settings_interval_summary">Stel het interval van automatische updates in</string>
@@ -103,7 +103,7 @@
     <string name="RainViewer">Regenradar</string>
     <string name="long_press_text">Houd ingedrukt en sleep om te sorteren.</string>
     <string name="swipe_to_delete">Veeg om te verwijderen</string>
-    <string name="settings_title_forecastChoice">weergaveopties</string>
+    <string name="settings_title_display_options">weergaveopties</string>
     <string name="settings_summary_forecastChoice">Kies tussen 5 dagen /3 uur en 2 dagen /1 uur 3 dagen /3 uur voorspellingen</string>
     <string name="settings_forecast_option_1">5 dagen /3u</string>
     <string name="settings_forecast_option_2">2 dagen /1 uur 3 dagen /3 uur</string>
