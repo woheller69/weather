@@ -1,0 +1,7 @@
+Windsymbole hinzugefügt
+Wolkenlayer aus Rainviewer im Regenradar
+Weiße Linien im Regenradar enfernt
+Farbe für maximalen UV-Level is violett
+Layout-Verbesserungen
+
+Bitte testen Sie meine neue omWeather-App!

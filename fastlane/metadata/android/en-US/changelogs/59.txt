@@ -1,0 +1,7 @@
+Add wind icons
+Use Rainviewer clouds layer in rain radar
+Fix white lines in rain radar
+Use violet for max uv level
+Layout improvements
+
+Please try my new omWeather app !
