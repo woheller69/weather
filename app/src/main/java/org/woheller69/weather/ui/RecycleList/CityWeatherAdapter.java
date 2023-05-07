@@ -77,6 +77,7 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
 
     // function update 3-hour or 1-hour forecast list
     public void updateForecastData(List<Forecast> forecasts) {
+        if (forecasts.isEmpty()) return;
 
         courseDayList = new ArrayList<>();
 
