@@ -1,0 +1,18 @@
+RadarWeather pozwala śledzić pogodę dla miast i lokalizacji, które Cię interesują.
+
+Dane pogodowe są dostarczane za pośrednictwem bezpłatnego interfejsu API OpenWeatherMap. Ponieważ nowy One Call API pozwala na tylko 1000 połączeń dziennie, każdy użytkownik musi wprowadzić swój własny bezpłatny klucz OpenWeatherMap (https://home.openweathermap.org/users/sign_up).
+Dane dla radaru deszczowego są pobierane za pośrednictwem bezpłatnego interfejsu API RainViewer.
+
+Cechy:
+- Obecna pogoda
+- Prognozy godzinowe dla prognoz 48h / 3h na 5 dni
+- Prognoza na 8 dni
+- Opady w ciągu najbliższych 60min
+- Radar deszczowy
+- Wyszukiwanie w promieniu
+- Widżet z opcjonalną automatyczną aktualizacją pozycji GPS
+- Brak reklam
+
+Minimalne uprawnienia:
+RadarWeather wymaga tylko minimalnej ilości uprawnień, a mianowicie tylko uprawnień INTERNETOWYCH. To uprawnienie jest niezbędne do wysyłania żądań HTTP do zdalnych serwerów w celu pobrania danych pogodowych.
+Opcjonalnie: autoryzacja dla GPS.
