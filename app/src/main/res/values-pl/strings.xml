@@ -17,7 +17,7 @@
     <string name="slide2_heading">How to</string>
     <string name="slide2_text">Możesz wybrać własne lokalizacje i uzyskać szczegółowe informacje o aktualnej pogodzie. Dostępny jest również radar deszczu.</string>
     <string name="slide3_heading" translatable="false">Github</string>
-    <string name="slide3_text">Kod źródłowy tej aplikacji jest dostępny na GitHub. Więcej wyjaśnień można znaleźć na stronie Informacje.</string>
+    <string name="slide3_text">Kod źródłowy tej aplikacji jest dostępny na GitHub. Więcej znajdziesz na stronie Informacje.</string>
     <string name="card_details_heading">Obecnie</string>
     <string name="card_details_humidity">Wilgotność:</string>
     <string name="card_details_pressure">Ciśnienie:</string>
@@ -37,7 +37,7 @@
     <string name="about">Informacje</string>
     <string name="version_number" translatable="false">Version</string>
     <string name="about_license">Licencja</string>
-    <string name="about_license_text">TTa aplikacja wywodzi się z Privacy Friendly Weather, opracowanej przez grupę badawczą SECUSO. Kod źródłowy na licencji GPLv3. Aplikacja wykorzystuje ikony Google Material Design Icons na licencji Apache License Version 2.0, bibliotekę Leaflet na licencji BSD z 2 klauzulami, wtyczkę Leaflet.TileLayer.ColorFilter na licencji MIT License, RainViewer API, która jest bezpłatna, Android Biblioteka SQLiteAssetHelper (com.readystatesoftware.sqliteasset) na licencji Apache License Version 2.0, AutoSuggestTextViewAPICall na licencji Apache License Version 2.0 oraz bibliotekę WilliamChart (com.db.chart) na licencji Apache License Version 2.0</string>
+    <string name="about_license_text">Ta aplikacja wywodzi się z Privacy Friendly Weather, opracowanej przez grupę badawczą SECUSO. Kod źródłowy na licencji GPLv3. Aplikacja wykorzystuje ikony Google Material Design Icons na licencji Apache License Version 2.0, bibliotekę Leaflet na licencji BSD z 2 klauzulami, wtyczkę Leaflet.TileLayer.ColorFilter na licencji MIT License, RainViewer API, która jest bezpłatna, Android Biblioteka SQLiteAssetHelper (com.readystatesoftware.sqliteasset) na licencji Apache License Version 2.0, AutoSuggestTextViewAPICall na licencji Apache License Version 2.0 oraz bibliotekę WilliamChart (com.db.chart) na licencji Apache License Version 2.0</string>
     <string name="about_more_info">Więcej informacji znajdziesz na:</string>
     <string name="about_github" translatable="false"><a href="https://github.com/woheller69/weather">Github-Repo</a></string>
     <string name="activity_settings_title">Ustawienia</string>
@@ -47,7 +47,7 @@
     <string name="settings_celsius">Celsjusz</string>
     <string name="settings_fahrenheit">Fahrenheit</string>
     <string name="settings_summary_distance">Ustaw jednostkę, która ma być używana do wyświetlania odległości</string>
-    <string name="settings_title_distance">Dystanse</string>
+    <string name="settings_title_distance">Dystans</string>
     <string name="settings_kilometers">Kilometery</string>
     <string name="settings_miles">Mile</string>
     <string name="settings_title_API">Klucz API</string>
@@ -158,7 +158,7 @@
     <string name="dialog_NO_button">Nie</string>
     <string name="dialog_Later_button">Może później</string>
     <string name="dialog_StarOnGitHub">Czy podoba Ci się ta aplikacja? Daj gwiazdkę na GitHub lub kup programistom kawę przez PayPal.</string>
-    <string name="settings_show_pressure">Pokaż ciśnienie powietrza</string>
+    <string name="settings_show_pressure">Pokaż ciśnienie atmosferyczne</string>
     <string name="action_position" translatable="false">Update Location</string>
     <string name="settings_GPS_manual">Tylko aktualizacja ręczna</string>
     <string name="settings_register_summary">Potrzebujesz bezpłatnego abonamentu i OneCallAPI 3.0 z limitem 1000 (darmowych) połączeń dziennie.</string>
