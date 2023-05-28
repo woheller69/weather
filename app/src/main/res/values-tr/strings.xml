@@ -3,16 +3,16 @@
     <string name="app_name_long">RadarWeather: weather and radar</string>
     <string name="activity_about">Hakkında</string>
     <string name="activity_settings">Ayarlar</string>
-    <string name="activity_weather">Weather</string>
-    <string name="activity_manage">Manage locations</string>
-    <string name="activity_radius_search">Radius Search</string>
-    <string name="action_refresh">Refresh</string>
-    <string name="action_rainviewer" translatable="false">Rain Viewer</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="next">Next</string>
-    <string name="okay">Okay</string>
-    <string name="slide1_heading">Welcome!</string>
+    <string name="activity_weather">Hava durumu</string>
+    <string name="activity_manage">Konumları yönet</string>
+    <string name="activity_radius_search">Yarıçap arama</string>
+    <string name="action_refresh">Yenile</string>
+    <string name="action_rainviewer" translatable="false">Yağmur Görüntüleyici</string>
+    <string name="navigation_drawer_open">Gezinme çekmecesini aç</string>
+    <string name="navigation_drawer_close">Gezinme çekmecesini kapat</string>
+    <string name="next">İleri</string>
+    <string name="okay">Tamam</string>
+    <string name="slide1_heading">Hoşgeldiniz!</string>
     <string name="slide1_text">RadarWeather is an App to check the current Weather and Forecasts for your Locations.</string>
     <string name="slide2_heading">How To</string>
     <string name="slide2_text">You can choose your own locations and get detailed information about the current weather. A rain radar is also available.</string>
