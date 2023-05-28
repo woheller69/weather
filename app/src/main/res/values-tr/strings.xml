@@ -14,24 +14,24 @@
     <string name="okay">Tamam</string>
     <string name="slide1_heading">Hoşgeldiniz!</string>
     <string name="slide1_text">RadarWeather is an App to check the current Weather and Forecasts for your Locations.</string>
-    <string name="slide2_heading">How To</string>
+    <string name="slide2_heading">Nasıl</string>
     <string name="slide2_text">You can choose your own locations and get detailed information about the current weather. A rain radar is also available.</string>
     <string name="slide3_heading" translatable="false">Github</string>
     <string name="slide3_text">The sourcecode of this app is available at GitHub. For further explanations have a look at the About Page.</string>
-    <string name="card_details_heading">Now</string>
-    <string name="card_details_humidity">Humidity:</string>
-    <string name="card_details_pressure">Pressure:</string>
-    <string name="card_details_wind_speed">Wind:</string>
-    <string name="card_week_heading">Week</string>
-    <string name="card_day_heading">Course of the day</string>
+    <string name="card_details_heading">Şimdi</string>
+    <string name="card_details_humidity">Nem:</string>
+    <string name="card_details_pressure">Basınç:</string>
+    <string name="card_details_wind_speed">Rüzgar:</string>
+    <string name="card_week_heading">Hafta</string>
+    <string name="card_day_heading">Günün seyri</string>
     <string name="card_error_heading">Error fetching weather data</string>
     <string name="card_error_content">Please try to update!</string>
     <string name="radius_search_heading">Find the best weather around a location</string>
     <string name="radius_search_tv_heading">Location (center of the search square)</string>
     <string name="radius_search_tv_edge_length">Edge length of the search square</string>
     <string name="radius_search_tv_num_returns">Number of locations to retrieve</string>
-    <string name="radius_search_btn_search">Search</string>
-    <string name="radius_search_result_label">Search Result</string>
+    <string name="radius_search_btn_search">Ara</string>
+    <string name="radius_search_result_label">Arama sonuçları</string>
     <string name="about_privacy_heading">Privacy Info</string>
     <string name="about_permission_internet_description">Connecting to the Network: This permission is needed because weather data is retrieved by making requests to servers on the Internet. Without this permission, no weather data can be received. Optional: authorization for GPS.</string>
     <string name="about">About</string>
@@ -40,8 +40,8 @@
     <string name="about_license_text">This application is derived from Privacy Friendly Weather, developed by the research group SECUSO. Sourcecode licensed under GPLv3. The app uses icons from Google Material Design Icons licensed under Apache License Version 2.0, the Leaflet library which is licensed under 2-clause BSD License, the Leaflet.TileLayer.ColorFilter plugin which is licensed under MIT License, RainViewer API which is free, Android SQLiteAssetHelper library (com.readystatesoftware.sqliteasset) which is licensed under Apache License Version 2.0, AutoSuggestTextViewAPICall which is licensed under Apache License Version 2.0 and WilliamChart library (com.db.chart) which is licensed under Apache License Version 2.0</string>
     <string name="about_more_info">More information can be found on:</string>
     <string name="about_github" translatable="false"><a href="https://github.com/woheller69/weather">Github-Repo</a></string>
-    <string name="activity_settings_title">Settings</string>
-    <string name="settings_title_units">Units</string>
+    <string name="activity_settings_title">Ayarlar</string>
+    <string name="settings_title_units">Birimler</string>
     <string name="settings_summary_temperature">Set the unit to use for displaying temperatures</string>
     <string name="settings_title_temperature">Temperatures</string>
     <string name="settings_celsius">Celsius</string>
@@ -50,7 +50,7 @@
     <string name="settings_title_distance">Distances</string>
     <string name="settings_kilometers">Kilometers</string>
     <string name="settings_miles">Miles</string>
-    <string name="settings_title_API">API Key</string>
+    <string name="settings_title_API">API Anahtarı</string>
     <string name="settings_description_API">RadarWeather receives data from the free service of OpenWeatherMap. This service is limited to 1000 calls per day. Please enter your own API key</string>
     <string name="settings_title_API_key">Enter API Key</string>
     <string name="settings_API_key_default" translatable="false" />
@@ -63,8 +63,8 @@
     <string name="abbreviation_sunday">Su.</string>
     <string name="dialog_add_label">Enter the location to add:</string>
     <string name="dialog_add_no_city_found">No location was found that matches your input. It is recommended to select one of the items from the dropdown list.  </string>
-    <string name="dialog_add_close_button">Close</string>
-    <string name="dialog_add_add_button">Add</string>
+    <string name="dialog_add_close_button">Kapat</string>
+    <string name="dialog_add_add_button">Ekle</string>
     <string name="weather_category_clear_sky">Clear Sky</string>
     <string name="weather_category_few_clouds">Few Clouds</string>
     <string name="weather_category_scattered_clouds">Scattered Clouds</string>
@@ -73,9 +73,9 @@
     <string name="weather_category_drizzle_rain">Drizzle Rain</string>
     <string name="weather_category_light_rain">Light Rain</string>
     <string name="weather_category_moderate_rain">Moderate Rain</string>
-    <string name="weather_category_rain">Rain</string>
-    <string name="weather_category_thunderstorm">Thunderstorm</string>
-    <string name="weather_category_snow">Snow</string>
+    <string name="weather_category_rain">Yağmur</string>
+    <string name="weather_category_thunderstorm">Fırtına</string>
+    <string name="weather_category_snow">Kar</string>
     <string name="weather_category_mist">Mist</string>
     <string name="weather_category_showerrain">Shower Rain</string>
     <string name="weather_category_showersnow">Shower Snow</string>
