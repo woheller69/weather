@@ -157,11 +157,11 @@
     <string name="dialog_OK_button">Tamam</string>
     <string name="dialog_NO_button">Hayır</string>
     <string name="dialog_Later_button">Belki daha sonra</string>
-    <string name="dialog_StarOnGitHub">Do you like this app? Please give a star on GitHub or buy the developer a coffee via PayPal.</string>
-    <string name="settings_show_pressure">Show air pressure</string>
-    <string name="action_position" translatable="false">Update Location</string>
-    <string name="settings_GPS_manual">Manual update only</string>
-    <string name="settings_register_summary">You need a free subscription and OneCallAPI 3.0 with a limit of 1000 (free) calls per day.</string>
-    <string name="rationale_background_location">Please also allow GPS usage in the background for use in the widget</string>
+    <string name="dialog_StarOnGitHub">Bu uygulamayı beğendiniz mi? Lütfen GitHub'da bir yıldız verin veya geliştiriciye PayPal aracılığıyla bir kahve ısmarlayın.</string>
+    <string name="settings_show_pressure">Hava basıncını göster</string>
+    <string name="action_position" translatable="false">Konumu güncelle</string>
+    <string name="settings_GPS_manual">Sadece elle güncelle</string>
+    <string name="settings_register_summary">Ücretsiz bir aboneliğe ve günde 1000 (ücretsiz) arama sınırı olan OneCallAPI 3.0'a ihtiyacınız var.</string>
+    <string name="rationale_background_location">Lütfen widget'ta kullanmak için arka planda GPS kullanımına da izin verin</string>
     <string name="error_no_gps">Lütfen GPS'i açın</string>
 </resources>
