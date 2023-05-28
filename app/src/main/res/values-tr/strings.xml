@@ -161,7 +161,7 @@
     <string name="settings_show_pressure">Hava basıncını göster</string>
     <string name="action_position" translatable="false">Konumu güncelle</string>
     <string name="settings_GPS_manual">Sadece elle güncelle</string>
-    <string name="settings_register_summary">Ücretsiz bir aboneliğe ve günde 1000 (ücretsiz) arama sınırı olan OneCallAPI 3.0'a ihtiyacınız var.</string>
+    <string name="settings_register_summary">Ücretsiz bir aboneliğe ve günde 1000 (ücretsiz) sorgu limiti olan OneCallAPI 3.0'a ihtiyacınız var.</string>
     <string name="rationale_background_location">Lütfen widget'ta kullanmak için arka planda GPS kullanımına da izin verin</string>
     <string name="error_no_gps">Lütfen GPS'i açın</string>
 </resources>
