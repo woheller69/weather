@@ -126,23 +126,23 @@
     <string name="units_km">km</string>
     <string name="units_hPa">hPa</string>
     <string name="units_Bft">Bft</string>
-    <string name="units_mm_h">mm/h</string>
-    <string name="units_km_h">km/h</string>
+    <string name="units_mm_h">mm/s</string>
+    <string name="units_km_h">km/s</string>
     <string name="units_mph">mph</string>
     <string name="card_details_rain60min">☔ 60 dk:</string>
     <string name="error_no_rain60min_data">veri yok</string>
     <string name="dialog_edit_change_button">Düzenle</string>
-    <string name="dialog_edit_label">CAUTION: This will modify the internal city list!</string>
-    <string name="edit_location_hint_search">Search location</string>
+    <string name="dialog_edit_label">DİKKAT: Bu, dahili şehir listesini değiştirir!</string>
+    <string name="edit_location_hint_search">Konum ara</string>
     <string name="edit_location_hint_name">İsim</string>
     <string name="edit_location_hint_latitude">Enlem</string>
     <string name="edit_location_hint_longitude">Boylam</string>
-    <string name="edit_location_hint_country_code">Country Code</string>
+    <string name="edit_location_hint_country_code">Ülke Kodu</string>
     <string name="edit_location_hint_ID" translatable="false">ID</string>
-    <string name="edit_location_range_error">Value out of range</string>
-    <string name="settings_search_option_1">Internal city list</string>
+    <string name="edit_location_range_error">Değer aralığın dışında</string>
+    <string name="settings_search_option_1">Dahili şehir listesi</string>
     <string name="settings_search_option_2" translatable="false">Photon API</string>
-    <string name="settings_search_summary">Search locations via Photon API or internal city list</string>
+    <string name="settings_search_summary">Photon API veya dahili şehir listesi aracılığıyla konumları arayın</string>
     <string name="settings_search">Arama</string>
     <string name="dialog_add_tv">Daha iyi arama sonuçları için lütfen ayarlarda Photon API aracılığıyla çevrimiçi aramayı etkinleştirin</string>
     <string name="settings_temp_decimal">Sıcaklığı ondalık basamakla göster</string>
