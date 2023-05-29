@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">RadarWeather</string>
-    <string name="app_name_long">RadarWeather: weather and radar</string>
+    <string name="app_name_long">RadarWeather: Hava durumu ve radar</string>
     <string name="activity_about">Hakkında</string>
     <string name="activity_settings">Ayarlar</string>
     <string name="activity_weather">Hava durumu</string>
@@ -13,46 +13,46 @@
     <string name="next">İleri</string>
     <string name="okay">Tamam</string>
     <string name="slide1_heading">Hoşgeldiniz!</string>
-    <string name="slide1_text">RadarWeather is an App to check the current Weather and Forecasts for your Locations.</string>
+    <string name="slide1_text">RadarWeather, konumlarınızdaki mevcut hava durumu ve tahminleri kontrol etmeye yarayan bir uygulamadır.</string>
     <string name="slide2_heading">Nasıl</string>
-    <string name="slide2_text">You can choose your own locations and get detailed information about the current weather. A rain radar is also available.</string>
-    <string name="slide3_heading" translatable="false">Github</string>
-    <string name="slide3_text">The sourcecode of this app is available at GitHub. For further explanations have a look at the About Page.</string>
+    <string name="slide2_text">Kendi konumlarınızı seçebilir ve güncel hava durumu hakkında detaylı bilgi alabilirsiniz. Yağmur radarı da mevcuttur.</string>
+    <string name="slide3_heading" translatable="false">GitHub</string>
+    <string name="slide3_text">Bu uygulamanın kaynak kodu GitHub'da mevcuttur. Daha fazla açıklama için Hakkında sayfasına bakabilirsiniz.</string>
     <string name="card_details_heading">Şimdi</string>
     <string name="card_details_humidity">Nem:</string>
     <string name="card_details_pressure">Basınç:</string>
     <string name="card_details_wind_speed">Rüzgar:</string>
     <string name="card_week_heading">Hafta</string>
     <string name="card_day_heading">Günün seyri</string>
-    <string name="card_error_heading">Error fetching weather data</string>
-    <string name="card_error_content">Please try to update!</string>
-    <string name="radius_search_heading">Find the best weather around a location</string>
-    <string name="radius_search_tv_heading">Location (center of the search square)</string>
-    <string name="radius_search_tv_edge_length">Edge length of the search square</string>
+    <string name="card_error_heading">Hava durumu verileri alınırken hata oluştu</string>
+    <string name="card_error_content">Lütfen güncellemeyi deneyin!</string>
+    <string name="radius_search_heading">Bir konumdaki en iyi hava durumunu bulun</string>
+    <string name="radius_search_tv_heading">Konum (arama karesinin merkezi)</string>
+    <string name="radius_search_tv_edge_length">Arama karesinin kenar uzunluğu</string>
     <string name="radius_search_tv_num_returns">Number of locations to retrieve</string>
-    <string name="radius_search_btn_search">Arama</string>
+    <string name="radius_search_btn_search">Ara</string>
     <string name="radius_search_result_label">Arama sonuçları</string>
     <string name="about_privacy_heading">Gizlilik Bilgileri</string>
-    <string name="about_permission_internet_description">Connecting to the Network: This permission is needed because weather data is retrieved by making requests to servers on the Internet. Without this permission, no weather data can be received. Optional: authorization for GPS.</string>
-    <string name="about">About</string>
+    <string name="about_permission_internet_description">Ağa Bağlanma: Bu izin gereklidir, çünkü hava durumu verileri İnternet'teki sunuculara istekte bulunularak alınır. Bu izin olmadan hiçbir hava durumu verisi alınamaz. İsteğe bağlı: GPS için yetkilendirme.</string>
+    <string name="about">Hakkında</string>
     <string name="version_number" translatable="false">Versiyon</string>
     <string name="about_license">Lisans</string>
-    <string name="about_license_text">This application is derived from Privacy Friendly Weather, developed by the research group SECUSO. Sourcecode licensed under GPLv3. The app uses icons from Google Material Design Icons licensed under Apache License Version 2.0, the Leaflet library which is licensed under 2-clause BSD License, the Leaflet.TileLayer.ColorFilter plugin which is licensed under MIT License, RainViewer API which is free, Android SQLiteAssetHelper library (com.readystatesoftware.sqliteasset) which is licensed under Apache License Version 2.0, AutoSuggestTextViewAPICall which is licensed under Apache License Version 2.0 and WilliamChart library (com.db.chart) which is licensed under Apache License Version 2.0</string>
-    <string name="about_more_info">More information can be found on:</string>
+    <string name="about_license_text">Bu uygulama, SECUSO araştırma grubu tarafından geliştirilen Gizlilik Dostu Hava Durumundan türetilmiştir. GPLv3 altında lisanslanan kaynak kodu. Uygulama, Apache Lisansı Sürüm 2.0 kapsamında lisanslanan Google Material Design Icons'tan simgeler, 2 maddeli BSD Lisansı kapsamında lisanslanan Leaflet kitaplığı, MIT Lisansı kapsamında lisanslanan Leaflet.TileLayer.ColorFilter eklentisi, ücretsiz RainViewer API, Android Apache Lisansı Sürüm 2.0 kapsamında lisanslanan SQLiteAssetHelper kitaplığı (com.readystatesoftware.sqliteasset), Apache Lisansı Sürüm 2.0 kapsamında lisanslanan AutoSuggestTextViewAPICall ve Apache Lisansı Sürüm 2.0 kapsamında lisanslanan WilliamChart kitaplığı (com.db.chart)</string>
+    <string name="about_more_info">Daha fazla bilgi burada bulunabilir:</string>
     <string name="about_github" translatable="false"><a href="https://github.com/woheller69/weather">Github-Repo</a></string>
     <string name="activity_settings_title">Ayarlar</string>
     <string name="settings_title_units">Birimler</string>
-    <string name="settings_summary_temperature">Set the unit to use for displaying temperatures</string>
+    <string name="settings_summary_temperature">Sıcaklıkları görüntülemek için kullanılacak birimi ayarlayın</string>
     <string name="settings_title_temperature">Sıcaklık</string>
-    <string name="settings_celsius">Celsius</string>
-    <string name="settings_fahrenheit">Fahrenheit</string>
-    <string name="settings_summary_distance">Set the unit to use for displaying distances</string>
+    <string name="settings_celsius">Santigrat</string>
+    <string name="settings_fahrenheit">Fahrenhayt</string>
+    <string name="settings_summary_distance">Mesafeleri görüntülemek için kullanılacak birimi ayarlayın</string>
     <string name="settings_title_distance">Mesafe</string>
     <string name="settings_kilometers">Kilometre</string>
     <string name="settings_miles">Mil</string>
     <string name="settings_title_API">API Anahtarı</string>
-    <string name="settings_description_API">RadarWeather receives data from the free service of OpenWeatherMap. This service is limited to 1000 calls per day. Please enter your own API key</string>
-    <string name="settings_title_API_key">API Anahtarını Girin</string>
+    <string name="settings_description_API">RadarWeather, OpenWeatherMap'in ücretsiz hizmetinden veri alır. Bu hizmet günde 1000 çağrı ile sınırlıdır. Lütfen kendi API anahtarınızı girin</string>
+    <string name="settings_title_API_key">API anahtarını girin</string>
     <string name="settings_API_key_default" translatable="false" />
     <string name="abbreviation_monday">Pzt.</string>
     <string name="abbreviation_tuesday">Sal.</string>
