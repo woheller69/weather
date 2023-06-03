@@ -7,7 +7,6 @@
     <string name="activity_manage">Konumları yönet</string>
     <string name="activity_radius_search">Yarıçap arama</string>
     <string name="action_refresh">Yenile</string>
-    <string name="action_rainviewer">Yağmur Görüntüleyici</string>
     <string name="navigation_drawer_open">Gezinme çekmecesini aç</string>
     <string name="navigation_drawer_close">Gezinme çekmecesini kapat</string>
     <string name="next">İleri</string>
@@ -16,7 +15,6 @@
     <string name="slide1_text">RadarWeather, konumlarınızdaki mevcut hava durumu ve tahminleri kontrol etmeye yarayan bir uygulamadır.</string>
     <string name="slide2_heading">Nasıl</string>
     <string name="slide2_text">Kendi konumlarınızı seçebilir ve güncel hava durumu hakkında detaylı bilgi alabilirsiniz. Yağmur radarı da mevcuttur.</string>
-    <string name="slide3_heading">GitHub</string>
     <string name="slide3_text">Bu uygulamanın kaynak kodu GitHub'da mevcuttur. Daha fazla açıklama için Hakkında sayfasına bakabilirsiniz.</string>
     <string name="card_details_heading">Şimdi</string>
     <string name="card_details_humidity">Nem:</string>
@@ -39,7 +37,6 @@
     <string name="about_license">Lisans</string>
     <string name="about_license_text">Bu uygulama, SECUSO araştırma grubu tarafından geliştirilen Gizlilik Dostu Hava Durumundan türetilmiştir. GPLv3 altında lisanslanan kaynak kodu. Uygulama, Apache Lisansı Sürüm 2.0 kapsamında lisanslanan Google Material Design Icons'tan simgeler, 2 maddeli BSD Lisansı kapsamında lisanslanan Leaflet kitaplığı, MIT Lisansı kapsamında lisanslanan Leaflet.TileLayer.ColorFilter eklentisi, ücretsiz RainViewer API, Android Apache Lisansı Sürüm 2.0 kapsamında lisanslanan SQLiteAssetHelper kitaplığı (com.readystatesoftware.sqliteasset), Apache Lisansı Sürüm 2.0 kapsamında lisanslanan AutoSuggestTextViewAPICall ve Apache Lisansı Sürüm 2.0 kapsamında lisanslanan WilliamChart kitaplığı (com.db.chart)</string>
     <string name="about_more_info">Daha fazla bilgi burada bulunabilir:</string>
-    <string name="about_github"><a href="https://github.com/woheller69/weather">GitHub-Repo</a></string>
     <string name="activity_settings_title">Ayarlar</string>
     <string name="settings_title_units">Birimler</string>
     <string name="settings_summary_temperature">Sıcaklıkları görüntülemek için kullanılacak birimi ayarlayın</string>
@@ -53,7 +50,6 @@
     <string name="settings_title_API">API Anahtarı</string>
     <string name="settings_description_API">RadarWeather, OpenWeatherMap'in ücretsiz hizmetinden veri alır. Bu hizmet günde 1000 çağrı ile sınırlıdır. Lütfen kendi API anahtarınızı girin</string>
     <string name="settings_title_API_key">API anahtarını girin</string>
-    <string name="settings_API_key_default">
     <string name="abbreviation_monday">Pzt.</string>
     <string name="abbreviation_tuesday">Sal.</string>
     <string name="abbreviation_wednesday">Çar.</string>
@@ -138,10 +134,8 @@
     <string name="edit_location_hint_latitude">Enlem</string>
     <string name="edit_location_hint_longitude">Boylam</string>
     <string name="edit_location_hint_country_code">Ülke Kodu</string>
-    <string name="edit_location_hint_ID" translatable="false">ID</string>
     <string name="edit_location_range_error">Değer aralığın dışında</string>
     <string name="settings_search_option_1">Dahili şehir listesi</string>
-    <string name="settings_search_option_2" translatable="false">Photon API</string>
     <string name="settings_search_summary">Photon API veya dahili şehir listesi aracılığıyla konumları arayın</string>
     <string name="settings_search">Arama</string>
     <string name="dialog_add_tv">Daha iyi arama sonuçları için lütfen ayarlarda Photon API aracılığıyla çevrimiçi aramayı etkinleştirin</string>
@@ -159,7 +153,6 @@
     <string name="dialog_Later_button">Belki daha sonra</string>
     <string name="dialog_StarOnGitHub">Bu uygulamayı beğendiniz mi? Lütfen GitHub'da bir yıldız verin veya geliştiriciye PayPal aracılığıyla bir kahve ısmarlayın.</string>
     <string name="settings_show_pressure">Hava basıncını göster</string>
-    <string name="action_position" translatable="false">Konumu güncelle</string>
     <string name="settings_GPS_manual">Sadece elle güncelle</string>
     <string name="settings_register_summary">Ücretsiz bir aboneliğe ve günde 1000 (ücretsiz) sorgu limiti olan OneCallAPI 3.0'a ihtiyacınız var.</string>
     <string name="rationale_background_location">Lütfen widget'ta kullanmak için arka planda GPS kullanımına da izin verin</string>
