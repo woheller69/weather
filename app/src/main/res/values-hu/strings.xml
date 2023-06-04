@@ -23,7 +23,6 @@
     <string name="card_details_pressure">Nyomás:</string>
     <string name="card_details_wind_speed">Szél:</string>
     <string name="card_week_heading">Hét</string>
-    <string name="card_day_heading">A nap menete</string>
     <string name="card_error_heading">Hiba az időjárási adatok lekérésekor</string>
     <string name="card_error_content">Kérjük, próbálja meg frissíteni!</string>
     <string name="radius_search_heading">Találja meg a legjobb időjárást egy adott hely környékén</string>
@@ -35,6 +34,7 @@
     <string name="about_privacy_heading">Adatvédelmi információk</string>
     <string name="about_permission_internet_description">Csatlakozás a hálózathoz: Erre az engedélyre azért van szükség, mert az időjárási adatok lekérése az interneten lévő szerverekhez intézett kérések útján történik. Ezen engedély nélkül nem fogadhatók időjárási adatok. Opcionális: GPS engedélyezése.</string>
     <string name="about">Ról ről</string>
+    <string name="version_number">Változat</string>
     <string name="about_license">Engedély</string>
     <string name="about_license_text">Ez az alkalmazás a SECUSO kutatócsoport által kifejlesztett Privacy Friendly Weather alkalmazásból származik. A forráskód GPLv3 licenc alatt van. Az alkalmazás az Apache License Version 2.0 licenccel rendelkező Google Material Design Icons ikonjait használja, a Leaflet könyvtárat, amely a 2-clause BSD License alatt, a Leaflet.TileLayer.ColorFilter beépülő modult, amely MIT licenc alatt van licencelve, RainViewer API, amely ingyenes, Android SQLiteAssetHelper könyvtár (com.readystatesoftware.sqliteasset), amely az Apache License Version 2.0, AutoSuggestTextViewAPICall, amely az Apache License Version 2.0 és WilliamChart könyvtár (com.db.chart), amely az Apache License Version 2.0 licenc alatt van.</string>
     <string name="about_more_info">Bővebb információ a következő oldalon található:</string>

@@ -15,13 +15,12 @@
     <string name="slide1_text">RadarWeather, konumlarınızdaki mevcut hava durumu ve tahminleri kontrol etmeye yarayan bir uygulamadır.</string>
     <string name="slide2_heading">Nasıl</string>
     <string name="slide2_text">Kendi konumlarınızı seçebilir ve güncel hava durumu hakkında detaylı bilgi alabilirsiniz. Yağmur radarı da mevcuttur.</string>
-    <string name="slide3_text">Bu uygulamanın kaynak kodu GitHub'da mevcuttur. Daha fazla açıklama için Hakkında sayfasına bakabilirsiniz.</string>
+    <string name="slide3_text">Bu uygulamanın kaynak kodu GitHub\'da mevcuttur. Daha fazla açıklama için Hakkında sayfasına bakabilirsiniz.</string>
     <string name="card_details_heading">Şimdi</string>
     <string name="card_details_humidity">Nem:</string>
     <string name="card_details_pressure">Basınç:</string>
     <string name="card_details_wind_speed">Rüzgar:</string>
     <string name="card_week_heading">Hafta</string>
-    <string name="card_day_heading">Günün seyri</string>
     <string name="card_error_heading">Hava durumu verileri alınırken hata oluştu</string>
     <string name="card_error_content">Lütfen güncellemeyi deneyin!</string>
     <string name="radius_search_heading">Bir konumdaki en iyi hava durumunu bulun</string>
@@ -31,11 +30,11 @@
     <string name="radius_search_btn_search">Ara</string>
     <string name="radius_search_result_label">Arama sonuçları</string>
     <string name="about_privacy_heading">Gizlilik Bilgileri</string>
-    <string name="about_permission_internet_description">Ağa Bağlanma: Bu izin gereklidir, çünkü hava durumu verileri İnternet'teki sunuculara istekte bulunularak alınır. Bu izin olmadan hiçbir hava durumu verisi alınamaz. İsteğe bağlı: GPS için yetkilendirme.</string>
+    <string name="about_permission_internet_description">Ağa Bağlanma: Bu izin gereklidir, çünkü hava durumu verileri İnternet\'teki sunuculara istekte bulunularak alınır. Bu izin olmadan hiçbir hava durumu verisi alınamaz. İsteğe bağlı: GPS için yetkilendirme.</string>
     <string name="about">Hakkında</string>
     <string name="version_number">Versiyon</string>
     <string name="about_license">Lisans</string>
-    <string name="about_license_text">Bu uygulama, SECUSO araştırma grubu tarafından geliştirilen Gizlilik Dostu Hava Durumundan türetilmiştir. GPLv3 altında lisanslanan kaynak kodu. Uygulama, Apache Lisansı Sürüm 2.0 kapsamında lisanslanan Google Material Design Icons'tan simgeler, 2 maddeli BSD Lisansı kapsamında lisanslanan Leaflet kitaplığı, MIT Lisansı kapsamında lisanslanan Leaflet.TileLayer.ColorFilter eklentisi, ücretsiz RainViewer API, Android Apache Lisansı Sürüm 2.0 kapsamında lisanslanan SQLiteAssetHelper kitaplığı (com.readystatesoftware.sqliteasset), Apache Lisansı Sürüm 2.0 kapsamında lisanslanan AutoSuggestTextViewAPICall ve Apache Lisansı Sürüm 2.0 kapsamında lisanslanan WilliamChart kitaplığı (com.db.chart)</string>
+    <string name="about_license_text">Bu uygulama, SECUSO araştırma grubu tarafından geliştirilen Gizlilik Dostu Hava Durumundan türetilmiştir. GPLv3 altında lisanslanan kaynak kodu. Uygulama, Apache Lisansı Sürüm 2.0 kapsamında lisanslanan Google Material Design Icons\'tan simgeler, 2 maddeli BSD Lisansı kapsamında lisanslanan Leaflet kitaplığı, MIT Lisansı kapsamında lisanslanan Leaflet.TileLayer.ColorFilter eklentisi, ücretsiz RainViewer API, Android Apache Lisansı Sürüm 2.0 kapsamında lisanslanan SQLiteAssetHelper kitaplığı (com.readystatesoftware.sqliteasset), Apache Lisansı Sürüm 2.0 kapsamında lisanslanan AutoSuggestTextViewAPICall ve Apache Lisansı Sürüm 2.0 kapsamında lisanslanan WilliamChart kitaplığı (com.db.chart)</string>
     <string name="about_more_info">Daha fazla bilgi burada bulunabilir:</string>
     <string name="activity_settings_title">Ayarlar</string>
     <string name="settings_title_units">Birimler</string>
@@ -48,7 +47,7 @@
     <string name="settings_kilometers">Kilometre</string>
     <string name="settings_miles">Mil</string>
     <string name="settings_title_API">API Anahtarı</string>
-    <string name="settings_description_API">RadarWeather, OpenWeatherMap'in ücretsiz hizmetinden veri alır. Bu hizmet günde 1000 çağrı ile sınırlıdır. Lütfen kendi API anahtarınızı girin</string>
+    <string name="settings_description_API">RadarWeather, OpenWeatherMap\'in ücretsiz hizmetinden veri alır. Bu hizmet günde 1000 çağrı ile sınırlıdır. Lütfen kendi API anahtarınızı girin</string>
     <string name="settings_title_API_key">API anahtarını girin</string>
     <string name="abbreviation_monday">Pzt.</string>
     <string name="abbreviation_tuesday">Sal.</string>
@@ -97,7 +96,7 @@
     <string name="settings_interval_summary">Otomatik güncellemelerin aralığını ayarlayın</string>
     <string name="about_privacy_answer">RadarWeather, hava durumu verilerini almak için yalnızca \"İnternet\" iznini kullanır. Ayrıca herhangi bir izleme mekanizması veya reklam içermez.</string>
     <string name="about_where_from">Hava durumu bilgileri nereden geliyor?</string>
-    <string name="about_where_from_answer">Hava durumu bilgileri OpenWeatherMap hizmetinden alınır. Yağmur radarı verileri RainViewer'dan alınır.</string>
+    <string name="about_where_from_answer">Hava durumu bilgileri OpenWeatherMap hizmetinden alınır. Yağmur radarı verileri RainViewer\'dan alınır.</string>
     <string name="about_permissions">İzinler</string>
     <string name="RainViewer">Yağmur Radarı</string>
     <string name="long_press_text">Sıralamak için basılı tutun ve sürükleyin.</string>
@@ -107,7 +106,7 @@
     <string name="settings_forecast_option_1">5 gün / 3s</string>
     <string name="settings_forecast_option_2">2 gün / 1s + 3 gün / 3s</string>
     <string name="settings_forecastChoice">Hava durumu tahmini</string>
-    <string name="registerOWM">Hava durumu bilgileri OpenWeatherMap'ten alınır. Lütfen API anahtarınızı ayarlara girin. Henüz bir API anahtarınız yoksa, ücretsiz kayıt için lütfen aşağıdaki butona basın.</string>
+    <string name="registerOWM">Hava durumu bilgileri OpenWeatherMap\'ten alınır. Lütfen API anahtarınızı ayarlara girin. Henüz bir API anahtarınız yoksa, ücretsiz kayıt için lütfen aşağıdaki butona basın.</string>
     <string name="registerOWMbutton">Ücretsiz kaydol</string>
     <string name="monday">Pazartesi</string>
     <string name="tuesday">Salı</string>
@@ -142,7 +141,7 @@
     <string name="settings_temp_decimal">Sıcaklığı ondalık basamakla göster</string>
     <string name="settings_darkmode">Android 10+ Karanlık Modu</string>
     <string name="settings_position">Konum</string>
-    <string name="settings_GPS_summary">İlk TAB'da ve mevcut hava durumu widget'ında mevcut GPS konumunun kullanılmasına izin ver. Konum güncellemesi widget tarafından otomatik olarak tetiklenir.</string>
+    <string name="settings_GPS_summary">İlk TAB\'da ve mevcut hava durumu widget\'ında mevcut GPS konumunun kullanılmasına izin ver. Konum güncellemesi widget tarafından otomatik olarak tetiklenir.</string>
     <string name="settings_GPS_position">GPS kullanımına izin ver</string>
     <string name="error_no_position">Uygun konum yok</string>
     <string name="settings_time24h">24-saat formatı</string>
@@ -151,10 +150,10 @@
     <string name="dialog_OK_button">Tamam</string>
     <string name="dialog_NO_button">Hayır</string>
     <string name="dialog_Later_button">Belki daha sonra</string>
-    <string name="dialog_StarOnGitHub">Bu uygulamayı beğendiniz mi? Lütfen GitHub'da bir yıldız verin veya geliştiriciye PayPal aracılığıyla bir kahve ısmarlayın.</string>
+    <string name="dialog_StarOnGitHub">Bu uygulamayı beğendiniz mi? Lütfen GitHub\'da bir yıldız verin veya geliştiriciye PayPal aracılığıyla bir kahve ısmarlayın.</string>
     <string name="settings_show_pressure">Hava basıncını göster</string>
     <string name="settings_GPS_manual">Sadece elle güncelle</string>
-    <string name="settings_register_summary">Ücretsiz bir aboneliğe ve günde 1000 (ücretsiz) sorgu limiti olan OneCallAPI 3.0'a ihtiyacınız var.</string>
-    <string name="rationale_background_location">Lütfen widget'ta kullanmak için arka planda GPS kullanımına da izin verin</string>
-    <string name="error_no_gps">Lütfen GPS'i açın</string>
+    <string name="settings_register_summary">Ücretsiz bir aboneliğe ve günde 1000 (ücretsiz) sorgu limiti olan OneCallAPI 3.0\'a ihtiyacınız var.</string>
+    <string name="rationale_background_location">Lütfen widget\'ta kullanmak için arka planda GPS kullanımına da izin verin</string>
+    <string name="error_no_gps">Lütfen GPS\'i açın</string>
 </resources>

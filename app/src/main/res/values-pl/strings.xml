@@ -23,7 +23,6 @@
     <string name="card_details_pressure">Ciśnienie:</string>
     <string name="card_details_wind_speed">Wiatr:</string>
     <string name="card_week_heading">Tydzień</string>
-    <string name="card_day_heading">Przebieg dnia</string>
     <string name="card_error_heading">Błąd pobierania danych o pogodzie</string>
     <string name="card_error_content">Spróbuj zaktualizować!</string>
     <string name="radius_search_heading">Znajdź najlepszą pogodę w okolicy</string>
@@ -35,7 +34,7 @@
     <string name="about_privacy_heading">Informacje o prywatności</string>
     <string name="about_permission_internet_description">Łączenie z siecią: To uprawnienie jest potrzebne, ponieważ dane pogodowe są pobierane poprzez wysyłanie żądań do serwerów w Internecie. Bez tego pozwolenia nie można odbierać żadnych danych pogodowych. Opcjonalnie: autoryzacja dla GPS.</string>
     <string name="about">Informacje</string>
-    <string name="version_number" translatable="false">Version</string>
+    <string name="version_number">Wersja</string>
     <string name="about_license">Licencja</string>
     <string name="about_license_text">Ta aplikacja wywodzi się z Privacy Friendly Weather, opracowanej przez grupę badawczą SECUSO. Kod źródłowy na licencji GPLv3. Aplikacja wykorzystuje ikony Google Material Design Icons na licencji Apache License Version 2.0, bibliotekę Leaflet na licencji BSD z 2 klauzulami, wtyczkę Leaflet.TileLayer.ColorFilter na licencji MIT License, RainViewer API, która jest bezpłatna, Android Biblioteka SQLiteAssetHelper (com.readystatesoftware.sqliteasset) na licencji Apache License Version 2.0, AutoSuggestTextViewAPICall na licencji Apache License Version 2.0 oraz bibliotekę WilliamChart (com.db.chart) na licencji Apache License Version 2.0</string>
     <string name="about_more_info">Więcej informacji znajdziesz na:</string>

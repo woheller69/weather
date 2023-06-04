@@ -5,6 +5,7 @@
     <string name="app_name">RadarWeather</string>
     <string name="app_name_long">RadarWeather: Météo et radar</string>
     <string name="about">À propos</string>
+    <string name="version_number">Version</string>
     <string name="about_privacy_heading">Informations sur la confidentialité</string>
     <string name="about_more_info">Plus d\'informations peuvent être trouvées sur:</string>
     <string name="about_permission_internet_description">Accès à tous les réseaux: Cette autorisation "est nécessaire pour envoyer des requêtes météo à des serveurs situés sur Internet. Sans cette autorisation, aucune donnée météo ne peut être obtenue. En option: autorisation pour GPS.</string>
@@ -25,7 +26,6 @@
     <string name="card_details_humidity">Humidité:</string>
     <string name="card_details_pressure">Pression:</string>
     <string name="card_details_wind_speed">Vent:</string>
-    <string name="card_day_heading">Cours de la journée</string>
     <string name="card_week_heading">La semaine</string>
     <string name="error_convert_to_json">Les données météorologiques reçues ne correspondaient pas au format attendu.</string>
     <string name="error_no_internet">L\'appareil n\'est pas connecté à Internet!</string>
