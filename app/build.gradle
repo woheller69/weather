@@ -4,17 +4,13 @@ android {
 
     compileSdkVersion 32
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
     defaultConfig {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         applicationId "org.woheller69.weather"
         minSdkVersion 21
         targetSdkVersion 31
-        versionCode 60
-        versionName "6.0"
+        versionCode 61
+        versionName "6.1"
 
         buildConfigField "String", "DEFAULT_API_KEY", "\"00000000000000000000000000000000\""
         buildConfigField "String", "BASE_URL", "\"https://api.openweathermap.org/data/2.5/\""
