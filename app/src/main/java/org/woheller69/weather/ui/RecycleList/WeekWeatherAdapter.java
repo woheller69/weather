@@ -101,7 +101,7 @@ public class WeekWeatherAdapter extends RecyclerView.Adapter<WeekWeatherAdapter.
         if (dayValues[4] == 0)
             holder.precipitation.setText("-");
         else
-            holder.precipitation.setText(StringFormatUtils.formatDecimal(dayValues[4], context.getString(R.string.units_mm)));
+            holder.precipitation.setText(StringFormatUtils.formatPrecipitation(context, dayValues[4]));
 
         holder.uv_index.setText(String.format("UV %s",StringFormatUtils.formatInt(Math.round(dayValues[7]))));
         holder.uv_index.setBackground(StringFormatUtils.colorUVindex(context,Math.round(dayValues[7])));
