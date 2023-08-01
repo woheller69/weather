@@ -1,0 +1,5 @@
+Update to Android 13 SDK
+Monochrome icon support
+Turkish translation
+Improved icon
+Slightly improved contrast in dark mode

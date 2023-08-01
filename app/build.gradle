@@ -2,13 +2,13 @@ apply plugin: 'com.android.application'
 
 android {
 
-    compileSdkVersion 32
+    compileSdkVersion 33
 
     defaultConfig {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         applicationId "org.woheller69.weather"
         minSdkVersion 21
-        targetSdkVersion 31
+        targetSdkVersion 33
         versionCode 61
         versionName "6.1"
 
