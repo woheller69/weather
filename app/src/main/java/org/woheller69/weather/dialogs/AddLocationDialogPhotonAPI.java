@@ -25,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.os.ConfigurationCompat;
 import androidx.fragment.app.DialogFragment;
 
@@ -73,6 +74,11 @@ public class AddLocationDialogPhotonAPI extends DialogFragment {
         }
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (savedInstanceState != null) dismiss();
+    }
 
     @NonNull
     @SuppressLint("SetJavaScriptEnabled")
