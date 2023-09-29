@@ -29,9 +29,6 @@ public class RainViewerActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        webView.destroy();   //clear webView memory
-        finish();
-        // Another activity is taking focus (this activity is about to be "paused").
     }
 
     @SuppressLint("SetJavaScriptEnabled")
