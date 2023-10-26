@@ -1,0 +1,18 @@
+RadarWeather, ilgilendiğiniz şehirler ve konumlar için hava durumunu izlemenizi sağlar.
+
+Hava durumu verileri OpenWeatherMap'in ücretsiz API'si aracılığıyla sağlanır. Yeni Tek Çağrı API'si günde sadece 1000 çağrıya izin verdiğinden, her kullanıcı kendi ücretsiz OpenWeatherMap anahtarını girmelidir (https://home.openweathermap.org/users/sign_up). 
+Yağmur radarı için veriler ücretsiz RainViewer API aracılığıyla alınır.
+
+Özellikler
+- Güncel hava durumu
+- 48 saat için saatlik tahminler / 5 gün için 3 saatlik tahminler
+- 8 günlük tahmin
+- Önümüzdeki 60 dakika içinde yağış
+- Yağmur radarı
+- Yarıçap arama
+- İsteğe bağlı GPS otomatik konum güncellemeli Widget
+- Reklam yok
+
+Minimum izinler:
+RadarWeather yalnızca minimum miktarda izin, yani yalnızca İNTERNET izni gerektirir. Bu izin, hava durumu verilerini almak için uzak sunuculara HTTP istekleri yapmak için gereklidir.
+İsteğe bağlı: GPS için yetkilendirme.
