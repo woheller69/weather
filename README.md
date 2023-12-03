@@ -23,11 +23,13 @@ The original function has been modified to support the new OpenWeather One Call 
 hourly forecasts for the next 2 days, 8 day week forecasts, etc. In addition a rain radar functionality powered by RainViewer API (https://www.rainviewer.com/api.html) has been added. More weather categories were added, most images and icons were replaced. RadiusSearch now also shows the results on a map with weather icons.
 A chart showing forecasts with min/max temperature and precipitation for the next week has been added. In addition to the built in city list it is now also possible to use search-as-you-type location search via the photon API (https://photon.komoot.io) which is based on OpenStreetMap.
 
-There are also two new widgets:
+There are also three new widgets:
 
 <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/10.png" width="150"/>
 
 <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/11.png" width="150"/>
+
+<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/12.png" width="150"/>
 
 If permission for GPS is given the widget will automatically update position on a regular base.
 
