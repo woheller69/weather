@@ -69,18 +69,10 @@ public class AppPreferencesManager {
     }
 
     /**
-     * @return Returns true if kilometers was set as distance unit in the preferences else false.
-     */
-    public boolean isDistanceUnitKilometers() {
-        int prefValue = Integer.parseInt(preferences.getString("distanceUnit", "0"));
-        return (prefValue == 1);
-    }
-
-    /**
      * @return Returns true if miles was set as distance unit in the preferences else false.
      */
     public boolean isDistanceUnitMiles() {
-        int prefValue = Integer.parseInt(preferences.getString("distanceUnit", "0"));
+        int prefValue = Integer.parseInt(preferences.getString("distanceUnit", "1"));
         return (prefValue == 2);
     }
 
