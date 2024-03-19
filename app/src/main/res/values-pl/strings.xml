@@ -58,7 +58,7 @@
     <string name="abbreviation_wednesday">Śr.</string>
     <string name="abbreviation_thursday">Cz.</string>
     <string name="abbreviation_friday">Pt.</string>
-    <string name="abbreviation_saturday">Sn.</string>
+    <string name="abbreviation_saturday">Sb.</string>
     <string name="abbreviation_sunday">Nd.</string>
     <string name="dialog_add_label">Wprowadź lokalizację do dodania:</string>
     <string name="dialog_add_no_city_found">Nie znaleziono lokalizacji pasującej do wprowadzonych danych. Zaleca się wybranie jednej z pozycji z rozwijanej listy.</string>
