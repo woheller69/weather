@@ -1,3 +1,13 @@
+# Development of this app has concluded!
+<pre>
+OpenWeatherMap has announced that access to One Call 2.5 will be discontinued in June 2024. 
+While the app is compatible with One Call 3.0, the subscription requires a credit card, 
+even though no payments will be charged due to the 1000 free daily calls. 
+I recommend transitioning to my omWeather app, which utilizes data from Open-Meteo, 
+as I believe it offers superior information.
+<a href="https://f-droid.org/de/packages/org.woheller69.omweather/"><img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" height="75"></a>
+</pre>
+
 <pre>Send a coffee to woheller69@t-online.de 
 <a href= "https://www.paypal.com/signin"><img  align="left" src="https://www.paypalobjects.com/webstatic/de_DE/i/de-pp-logo-150px.png"></a></pre>
 
