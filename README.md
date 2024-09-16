@@ -3,7 +3,7 @@
 OpenWeatherMap has announced that access to One Call 2.5 will be discontinued in June 2024. 
 While the app is compatible with One Call 3.0, the subscription requires a credit card, 
 even though no payments will be charged due to the 1000 free daily calls. 
-I recommend transitioning to my omWeather app, which utilizes data from Open-Meteo, 
+I recommend transitioning to my Cirrus app, which utilizes data from Open-Meteo, 
 as I believe it offers superior information.
 <a href="https://f-droid.org/de/packages/org.woheller69.omweather/"><img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" height="75"></a>
 </pre>
@@ -19,7 +19,7 @@ as I believe it offers superior information.
 | [<img src="https://github.com/woheller69/Level/blob/master/fastlane/metadata/android/en-US/images/icon.png" width="50">](https://f-droid.org/packages/org.woheller69.level/) | [<img src="https://github.com/woheller69/audiometry/blob/new/fastlane/metadata/android/en-US/images/icon.png" width="50">](https://f-droid.org/packages/org.woheller69.audiometry/) | [<img src="https://github.com/woheller69/gpscockpit/blob/master/fastlane/metadata/android/en-US/images/icon.png" width="50">](https://f-droid.org/packages/org.woheller69.gpscockpit/) |
 | **Audio Analyzer** | **LavSeeker** | **TimeLapseCam** |
 | [<img src="https://github.com/woheller69/audio-analyzer-for-android/blob/master/fastlane/metadata/android/en-US/images/icon.png" width="50">](https://f-droid.org/packages/org.woheller69.audio_analyzer_for_android/) |[<img src="https://github.com/woheller69/lavatories/blob/master/fastlane/metadata/android/en-US/images/icon.png" width="50">](https://f-droid.org/packages/org.woheller69.lavatories/) | [<img src="https://github.com/woheller69/TimeLapseCamera/blob/master/fastlane/metadata/android/en-US/images/icon.png" width="50">](https://f-droid.org/packages/org.woheller69.TimeLapseCam/) |
-| **Arity** | **omWeather** | **solXpect** |
+| **Arity** | **Cirrus** | **solXpect** |
 | [<img src="https://github.com/woheller69/arity/blob/master/fastlane/metadata/android/en-US/images/icon.png" width="50">](https://f-droid.org/packages/org.woheller69.arity/) | [<img src="https://github.com/woheller69/omweather/blob/master/fastlane/metadata/android/en-US/images/icon.png" width="50">](https://f-droid.org/packages/org.woheller69.omweather/) | [<img src="https://github.com/woheller69/solXpect/blob/main/fastlane/metadata/android/en-US/images/icon.png" width="50">](https://f-droid.org/packages/org.woheller69.solxpect/) |
 | **gptAssist** | **dumpSeeker** | **huggingAssist** |
 | [<img src="https://github.com/woheller69/gptassist/blob/master/fastlane/metadata/android/en-US/images/icon.png" width="50">](https://f-droid.org/packages/org.woheller69.gptassist/) | [<img src="https://github.com/woheller69/dumpseeker/blob/main/fastlane/metadata/android/en-US/images/icon.png" width="50">](https://f-droid.org/packages/org.woheller69.dumpseeker/) | [<img src="https://github.com/woheller69/huggingassist/blob/master/fastlane/metadata/android/en-US/images/icon.png" width="50">](https://f-droid.org/packages/org.woheller69.hugassist/) |
@@ -45,13 +45,14 @@ There are also three new widgets:
 
 If permission for GPS is given the widget will automatically update position on a regular base.
 
-As One Call API only allows 1000 calls per day an own OpenWeatherMap API key is mandatory.
+As One Call API only allows 1000 free calls per day an own OpenWeatherMap API key is mandatory.
 
-For subscriptions later than Aug 15, 2022 you need a free subscription and OneCallAPI 3.0 with a limit of 1000 (free) calls per day.
+You need a free subscription and **OneCallAPI 3.0** with a limit of 1000 (free) calls per day.
+OneCallAPI 2.5 has been discontinued by openWeatherMap
 
 Please register for free account at: https://home.openweathermap.org/users/sign_up
 
-Use [omWeather](https://github.com/woheller69/omweather) instead if you do not yet have an API key.
+Use [Cirrus](https://github.com/woheller69/omweather) instead if you do not yet have an API key.
 
 [<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" height="75">](https://f-droid.org/de/packages/org.woheller69.weather/)
 

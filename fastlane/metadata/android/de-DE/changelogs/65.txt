@@ -1,0 +1,7 @@
+Finales Release:
+- Update für Android 14 (SDK 34)
+- Zeige Wolkenbewegung im Regenradar
+
+OpenWeatherMap verlangt jetzt Kreditkartendaten.
+Daher wird die App nicht weiterentwickelt.
+Bitte zu Cirrus wechseln.

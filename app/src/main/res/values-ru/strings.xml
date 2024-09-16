@@ -157,4 +157,5 @@
     <string name="settings_register_summary">Вам нужна бесплатная подписка и OneCallAPI 3.0 с лимитом 1000 (бесплатных) звонков в день.</string>
     <string name="rationale_background_location">Также разрешите использование GPS в фоновом режиме для использования в виджете</string>
     <string name="error_no_gps">Пожалуйста, включите GPS</string>
+    <string name="error_onecall3">OneCall 3.0 subscription required</string>
 </resources>

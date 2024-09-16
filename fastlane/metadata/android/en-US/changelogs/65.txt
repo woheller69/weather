@@ -1,0 +1,7 @@
+Final release:
+- Update for Android 14 (SDK 34)
+- Show cloud movement in rain radar
+
+OpenWeatherMap requires credit card data.
+Therefore this app will no longer be maintained.
+Please use Cirrus instead.

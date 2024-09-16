@@ -156,4 +156,5 @@
     <string name="settings_register_summary">Ücretsiz bir aboneliğe ve günde 1000 (ücretsiz) arama limitli OneCallAPI 3.0\'a ihtiyacınız var.</string>
     <string name="rationale_background_location">Lütfen widget\'ta kullanmak için arka planda GPS kullanımına da izin verin</string>
     <string name="error_no_gps">Lütfen GPS\'i açın</string>
+    <string name="error_onecall3">OneCall 3.0 subscription required</string>
 </resources>

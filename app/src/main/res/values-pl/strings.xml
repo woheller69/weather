@@ -163,4 +163,5 @@
     <string name="settings_register_summary">Potrzebujesz bezpłatnego abonamentu i OneCallAPI 3.0 z limitem 1000 (darmowych) połączeń dziennie.</string>
     <string name="rationale_background_location">Zezwól również na korzystanie z GPS w tle do użycia w widgecie</string>
     <string name="error_no_gps">Proszę włączyć GPS</string>
+    <string name="error_onecall3">OneCall 3.0 subscription required</string>
 </resources>

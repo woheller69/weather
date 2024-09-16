@@ -92,7 +92,7 @@ public class OwmHttpRequest {
         SharedPreferences sharedPreferences=PreferenceManager.getDefaultSharedPreferences(context);
         return String.format(
                 "%sonecall?lat=%s&lon=%s&units=metric&exclude=alerts&appid=%s",
-                sharedPreferences.getBoolean("oneCall3",false) ? BuildConfig.BASE_URL_3 : BuildConfig.BASE_URL,
+                BuildConfig.BASE_URL,
                 lat,
                 lon,
                 prefManager.getOWMApiKey(context)

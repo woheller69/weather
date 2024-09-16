@@ -11,10 +11,6 @@
             android:key="API_key_value"
             android:title="@string/settings_title_API_key"
             android:defaultValue="@string/settings_API_key_default" />
-        <CheckBoxPreference
-            android:key="oneCall3"
-            android:title="OneCallAPI 3.0"
-            android:defaultValue="false"/>
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/settings_title_units">

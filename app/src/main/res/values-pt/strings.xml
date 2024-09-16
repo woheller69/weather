@@ -156,4 +156,5 @@
     <string name="settings_register_summary">Você precisa de uma assinatura gratuita e OneCallAPI 3.0 com um limite de 1.000 chamadas (gratuitas) por dia.</string>
     <string name="rationale_background_location">Permita também o uso de GPS em pano de fondo no widget</string>
     <string name="error_no_gps">Por favor, ligue o GPS</string>
+    <string name="error_onecall3">É necessária assinatura do OneCall 3.0</string>
 </resources>
