@@ -340,6 +340,7 @@ public class CityWeatherAdapter extends RecyclerView.Adapter<CityWeatherAdapter.
                     new RecyclerItemClickListener(context, holder.recyclerView, new RecyclerItemClickListener.OnItemClickListener() {
                         @Override
                         public void onItemClick(View view, int position) {
+                            if (position == -1) return;
                             PFASQLiteHelper database = PFASQLiteHelper.getInstance(context.getApplicationContext());
                             List<WeekForecast> weekforecasts = database.getWeekForecastsByCityId(currentWeatherDataList.getCity_id());
                             long time = weekforecasts.get(position).getForecastTime();  //time of clicked week item

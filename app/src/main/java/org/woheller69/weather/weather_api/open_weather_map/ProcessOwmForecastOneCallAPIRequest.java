@@ -193,7 +193,7 @@ public class ProcessOwmForecastOneCallAPIRequest implements IProcessHttpRequest 
         h.post(new Runnable() {
             @Override
             public void run() {
-                if (NavigationActivity.isVisible) Toast.makeText(context, context.getResources().getString(R.string.error_fetch_forecast), Toast.LENGTH_LONG).show();
+                if (NavigationActivity.isVisible) Toast.makeText(context, error.toString(), Toast.LENGTH_LONG).show();
                 if (NavigationActivity.isVisible && error.toString().contains("AuthFailureError")) Toast.makeText(context, context.getResources().getString(R.string.error_onecall3), Toast.LENGTH_LONG).show();
             }
         });
