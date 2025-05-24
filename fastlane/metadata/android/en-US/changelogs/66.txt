@@ -1,1 +1,6 @@
-Fix certificate issue
+Final release:
+- Fix certificate issue
+
+OpenWeatherMap requires credit card data.
+Therefore this app will no longer be maintained.
+Please use Cirrus instead.
