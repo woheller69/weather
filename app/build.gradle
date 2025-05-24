@@ -9,8 +9,8 @@ android {
         applicationId "org.woheller69.weather"
         minSdkVersion 21
         targetSdkVersion 34
-        versionCode 65
-        versionName "6.5"
+        versionCode 66
+        versionName "6.6"
 
         buildConfigField "String", "DEFAULT_API_KEY", "\"00000000000000000000000000000000\""
         buildConfigField "String", "BASE_URL", "\"https://api.openweathermap.org/data/3.0/\""
