@@ -93,7 +93,7 @@
             android:exported="false" />
 
         <receiver android:name="org.woheller69.weather.widget.WeatherWidget"
-            android:exported="false">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -104,7 +104,7 @@
         </receiver>
 
         <receiver android:name="org.woheller69.weather.widget.WeatherDigitalClockWidget"
-            android:exported="false">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -115,7 +115,7 @@
         </receiver>
 
         <receiver android:name="org.woheller69.weather.widget.WeatherWidget5day"
-            android:exported="false">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>

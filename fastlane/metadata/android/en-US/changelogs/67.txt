@@ -1,0 +1,6 @@
+Final release:
+- Fix widget
+
+OpenWeatherMap requires credit card data.
+Therefore this app will no longer be maintained.
+Please use Cirrus instead.
