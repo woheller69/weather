@@ -1,8 +1,10 @@
 package org.woheller69.weather.activities;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Bundle;
 import androidx.preference.PreferenceManager;
 import androidx.appcompat.app.AppCompatActivity;
@@ -111,6 +113,27 @@ public class RadiusSearchResultActivity extends AppCompatActivity {
                 
                 webView.loadUrl("javascript:addMarker("+ lat + ","+ lon + "," + temp + "," + unit + "," + cat + ");");
             }
+        }
+
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            if (url == null) {
+                return false;
+            }
+            // The map is a bundled asset. Any http(s) link in it (for
+            // example the OpenStreetMap attribution) should open in the
+            // browser instead of replacing the map.
+            if (url.startsWith("http://") || url.startsWith("https://")) {
+                try {
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    view.getContext().startActivity(intent);
+                    return true;
+                } catch (Exception e) {
+                    return false;
+                }
+            }
+            return false;
         }
     }
 
